@@ -128,15 +128,6 @@ const assetPaths = {
   underfitGym: "/assets/underfit-gym.png",
 };
 
-const underfitFacts = [
-  "Real client project",
-  "Offline-first desktop app",
-  "Local SQLite persistence",
-  "Windows desktop workflow",
-  "Memberships, cash, stock and access control",
-  "Built with Electron, React and SQLite",
-];
-
 const profileFiles = [
   { id: "contact", label: "contact.md", path: "profile > contact.md", icon: Mail, kind: "contact" },
   {
@@ -398,14 +389,6 @@ function UnderfitOverviewPanel({ onOpenDemo }) {
         </article>
       </div>
 
-      <div className="project-facts-card">
-        <span>Project facts</span>
-        <div className="project-facts-list">
-          {underfitFacts.map((fact) => (
-            <small key={fact}>{fact}</small>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
@@ -885,6 +868,7 @@ export function App() {
   const shouldReduceMotion = useReducedMotion();
   const isCompactViewport = useCompactViewport();
   const stageRef = useRef(null);
+  const workbenchRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: stageRef,
     offset: ["start start", "end start"],
@@ -901,12 +885,12 @@ export function App() {
     return `blur(${blur}px)`;
   });
   const workspaceOpacity = useTransform(scrollYProgress, (progress) => {
-    if (progress <= 0.02) return 0;
-    if (progress >= 0.24) return 1;
-    return (progress - 0.02) / 0.22;
+    if (progress <= 0.06) return 0;
+    if (progress >= 0.3) return 1;
+    return (progress - 0.06) / 0.24;
   });
-  const workspaceScale = useTransform(scrollYProgress, [0.02, 0.32], [0.86, 1]);
-  const workspaceY = useTransform(scrollYProgress, [0.02, 0.32], [130, 0]);
+  const workspaceScale = useTransform(scrollYProgress, [0.06, 0.36], [0.86, 1]);
+  const workspaceY = useTransform(scrollYProgress, [0.06, 0.36], [140, 0]);
   const clock = useClock();
   const [activeFile, setActiveFile] = useState("overview");
   const [folders, setFolders] = useState({
@@ -919,7 +903,18 @@ export function App() {
   const [sent, setSent] = useState(false);
   const active = workspaceFiles.find((file) => file.id === activeFile) ?? workspaceFiles[0];
 
-  const openFile = (id) => setActiveFile(id);
+  const openFile = (id, shouldScroll = false) => {
+    setActiveFile(id);
+
+    if (shouldScroll) {
+      window.requestAnimationFrame(() => {
+        workbenchRef.current?.scrollIntoView({
+          behavior: shouldReduceMotion ? "auto" : "smooth",
+          block: "start",
+        });
+      });
+    }
+  };
 
   const toggleFolder = (folder) => {
     setFolders((current) => ({ ...current, [folder]: !current[folder] }));
@@ -977,7 +972,7 @@ export function App() {
           <button className="active">amir-sholi</button>
         </div>
         <div className="global-nav">
-          <button onClick={() => openFile("contact")}>
+          <button onClick={() => openFile("contact", true)}>
             <Mail size={15} />
             Contact
           </button>
@@ -1033,7 +1028,7 @@ export function App() {
               ))}
             </div>
             <div className="hero-actions">
-              <button onClick={() => openFile("contact")}>
+              <button onClick={() => openFile("contact", true)}>
                 <Mail size={17} />
                 Contact
               </button>
@@ -1049,6 +1044,7 @@ export function App() {
         </motion.section>
 
         <motion.section
+          ref={workbenchRef}
           className="workbench"
           aria-label="Amir Sholi workspace"
           style={workspaceScrollStyle}

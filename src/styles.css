@@ -524,12 +524,13 @@ a {
 }
 
 .workbench {
+  scroll-margin-top: 18px;
   z-index: 3;
   display: grid;
   grid-template-columns: 56px 300px minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr) 26px;
   min-height: 720px;
-  margin-top: -34vh;
+  margin-top: -28vh;
   overflow: hidden;
   border: 1px solid #2b3340;
   border-radius: 16px 16px 0 0;
@@ -794,7 +795,6 @@ a {
   line-height: 1.65;
 }
 
-.project-facts-card,
 .case-study-grid article {
   border: 1px solid #343b46;
   border-radius: 12px;
@@ -846,46 +846,6 @@ a {
   aspect-ratio: 16 / 6;
   object-fit: cover;
   object-position: center;
-}
-
-.project-facts-card {
-  padding: 18px;
-}
-
-.project-facts-card > span {
-  margin-bottom: 10px;
-  color: #858585;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.project-facts-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.project-facts-list small {
-  position: relative;
-  display: block;
-  padding-left: 15px;
-  color: #c8d0dc;
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.project-facts-list small::before {
-  content: "";
-  position: absolute;
-  top: 0.62em;
-  left: 0;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #569cd6;
-  box-shadow: 0 0 12px rgba(86, 156, 214, 0.48);
 }
 
 .tech-row,
@@ -1528,7 +1488,7 @@ a {
   z-index: 2;
   width: 100%;
   max-width: none;
-  margin: 52px 0 0;
+  margin: 32px 0 0;
   border-top: 1px solid #2b3340;
   border-right: 0;
   border-bottom: 0;
@@ -1757,7 +1717,6 @@ a {
   .case-study-grid,
   .education-grid,
   .stack-grid,
-  .project-facts-list,
   .feature-detail-grid,
   .contact-file {
     grid-template-columns: 1fr;
