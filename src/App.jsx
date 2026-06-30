@@ -370,7 +370,7 @@ function UnderfitOverviewPanel({ onOpenDemo }) {
       </div>
 
       <figure className="overview-photo">
-        <img src={assetPaths.underfitGym} alt="UnderFit gym floor" />
+        <img src={assetPaths.underfitGym} alt="UnderFit gym floor" loading="lazy" decoding="async" />
       </figure>
 
       <div className="case-study-grid">
@@ -429,9 +429,9 @@ function UnderfitFeaturePanel({ file }) {
         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
       >
         {file.type === "video" ? (
-          <video src={file.src} controls />
+          <video src={file.src} controls preload="metadata" />
         ) : (
-          <img src={file.src} alt={file.title} />
+          <img src={file.src} alt={file.title} loading="lazy" decoding="async" />
         )}
         <div className="preview-caption">
           <strong>{file.file}</strong>
@@ -466,7 +466,7 @@ function ContactPanel({ subject, message, onSubjectChange, onMessageChange, onSu
       </div>
 
       <div className="contact-card-body">
-        <img className="contact-photo" src={assetPaths.profile} alt="Amir Sholi" />
+        <img className="contact-photo" src={assetPaths.profile} alt="Amir Sholi" loading="lazy" decoding="async" />
         <h3>Contact</h3>
         <p>Send a short message and I&apos;ll reply by email.</p>
         <div className="contact-inline-links">
@@ -509,6 +509,20 @@ function ContactPanel({ subject, message, onSubjectChange, onMessageChange, onSu
           {sent ? "Draft ready" : "Create message draft"}
         </button>
       </div>
+
+      <aside className="contact-context" aria-label="Contact context">
+        <span className="context-kicker">Good fit for</span>
+        <ul>
+          <li>Real workflow software</li>
+          <li>Desktop or internal tools</li>
+          <li>Product interfaces</li>
+          <li>Data validation and operational QA</li>
+        </ul>
+        <div className="response-note">
+          <Terminal size={15} />
+          <span>Short message, clear context, useful next step.</span>
+        </div>
+      </aside>
     </form>
   );
 }
@@ -876,23 +890,23 @@ export function App() {
     offset: ["start start", "end start"],
   });
   const heroOpacity = useTransform(scrollYProgress, (progress) => {
-    if (progress <= 0.12) return 1;
-    if (progress >= 0.72) return 0.15;
-    return 1 - ((progress - 0.12) / 0.6) * 0.85;
+    if (progress <= 0.05) return 1;
+    if (progress >= 0.45) return 0.18;
+    return 1 - ((progress - 0.05) / 0.4) * 0.82;
   });
-  const heroScale = useTransform(scrollYProgress, [0, 0.72], [1, 0.92]);
-  const heroY = useTransform(scrollYProgress, [0, 0.72], [0, -80]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.84]);
+  const heroY = useTransform(scrollYProgress, [0, 0.45], [0, 8]);
   const heroBlur = useTransform(scrollYProgress, (progress) => {
-    const blur = Math.min(Math.max(progress / 0.72, 0), 1) * 2;
+    const blur = Math.min(Math.max(progress / 0.45, 0), 1) * 2;
     return `blur(${blur}px)`;
   });
   const workspaceOpacity = useTransform(scrollYProgress, (progress) => {
-    if (progress <= 0.08) return 0;
-    if (progress >= 0.36) return 1;
-    return (progress - 0.08) / 0.28;
+    if (progress <= 0.02) return 0;
+    if (progress >= 0.24) return 1;
+    return (progress - 0.02) / 0.22;
   });
-  const workspaceScale = useTransform(scrollYProgress, [0.12, 0.58], [0.92, 1]);
-  const workspaceY = useTransform(scrollYProgress, [0.12, 0.58], [160, 0]);
+  const workspaceScale = useTransform(scrollYProgress, [0.02, 0.32], [0.86, 1]);
+  const workspaceY = useTransform(scrollYProgress, [0.02, 0.32], [130, 0]);
   const clock = useClock();
   const [activeFile, setActiveFile] = useState("overview");
   const [folders, setFolders] = useState({
@@ -949,7 +963,7 @@ export function App() {
       <nav className="top-bar">
         <div className="brand-chip">
           <span className="avatar">
-            <img src={assetPaths.profile} alt="" />
+            <img src={assetPaths.profile} alt="" loading="eager" decoding="async" />
             <span>AS</span>
           </span>
           <div>
