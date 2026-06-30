@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.npm-cache/
+.npmrc
+
+.env
+.env.*
+!.env.example
+
+qa/
+design-qa.md
+implementation-desktop.png
+source-option-2-boot-sequence.png
+
+.DS_Store
+Thumbs.db
+*.log
