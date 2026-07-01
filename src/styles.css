@@ -721,29 +721,59 @@ a {
 .hero-underfit-panel {
   position: relative;
   align-self: center;
+  border: 1px solid #2b3340;
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(17, 17, 17, 0.96), rgba(12, 14, 17, 0.96)),
+    #111111;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.34),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
 .hero-underfit-code {
   display: grid;
-  gap: 4px;
+  gap: 10px;
+  padding: 16px 18px 18px;
+  line-height: 1.55;
 }
 
-.hero-underfit-code .text-line:first-child span:last-child {
+.hero-underfit-panel .floating-path {
+  margin: 0;
+  width: 100%;
+  border-width: 0 0 1px;
+  border-radius: 9px 9px 0 0;
+  background: #1b1b1b;
+}
+
+.hero-console-line {
+  color: #d4d4d4;
+  white-space: normal;
+}
+
+.hero-console-line span {
+  color: #9cdcfe;
+}
+
+.hero-console-line strong {
   color: #ffffff;
-  font-weight: 850;
+  font-weight: 800;
 }
 
-.ascii-weight {
-  margin: 8px 0 4px 54px;
+.hero-console-output {
+  display: grid;
+  gap: 5px;
+  color: #c8d0dc;
+}
+
+.hero-console-output span::before {
+  content: "> ";
   color: #ff8a3d;
-  font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
-  font-size: 12px;
-  line-height: 1.05;
 }
 
 .hero-underfit-code .underfit-jump {
   width: fit-content;
-  margin: 6px 0 0 54px;
+  margin-top: 4px;
 }
 
 .editor-tabs button {
@@ -933,11 +963,12 @@ a {
 .overview-brand-preview img {
   display: block;
   width: 100%;
-  height: clamp(132px, 24vh, 205px);
-  object-fit: cover;
+  height: clamp(170px, 30vh, 255px);
+  object-fit: contain;
   object-position: center;
   background: #ffffff;
-  transform: scale(1.32);
+  transform: scale(1.72);
+  transform-origin: center;
 }
 
 .overview-brand-preview figcaption {
@@ -1031,7 +1062,7 @@ a {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  max-height: clamp(145px, 27vh, 245px);
+  max-height: clamp(210px, 37vh, 340px);
   object-fit: contain;
   background: transparent;
 }
@@ -1040,7 +1071,7 @@ a {
   display: block;
   width: min(100%, 680px);
   aspect-ratio: 16 / 9;
-  max-height: clamp(140px, 26vh, 235px);
+  max-height: clamp(190px, 34vh, 310px);
   object-fit: cover;
   background: #050505;
 }

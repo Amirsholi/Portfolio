@@ -455,23 +455,18 @@ function HeroUnderfitPanel({ onOpenProject }) {
         <Code2 size={15} />
         <span>projects/underfit.md</span>
       </div>
-      <div className="code-body hero-code-body plain-text-body hero-underfit-code">
-        {[
-          "UnderFit Desktop App",
-          "Real gym workflow system",
-          "Memberships, renewals, access validation",
-          "Stock, sales and cash control",
-          "Built for practical daily use",
-        ].map((line, index) => (
-          <TextLine key={`${line}-${index}`} line={line} index={index} />
-        ))}
-        <pre className="ascii-weight" aria-hidden="true">{String.raw`
-          [====]
-            ||
-        o===||===o
-            ||
-          [====]
-`}</pre>
+      <div className="code-body hero-code-body hero-underfit-code">
+        <div className="hero-console-line">
+          <span>PS C:\Users\Amir\Portfolio&gt;</span>
+          <strong> open underfit --summary</strong>
+        </div>
+        <div className="hero-console-output">
+          <span>Project: UnderFit Desktop App</span>
+          <span>Context: real gym workflow system</span>
+          <span>Core: memberships, renewals, access validation</span>
+          <span>Ops: stock, sales and cash control</span>
+          <span>Status: built for practical daily use</span>
+        </div>
         <button className="underfit-jump" type="button" onClick={onOpenProject}>
           Open UnderFit project
         </button>
