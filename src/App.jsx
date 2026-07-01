@@ -444,30 +444,39 @@ function TextLine({ line, index }) {
 
 function HeroUnderfitPanel({ onOpenProject }) {
   return (
-    <motion.aside
-      className="hero-underfit-panel"
+    <motion.div
+      className="hero-code hero-underfit-panel"
       initial={{ opacity: 0, y: 22, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.72, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
       aria-label="UnderFit project summary"
     >
-      <div className="hero-panel-tabs">
-        <span>underfit.md</span>
-        <span>preview</span>
+      <div className="floating-path">
+        <Code2 size={15} />
+        <span>projects/underfit.md</span>
       </div>
-      <div className="hero-panel-body">
-        <span className="file-breadcrumb">projects &gt; underfit &gt; overview.md</span>
-        <p className="eyebrow">Strongest example</p>
-        <h3>UnderFit Desktop App</h3>
-        <p>
-          A desktop system for a real gym, shaped around practical daily use:
-          memberships, renewals, access, stock, sales and cash control.
-        </p>
+      <div className="code-body hero-code-body plain-text-body hero-underfit-code">
+        {[
+          "UnderFit Desktop App",
+          "Real gym workflow system",
+          "Memberships, renewals, access validation",
+          "Stock, sales and cash control",
+          "Built for practical daily use",
+        ].map((line, index) => (
+          <TextLine key={`${line}-${index}`} line={line} index={index} />
+        ))}
+        <pre className="ascii-weight" aria-hidden="true">{String.raw`
+          [====]
+            ||
+        o===||===o
+            ||
+          [====]
+`}</pre>
         <button className="underfit-jump" type="button" onClick={onOpenProject}>
           Open UnderFit project
         </button>
       </div>
-    </motion.aside>
+    </motion.div>
   );
 }
 
@@ -1206,12 +1215,49 @@ export function App() {
 
     if (shouldScroll) {
       window.requestAnimationFrame(() => {
-        workbenchRef.current?.scrollIntoView({
-          behavior: shouldReduceMotion ? "auto" : "smooth",
-          block: "start",
-        });
+        scrollWorkbenchToCenter(shouldReduceMotion ? 0 : 780);
       });
     }
+  };
+
+  const scrollWorkbenchToCenter = (duration = 780) => {
+    const workbench = workbenchRef.current;
+    if (!workbench) return;
+
+    const rect = workbench.getBoundingClientRect();
+    const visualOffset = Math.min(96, window.innerHeight * 0.1);
+    const target =
+      window.scrollY +
+      rect.top -
+      Math.max(0, (window.innerHeight - rect.height) / 2) -
+      visualOffset;
+
+    if (duration === 0) {
+      window.scrollTo({ top: target });
+      return;
+    }
+
+    const start = window.scrollY;
+    const distance = target - start;
+    const startedAt = window.performance.now();
+
+    const ease = (t) => 1 - Math.pow(1 - t, 2.2);
+
+    const step = (now) => {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      window.scrollTo(0, start + distance * ease(progress));
+      if (progress < 1) window.requestAnimationFrame(step);
+    };
+
+    window.requestAnimationFrame(step);
+  };
+
+  const openUnderfitFromHero = () => {
+    setActiveFile("contact");
+    window.requestAnimationFrame(() => {
+      scrollWorkbenchToCenter(shouldReduceMotion ? 0 : 920);
+      window.setTimeout(() => setActiveFile("overview"), shouldReduceMotion ? 0 : 980);
+    });
   };
 
   const toggleFolder = (folder) => {
@@ -1332,7 +1378,7 @@ export function App() {
             </div>
           </motion.div>
 
-          <HeroUnderfitPanel onOpenProject={() => openFile("overview", true)} />
+          <HeroUnderfitPanel onOpenProject={openUnderfitFromHero} />
         </motion.section>
 
         <motion.section
