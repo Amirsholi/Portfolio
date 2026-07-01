@@ -20,5 +20,7 @@ When implementing from a selected generated mock, treat that image as the source
 - Page scrolling should remain natural; avoid mandatory scroll snapping and avoid competing scroll containers inside the VS Code editor.
 - Contact should keep the vertical form layout, with any cover-letter/readme content presented as a separate terminal-like black monospace block.
 - Workspace file navigation should be simple text links such as `cash-dashboard.view >`, not large floating arrow buttons.
-- UnderFit screenshots and visual previews should be clickable so visitors can open the asset at a larger size.
 - The VS Code tab strip must stay dark; avoid white filler panels in the editor chrome.
+- Public Vercel portfolio links must not require Vercel login; keep SSO deployment protection disabled for this project.
+- The hero should lead with the AmirSholi() identity and use a compact VS Code-style UnderFit pitch panel on the right.
+- Do not make UnderFit images clickable for enlarged previews; keep media inside the portfolio flow.

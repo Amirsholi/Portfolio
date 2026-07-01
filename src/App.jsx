@@ -442,6 +442,35 @@ function TextLine({ line, index }) {
   );
 }
 
+function HeroUnderfitPanel({ onOpenProject }) {
+  return (
+    <motion.aside
+      className="hero-underfit-panel"
+      initial={{ opacity: 0, y: 22, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.72, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+      aria-label="UnderFit project summary"
+    >
+      <div className="hero-panel-tabs">
+        <span>underfit.md</span>
+        <span>preview</span>
+      </div>
+      <div className="hero-panel-body">
+        <span className="file-breadcrumb">projects &gt; underfit &gt; overview.md</span>
+        <p className="eyebrow">Strongest example</p>
+        <h3>UnderFit Desktop App</h3>
+        <p>
+          A desktop system for a real gym, shaped around practical daily use:
+          memberships, renewals, access, stock, sales and cash control.
+        </p>
+        <button className="underfit-jump" type="button" onClick={onOpenProject}>
+          Open UnderFit project
+        </button>
+      </div>
+    </motion.aside>
+  );
+}
+
 function ModuleNavigation({ previousFile, nextFile, onOpenFile }) {
   if (!previousFile && !nextFile) return null;
 
@@ -466,7 +495,7 @@ function ModuleNavigation({ previousFile, nextFile, onOpenFile }) {
 function UnderfitOverviewPanel() {
   return (
     <div className="file-document underfit-overview-file">
-      <div className="file-copy">
+      <div className="file-copy overview-copy">
         <span className="file-breadcrumb">projects &gt; underfit &gt; overview.md</span>
         <p className="eyebrow">Featured real client project</p>
         <h3>UnderFit Desktop App</h3>
@@ -489,35 +518,35 @@ function UnderfitOverviewPanel() {
         </div>
       </div>
 
-      <figure className="overview-brand-preview">
-        <a href={assetPaths.underfitGym} target="_blank" rel="noreferrer" aria-label="Open UnderFit banner">
+      <div className="overview-content-grid">
+        <figure className="overview-brand-preview">
           <img src={assetPaths.underfitGym} alt="UnderFit brand" loading="lazy" decoding="async" />
-        </a>
-      </figure>
+        </figure>
 
-      <div className="case-study-grid">
-        <article>
-          <strong>Problem</strong>
-          <p>
-            Gym operations needed a local tool for recurring memberships,
-            attendance checks, cash movement and stock without depending on a
-            browser workflow.
-          </p>
-        </article>
-        <article>
-          <strong>Solution</strong>
-          <p>
-            A desktop app with validated forms, local persistence and screens
-            shaped around real front-desk tasks.
-          </p>
-        </article>
-        <article>
-          <strong>Result</strong>
-          <p>
-            A practical management system that centralizes members, sales,
-            access and daily control data in one operational workspace.
-          </p>
-        </article>
+        <div className="case-study-grid">
+          <article>
+            <strong>Problem</strong>
+            <p>
+              Gym operations needed a local tool for recurring memberships,
+              attendance checks, cash movement and stock without depending on a
+              browser workflow.
+            </p>
+          </article>
+          <article>
+            <strong>Solution</strong>
+            <p>
+              A desktop app with validated forms, local persistence and screens
+              shaped around real front-desk tasks.
+            </p>
+          </article>
+          <article>
+            <strong>Result</strong>
+            <p>
+              A practical management system that centralizes members, sales,
+              access and daily control data in one operational workspace.
+            </p>
+          </article>
+        </div>
       </div>
     </div>
   );
@@ -544,9 +573,7 @@ function UnderfitFeaturePanel({ file }) {
         {file.type === "video" ? (
           <video src={file.src} controls preload="metadata" />
         ) : (
-          <a className="media-link" href={file.src} target="_blank" rel="noreferrer" aria-label={`Open ${file.title} screenshot`}>
-            <img src={file.src} alt={file.title} loading="lazy" decoding="async" />
-          </a>
+          <img src={file.src} alt={file.title} loading="lazy" decoding="async" />
         )}
         <div className="preview-caption">
           <strong>{file.file}</strong>
@@ -554,7 +581,7 @@ function UnderfitFeaturePanel({ file }) {
         </div>
       </motion.div>
 
-      <div className="feature-detail-grid">
+      <aside className="feature-detail-grid">
         <div className="feature-notes">
           <p className="eyebrow">Details</p>
           <ul>
@@ -567,7 +594,7 @@ function UnderfitFeaturePanel({ file }) {
           <span>Technical notes</span>
           <p>{file.notes}</p>
         </div>
-      </div>
+      </aside>
     </div>
   );
 }
@@ -578,7 +605,6 @@ function ContactPanel({
   onSubjectChange,
   onMessageChange,
   onSubmit,
-  onOpenProject,
   sent,
 }) {
   return (
@@ -595,7 +621,11 @@ function ContactPanel({
             <h3>Contact</h3>
             <p>Send a short message and I&apos;ll reply by email.</p>
             <div className="contact-inline-links">
-              <a href={`mailto:amirsholi999@gmail.com?subject=${encodeURIComponent("Portfolio contact")}`}>
+              <a
+                href={`mailto:amirsholi999@gmail.com?subject=${encodeURIComponent("Portfolio contact")}`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Mail size={15} />
                 Email
               </a>
@@ -653,9 +683,6 @@ memberships, renewals, access, stock, sales and cash.
 I'm interested in product teams, internal tools and
 client projects where software has to be simple enough
 to be used every day.`}</pre>
-          <button className="underfit-jump" type="button" onClick={onOpenProject}>
-            Explore UnderFit project
-          </button>
         </aside>
       </div>
     </div>
@@ -1273,24 +1300,6 @@ export function App() {
       <section className="landing-stage" ref={stageRef}>
         <motion.section className="boot-hero" style={heroScrollStyle}>
           <motion.div
-            className="hero-code"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="floating-path">
-              <Code2 size={15} />
-              <span>amir-sholi/profile.txt</span>
-            </div>
-            <div className="code-body hero-code-body plain-text-body">
-              {introText.map((line, index) => (
-                <TextLine key={`${line}-${index}`} line={line} index={index} />
-              ))}
-              <span className="caret" />
-            </div>
-          </motion.div>
-
-          <motion.div
             className="hero-identity"
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1322,6 +1331,8 @@ export function App() {
               </span>
             </div>
           </motion.div>
+
+          <HeroUnderfitPanel onOpenProject={() => openFile("overview", true)} />
         </motion.section>
 
         <motion.section
@@ -1390,7 +1401,6 @@ export function App() {
                 onSubjectChange={setSubject}
                 onMessageChange={setMessage}
                 onSubmit={prepareEmail}
-                onOpenProject={() => openFile("overview", true)}
                 sent={sent}
               />
             ) : null}
