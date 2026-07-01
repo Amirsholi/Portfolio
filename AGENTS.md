@@ -13,3 +13,12 @@ When implementing from a selected generated mock, treat that image as the source
 - The workspace and footer should be static page elements after the transition, not fixed overlays.
 - The terminal footer should be clean, full-width and free of blue radial glow artifacts.
 - Contact should remain compact, but empty editor space can be used for small contextual UI that helps visitors understand fit and next steps.
+- The VS Code workspace must use a controlled viewport-aware height, and file views should be composed to fit without internal editor scrolling.
+- UnderFit files should be ordered as overview, demo/video, then feature modules; provide in-editor next/previous navigation for visitors who do not understand the file-tree metaphor.
+- Do not deploy or push major visual changes until responsive behavior, internal scroll and build have been checked.
+- The first workspace file should be `contact.md`; on desktop it includes a README-style cover letter, while mobile can simplify/hide that README so the contact view fits without internal scrolling.
+- Page scrolling should remain natural; avoid mandatory scroll snapping and avoid competing scroll containers inside the VS Code editor.
+- Contact should keep the vertical form layout, with any cover-letter/readme content presented as a separate terminal-like black monospace block.
+- Workspace file navigation should be simple text links such as `cash-dashboard.view >`, not large floating arrow buttons.
+- UnderFit screenshots and visual previews should be clickable so visitors can open the asset at a larger size.
+- The VS Code tab strip must stay dark; avoid white filler panels in the editor chrome.

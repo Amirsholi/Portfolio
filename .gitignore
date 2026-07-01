@@ -15,3 +15,6 @@ source-option-2-boot-sequence.png
 .DS_Store
 Thumbs.db
 *.log
+
+.vercel
+.env*

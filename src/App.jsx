@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
   ChevronDown,
@@ -15,12 +15,28 @@ import {
   Layers,
   Link,
   Mail,
+  X,
   ServerCog,
   Terminal,
   Workflow,
 } from "lucide-react";
 
 const underfitAssets = [
+  {
+    id: "entry-video",
+    title: "Gym Entry Video",
+    file: "entry-video.demo",
+    path: "projects > underfit > entry-video.demo",
+    src: "/assets/underfit/gym-entry.mp4",
+    type: "video",
+    meta: "Live access workflow for member check-ins.",
+    bullets: [
+      "Member enters ID.",
+      "System validates membership status.",
+      "Kiosk displays access result.",
+    ],
+    notes: "Kiosk UI / Membership validation / Offline-first",
+  },
   {
     id: "cash-dashboard",
     title: "Cash Dashboard",
@@ -82,6 +98,21 @@ const underfitAssets = [
     notes: "Local logs / SQLite / Kiosk workflow",
   },
   {
+    id: "admin",
+    title: "Administration",
+    file: "administration.panel",
+    path: "projects > underfit > administration.panel",
+    src: "/assets/underfit/admin.png",
+    type: "image",
+    meta: "Administrative workspace for staff operations and system management.",
+    bullets: [
+      "Centralizes operational access for staff.",
+      "Keeps admin actions separated from kiosk entry flow.",
+      "Supports day-to-day management from one desktop workspace.",
+    ],
+    notes: "Electron admin window / Operational UI / Local data",
+  },
+  {
     id: "system-flow",
     title: "System Flow",
     file: "system-flow.diagram",
@@ -95,21 +126,6 @@ const underfitAssets = [
       "SQLite stores local operational data.",
     ],
     notes: "Electron windows / IPC / SQLite",
-  },
-  {
-    id: "entry-video",
-    title: "Gym Entry Video",
-    file: "entry-video.demo",
-    path: "projects > underfit > entry-video.demo",
-    src: "/assets/underfit/gym-entry.mp4",
-    type: "video",
-    meta: "Live access workflow for member check-ins.",
-    bullets: [
-      "Member enters ID.",
-      "System validates membership status.",
-      "Kiosk displays access result.",
-    ],
-    notes: "Kiosk UI / Membership validation / Offline-first",
   },
 ];
 
@@ -126,6 +142,18 @@ const heroBadges = ["React / Next.js", "Electron + SQLite", "QA & Data validatio
 const assetPaths = {
   profile: "/assets/profile.jpg",
   underfitGym: "/assets/underfit-gym.png",
+};
+
+const techLogos = {
+  React: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "Next.js": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  JavaScript: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  "HTML / CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  Electron: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg",
+  SQLite: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
+  SQL: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  Python: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  Git: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
 };
 
 const profileFiles = [
@@ -164,6 +192,32 @@ const projectFiles = [
 ];
 
 const workspaceFiles = [...projectFiles, ...profileFiles];
+const projectFileIds = projectFiles.map((file) => file.id);
+const navigationFileIds = [
+  "contact",
+  "overview",
+  ...underfitAssets.map((asset) => asset.id),
+  "education",
+  "experience",
+  "stack",
+];
+
+function getAdjacentProjectFile(id, direction) {
+  const index = projectFileIds.indexOf(id);
+  if (index === -1) return null;
+
+  const nextIndex = direction === "next" ? index + 1 : index - 1;
+  return projectFiles[nextIndex] ?? null;
+}
+
+function getAdjacentWorkspaceFile(id, direction) {
+  const index = navigationFileIds.indexOf(id);
+  if (index === -1) return null;
+
+  const nextIndex = direction === "next" ? index + 1 : index - 1;
+  const nextId = navigationFileIds[nextIndex];
+  return nextId ? workspaceFiles.find((file) => file.id === nextId) : null;
+}
 
 const skillGroups = [
   {
@@ -171,24 +225,44 @@ const skillGroups = [
     icon: Layers,
     summary: "User-facing screens, flows and dashboards built with clarity and maintainability.",
     items: ["React", "Next.js", "JavaScript", "HTML / CSS"],
+    details: [
+      "Used to build structured product screens, dashboards and interaction flows.",
+      "Practical focus: reusable components, stateful interfaces and responsive layouts.",
+      "Examples in this portfolio: VS Code-style workspace, UnderFit admin views and contact workflow.",
+    ],
   },
   {
     title: "Desktop systems",
     icon: ServerCog,
     summary: "Operational software for local workflows, persistence and everyday business use.",
     items: ["Electron", "SQLite", "Local data", "Offline-first thinking"],
+    details: [
+      "Used when a workflow needs to run locally as a desktop app instead of a browser page.",
+      "Practical focus: app windows, local persistence, validation and business rules.",
+      "Example: UnderFit runs as an Electron desktop system with SQLite persistence.",
+    ],
   },
   {
     title: "Data & automation",
     icon: Database,
     summary: "Validation, reporting, process automation and structured operational data.",
     items: ["SQL", "Python", "REST APIs", "Data validation"],
+    details: [
+      "Used to keep operational information consistent, searchable and easier to audit.",
+      "Practical focus: validation logic, structured records, API usage and reporting support.",
+      "Examples: member records, renewals, access history and daily cash data.",
+    ],
   },
   {
     title: "Delivery practice",
     icon: Workflow,
     summary: "Documentation, testing and iteration habits that keep systems reliable.",
     items: ["Manual testing", "Technical documentation", "Process automation", "Git"],
+    details: [
+      "Used to make software easier to review, maintain and improve after first delivery.",
+      "Practical focus: manual QA, workflow documentation, version control and iteration.",
+      "Example: testing UnderFit flows against real front-desk operations.",
+    ],
   },
 ];
 
@@ -200,10 +274,13 @@ const experience = [
     detail:
       "Built a local desktop system for gym operations including memberships, renewals, access logging, stock, product sales and daily cash control.",
     points: [
-      "Designed the product architecture around React, Electron and SQLite local persistence.",
-      "Implemented operational flows for registrations, renewals, access history, cash control, stock and product sales.",
-      "Iterated with real usage feedback so the system matched day-to-day gym workflows.",
+      "Development and maintenance of a desktop gym management system used in real operations.",
+      "Implemented relational data structures, business rules and operational workflows.",
+      "Built membership expiration logic, ID-based access validation, stock, cash flow and sales tracking.",
+      "Handled continuous maintenance, UI improvements, debugging and feature expansion.",
     ],
+    tools: ["JavaScript", "Electron", "SQLite", "HTML/CSS", "Manual QA"],
+    learnings: "Building for a real client means validating the product against how staff actually work, not only against the initial feature list.",
   },
   {
     company: "Alorica",
@@ -211,10 +288,14 @@ const experience = [
     time: "May 2024 - Oct 2025",
     detail: "High-volume data validation, policy application, QA and SLA work.",
     points: [
-      "Worked with large volumes of information under accuracy and SLA requirements.",
-      "Applied internal policies, consistency checks and quality metrics.",
-      "Developed a data validation and QA mindset that now informs software decisions.",
+      "Reviewed and validated information according to internal guidelines and protocols.",
+      "Applied operational policies with consistency and attention to detail.",
+      "Identified inconsistencies and made structured decisions based on defined criteria.",
+      "Maintained quality standards under SLA/KPI performance metrics.",
+      "Documented cases and maintained process compliance standards.",
     ],
+    tools: ["Internal QA tools", "Policy workflows", "Data validation", "SLA process"],
+    learnings: "High-volume operational work strengthened attention to consistency, edge cases and clear process rules.",
   },
 ];
 
@@ -262,6 +343,13 @@ const education = [
     year: "Coursework completed",
     description:
       "Core programming formation: object-oriented programming, databases, algorithms, software logic and application development.",
+    status: "Coursework completed",
+    certificate: null,
+    details: [
+      "Technical software development program focused on programming foundations, databases and application logic.",
+      "Based on the CTC profile as a technical education center in Salto, Uruguay.",
+      "Prepared structure for diploma/certificate evidence when available.",
+    ],
   },
   {
     program: "Diploma in Artificial Intelligence",
@@ -269,6 +357,14 @@ const education = [
     year: "2024",
     description:
       "AI fundamentals, prompting, applied tools and practical ways to use AI inside workflows and technical processes.",
+    status: "Completed",
+    duration: "6 months",
+    certificate: "/assets/certificates/ibec-ai.jpg",
+    details: [
+      "AI fundamentals and practical use of applied tools in workflows.",
+      "Completed and approved on March 13, 2024.",
+      "Prepared structure for diploma/certificate evidence when available.",
+    ],
   },
   {
     program: "React.js",
@@ -276,6 +372,13 @@ const education = [
     year: "2023",
     description:
       "Component-based interfaces, state, props, reusable UI patterns and frontend project structure.",
+    status: "Completed",
+    duration: "6 months",
+    certificate: "/assets/certificates/coderhouse-react.png",
+    details: [
+      "React components, props, state, reusable interface patterns and project structure.",
+      "Certificate indicates 30 hours across 8 weeks, completed on November 7, 2023.",
+    ],
   },
   {
     program: "Next.js",
@@ -283,6 +386,14 @@ const education = [
     year: "2023",
     description:
       "React framework fundamentals, routing, rendering patterns and production-oriented web app structure.",
+    status: "Completed",
+    duration: "6 months",
+    certificate: "/assets/certificates/coderhouse-next.png",
+    details: [
+      "Next.js routing, rendering patterns and production-oriented React app structure.",
+      "Certificate indicates 14 hours across 7 weeks, completed on December 11, 2023.",
+      "The course is no longer publicly available on Coderhouse, so the certificate is used as evidence.",
+    ],
   },
 ];
 
@@ -331,7 +442,28 @@ function TextLine({ line, index }) {
   );
 }
 
-function UnderfitOverviewPanel({ onOpenDemo }) {
+function ModuleNavigation({ previousFile, nextFile, onOpenFile }) {
+  if (!previousFile && !nextFile) return null;
+
+  return (
+    <nav className="module-nav" aria-label="Project file navigation">
+      {previousFile ? (
+        <button className="previous" type="button" onClick={() => onOpenFile(previousFile.id)}>
+          <span>&lt; {previousFile.label}</span>
+        </button>
+      ) : (
+        <span />
+      )}
+      {nextFile ? (
+        <button className="next" type="button" onClick={() => onOpenFile(nextFile.id)}>
+          <span>{nextFile.label} &gt;</span>
+        </button>
+      ) : null}
+    </nav>
+  );
+}
+
+function UnderfitOverviewPanel() {
   return (
     <div className="file-document underfit-overview-file">
       <div className="file-copy">
@@ -339,9 +471,9 @@ function UnderfitOverviewPanel({ onOpenDemo }) {
         <p className="eyebrow">Featured real client project</p>
         <h3>UnderFit Desktop App</h3>
         <p>
-          Desktop management system built for a real gym. It handles
-          memberships, renewals, access history, daily cash control, product
-          sales, stock and operational rules.
+          Desktop management system for a real gym operation. It centralizes
+          memberships, renewals, access validation, cash flow, stock and sales
+          in a local workflow designed for daily front-desk use.
         </p>
         <div className="project-actions">
           <a
@@ -354,14 +486,13 @@ function UnderfitOverviewPanel({ onOpenDemo }) {
             View repository
             <ExternalLink size={14} />
           </a>
-          <button className="case-link" type="button" onClick={onOpenDemo}>
-            Open demo/video
-          </button>
         </div>
       </div>
 
-      <figure className="overview-photo">
-        <img src={assetPaths.underfitGym} alt="UnderFit gym floor" loading="lazy" decoding="async" />
+      <figure className="overview-brand-preview">
+        <a href={assetPaths.underfitGym} target="_blank" rel="noreferrer" aria-label="Open UnderFit banner">
+          <img src={assetPaths.underfitGym} alt="UnderFit brand" loading="lazy" decoding="async" />
+        </a>
       </figure>
 
       <div className="case-study-grid">
@@ -388,7 +519,6 @@ function UnderfitOverviewPanel({ onOpenDemo }) {
           </p>
         </article>
       </div>
-
     </div>
   );
 }
@@ -406,7 +536,7 @@ function UnderfitFeaturePanel({ file }) {
 
       <motion.div
         key={file.id}
-        className="preview-pane"
+        className={`preview-pane ${file.type === "video" ? "video-preview" : "image-preview"}`}
         initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
         animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
@@ -414,7 +544,9 @@ function UnderfitFeaturePanel({ file }) {
         {file.type === "video" ? (
           <video src={file.src} controls preload="metadata" />
         ) : (
-          <img src={file.src} alt={file.title} loading="lazy" decoding="async" />
+          <a className="media-link" href={file.src} target="_blank" rel="noreferrer" aria-label={`Open ${file.title} screenshot`}>
+            <img src={file.src} alt={file.title} loading="lazy" decoding="async" />
+          </a>
         )}
         <div className="preview-caption">
           <strong>{file.file}</strong>
@@ -440,76 +572,95 @@ function UnderfitFeaturePanel({ file }) {
   );
 }
 
-function ContactPanel({ subject, message, onSubjectChange, onMessageChange, onSubmit, sent }) {
+function ContactPanel({
+  subject,
+  message,
+  onSubjectChange,
+  onMessageChange,
+  onSubmit,
+  onOpenProject,
+  sent,
+}) {
   return (
-    <form className="contact-file" onSubmit={onSubmit}>
-      <div className="markdown-file-header">
-        <span>contact.md</span>
-        <small>message draft</small>
-      </div>
+    <div className="contact-document">
+      <div className="contact-layout">
+        <form className="contact-file" onSubmit={onSubmit}>
+          <div className="markdown-file-header">
+            <span>contact.md</span>
+            <small>message draft</small>
+          </div>
 
-      <div className="contact-card-body">
-        <img className="contact-photo" src={assetPaths.profile} alt="Amir Sholi" loading="lazy" decoding="async" />
-        <h3>Contact</h3>
-        <p>Send a short message and I&apos;ll reply by email.</p>
-        <div className="contact-inline-links">
-          <a href={`mailto:amirsholi999@gmail.com?subject=${encodeURIComponent("Portfolio contact")}`}>
-            <Mail size={15} />
-            Email
-          </a>
-          <a href="https://www.linkedin.com/in/amirsholi/" target="_blank" rel="noreferrer">
-            <Link size={15} />
-            LinkedIn
-          </a>
-          <a href="https://github.com/Amirsholi" target="_blank" rel="noreferrer">
-            <GitBranch size={15} />
-            GitHub
-          </a>
-          <CVDownloadMenu compact />
-        </div>
-      </div>
+          <div className="contact-card-body">
+            <img className="contact-photo" src={assetPaths.profile} alt="Amir Sholi" loading="lazy" decoding="async" />
+            <h3>Contact</h3>
+            <p>Send a short message and I&apos;ll reply by email.</p>
+            <div className="contact-inline-links">
+              <a href={`mailto:amirsholi999@gmail.com?subject=${encodeURIComponent("Portfolio contact")}`}>
+                <Mail size={15} />
+                Email
+              </a>
+              <a href="https://www.linkedin.com/in/amirsholi/" target="_blank" rel="noreferrer">
+                <Link size={15} />
+                LinkedIn
+              </a>
+              <a href="https://github.com/Amirsholi" target="_blank" rel="noreferrer">
+                <GitBranch size={15} />
+                GitHub
+              </a>
+              <CVDownloadMenu compact />
+            </div>
+          </div>
 
-      <div className="contact-fields">
-        <label>
-          Subject
-          <input
-            value={subject}
-            onChange={(event) => onSubjectChange(event.target.value)}
-            placeholder="Project collaboration, role, automation idea..."
-          />
-        </label>
-        <label>
-          Message
-          <textarea
-            value={message}
-            onChange={(event) => onMessageChange(event.target.value)}
-            placeholder="Hi Amir, I wanted to talk about..."
-            rows={4}
-          />
-        </label>
-        <button type="submit">
-          <Mail size={17} />
-          {sent ? "Draft ready" : "Create message draft"}
-        </button>
-      </div>
+          <div className="contact-fields">
+            <label>
+              Subject
+              <input
+                value={subject}
+                onChange={(event) => onSubjectChange(event.target.value)}
+                placeholder="Project collaboration, role, automation idea..."
+              />
+            </label>
+            <label>
+              Message
+              <textarea
+                value={message}
+                onChange={(event) => onMessageChange(event.target.value)}
+                placeholder="Hi Amir, I wanted to talk about..."
+                rows={4}
+              />
+            </label>
+            <button type="submit">
+              <Mail size={17} />
+              {sent ? "Draft ready" : "Create message draft"}
+            </button>
+          </div>
+        </form>
 
-      <aside className="contact-context" aria-label="Contact context">
-        <span className="context-kicker">Good fit for</span>
-        <ul>
-          <li>Real workflow software</li>
-          <li>Desktop or internal tools</li>
-          <li>Product interfaces</li>
-          <li>Data validation and operational QA</li>
-        </ul>
-        <div className="response-note">
-          <Terminal size={15} />
-          <span>Short message, clear context, useful next step.</span>
-        </div>
-      </aside>
-    </form>
+        <aside className="contact-readme" aria-label="Cover letter readme">
+          <pre>{`README.md
+---------
+
+Hi, I'm Amir.
+
+I like building useful software from close range:
+understand the workflow, simplify the repeated parts
+and turn messy daily operations into a clear interface.
+
+My strongest example is UnderFit, a desktop system
+for a real gym. It was shaped around practical use:
+memberships, renewals, access, stock, sales and cash.
+
+I'm interested in product teams, internal tools and
+client projects where software has to be simple enough
+to be used every day.`}</pre>
+          <button className="underfit-jump" type="button" onClick={onOpenProject}>
+            Explore UnderFit project
+          </button>
+        </aside>
+      </div>
+    </div>
   );
 }
-
 function CVDownloadMenu({ compact = false }) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
@@ -564,29 +715,48 @@ function CVDownloadMenu({ compact = false }) {
   );
 }
 
-function EducationPanel() {
+function openCardWithKeyboard(event, callback) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    callback();
+  }
+}
+
+function EducationPanel({ onOpenDetail }) {
   return (
     <div className="education-grid">
-      {education.map(({ program, school, year, description }) => (
-        <article key={program}>
+      {education.map((item) => (
+        <article
+          key={item.program}
+          role="button"
+          tabIndex={0}
+          onClick={() => onOpenDetail({ type: "education", ...item })}
+          onKeyDown={(event) => openCardWithKeyboard(event, () => onOpenDetail({ type: "education", ...item }))}
+        >
           <GraduationCap size={20} />
           <div>
-            <strong>{program}</strong>
-            <span>{school}</span>
-            <p>{description}</p>
+            <strong>{item.program}</strong>
+            <span>{item.school}</span>
+            <p>{item.description}</p>
           </div>
-          <time>{year}</time>
+          <time>{item.year}</time>
         </article>
       ))}
     </div>
   );
 }
 
-function ExperiencePanel() {
+function ExperiencePanel({ onOpenDetail }) {
   return (
     <div className="experience-nodes">
       {experience.map((item) => (
-        <article key={item.company}>
+        <article
+          key={item.company}
+          role="button"
+          tabIndex={0}
+          onClick={() => onOpenDetail({ type: "experience", ...item })}
+          onKeyDown={(event) => openCardWithKeyboard(event, () => onOpenDetail({ type: "experience", ...item }))}
+        >
           <span className="node-dot" />
           <div>
             <strong>{item.company}</strong>
@@ -605,23 +775,125 @@ function ExperiencePanel() {
   );
 }
 
-function StackPanel() {
+function StackPanel({ onOpenDetail }) {
   return (
     <div className="stack-grid">
-      {skillGroups.map(({ title, icon: Icon, summary, items }) => (
-        <article key={title}>
+      {skillGroups.map((item) => {
+        const Icon = item.icon;
+        return (
+        <article
+          key={item.title}
+          role="button"
+          tabIndex={0}
+          onClick={() => onOpenDetail({ type: "stack", ...item })}
+          onKeyDown={(event) => openCardWithKeyboard(event, () => onOpenDetail({ type: "stack", ...item }))}
+        >
           <Icon size={22} />
           <div>
-            <strong>{title}</strong>
-            <p>{summary}</p>
+            <strong>{item.title}</strong>
+            <p>{item.summary}</p>
             <div className="skill-cloud">
-              {items.map((item) => (
-                <span key={item}>{item}</span>
+              {item.items.map((skill) => (
+                <span key={skill}>{skill}</span>
               ))}
             </div>
           </div>
         </article>
-      ))}
+      );
+      })}
+    </div>
+  );
+}
+
+function DetailModal({ detail, onClose }) {
+  if (!detail) return null;
+
+  const title = detail.program ?? detail.company ?? detail.title;
+  const subtitle = detail.school ?? detail.role ?? detail.summary;
+  const list = detail.details ?? detail.points ?? [];
+  const chips = detail.items ?? detail.tools ?? [];
+
+  return (
+    <div className="modal-backdrop" role="presentation" onMouseDown={onClose}>
+      <motion.section
+        className="detail-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="detail-modal-title"
+        initial={{ opacity: 0, y: 12, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.18 }}
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <header className="detail-modal-header">
+          <div>
+            <span>{detail.type}.details</span>
+            <h3 id="detail-modal-title">{title}</h3>
+            <p>{subtitle}</p>
+          </div>
+          <button type="button" onClick={onClose} aria-label="Close details">
+            <X size={17} />
+          </button>
+        </header>
+
+        {detail.time || detail.status || detail.year || detail.duration ? (
+          <div className="modal-meta-row">
+            {detail.time ? <span>{detail.time}</span> : null}
+            {detail.status ? <span>{detail.status}</span> : null}
+            {detail.duration ? <span>{detail.duration}</span> : null}
+            {detail.year && !detail.status ? <span>{detail.year}</span> : null}
+          </div>
+        ) : null}
+
+        <div className="detail-modal-body">
+          {detail.description || detail.detail ? (
+            <p>{detail.description ?? detail.detail}</p>
+          ) : null}
+
+          {list.length ? (
+            <ul>
+              {list.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          ) : null}
+
+          {chips.length ? (
+            <div className="modal-chip-row">
+              {chips.map((item) => (
+                <span key={item}>
+                  {techLogos[item] ? <img src={techLogos[item]} alt="" loading="lazy" decoding="async" /> : null}
+                  {item}
+                </span>
+              ))}
+            </div>
+          ) : null}
+
+          {detail.learnings ? (
+            <div className="modal-note">
+              <strong>Learning</strong>
+              <span>{detail.learnings}</span>
+            </div>
+          ) : null}
+
+          {detail.type === "education" ? (
+            <div className="certificate-slot">
+              <strong>Certificate / diploma</strong>
+              {detail.certificate ? (
+                <>
+                  <a href={detail.certificate} target="_blank" rel="noreferrer">
+                    Open certificate
+                    <ExternalLink size={14} />
+                  </a>
+                  <img className="certificate-preview" src={detail.certificate} alt={`${title} certificate`} loading="lazy" decoding="async" />
+                </>
+              ) : (
+                <span>Prepared for certificate file when available.</span>
+              )}
+            </div>
+          ) : null}
+        </div>
+      </motion.section>
     </div>
   );
 }
@@ -880,19 +1152,15 @@ export function App() {
   });
   const heroScale = useTransform(scrollYProgress, [0, 0.45], [1, 0.84]);
   const heroY = useTransform(scrollYProgress, [0, 0.45], [0, 8]);
-  const heroBlur = useTransform(scrollYProgress, (progress) => {
-    const blur = Math.min(Math.max(progress / 0.45, 0), 1) * 2;
-    return `blur(${blur}px)`;
-  });
   const workspaceOpacity = useTransform(scrollYProgress, (progress) => {
-    if (progress <= 0.06) return 0;
-    if (progress >= 0.3) return 1;
-    return (progress - 0.06) / 0.24;
+    if (progress <= 0.04) return 0;
+    if (progress >= 0.18) return 1;
+    return (progress - 0.04) / 0.14;
   });
-  const workspaceScale = useTransform(scrollYProgress, [0.06, 0.36], [0.86, 1]);
-  const workspaceY = useTransform(scrollYProgress, [0.06, 0.36], [140, 0]);
+  const workspaceScale = useTransform(scrollYProgress, [0.04, 0.22], [0.88, 1]);
+  const workspaceY = useTransform(scrollYProgress, [0.04, 0.22], [132, 0]);
   const clock = useClock();
-  const [activeFile, setActiveFile] = useState("overview");
+  const [activeFile, setActiveFile] = useState("contact");
   const [folders, setFolders] = useState({
     projects: true,
     underfit: true,
@@ -901,7 +1169,10 @@ export function App() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
+  const [selectedDetail, setSelectedDetail] = useState(null);
   const active = workspaceFiles.find((file) => file.id === activeFile) ?? workspaceFiles[0];
+  const previousActiveFile = getAdjacentWorkspaceFile(activeFile, "previous");
+  const nextActiveFile = getAdjacentWorkspaceFile(activeFile, "next");
 
   const openFile = (id, shouldScroll = false) => {
     setActiveFile(id);
@@ -933,6 +1204,17 @@ export function App() {
     window.setTimeout(() => setSent(false), 1800);
   };
 
+  useEffect(() => {
+    if (!selectedDetail) return undefined;
+
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") setSelectedDetail(null);
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [selectedDetail]);
+
   const useSimpleMotion = shouldReduceMotion || isCompactViewport;
   const heroScrollStyle = useSimpleMotion
     ? undefined
@@ -940,7 +1222,6 @@ export function App() {
         opacity: heroOpacity,
         scale: heroScale,
         y: heroY,
-        filter: heroBlur,
       };
   const workspaceScrollStyle = useSimpleMotion
     ? undefined
@@ -1097,9 +1378,11 @@ export function App() {
             </header>
 
             {active.kind === "underfit-overview" ? (
-              <UnderfitOverviewPanel onOpenDemo={() => openFile("entry-video")} />
+              <UnderfitOverviewPanel />
             ) : null}
-            {active.kind === "underfit-feature" ? <UnderfitFeaturePanel file={active} /> : null}
+            {active.kind === "underfit-feature" ? (
+              <UnderfitFeaturePanel file={active} />
+            ) : null}
             {active.kind === "contact" ? (
               <ContactPanel
                 subject={subject}
@@ -1107,12 +1390,18 @@ export function App() {
                 onSubjectChange={setSubject}
                 onMessageChange={setMessage}
                 onSubmit={prepareEmail}
+                onOpenProject={() => openFile("overview", true)}
                 sent={sent}
               />
             ) : null}
-            {active.kind === "education" ? <EducationPanel /> : null}
-            {active.kind === "experience" ? <ExperiencePanel /> : null}
-            {active.kind === "stack" ? <StackPanel /> : null}
+            {active.kind === "education" ? <EducationPanel onOpenDetail={setSelectedDetail} /> : null}
+            {active.kind === "experience" ? <ExperiencePanel onOpenDetail={setSelectedDetail} /> : null}
+            {active.kind === "stack" ? <StackPanel onOpenDetail={setSelectedDetail} /> : null}
+            <ModuleNavigation
+              previousFile={previousActiveFile}
+              nextFile={nextActiveFile}
+              onOpenFile={openFile}
+            />
           </motion.div>
         </section>
         <footer className="status-bar" aria-label="Workspace status">
@@ -1125,6 +1414,7 @@ export function App() {
         </motion.section>
       </section>
     </main>
+    <DetailModal detail={selectedDetail} onClose={() => setSelectedDetail(null)} />
     <TerminalFooter />
     </>
   );
