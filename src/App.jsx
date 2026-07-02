@@ -1201,6 +1201,7 @@ export function App() {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [selectedDetail, setSelectedDetail] = useState(null);
+  const [isProgrammaticFocus, setIsProgrammaticFocus] = useState(false);
   const active = workspaceFiles.find((file) => file.id === activeFile) ?? workspaceFiles[0];
   const previousActiveFile = getAdjacentWorkspaceFile(activeFile, "previous");
   const nextActiveFile = getAdjacentWorkspaceFile(activeFile, "next");
@@ -1210,48 +1211,76 @@ export function App() {
 
     if (shouldScroll) {
       window.requestAnimationFrame(() => {
-        scrollWorkbenchToCenter(shouldReduceMotion ? 0 : 780);
+        scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 780);
       });
     }
   };
 
-  const scrollWorkbenchToCenter = (duration = 780) => {
-    const workbench = workbenchRef.current;
-    if (!workbench) return;
-
-    const rect = workbench.getBoundingClientRect();
-    const visualOffset = Math.min(96, window.innerHeight * 0.1);
-    const target =
-      window.scrollY +
-      rect.top -
-      Math.max(0, (window.innerHeight - rect.height) / 2) -
-      visualOffset;
-
-    if (duration === 0) {
-      window.scrollTo({ top: target });
-      return;
-    }
-
+  const animateWindowScroll = (target, duration = 780) => new Promise((resolve) => {
     const start = window.scrollY;
     const distance = target - start;
     const startedAt = window.performance.now();
-
     const ease = (t) => 1 - Math.pow(1 - t, 2.2);
+
+    if (duration === 0 || Math.abs(distance) < 2) {
+      window.scrollTo({ top: target });
+      resolve();
+      return;
+    }
 
     const step = (now) => {
       const progress = Math.min(1, (now - startedAt) / duration);
       window.scrollTo(0, start + distance * ease(progress));
-      if (progress < 1) window.requestAnimationFrame(step);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        resolve();
+      }
     };
 
     window.requestAnimationFrame(step);
+  });
+
+  const getWorkbenchTarget = () => {
+    const workbench = workbenchRef.current;
+    if (!workbench) return window.scrollY;
+
+    const rect = workbench.getBoundingClientRect();
+    const viewportPadding = Math.max(16, Math.min(34, window.innerHeight * 0.04));
+    const centeredTop = window.scrollY + rect.top - Math.max(0, (window.innerHeight - rect.height) / 2);
+    const fitTop = window.scrollY + rect.bottom - window.innerHeight + viewportPadding;
+    return (
+      rect.height + viewportPadding * 2 <= window.innerHeight
+        ? centeredTop
+        : fitTop
+    );
+  };
+
+  const scrollWorkbenchIntoView = async (duration = 780) => {
+    await animateWindowScroll(getWorkbenchTarget(), duration);
+    await new Promise((resolve) => window.requestAnimationFrame(resolve));
+
+    const workbench = workbenchRef.current;
+    if (!workbench) return;
+
+    const rect = workbench.getBoundingClientRect();
+    const padding = Math.max(16, Math.min(34, window.innerHeight * 0.04));
+    const needsCorrection = rect.top < padding || rect.bottom > window.innerHeight - padding;
+    if (needsCorrection) {
+      await animateWindowScroll(getWorkbenchTarget(), Math.min(320, duration));
+    }
   };
 
   const openUnderfitFromHero = () => {
+    setIsProgrammaticFocus(true);
     setActiveFile("contact");
-    window.requestAnimationFrame(() => {
-      scrollWorkbenchToCenter(shouldReduceMotion ? 0 : 920);
-      window.setTimeout(() => setActiveFile("overview"), shouldReduceMotion ? 0 : 980);
+    window.requestAnimationFrame(async () => {
+      await new Promise((resolve) => window.requestAnimationFrame(resolve));
+      await scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 720);
+      window.setTimeout(() => {
+        setActiveFile("overview");
+        window.setTimeout(() => setIsProgrammaticFocus(false), 300);
+      }, shouldReduceMotion ? 0 : 1000);
     });
   };
 
@@ -1283,7 +1312,7 @@ export function App() {
     return () => document.removeEventListener("keydown", closeOnEscape);
   }, [selectedDetail]);
 
-  const useSimpleMotion = shouldReduceMotion || isCompactViewport;
+  const useSimpleMotion = shouldReduceMotion || isCompactViewport || isProgrammaticFocus;
   const heroScrollStyle = useSimpleMotion
     ? undefined
     : {
