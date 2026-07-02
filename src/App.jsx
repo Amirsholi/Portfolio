@@ -1211,34 +1211,20 @@ export function App() {
 
     if (shouldScroll) {
       window.requestAnimationFrame(() => {
-        scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 780);
+        scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 1050);
       });
     }
   };
 
   const animateWindowScroll = (target, duration = 780) => new Promise((resolve) => {
-    const start = window.scrollY;
-    const distance = target - start;
-    const startedAt = window.performance.now();
-    const ease = (t) => 1 - Math.pow(1 - t, 2.2);
-
-    if (duration === 0 || Math.abs(distance) < 2) {
+    if (duration === 0 || Math.abs(target - window.scrollY) < 2) {
       window.scrollTo({ top: target });
       resolve();
       return;
     }
 
-    const step = (now) => {
-      const progress = Math.min(1, (now - startedAt) / duration);
-      window.scrollTo(0, start + distance * ease(progress));
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        resolve();
-      }
-    };
-
-    window.requestAnimationFrame(step);
+    window.scrollTo({ top: target, behavior: "smooth" });
+    window.setTimeout(resolve, duration);
   });
 
   const getWorkbenchTarget = () => {
@@ -1258,30 +1244,18 @@ export function App() {
 
   const scrollWorkbenchIntoView = async (duration = 780) => {
     await animateWindowScroll(getWorkbenchTarget(), duration);
-    await new Promise((resolve) => window.requestAnimationFrame(resolve));
-
-    const workbench = workbenchRef.current;
-    if (!workbench) return;
-
-    const rect = workbench.getBoundingClientRect();
-    const padding = Math.max(16, Math.min(34, window.innerHeight * 0.04));
-    const needsCorrection = rect.top < padding || rect.bottom > window.innerHeight - padding;
-    if (needsCorrection) {
-      await animateWindowScroll(getWorkbenchTarget(), Math.min(320, duration));
-    }
   };
 
   const openUnderfitFromHero = () => {
     setIsProgrammaticFocus(true);
     setActiveFile("contact");
-    window.requestAnimationFrame(async () => {
-      await new Promise((resolve) => window.requestAnimationFrame(resolve));
-      await scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 720);
+    window.setTimeout(async () => {
+      await scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 1350);
       window.setTimeout(() => {
         setActiveFile("overview");
-        window.setTimeout(() => setIsProgrammaticFocus(false), 300);
-      }, shouldReduceMotion ? 0 : 1000);
-    });
+        window.setTimeout(() => setIsProgrammaticFocus(false), 520);
+      }, shouldReduceMotion ? 0 : 520);
+    }, shouldReduceMotion ? 0 : 80);
   };
 
   const toggleFolder = (folder) => {
