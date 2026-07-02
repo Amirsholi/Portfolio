@@ -1321,7 +1321,7 @@ export function App() {
         y: heroY,
       };
   const workspaceScrollStyle = useSimpleMotion
-    ? undefined
+    ? { opacity: 1, scale: 1, y: 0 }
     : {
         opacity: workspaceOpacity,
         scale: workspaceScale,
