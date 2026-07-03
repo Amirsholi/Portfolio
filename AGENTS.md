@@ -23,7 +23,7 @@ When implementing from a selected generated mock, treat that image as the source
 - The VS Code tab strip must stay dark; avoid white filler panels in the editor chrome.
 - Public Vercel portfolio links must not require Vercel login; keep SSO deployment protection disabled for this project.
 - The hero should lead with the AmirSholi() identity and use a compact VS Code-style UnderFit pitch panel on the right.
-- Do not make UnderFit images clickable for enlarged previews; keep media inside the portfolio flow.
+- UnderFit images, video previews and education certificates should open inside a closable in-app media modal, not redirect visitors away from the portfolio.
 - UnderFit file views must fit inside the fixed workspace frame; avoid content continuing under the status bar.
 - The hero UnderFit CTA should first bring the workspace into view on `contact.md`, then transition the active file to `overview.md`.
 - The hero project teaser can use a compact code-like panel with an ASCII dumbbell visual.

@@ -960,6 +960,28 @@ a {
   box-shadow: none;
 }
 
+.preview-media-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.preview-media-button:focus-visible {
+  outline: 2px solid #007acc;
+  outline-offset: 3px;
+}
+
+.preview-media-button:hover img,
+.preview-media-button:hover video {
+  filter: brightness(1.08);
+}
+
 .overview-brand-preview img {
   display: block;
   width: 100%;
@@ -1065,6 +1087,7 @@ a {
   max-height: clamp(210px, 37vh, 340px);
   object-fit: contain;
   background: transparent;
+  transition: filter 160ms ease;
 }
 
 .preview-pane video {
@@ -1074,6 +1097,7 @@ a {
   max-height: clamp(190px, 34vh, 310px);
   object-fit: cover;
   background: #050505;
+  transition: filter 160ms ease;
 }
 
 .video-preview {
@@ -1698,7 +1722,7 @@ a {
   bottom: 10px;
   left: 10px;
   width: 2px;
-  background: linear-gradient(#7f52ff, rgba(127, 82, 255, 0.12));
+  background: linear-gradient(#007acc, rgba(0, 122, 204, 0.12));
 }
 
 .experience-nodes article {
@@ -1725,8 +1749,8 @@ a {
   height: 13px;
   border: 3px solid #1e1e1e;
   border-radius: 50%;
-  background: #b180ff;
-  box-shadow: 0 0 20px rgba(177, 128, 255, 0.7);
+  background: #9cdcfe;
+  box-shadow: 0 0 20px rgba(0, 122, 204, 0.65);
 }
 
 .experience-nodes strong,
@@ -1930,12 +1954,25 @@ a {
   line-height: 1.45;
 }
 
-.certificate-slot a {
-  display: inline-flex;
+.certificate-preview-button {
+  display: grid;
   gap: 8px;
-  align-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #9cdcfe;
+  cursor: zoom-in;
+  text-align: left;
+}
+
+.certificate-preview-button span {
   color: #9cdcfe;
   font-weight: 800;
+}
+
+.certificate-preview-button:focus-visible {
+  outline: 2px solid #007acc;
+  outline-offset: 3px;
 }
 
 .certificate-preview {
@@ -1947,6 +1984,92 @@ a {
   border-radius: 8px;
   object-fit: contain;
   background: #111111;
+  transition: filter 160ms ease;
+}
+
+.certificate-preview-button:hover .certificate-preview {
+  filter: brightness(1.05);
+}
+
+.media-modal-backdrop {
+  z-index: 95;
+}
+
+.media-modal {
+  width: min(100%, 1120px);
+  max-height: min(860px, calc(100vh - 36px));
+  overflow: hidden;
+  border: 1px solid #343b46;
+  border-radius: 12px;
+  background: #111111;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.68);
+}
+
+.media-modal-header {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid #343b46;
+  background: #1e1e1e;
+}
+
+.media-modal-header span {
+  color: #858585;
+  font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
+  font-size: 12px;
+}
+
+.media-modal-header h3 {
+  margin: 5px 0 0;
+  color: #ffffff;
+  font-size: 21px;
+  line-height: 1.18;
+}
+
+.media-modal-header p {
+  margin: 5px 0 0;
+  color: #c8d0dc;
+  line-height: 1.42;
+}
+
+.media-modal-header button {
+  display: grid;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid #343b46;
+  border-radius: 7px;
+  background: #252526;
+  color: #d4d4d4;
+  cursor: pointer;
+}
+
+.media-modal-header button:hover {
+  border-color: #007acc;
+  color: #ffffff;
+}
+
+.media-modal-body {
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(0, 122, 204, 0.08), transparent 28rem),
+    #0d0d0d;
+}
+
+.media-modal-body img,
+.media-modal-body video {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 190px);
+  border: 1px solid #2b3340;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #050505;
 }
 
 .terminal-footer {

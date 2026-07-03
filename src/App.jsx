@@ -373,7 +373,7 @@ const education = [
     description:
       "Component-based interfaces, state, props, reusable UI patterns and frontend project structure.",
     status: "Completed",
-    duration: "6 months",
+    duration: "8 weeks",
     certificate: "/assets/certificates/coderhouse-react.png",
     details: [
       "React components, props, state, reusable interface patterns and project structure.",
@@ -387,7 +387,7 @@ const education = [
     description:
       "React framework fundamentals, routing, rendering patterns and production-oriented web app structure.",
     status: "Completed",
-    duration: "6 months",
+    duration: "7 weeks",
     certificate: "/assets/certificates/coderhouse-next.png",
     details: [
       "Next.js routing, rendering patterns and production-oriented React app structure.",
@@ -496,7 +496,7 @@ function ModuleNavigation({ previousFile, nextFile, onOpenFile }) {
   );
 }
 
-function UnderfitOverviewPanel() {
+function UnderfitOverviewPanel({ onOpenMedia }) {
   return (
     <div className="file-document underfit-overview-file">
       <div className="file-copy overview-copy">
@@ -524,7 +524,19 @@ function UnderfitOverviewPanel() {
 
       <div className="overview-content-grid">
         <figure className="overview-brand-preview">
-          <img src={assetPaths.underfitGym} alt="UnderFit brand" loading="lazy" decoding="async" />
+          <button
+            className="preview-media-button"
+            type="button"
+            onClick={() => onOpenMedia({
+              type: "image",
+              src: assetPaths.underfitGym,
+              title: "UnderFit brand",
+              caption: "UnderFit project identity preview.",
+            })}
+            aria-label="Open UnderFit brand preview"
+          >
+            <img src={assetPaths.underfitGym} alt="UnderFit brand" loading="lazy" decoding="async" />
+          </button>
         </figure>
 
         <div className="case-study-grid">
@@ -556,7 +568,7 @@ function UnderfitOverviewPanel() {
   );
 }
 
-function UnderfitFeaturePanel({ file }) {
+function UnderfitFeaturePanel({ file, onOpenMedia }) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -574,11 +586,23 @@ function UnderfitFeaturePanel({ file }) {
         animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
       >
-        {file.type === "video" ? (
-          <video src={file.src} controls preload="metadata" />
-        ) : (
-          <img src={file.src} alt={file.title} loading="lazy" decoding="async" />
-        )}
+        <button
+          className="preview-media-button"
+          type="button"
+          onClick={() => onOpenMedia({
+            type: file.type,
+            src: file.src,
+            title: file.title,
+            caption: file.meta,
+          })}
+          aria-label={`Open ${file.title} preview`}
+        >
+          {file.type === "video" ? (
+            <video src={file.src} preload="metadata" muted playsInline />
+          ) : (
+            <img src={file.src} alt={file.title} loading="lazy" decoding="async" />
+          )}
+        </button>
         <div className="preview-caption">
           <strong>{file.file}</strong>
           <span>{file.meta}</span>
@@ -836,7 +860,7 @@ function StackPanel({ onOpenDetail }) {
   );
 }
 
-function DetailModal({ detail, onClose }) {
+function DetailModal({ detail, onClose, onOpenMedia }) {
   if (!detail) return null;
 
   const title = detail.program ?? detail.company ?? detail.title;
@@ -911,18 +935,61 @@ function DetailModal({ detail, onClose }) {
             <div className="certificate-slot">
               <strong>Certificate / diploma</strong>
               {detail.certificate ? (
-                <>
-                  <a href={detail.certificate} target="_blank" rel="noreferrer">
-                    Open certificate
-                    <ExternalLink size={14} />
-                  </a>
+                <button
+                  className="certificate-preview-button"
+                  type="button"
+                  onClick={() => onOpenMedia({
+                    type: "image",
+                    src: detail.certificate,
+                    title: `${title} certificate`,
+                    caption: `${detail.school ?? "Education"} - ${detail.duration ?? detail.year ?? ""}`.trim(),
+                  })}
+                >
                   <img className="certificate-preview" src={detail.certificate} alt={`${title} certificate`} loading="lazy" decoding="async" />
-                </>
+                  <span>Open certificate preview</span>
+                </button>
               ) : (
                 <span>Prepared for certificate file when available.</span>
               )}
             </div>
           ) : null}
+        </div>
+      </motion.section>
+    </div>
+  );
+}
+
+function MediaModal({ media, onClose }) {
+  if (!media) return null;
+
+  return (
+    <div className="modal-backdrop media-modal-backdrop" role="presentation" onMouseDown={onClose}>
+      <motion.section
+        className="media-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="media-modal-title"
+        initial={{ opacity: 0, y: 12, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.18 }}
+        onMouseDown={(event) => event.stopPropagation()}
+      >
+        <header className="media-modal-header">
+          <div>
+            <span>preview.media</span>
+            <h3 id="media-modal-title">{media.title}</h3>
+            {media.caption ? <p>{media.caption}</p> : null}
+          </div>
+          <button type="button" onClick={onClose} aria-label="Close preview">
+            <X size={17} />
+          </button>
+        </header>
+        <div className="media-modal-body">
+          {media.type === "video" ? (
+            <video src={media.src} controls autoPlay />
+          ) : (
+            <img src={media.src} alt={media.title} />
+          )}
         </div>
       </motion.section>
     </div>
@@ -1201,6 +1268,7 @@ export function App() {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [selectedDetail, setSelectedDetail] = useState(null);
+  const [selectedMedia, setSelectedMedia] = useState(null);
   const [isProgrammaticFocus, setIsProgrammaticFocus] = useState(false);
   const active = workspaceFiles.find((file) => file.id === activeFile) ?? workspaceFiles[0];
   const previousActiveFile = getAdjacentWorkspaceFile(activeFile, "previous");
@@ -1276,15 +1344,21 @@ export function App() {
   };
 
   useEffect(() => {
-    if (!selectedDetail) return undefined;
+    if (!selectedDetail && !selectedMedia) return undefined;
 
     const closeOnEscape = (event) => {
-      if (event.key === "Escape") setSelectedDetail(null);
+      if (event.key === "Escape") {
+        if (selectedMedia) {
+          setSelectedMedia(null);
+        } else {
+          setSelectedDetail(null);
+        }
+      }
     };
 
     document.addEventListener("keydown", closeOnEscape);
     return () => document.removeEventListener("keydown", closeOnEscape);
-  }, [selectedDetail]);
+  }, [selectedDetail, selectedMedia]);
 
   const useSimpleMotion = shouldReduceMotion || isCompactViewport || isProgrammaticFocus;
   const heroScrollStyle = useSimpleMotion
@@ -1433,10 +1507,10 @@ export function App() {
             </header>
 
             {active.kind === "underfit-overview" ? (
-              <UnderfitOverviewPanel />
+              <UnderfitOverviewPanel onOpenMedia={setSelectedMedia} />
             ) : null}
             {active.kind === "underfit-feature" ? (
-              <UnderfitFeaturePanel file={active} />
+              <UnderfitFeaturePanel file={active} onOpenMedia={setSelectedMedia} />
             ) : null}
             {active.kind === "contact" ? (
               <ContactPanel
@@ -1468,7 +1542,12 @@ export function App() {
         </motion.section>
       </section>
     </main>
-    <DetailModal detail={selectedDetail} onClose={() => setSelectedDetail(null)} />
+    <DetailModal
+      detail={selectedDetail}
+      onClose={() => setSelectedDetail(null)}
+      onOpenMedia={setSelectedMedia}
+    />
+    <MediaModal media={selectedMedia} onClose={() => setSelectedMedia(null)} />
     <TerminalFooter />
     </>
   );
