@@ -1406,7 +1406,9 @@ a {
   margin-top: 14px;
 }
 
-.contact-inline-links a {
+.contact-inline-links a,
+.contact-inline-links .copy-email-button {
+  position: relative;
   display: inline-flex;
   gap: 8px;
   align-items: center;
@@ -1416,16 +1418,46 @@ a {
   border-radius: 6px;
   background: #1e1e1e;
   color: #d4d4d4;
+  cursor: pointer;
   transition:
     transform 160ms ease,
     border-color 160ms ease,
     color 160ms ease;
 }
 
-.contact-inline-links a:hover {
+.contact-inline-links a:hover,
+.contact-inline-links .copy-email-button:hover,
+.contact-inline-links .copy-email-button:focus-visible {
   transform: translateY(-1px);
   border-color: #007acc;
   color: #ffffff;
+}
+
+.copy-email-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  z-index: 20;
+  padding: 6px 8px;
+  border: 1px solid #343b46;
+  border-radius: 6px;
+  background: #111111;
+  color: #d4d4d4;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(4px);
+  transition:
+    opacity 140ms ease,
+    transform 140ms ease;
+}
+
+.copy-email-button:hover::after,
+.copy-email-button:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .contact-inline-links .cv-menu-trigger {

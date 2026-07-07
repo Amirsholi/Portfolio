@@ -635,6 +635,29 @@ function ContactPanel({
   onSubmit,
   sent,
 }) {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = async () => {
+    const email = "amirsholi999@gmail.com";
+
+    try {
+      await navigator.clipboard.writeText(email);
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = email;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+    }
+
+    setEmailCopied(true);
+    window.setTimeout(() => setEmailCopied(false), 1600);
+  };
+
   return (
     <div className="contact-document">
       <div className="contact-layout">
@@ -649,14 +672,16 @@ function ContactPanel({
             <h3>Contact</h3>
             <p>Send a short message and I&apos;ll reply by email.</p>
             <div className="contact-inline-links">
-              <a
-                href={`mailto:amirsholi999@gmail.com?subject=${encodeURIComponent("Portfolio contact")}`}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                className="copy-email-button"
+                type="button"
+                onClick={copyEmail}
+                aria-label="Copy email address"
+                data-tooltip={emailCopied ? "Email copied" : "Copy email"}
               >
                 <Mail size={15} />
-                Email
-              </a>
+                {emailCopied ? "Copied" : "Email"}
+              </button>
               <a href="https://www.linkedin.com/in/amirsholi/" target="_blank" rel="noreferrer">
                 <Link size={15} />
                 LinkedIn
