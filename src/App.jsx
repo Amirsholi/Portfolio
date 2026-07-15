@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } fr
 import {
   AudioWaveform,
   ChevronDown,
+  ChevronLeft,
   ChevronRight,
   Code2,
   CreditCard,
@@ -543,6 +544,7 @@ const heroProjects = {
       "Status: built for practical daily use",
     ],
     button: "Open UnderFit project",
+    preview: assetPaths.underfitGym,
   },
   samplex: {
     path: "projects/samplex.md",
@@ -555,6 +557,7 @@ const heroProjects = {
       "Status: private beta with signed licensing",
     ],
     button: "Open SampleX project",
+    preview: assetPaths.samplexPanel,
   },
 };
 
@@ -606,6 +609,7 @@ function HeroProjectPanel({ selectedProject, onSelectProject, onOpenProject }) {
               <span>Project: {project.name}</span>
               {project.lines.map((line) => <span key={line}>{line}</span>)}
             </div>
+            <img className="hero-project-preview" src={project.preview} alt={`${project.name} interface`} />
             <button className="underfit-jump" type="button" onClick={() => onOpenProject(selectedProject)}>
               {project.button}
             </button>
@@ -623,14 +627,16 @@ function ModuleNavigation({ previousFile, nextFile, onOpenFile }) {
     <nav className="module-nav" aria-label="Project file navigation">
       {previousFile ? (
         <button className="previous" type="button" onClick={() => onOpenFile(previousFile.id)}>
-          <span>&lt; {previousFile.label}</span>
+          <ChevronLeft size={17} />
+          <span><small>Previous</small><strong>{previousFile.label}</strong></span>
         </button>
       ) : (
         <span />
       )}
       {nextFile ? (
         <button className="next" type="button" onClick={() => onOpenFile(nextFile.id)}>
-          <span>{nextFile.label} &gt;</span>
+          <span><small>Next</small><strong>{nextFile.label}</strong></span>
+          <ChevronRight size={17} />
         </button>
       ) : null}
     </nav>
@@ -874,21 +880,33 @@ function BuySampleXPanel() {
       </div>
 
       <div className="buy-samplex-layout">
-        <section className="license-offer">
-          <div className="license-offer-heading">
-            <AudioWaveform size={24} />
-            <div><strong>SampleX Lifetime</strong><span>One payment · Permanent unlock</span></div>
-          </div>
-          <ul>
-            <li><FileDown size={16} /> Unlimited WAV exports</li>
-            <li><KeyRound size={16} /> Signed activation code</li>
-            <li><ShieldCheck size={16} /> License recovery support</li>
-          </ul>
-          <button type="button" disabled aria-describedby="checkout-status">
-            <CreditCard size={17} /> Continue to secure checkout
-          </button>
+        <div className="license-plans">
+          <section className="license-offer">
+            <div className="license-offer-heading">
+              <FileDown size={24} />
+              <div><strong>500 Export Pack</strong><span>Recharge when you need it</span></div>
+            </div>
+            <ul>
+              <li><FileDown size={16} /> 500 additional WAV exports</li>
+              <li><KeyRound size={16} /> One signed recharge code</li>
+            </ul>
+            <button type="button" disabled><CreditCard size={17} /> Choose export pack</button>
+          </section>
+
+          <section className="license-offer featured">
+            <span className="plan-badge">Best value</span>
+            <div className="license-offer-heading">
+              <AudioWaveform size={24} />
+              <div><strong>SampleX Lifetime</strong><span>One payment · Permanent unlock</span></div>
+            </div>
+            <ul>
+              <li><FileDown size={16} /> Unlimited WAV exports</li>
+              <li><ShieldCheck size={16} /> License recovery support</li>
+            </ul>
+            <button type="button" disabled><CreditCard size={17} /> Choose lifetime</button>
+          </section>
           <small id="checkout-status">Secure payment connection is the next implementation step.</small>
-        </section>
+        </div>
 
         <aside className="license-flow">
           <p className="eyebrow">How activation works</p>
@@ -1601,7 +1619,7 @@ export function App() {
   const [folders, setFolders] = useState({
     projects: true,
     underfit: true,
-    samplex: true,
+    samplex: false,
     profile: true,
   });
   const [subject, setSubject] = useState("");
@@ -1616,6 +1634,11 @@ export function App() {
 
   const openFile = (id, shouldScroll = false) => {
     setActiveFile(id);
+    if (underfitProjectFiles.some((file) => file.id === id)) {
+      setFolders((current) => ({ ...current, projects: true, underfit: true, samplex: false }));
+    } else if (samplexProjectFiles.some((file) => file.id === id)) {
+      setFolders((current) => ({ ...current, projects: true, underfit: false, samplex: true }));
+    }
 
     if (shouldScroll) {
       window.requestAnimationFrame(() => {
@@ -1630,9 +1653,19 @@ export function App() {
       resolve();
       return;
     }
-
-    window.scrollTo({ top: target, behavior: "smooth" });
-    window.setTimeout(resolve, duration);
+    const start = window.scrollY;
+    const distance = target - start;
+    const startedAt = performance.now();
+    const tick = (now) => {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      window.scrollTo({ top: start + distance * eased });
+      if (progress < 1) window.requestAnimationFrame(tick);
+      else resolve();
+    };
+    window.requestAnimationFrame(tick);
   });
 
   const getWorkbenchTarget = () => {
@@ -1659,12 +1692,18 @@ export function App() {
     setIsProgrammaticFocus(true);
     setActiveFile("contact");
     window.setTimeout(async () => {
-      await scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 1350);
+      await scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 1850);
       window.setTimeout(() => {
         setActiveFile(targetFile);
+        setFolders((current) => ({
+          ...current,
+          projects: true,
+          underfit: project === "underfit",
+          samplex: project === "samplex",
+        }));
         window.history.replaceState(null, "", project === "samplex" ? "#samplex" : window.location.pathname);
         window.setTimeout(() => setIsProgrammaticFocus(false), 520);
-      }, shouldReduceMotion ? 0 : 520);
+      }, shouldReduceMotion ? 0 : 420);
     }, shouldReduceMotion ? 0 : 80);
   };
 
@@ -1678,6 +1717,9 @@ export function App() {
       if (!target) return;
       if (target === "samplex-overview") setHeroProject("samplex");
       setActiveFile(target);
+      if (target === "samplex-overview") {
+        setFolders((current) => ({ ...current, projects: true, underfit: false, samplex: true }));
+      }
       window.requestAnimationFrame(() => void scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 780));
     };
     openDeepLink();
@@ -1685,8 +1727,20 @@ export function App() {
     return () => window.removeEventListener("hashchange", openDeepLink);
   }, [shouldReduceMotion]);
 
+  useEffect(() => {
+    if (shouldReduceMotion || isProgrammaticFocus) return undefined;
+    const timer = window.setTimeout(() => {
+      setHeroProject((current) => current === "underfit" ? "samplex" : "underfit");
+    }, 7200);
+    return () => window.clearTimeout(timer);
+  }, [heroProject, isProgrammaticFocus, shouldReduceMotion]);
+
   const toggleFolder = (folder) => {
-    setFolders((current) => ({ ...current, [folder]: !current[folder] }));
+    setFolders((current) => {
+      if (folder === "underfit") return { ...current, projects: true, underfit: !current.underfit, samplex: false };
+      if (folder === "samplex") return { ...current, projects: true, underfit: false, samplex: !current.samplex };
+      return { ...current, [folder]: !current[folder] };
+    });
   };
 
   const prepareEmail = (event) => {
