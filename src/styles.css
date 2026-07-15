@@ -1237,7 +1237,7 @@ a {
   color: #68d58c;
 }
 
-.license-offer button {
+.license-offer > a {
   display: inline-flex;
   gap: 8px;
   align-items: center;
@@ -1248,7 +1248,17 @@ a {
   background: #12384c;
   color: #a8dff7;
   font-weight: 800;
-  opacity: 0.72;
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.license-offer > a:hover,
+.license-offer > a:focus-visible {
+  transform: translateY(-1px);
+  border-color: #4fb9e9;
+  background: #15506c;
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(31, 160, 218, 0.16);
 }
 
 .license-flow ol {

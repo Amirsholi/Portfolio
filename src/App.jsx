@@ -888,7 +888,9 @@ function BuySampleXPanel() {
               <li><FileDown size={16} /> 500 additional WAV exports</li>
               <li><KeyRound size={16} /> One signed recharge code</li>
             </ul>
-            <button type="button" disabled><CreditCard size={17} /> Choose export pack</button>
+            <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=0540eafa-44ed-4df8-9a16-c3d19067c69d">
+              <CreditCard size={17} /> Choose export pack
+            </a>
           </section>
 
           <section className="license-offer featured">
@@ -901,9 +903,11 @@ function BuySampleXPanel() {
               <li><FileDown size={16} /> Unlimited WAV exports</li>
               <li><ShieldCheck size={16} /> License recovery support</li>
             </ul>
-            <button type="button" disabled><CreditCard size={17} /> Choose lifetime</button>
+            <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5">
+              <CreditCard size={17} /> Choose lifetime
+            </a>
           </section>
-          <small id="checkout-status">Secure payment connection is the next implementation step.</small>
+          <small id="checkout-status">Secure checkout and payment processing by Polar.</small>
         </div>
       </div>
     </div>
