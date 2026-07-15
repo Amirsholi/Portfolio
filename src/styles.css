@@ -1111,7 +1111,8 @@ a {
 }
 
 .buy-samplex-preview {
-  display: flex;
+  position: relative;
+  display: grid;
   width: fit-content;
   max-width: 100%;
   min-width: 0;
@@ -1119,39 +1120,26 @@ a {
   margin: 0;
   justify-self: center;
   overflow: hidden;
-  border: 1px solid #2c3d4b;
-  border-radius: 10px;
-  background: #090e14;
+  padding: 9px;
+  place-items: center;
+  border: 1px solid #34546a;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(56, 187, 255, 0.13), transparent 68%),
+    #080d13;
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(87, 199, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .buy-samplex-preview img {
   display: block;
   width: auto;
-  max-width: min(62vw, 600px);
-  height: 132px;
+  max-width: min(72vw, 620px);
+  height: 188px;
   object-fit: contain;
-}
-
-.buy-samplex-preview figcaption {
-  display: grid;
-  min-width: 160px;
-  gap: 3px;
-  align-content: center;
-  padding: 11px 13px;
-  border-left: 1px solid #263746;
-  background: #0f1821;
-}
-
-.buy-samplex-preview span {
-  color: #7d8c99;
-  font-family: "Cascadia Code", "Fira Code", Consolas, monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.buy-samplex-preview strong {
-  color: #e8f5fc;
-  font-size: 13px;
+  border-radius: 7px;
 }
 
 .license-offer,
@@ -1533,19 +1521,23 @@ a {
   position: absolute;
   top: 44%;
   display: grid;
-  gap: 6px;
+  gap: 0;
   align-items: center;
   justify-items: center;
-  width: 54px;
-  min-height: 88px;
-  padding: 10px 6px;
+  width: 60px;
+  min-height: 60px;
+  padding: 0;
   border: 1px solid #344353;
-  border-radius: 10px;
-  background: linear-gradient(180deg, rgba(18, 30, 41, 0.98), rgba(10, 16, 23, 0.98));
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 36% 28%, rgba(69, 177, 238, 0.18), transparent 48%),
+    rgba(10, 17, 24, 0.98);
   color: #66b8ff;
   pointer-events: auto;
   cursor: pointer;
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.38);
+  box-shadow:
+    0 16px 38px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(112, 194, 241, 0.05);
   transform: translateY(-50%);
   transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background 180ms ease;
 }
@@ -1562,8 +1554,9 @@ a {
 
 .workspace-side-link:hover {
   border-color: #5aaee9;
-  background: #162431;
+  background: #142a39;
   color: #ffffff;
+  box-shadow: 0 0 28px rgba(51, 171, 238, 0.22);
 }
 
 .workspace-side-link.previous:hover {
@@ -1575,9 +1568,7 @@ a {
 }
 
 .workspace-side-link span {
-  display: grid;
-  min-width: 0;
-  gap: 3px;
+  display: none;
 }
 
 .workspace-side-link small {
@@ -1593,8 +1584,8 @@ a {
 }
 
 .workspace-side-link svg {
-  width: 23px;
-  height: 23px;
+  width: 27px;
+  height: 27px;
 }
 
 .workspace-side-link::after {
@@ -2886,6 +2877,14 @@ a {
 
   .buy-samplex-file .buy-samplex-copy p:not(.eyebrow) {
     display: none;
+  }
+
+  .buy-samplex-preview {
+    padding: 6px;
+  }
+
+  .buy-samplex-preview img {
+    height: 108px;
   }
 
   .license-offer,

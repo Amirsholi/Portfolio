@@ -877,7 +877,6 @@ function BuySampleXPanel() {
       <div className="buy-samplex-layout">
         <figure className="buy-samplex-preview">
           <img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform selection and audio analysis interface" />
-          <figcaption><span>Selected sample</span><strong>Trim · Analyze · Export</strong></figcaption>
         </figure>
         <div className="license-plans">
           <section className="license-offer">

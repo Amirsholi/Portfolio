@@ -40,3 +40,4 @@ When implementing from a selected generated mock, treat that image as the source
 - SampleX deep links and its hero CTA must use the same staged `contact.md` to overview transition as UnderFit.
 - Workspace navigation controls attach to the lateral edges of the VS Code frame as compact directional tabs; hovering or focusing reveals the destination filename inside a terminal-style tooltip.
 - The SampleX purchase view uses the supplied waveform selection image as a tightly sized horizontal preview above two aligned plan cards; never place it inside a tall empty media column.
+- Purchase-page workspace navigation uses circular lateral arrow controls with destination tooltips, and the SampleX preview is presented alone in a compact elevated frame without explanatory caption text.
