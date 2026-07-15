@@ -1,4 +1,4 @@
-# SampleX administration setup
+﻿# SampleX administration setup
 
 The private interface is available at `/admin/samplex`. It uses Supabase email-and-password authentication, a Vercel Function for authorization and signing, and the `samplex_licenses` table for the registry.
 
@@ -29,6 +29,6 @@ Apply the public `VITE_*` values to the build environment and all server values 
 
 ## 4. Access
 
-Visit `https://amirsholi.vercel.app/admin/samplex` and sign in with `amirsholi999@gmail.com` and the password created in Supabase. The session refreshes automatically while the panel remains open and ends when that browser tab/session is closed or you select Sign out.
+Visit `https://portfolio-i9t5r1e36-amirs-projects-ceb3ce3f.vercel.app/admin/samplex` and sign in with `amirsholi999@gmail.com` and the password created in Supabase. The session refreshes automatically while the panel remains open and ends when that browser tab/session is closed or you select Sign out.
 
 The server independently checks the authenticated email. Changing the visible email field or frontend code does not grant administrative API access.
