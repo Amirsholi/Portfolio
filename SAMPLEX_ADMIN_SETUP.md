@@ -24,6 +24,7 @@ Add the same variables in the portfolio project under Settings > Environment Var
 
 - `SUPABASE_SECRET_KEY`
 - `SAMPLEX_PRIVATE_KEY`
+- `POLAR_WEBHOOK_SECRET`
 
 Apply the public `VITE_*` values to the build environment and all server values to Production. Redeploy after adding or changing variables.
 
@@ -32,3 +33,13 @@ Apply the public `VITE_*` values to the build environment and all server values 
 Visit `https://amirsholi.vercel.app/admin/samplex` and sign in with `amirsholi999@gmail.com` and the password created in Supabase. The session refreshes automatically while the panel remains open and ends when that browser tab/session is closed or you select Sign out.
 
 The server independently checks the authenticated email. Changing the visible email field or frontend code does not grant administrative API access.
+
+## 5. Polar automatic delivery
+
+1. Run `supabase/schema.sql` again after deploying this version. The migration adds Polar order fields without removing existing licenses.
+2. In Polar, create a webhook endpoint named `SampleX production` with URL `https://amirsholi.vercel.app/api/polar/webhook`.
+3. Select the raw format and subscribe only to `order.paid`.
+4. Copy the generated signing secret to the Vercel variable `POLAR_WEBHOOK_SECRET` for Production and Preview, then redeploy.
+5. Keep the checkout success URL as `https://amirsholi.vercel.app/?checkout_id={CHECKOUT_ID}#buy-samplex`.
+
+The webhook verifies Polar's signature before writing anything. Each Polar order ID and checkout ID is unique in Supabase, so webhook retries return the already-issued license instead of creating extra codes. The checkout return page polls the registry briefly and shows the signed code as soon as fulfillment finishes.

@@ -5,7 +5,9 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  CheckCircle2,
   Code2,
+  Copy,
   CreditCard,
   Database,
   ExternalLink,
@@ -865,6 +867,71 @@ function SampleXFeaturePanel({ file, onOpenMedia }) {
 }
 
 function BuySampleXPanel() {
+  const [fulfillment, setFulfillment] = useState(() => {
+    const checkoutId = new URLSearchParams(window.location.search).get("checkout_id");
+    return checkoutId ? { checkoutId, status: "processing" } : null;
+  });
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (!fulfillment?.checkoutId || fulfillment.status === "ready") return undefined;
+    let cancelled = false;
+    let attempts = 0;
+    let timer;
+
+    const loadLicense = async () => {
+      try {
+        const response = await fetch(`/api/polar/license?checkout_id=${encodeURIComponent(fulfillment.checkoutId)}`);
+        const body = await response.json();
+        if (cancelled) return;
+        if (response.ok && body.status === "ready") {
+          setFulfillment({ checkoutId: fulfillment.checkoutId, status: "ready", license: body.license });
+          return;
+        }
+        if (!response.ok && response.status !== 202) throw new Error(body.error || "License lookup failed.");
+        attempts += 1;
+        if (attempts < 15) timer = window.setTimeout(loadLicense, 2000);
+        else setFulfillment((current) => ({ ...current, status: "delayed" }));
+      } catch {
+        if (!cancelled) setFulfillment((current) => ({ ...current, status: "delayed" }));
+      }
+    };
+
+    void loadLicense();
+    return () => { cancelled = true; window.clearTimeout(timer); };
+  }, [fulfillment?.checkoutId, fulfillment?.status]);
+
+  const copyLicense = async () => {
+    if (!fulfillment?.license?.token) return;
+    await navigator.clipboard.writeText(fulfillment.license.token);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1600);
+  };
+
+  if (fulfillment) {
+    const ready = fulfillment.status === "ready";
+    return (
+      <div className="file-document buy-samplex-file">
+        <div className="checkout-result">
+          <div className={`checkout-result-icon ${ready ? "ready" : ""}`}>
+            {ready ? <CheckCircle2 size={32} /> : <KeyRound size={29} />}
+          </div>
+          <p className="eyebrow">{ready ? "Payment confirmed" : "Payment received"}</p>
+          <h3>{ready ? "Your SampleX code is ready." : "Preparing your SampleX code..."}</h3>
+          <p>{ready ? "Copy this code and paste it into the key field in the extension." : "Polar is confirming the order. This normally takes only a few seconds."}</p>
+          {ready ? (
+            <div className="checkout-license-code">
+              <code>{fulfillment.license.token}</code>
+              <button type="button" onClick={() => void copyLicense()}><Copy size={16} /> {copied ? "Copied" : "Copy code"}</button>
+            </div>
+          ) : null}
+          {fulfillment.status === "delayed" ? <small>The order is paid, but automatic delivery is taking longer than expected. Keep this page open or contact support with your checkout reference.</small> : null}
+          <span className="checkout-reference">Checkout {fulfillment.checkoutId}</span>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="file-document buy-samplex-file">
       <div className="file-copy buy-samplex-copy">

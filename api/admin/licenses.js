@@ -1,4 +1,4 @@
-import { createPrivateKey, randomUUID, sign } from "node:crypto";
+import { createSampleXLicense, requireEnvironment, serviceHeaders } from "../_lib/samplex-license.js";
 
 const VALID_KINDS = new Set(["permanent", "promo", "credits"]);
 
@@ -40,13 +40,7 @@ async function createLicense(request, response, issuedBy) {
   if (!VALID_KINDS.has(kind)) throw httpError(400, "Invalid license type.");
   const credits = kind === "credits" ? Number(body.credits) : null;
   if (kind === "credits" && (!Number.isInteger(credits) || credits <= 0 || credits > 100000)) throw httpError(400, "Credits must be a positive integer.");
-  const id = randomUUID().replaceAll("-", "");
-  const issuedAt = new Date().toISOString();
-  const payload = { version: 1, id, product: "samplex", kind, issuedAt, ...(credits ? { credits } : {}) };
-  const encodedPayload = Buffer.from(JSON.stringify(payload)).toString("base64url");
-  const privateKeyPem = process.env.SAMPLEX_PRIVATE_KEY.replace(/\\n/g, "\n");
-  const signature = sign("sha256", Buffer.from(encodedPayload, "base64url"), { key: createPrivateKey(privateKeyPem), dsaEncoding: "ieee-p1363" }).toString("base64url");
-  const token = `SAMPLEX.${encodedPayload}.${signature}`;
+  const { id, issuedAt, token } = createSampleXLicense({ kind, credits });
   const record = { id, kind, credits, email: cleanOptional(body.email, 180), note: cleanOptional(body.note, 240), token, status: "active", issued_at: issuedAt, issued_by: issuedBy };
   const result = await fetch(`${process.env.SUPABASE_URL}/rest/v1/samplex_licenses`, { method: "POST", headers: { ...serviceHeaders(), Prefer: "return=representation" }, body: JSON.stringify(record) });
   if (!result.ok) throw new Error("License registry write failed.");
@@ -54,7 +48,5 @@ async function createLicense(request, response, issuedBy) {
   return response.status(201).json({ license });
 }
 
-function serviceHeaders() { return { apikey: process.env.SUPABASE_SECRET_KEY, "Content-Type": "application/json" }; }
 function cleanOptional(value, maximum) { if (!value) return null; return String(value).trim().slice(0, maximum) || null; }
-function requireEnvironment(...names) { if (names.some((name) => !process.env[name])) throw new Error("Missing server configuration."); }
 function httpError(status, message) { const error = new Error(message); error.status = status; return error; }
