@@ -30,3 +30,4 @@ When implementing from a selected generated mock, treat that image as the source
 - Portfolio SEO metadata, social preview imagery and browser icons should stay in English and use the supplied AmirSholi() blue/green console-style banner as the link preview image, served as an optimized JPG for WhatsApp/Meta compatibility.
 - SampleX license administration lives at `/admin/samplex`, is excluded from public navigation, and must remain accessible remotely through email-based administrator authentication.
 - SampleX signing keys and Supabase service credentials must remain server-only; the public portfolio and extension may contain only public verification/configuration values.
+- SampleX appears as its own project folder in the VS Code explorer; the public `#samplex` link opens its compact product overview directly inside the fixed workspace.

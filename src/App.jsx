@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
+  AudioWaveform,
   ChevronDown,
   ChevronRight,
   Code2,
@@ -142,6 +143,7 @@ const heroBadges = ["React / Next.js", "Electron + SQLite", "QA & Data validatio
 const assetPaths = {
   profile: "/assets/profile.jpg",
   underfitGym: "/assets/underfit-gym.png",
+  samplexPanel: "/assets/samplex/samplex-panel.png",
 };
 
 const techLogos = {
@@ -175,7 +177,7 @@ const profileFiles = [
   { id: "stack", label: "stack.tools", path: "profile > stack.tools", icon: Code2, kind: "stack" },
 ];
 
-const projectFiles = [
+const underfitProjectFiles = [
   {
     id: "overview",
     label: "overview.md",
@@ -191,12 +193,25 @@ const projectFiles = [
   })),
 ];
 
+const samplexProjectFiles = [
+  {
+    id: "samplex-overview",
+    label: "overview.md",
+    path: "projects > samplex > overview.md",
+    icon: AudioWaveform,
+    kind: "samplex-overview",
+  },
+];
+
+const projectFiles = [...underfitProjectFiles, ...samplexProjectFiles];
+
 const workspaceFiles = [...projectFiles, ...profileFiles];
 const projectFileIds = projectFiles.map((file) => file.id);
 const navigationFileIds = [
   "contact",
   "overview",
   ...underfitAssets.map((asset) => asset.id),
+  "samplex-overview",
   "education",
   "experience",
   "stack",
@@ -627,6 +642,54 @@ function UnderfitFeaturePanel({ file, onOpenMedia }) {
   );
 }
 
+function SampleXOverviewPanel({ onOpenMedia }) {
+  return (
+    <div className="file-document samplex-overview-file">
+      <div className="file-copy samplex-copy">
+        <span className="file-breadcrumb">projects &gt; samplex &gt; overview.md</span>
+        <p className="eyebrow">Chrome extension / Product build</p>
+        <h3>SampleX</h3>
+        <p>
+          A focused tab-audio sampler for capturing moments in the browser,
+          trimming them visually, reading useful musical data and exporting a clean WAV.
+        </p>
+        <div className="project-actions">
+          <a className="repo-link" href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">
+            <GitBranch size={16} />
+            View repository
+            <ExternalLink size={14} />
+          </a>
+          <span className="samplex-status"><span /> Private beta</span>
+        </div>
+      </div>
+
+      <div className="samplex-content-grid">
+        <figure className="samplex-product-preview">
+          <button
+            className="preview-media-button"
+            type="button"
+            onClick={() => onOpenMedia({
+              type: "image",
+              src: assetPaths.samplexPanel,
+              title: "SampleX extension",
+              caption: "Compact tab-audio capture, trim, analysis and WAV export workflow.",
+            })}
+            aria-label="Open SampleX extension preview"
+          >
+            <img src={assetPaths.samplexPanel} alt="SampleX browser extension interface" loading="lazy" decoding="async" />
+          </button>
+        </figure>
+        <div className="samplex-feature-grid">
+          <article><strong>Capture</strong><p>Record the active tab without routing audio through another desktop tool.</p></article>
+          <article><strong>Shape</strong><p>Trim the useful section and preview it directly from the waveform.</p></article>
+          <article><strong>Understand</strong><p>Read BPM, key, frequency and duration while the selection changes.</p></article>
+          <article><strong>Export</strong><p>Save the selected audio as WAV with a clean, descriptive filename.</p></article>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ContactPanel({
   subject,
   message,
@@ -1044,13 +1107,21 @@ function FileExplorer({ activeFile, onOpenFile }) {
           <div className="file-tree-folder nested">
             <span>â–¾ underfit</span>
             <div className="file-tree-files">
-              {projectFiles.map((file) => (
+              {underfitProjectFiles.map((file) => (
                 <FileTreeButton
                   key={file.id}
                   file={file}
                   activeFile={activeFile}
                   onOpenFile={onOpenFile}
                 />
+              ))}
+            </div>
+          </div>
+          <div className="file-tree-folder nested">
+            <span>samplex</span>
+            <div className="file-tree-files">
+              {samplexProjectFiles.map((file) => (
+                <FileTreeButton key={file.id} file={file} activeFile={activeFile} onOpenFile={onOpenFile} />
               ))}
             </div>
           </div>
@@ -1109,13 +1180,26 @@ function CollapsibleFileExplorer({ activeFile, onOpenFile, folders, onToggleFold
               />
               {folders.underfit ? (
                 <div className="file-tree-files">
-                  {projectFiles.map((file) => (
+                  {underfitProjectFiles.map((file) => (
                     <FileTreeButton
                       key={file.id}
                       file={file}
                       activeFile={activeFile}
                       onOpenFile={onOpenFile}
                     />
+                  ))}
+                </div>
+              ) : null}
+              <FolderToggle
+                label="samplex"
+                open={folders.samplex}
+                onClick={() => onToggleFolder("samplex")}
+                depth={1}
+              />
+              {folders.samplex ? (
+                <div className="file-tree-files">
+                  {samplexProjectFiles.map((file) => (
+                    <FileTreeButton key={file.id} file={file} activeFile={activeFile} onOpenFile={onOpenFile} />
                   ))}
                 </div>
               ) : null}
@@ -1283,10 +1367,11 @@ export function App() {
   const workspaceScale = useTransform(scrollYProgress, [0.04, 0.22], [0.88, 1]);
   const workspaceY = useTransform(scrollYProgress, [0.04, 0.22], [132, 0]);
   const clock = useClock();
-  const [activeFile, setActiveFile] = useState("contact");
+  const [activeFile, setActiveFile] = useState(() => window.location.hash === "#samplex" ? "samplex-overview" : "contact");
   const [folders, setFolders] = useState({
     projects: true,
     underfit: true,
+    samplex: true,
     profile: true,
   });
   const [subject, setSubject] = useState("");
@@ -1350,6 +1435,17 @@ export function App() {
       }, shouldReduceMotion ? 0 : 520);
     }, shouldReduceMotion ? 0 : 80);
   };
+
+  useEffect(() => {
+    const openSampleX = () => {
+      if (window.location.hash !== "#samplex") return;
+      setActiveFile("samplex-overview");
+      window.requestAnimationFrame(() => void scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 780));
+    };
+    openSampleX();
+    window.addEventListener("hashchange", openSampleX);
+    return () => window.removeEventListener("hashchange", openSampleX);
+  }, [shouldReduceMotion]);
 
   const toggleFolder = (folder) => {
     setFolders((current) => ({ ...current, [folder]: !current[folder] }));
@@ -1536,6 +1632,9 @@ export function App() {
             ) : null}
             {active.kind === "underfit-feature" ? (
               <UnderfitFeaturePanel file={active} onOpenMedia={setSelectedMedia} />
+            ) : null}
+            {active.kind === "samplex-overview" ? (
+              <SampleXOverviewPanel onOpenMedia={setSelectedMedia} />
             ) : null}
             {active.kind === "contact" ? (
               <ContactPanel
