@@ -38,8 +38,17 @@ The server independently checks the authenticated email. Changing the visible em
 
 1. Run `supabase/schema.sql` again after deploying this version. The migration adds Polar order fields without removing existing licenses.
 2. In Polar, create a webhook endpoint named `SampleX production` with URL `https://amirsholi.vercel.app/api/polar/webhook`.
-3. Select the raw format and subscribe only to `order.paid`.
+3. Select the raw format and subscribe to `order.paid` and `order.refunded`.
 4. Copy the generated signing secret to the Vercel variable `POLAR_WEBHOOK_SECRET` for Production and Preview, then redeploy.
 5. Keep the checkout success URL as `https://amirsholi.vercel.app/?checkout_id={CHECKOUT_ID}#buy-samplex`.
 
 The webhook verifies Polar's signature before writing anything. Each Polar order ID and checkout ID is unique in Supabase, so webhook retries return the already-issued license instead of creating extra codes. The checkout return page polls the registry briefly and shows the signed code as soon as fulfillment finishes.
+
+## 6. Optional email delivery
+
+Automatic delivery on the checkout success page works without an email provider. To also email each new code, verify a sending domain with Resend and add these sensitive Vercel variables:
+
+- `RESEND_API_KEY`
+- `SAMPLEX_FROM_EMAIL` (for example, `SampleX <licenses@samplex.example>`)
+
+Redeploy after adding them. If email delivery fails, Polar retries the webhook; the existing order is reused and no duplicate license is created.

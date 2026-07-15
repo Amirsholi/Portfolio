@@ -788,6 +788,7 @@ function SampleXOverviewPanel({ onOpenMedia }) {
             View repository
             <ExternalLink size={14} />
           </a>
+          <a className="repo-link" href="/samplex/privacy"><ShieldCheck size={15} /> Privacy</a>
           <span className="samplex-status"><span /> Private beta</span>
         </div>
       </div>
@@ -874,7 +875,7 @@ function BuySampleXPanel() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (!fulfillment?.checkoutId || fulfillment.status === "ready") return undefined;
+    if (!fulfillment?.checkoutId || fulfillment.status !== "processing") return undefined;
     let cancelled = false;
     let attempts = 0;
     let timer;
@@ -884,6 +885,10 @@ function BuySampleXPanel() {
         const response = await fetch(`/api/polar/license?checkout_id=${encodeURIComponent(fulfillment.checkoutId)}`);
         const body = await response.json();
         if (cancelled) return;
+        if (response.status === 410 && body.status === "refunded") {
+          setFulfillment({ checkoutId: fulfillment.checkoutId, status: "refunded" });
+          return;
+        }
         if (response.ok && body.status === "ready") {
           setFulfillment({ checkoutId: fulfillment.checkoutId, status: "ready", license: body.license });
           return;
@@ -910,15 +915,16 @@ function BuySampleXPanel() {
 
   if (fulfillment) {
     const ready = fulfillment.status === "ready";
+    const refunded = fulfillment.status === "refunded";
     return (
       <div className="file-document buy-samplex-file">
         <div className="checkout-result">
           <div className={`checkout-result-icon ${ready ? "ready" : ""}`}>
             {ready ? <CheckCircle2 size={32} /> : <KeyRound size={29} />}
           </div>
-          <p className="eyebrow">{ready ? "Payment confirmed" : "Payment received"}</p>
-          <h3>{ready ? "Your SampleX code is ready." : "Preparing your SampleX code..."}</h3>
-          <p>{ready ? "Copy this code and paste it into the key field in the extension." : "Polar is confirming the order. This normally takes only a few seconds."}</p>
+          <p className="eyebrow">{ready ? "Payment confirmed" : refunded ? "Order refunded" : "Payment received"}</p>
+          <h3>{ready ? "Your SampleX code is ready." : refunded ? "This license is no longer active." : "Preparing your SampleX code..."}</h3>
+          <p>{ready ? "Copy this code and paste it into the key field in the extension." : refunded ? "The payment was refunded and the code can no longer be recovered from this checkout." : "Polar is confirming the order. This normally takes only a few seconds."}</p>
           {ready ? (
             <div className="checkout-license-code">
               <code>{fulfillment.license.token}</code>
@@ -974,7 +980,7 @@ function BuySampleXPanel() {
               <CreditCard size={17} /> Choose lifetime
             </a>
           </section>
-          <small id="checkout-status">Secure checkout and payment processing by Polar.</small>
+          <small id="checkout-status">Secure checkout and payment processing by Polar. <a href="/samplex/privacy">Privacy</a> · <a href="/samplex/terms">Terms</a> · <a href="/samplex/refunds">Refunds</a></small>
         </div>
       </div>
     </div>
