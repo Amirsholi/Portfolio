@@ -623,13 +623,13 @@ function ModuleNavigation({ previousFile, nextFile, onOpenFile }) {
   return (
     <nav className="workspace-side-nav" aria-label="Workspace file navigation">
       {previousFile ? (
-        <button className="workspace-side-link previous" type="button" onClick={() => onOpenFile(previousFile.id)} title={`Previous: ${previousFile.label}`}>
+        <button className="workspace-side-link previous" data-destination={previousFile.label} type="button" onClick={() => onOpenFile(previousFile.id)} title={`Previous: ${previousFile.label}`}>
           <ChevronLeft size={17} />
           <span><small>Previous</small><strong>{previousFile.label}</strong></span>
         </button>
       ) : null}
       {nextFile ? (
-        <button className="workspace-side-link next" type="button" onClick={() => onOpenFile(nextFile.id)} title={`Next: ${nextFile.label}`}>
+        <button className="workspace-side-link next" data-destination={nextFile.label} type="button" onClick={() => onOpenFile(nextFile.id)} title={`Next: ${nextFile.label}`}>
           <span><small>Next</small><strong>{nextFile.label}</strong></span>
           <ChevronRight size={17} />
         </button>

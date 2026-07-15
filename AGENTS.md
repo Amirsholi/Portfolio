@@ -38,5 +38,5 @@ When implementing from a selected generated mock, treat that image as the source
 - SampleX checkout presents a US$5 pack of 500 exports and a recommended US$15 permanent lifetime unlock.
 - Previous/next navigation sits outside the VS Code frame at its lateral edges, previewing the destination filename on wide screens; do not place these controls inside the editor content.
 - SampleX deep links and its hero CTA must use the same staged `contact.md` to overview transition as UnderFit.
-- Workspace navigation controls sit slightly above the VS Code frame at its upper corners, with clear previous/next direction and destination preview.
-- The SampleX purchase view uses the supplied waveform selection image beside two compact vertical plan cards to avoid empty interface space.
+- Workspace navigation controls attach to the lateral edges of the VS Code frame as compact directional tabs; hovering or focusing reveals the destination filename inside a terminal-style tooltip.
+- The SampleX purchase view uses the supplied waveform selection image as a tightly sized horizontal preview above two aligned plan cards; never place it inside a tall empty media column.
