@@ -1,4 +1,4 @@
 ﻿User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-plum-delta-48.vercel.app/sitemap.xml
+Sitemap: https://amirsholi.vercel.app/sitemap.xml

@@ -29,6 +29,6 @@ Apply the public `VITE_*` values to the build environment and all server values 
 
 ## 4. Access
 
-Visit `https://portfolio-plum-delta-48.vercel.app/admin/samplex` and sign in with `amirsholi999@gmail.com` and the password created in Supabase. The session refreshes automatically while the panel remains open and ends when that browser tab/session is closed or you select Sign out.
+Visit `https://amirsholi.vercel.app/admin/samplex` and sign in with `amirsholi999@gmail.com` and the password created in Supabase. The session refreshes automatically while the panel remains open and ends when that browser tab/session is closed or you select Sign out.
 
 The server independently checks the authenticated email. Changing the visible email field or frontend code does not grant administrative API access.
