@@ -155,6 +155,7 @@ const assetPaths = {
   profile: "/assets/profile.jpg",
   underfitGym: "/assets/underfit-gym.png",
   samplexPanel: "/assets/samplex/samplex-panel.png",
+  samplexHero: "/assets/samplex/samplex-hero.png",
 };
 
 const techLogos = {
@@ -604,7 +605,7 @@ function HeroProjectPanel({ selectedProject, onSelectProject, onOpenProject }) {
           <article className="hero-feature-card">
             <div className="hero-feature-copy">
               <span className="hero-feature-path"><Code2 size={14} /> {project.path}</span>
-              <span className="hero-feature-mark">{selectedProject === "samplex" ? <AudioWaveform size={34} /> : <Database size={32} />}</span>
+              <span className="hero-feature-mark">{selectedProject === "samplex" ? <AudioWaveform size={34} /> : <img src={assetPaths.underfitGym} alt="" />}</span>
               <div className="hero-feature-title">
                 <code>{project.command}</code>
                 <h3>Project: {project.name}</h3>
@@ -614,7 +615,7 @@ function HeroProjectPanel({ selectedProject, onSelectProject, onOpenProject }) {
             </div>
             <figure className="hero-feature-media">
               <img
-                src={selectedProject === "samplex" ? assetPaths.samplexPanel : "/assets/underfit/dashboard.png"}
+                src={selectedProject === "samplex" ? assetPaths.samplexHero : "/assets/underfit/dashboard.png"}
                 alt={project.name}
                 loading="eager"
                 decoding="async"
