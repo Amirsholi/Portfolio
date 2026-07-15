@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
   AudioWaveform,
   ChevronDown,
   ChevronRight,
   Code2,
+  CreditCard,
   Database,
   ExternalLink,
   FileDown,
@@ -16,6 +17,8 @@ import {
   Layers,
   Link,
   Mail,
+  KeyRound,
+  ShieldCheck,
   X,
   ServerCog,
   Terminal,
@@ -236,7 +239,7 @@ const samplexProjectFiles = [
     icon: Workflow,
     kind: "samplex-feature",
     title: "Process useful musical data",
-    src: assetPaths.samplexPanel,
+    src: "/assets/samplex/processing.gif",
     type: "image",
     meta: "Turn the selected audio into clear information without leaving the extension.",
     bullets: ["Analyze BPM and musical key.", "Inspect frequency and duration.", "Refresh results when the selection changes."],
@@ -259,9 +262,19 @@ const samplexProjectFiles = [
   },
 ];
 
+const commerceFiles = [
+  {
+    id: "buy-samplex",
+    label: "Buy SampleX",
+    path: "portfolio > Buy SampleX",
+    icon: CreditCard,
+    kind: "buy-samplex",
+  },
+];
+
 const projectFiles = [...underfitProjectFiles, ...samplexProjectFiles];
 
-const workspaceFiles = [...projectFiles, ...profileFiles];
+const workspaceFiles = [...projectFiles, ...commerceFiles, ...profileFiles];
 const projectFileIds = projectFiles.map((file) => file.id);
 const navigationFileIds = [
   "contact",
@@ -272,6 +285,7 @@ const navigationFileIds = [
   "samplex-trimming",
   "samplex-processing",
   "samplex-download",
+  "buy-samplex",
   "education",
   "experience",
   "stack",
@@ -517,35 +531,87 @@ function TextLine({ line, index }) {
   );
 }
 
-function HeroUnderfitPanel({ onOpenProject }) {
+const heroProjects = {
+  underfit: {
+    path: "projects/underfit.md",
+    command: "open underfit --summary",
+    name: "UnderFit Desktop App",
+    lines: [
+      "Context: real gym workflow system",
+      "Core: memberships, renewals, access validation",
+      "Ops: stock, sales and cash control",
+      "Status: built for practical daily use",
+    ],
+    button: "Open UnderFit project",
+  },
+  samplex: {
+    path: "projects/samplex.md",
+    command: "open samplex --summary",
+    name: "SampleX Chrome Extension",
+    lines: [
+      "Context: capture audio from the active tab",
+      "Core: record, trim and analyze samples",
+      "Output: clean WAV export",
+      "Status: private beta with signed licensing",
+    ],
+    button: "Open SampleX project",
+  },
+};
+
+function HeroProjectPanel({ selectedProject, onSelectProject, onOpenProject }) {
+  const project = heroProjects[selectedProject];
+
   return (
     <motion.div
-      className="hero-code hero-underfit-panel"
+      className={`hero-project-shell hero-project-${selectedProject}`}
       initial={{ opacity: 0, y: 22, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.72, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
-      aria-label="UnderFit project summary"
+      aria-label="Featured project selector"
     >
-      <div className="floating-path">
-        <Code2 size={15} />
-        <span>projects/underfit.md</span>
+      <div className="hero-project-switch" role="tablist" aria-label="Featured projects">
+        {Object.keys(heroProjects).map((id) => (
+          <button
+            key={id}
+            type="button"
+            role="tab"
+            aria-selected={selectedProject === id}
+            className={selectedProject === id ? "active" : ""}
+            onClick={() => onSelectProject(id)}
+          >
+            {id === "underfit" ? "UnderFit" : "SampleX"}
+          </button>
+        ))}
       </div>
-      <div className="code-body hero-code-body hero-underfit-code">
-        <div className="hero-console-line">
-          <span>PS C:\Users\Amir\Portfolio&gt;</span>
-          <strong> open underfit --summary</strong>
-        </div>
-        <div className="hero-console-output">
-          <span>Project: UnderFit Desktop App</span>
-          <span>Context: real gym workflow system</span>
-          <span>Core: memberships, renewals, access validation</span>
-          <span>Ops: stock, sales and cash control</span>
-          <span>Status: built for practical daily use</span>
-        </div>
-        <button className="underfit-jump" type="button" onClick={onOpenProject}>
-          Open UnderFit project
-        </button>
-      </div>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={selectedProject}
+          className="hero-code hero-underfit-panel"
+          initial={{ opacity: 0, x: 18, filter: "blur(5px)" }}
+          animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+          exit={{ opacity: 0, x: -18, filter: "blur(5px)" }}
+          transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+          aria-label={`${project.name} summary`}
+        >
+          <div className="floating-path">
+            <Code2 size={15} />
+            <span>{project.path}</span>
+          </div>
+          <div className="code-body hero-code-body hero-underfit-code">
+            <div className="hero-console-line">
+              <span>PS C:\Users\Amir\Portfolio&gt;</span>
+              <strong> {project.command}</strong>
+            </div>
+            <div className="hero-console-output">
+              <span>Project: {project.name}</span>
+              {project.lines.map((line) => <span key={line}>{line}</span>)}
+            </div>
+            <button className="underfit-jump" type="button" onClick={() => onOpenProject(selectedProject)}>
+              {project.button}
+            </button>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </motion.div>
   );
 }
@@ -793,6 +859,46 @@ function SampleXFeaturePanel({ file, onOpenMedia }) {
           <p>{file.notes}</p>
         </div>
       </aside>
+    </div>
+  );
+}
+
+function BuySampleXPanel() {
+  return (
+    <div className="file-document buy-samplex-file">
+      <div className="file-copy buy-samplex-copy">
+        <span className="file-breadcrumb">portfolio &gt; Buy SampleX</span>
+        <p className="eyebrow">SampleX license</p>
+        <h3>Unlock SampleX for good.</h3>
+        <p>Move beyond the free export allowance with one permanent license and a recovery path if you change browsers.</p>
+      </div>
+
+      <div className="buy-samplex-layout">
+        <section className="license-offer">
+          <div className="license-offer-heading">
+            <AudioWaveform size={24} />
+            <div><strong>SampleX Lifetime</strong><span>One payment · Permanent unlock</span></div>
+          </div>
+          <ul>
+            <li><FileDown size={16} /> Unlimited WAV exports</li>
+            <li><KeyRound size={16} /> Signed activation code</li>
+            <li><ShieldCheck size={16} /> License recovery support</li>
+          </ul>
+          <button type="button" disabled aria-describedby="checkout-status">
+            <CreditCard size={17} /> Continue to secure checkout
+          </button>
+          <small id="checkout-status">Secure payment connection is the next implementation step.</small>
+        </section>
+
+        <aside className="license-flow">
+          <p className="eyebrow">How activation works</p>
+          <ol>
+            <li><span>01</span><p><strong>Pay once</strong>Complete checkout without creating a SampleX account.</p></li>
+            <li><span>02</span><p><strong>Receive your code</strong>A signed license code is generated after payment.</p></li>
+            <li><span>03</span><p><strong>Unlock locally</strong>Paste the code in the extension and export without limits.</p></li>
+          </ol>
+        </aside>
+      </div>
     </div>
   );
 }
@@ -1234,6 +1340,12 @@ function FileExplorer({ activeFile, onOpenFile }) {
           </div>
         </div>
 
+        <div className="file-tree-folder commerce-file">
+          {commerceFiles.map((file) => (
+            <FileTreeButton key={file.id} file={file} activeFile={activeFile} onOpenFile={onOpenFile} />
+          ))}
+        </div>
+
         <div className="file-tree-folder">
           <span>â–¾ profile</span>
           <div className="file-tree-files">
@@ -1312,6 +1424,12 @@ function CollapsibleFileExplorer({ activeFile, onOpenFile, folders, onToggleFold
               ) : null}
             </div>
           ) : null}
+        </div>
+
+        <div className="file-tree-folder commerce-file">
+          {commerceFiles.map((file) => (
+            <FileTreeButton key={file.id} file={file} activeFile={activeFile} onOpenFile={onOpenFile} />
+          ))}
         </div>
 
         <div className="file-tree-folder">
@@ -1474,7 +1592,12 @@ export function App() {
   const workspaceScale = useTransform(scrollYProgress, [0.04, 0.22], [0.88, 1]);
   const workspaceY = useTransform(scrollYProgress, [0.04, 0.22], [132, 0]);
   const clock = useClock();
-  const [activeFile, setActiveFile] = useState(() => window.location.hash === "#samplex" ? "samplex-overview" : "contact");
+  const [activeFile, setActiveFile] = useState(() => {
+    if (window.location.hash === "#samplex") return "samplex-overview";
+    if (window.location.hash === "#buy-samplex") return "buy-samplex";
+    return "contact";
+  });
+  const [heroProject, setHeroProject] = useState("underfit");
   const [folders, setFolders] = useState({
     projects: true,
     underfit: true,
@@ -1531,27 +1654,35 @@ export function App() {
     await animateWindowScroll(getWorkbenchTarget(), duration);
   };
 
-  const openUnderfitFromHero = () => {
+  const openProjectFromHero = (project) => {
+    const targetFile = project === "samplex" ? "samplex-overview" : "overview";
     setIsProgrammaticFocus(true);
     setActiveFile("contact");
     window.setTimeout(async () => {
       await scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 1350);
       window.setTimeout(() => {
-        setActiveFile("overview");
+        setActiveFile(targetFile);
+        window.history.replaceState(null, "", project === "samplex" ? "#samplex" : window.location.pathname);
         window.setTimeout(() => setIsProgrammaticFocus(false), 520);
       }, shouldReduceMotion ? 0 : 520);
     }, shouldReduceMotion ? 0 : 80);
   };
 
   useEffect(() => {
-    const openSampleX = () => {
-      if (window.location.hash !== "#samplex") return;
-      setActiveFile("samplex-overview");
+    const openDeepLink = () => {
+      const target = window.location.hash === "#samplex"
+        ? "samplex-overview"
+        : window.location.hash === "#buy-samplex"
+          ? "buy-samplex"
+          : null;
+      if (!target) return;
+      if (target === "samplex-overview") setHeroProject("samplex");
+      setActiveFile(target);
       window.requestAnimationFrame(() => void scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 780));
     };
-    openSampleX();
-    window.addEventListener("hashchange", openSampleX);
-    return () => window.removeEventListener("hashchange", openSampleX);
+    openDeepLink();
+    window.addEventListener("hashchange", openDeepLink);
+    return () => window.removeEventListener("hashchange", openDeepLink);
   }, [shouldReduceMotion]);
 
   const toggleFolder = (folder) => {
@@ -1678,7 +1809,11 @@ export function App() {
             </div>
           </motion.div>
 
-          <HeroUnderfitPanel onOpenProject={openUnderfitFromHero} />
+          <HeroProjectPanel
+            selectedProject={heroProject}
+            onSelectProject={setHeroProject}
+            onOpenProject={openProjectFromHero}
+          />
         </motion.section>
 
         <motion.section
@@ -1746,6 +1881,7 @@ export function App() {
             {active.kind === "samplex-feature" ? (
               <SampleXFeaturePanel file={active} onOpenMedia={setSelectedMedia} />
             ) : null}
+            {active.kind === "buy-samplex" ? <BuySampleXPanel /> : null}
             {active.kind === "contact" ? (
               <ContactPanel
                 subject={subject}

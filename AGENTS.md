@@ -32,3 +32,5 @@ When implementing from a selected generated mock, treat that image as the source
 - SampleX signing keys and Supabase service credentials must remain server-only; the public portfolio and extension may contain only public verification/configuration values.
 - SampleX appears as its own project folder in the VS Code explorer; the public `#samplex` link opens its compact product overview directly inside the fixed workspace.
 - SampleX project files follow the product flow: overview, recording, trimming, processing and download; recording and trimming use replaceable GIF-ready media slots.
+- The hero project access alternates between UnderFit and SampleX in one animated panel; each CTA transitions to its own overview without showing both summaries simultaneously.
+- `Buy SampleX` is a standalone top-level workspace file outside `PROJECTS`, with a checkout-ready lifetime-license view and the public deep link `#buy-samplex`.
