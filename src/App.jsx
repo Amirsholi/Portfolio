@@ -870,11 +870,15 @@ function BuySampleXPanel() {
       <div className="file-copy buy-samplex-copy">
         <span className="file-breadcrumb">portfolio &gt; Buy SampleX</span>
         <p className="eyebrow">SampleX license</p>
-        <h3>Unlock SampleX for good.</h3>
-        <p>Move beyond the free export allowance with one permanent license and a recovery path if you change browsers.</p>
+        <h3>Keep exporting with SampleX.</h3>
+        <p>Choose a 500-export recharge or unlock the extension permanently with one payment.</p>
       </div>
 
       <div className="buy-samplex-layout">
+        <figure className="buy-samplex-preview">
+          <img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform selection and audio analysis interface" />
+          <figcaption><span>Selected sample</span><strong>Trim · Analyze · Export</strong></figcaption>
+        </figure>
         <div className="license-plans">
           <section className="license-offer">
             <div className="license-offer-heading">
@@ -902,15 +906,6 @@ function BuySampleXPanel() {
           </section>
           <small id="checkout-status">Secure payment connection is the next implementation step.</small>
         </div>
-
-        <aside className="license-flow">
-          <p className="eyebrow">How activation works</p>
-          <ol>
-            <li><span>01</span><p><strong>Pay once</strong>Complete checkout without creating a SampleX account.</p></li>
-            <li><span>02</span><p><strong>Receive your code</strong>A signed license code is generated after payment.</p></li>
-            <li><span>03</span><p><strong>Unlock locally</strong>Paste the code in the extension and export without limits.</p></li>
-          </ol>
-        </aside>
       </div>
     </div>
   );
@@ -1699,11 +1694,12 @@ export function App() {
           ? "buy-samplex"
           : null;
       if (!target) return;
-      if (target === "samplex-overview") setHeroProject("samplex");
-      setActiveFile(target);
       if (target === "samplex-overview") {
-        setFolders((current) => ({ ...current, projects: true, underfit: false, samplex: true }));
+        setHeroProject("samplex");
+        openProjectFromHero("samplex");
+        return;
       }
+      setActiveFile(target);
       window.requestAnimationFrame(() => void scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 780));
     };
     openDeepLink();
