@@ -278,7 +278,6 @@ const projectFiles = [...underfitProjectFiles, ...samplexProjectFiles];
 const workspaceFiles = [...projectFiles, ...commerceFiles, ...profileFiles];
 const projectFileIds = projectFiles.map((file) => file.id);
 const navigationFileIds = [
-  "contact",
   "overview",
   ...underfitAssets.map((asset) => asset.id),
   "samplex-overview",
@@ -287,6 +286,7 @@ const navigationFileIds = [
   "samplex-processing",
   "samplex-download",
   "buy-samplex",
+  "contact",
   "education",
   "experience",
   "stack",
@@ -1401,7 +1401,7 @@ function CollapsibleFileExplorer({ activeFile, onOpenFile, folders, onToggleFold
               <FolderToggle
                 label="underfit"
                 open={folders.underfit}
-                onClick={() => onToggleFolder("underfit")}
+                onClick={() => onOpenFile("overview")}
                 depth={1}
               />
               {folders.underfit ? (
@@ -1419,7 +1419,7 @@ function CollapsibleFileExplorer({ activeFile, onOpenFile, folders, onToggleFold
               <FolderToggle
                 label="samplex"
                 open={folders.samplex}
-                onClick={() => onToggleFolder("samplex")}
+                onClick={() => onOpenFile("samplex-overview")}
                 depth={1}
               />
               {folders.samplex ? (
