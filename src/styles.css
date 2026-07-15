@@ -1261,6 +1261,100 @@ a {
   box-shadow: 0 12px 28px rgba(31, 160, 218, 0.16);
 }
 
+/* SampleX purchase workspace */
+.buy-samplex-file {
+  width: min(100%, 1120px);
+  grid-template-rows: auto auto minmax(150px, 1fr) auto auto;
+  gap: 10px;
+}
+
+.buy-breadcrumb { margin-bottom: -2px; }
+
+.buy-product-header {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0 7px;
+  border-bottom: 1px solid rgba(98, 130, 148, .25);
+}
+
+.buy-product-identity { display: flex; gap: 14px; align-items: center; min-width: 270px; }
+.buy-product-mark { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid #294658; border-radius: 11px; background: linear-gradient(145deg, #122634, #09131b); color: #4fd4f3; box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 12px 30px rgba(0,0,0,.24); }
+.buy-product-identity h3 { margin: 0; color: #fff; font-size: 24px; letter-spacing: -.025em; }
+.buy-product-identity p { margin: 3px 0 0; color: #8295a2; font-size: 12px; }
+
+.buy-benefit-strip { display: grid; grid-template-columns: repeat(3, minmax(130px, 1fr)); gap: 10px; }
+.buy-benefit-strip > span { min-height: 46px; display: grid; grid-template-columns: 20px 1fr; grid-template-rows: auto auto; column-gap: 7px; align-content: center; padding: 7px 10px; border: 1px solid rgba(64, 92, 109, .34); border-radius: 6px; background: rgba(13, 27, 37, .72); }
+.buy-benefit-strip svg { grid-row: 1 / 3; align-self: center; color: #54d98b; }
+.buy-benefit-strip > span:nth-child(2) svg { color: #56c9f6; }
+.buy-benefit-strip b { color: #dbe8ed; font-size: 10px; }
+.buy-benefit-strip small { color: #6f828d; font-size: 8px; }
+
+.buy-product-stage { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 28px; min-height: 0; height: 142px; align-items: center; }
+.buy-product-pitch .eyebrow { margin: 0 0 7px; color: #a886f7; font-size: 9px; }
+.buy-product-pitch h3 { margin: 0; color: #fff; font-size: clamp(23px, 2.2vw, 31px); line-height: .98; letter-spacing: -.045em; }
+.buy-product-pitch > p:not(.eyebrow) { margin: 8px 0; color: #8fa0aa; font-size: 10px; line-height: 1.4; }
+.free-allowance { width: fit-content; display: flex; gap: 8px; align-items: center; padding: 5px 10px; border: 1px solid #29404e; border-radius: 7px; background: rgba(11, 23, 31, .82); }
+.free-allowance strong { color: #4ee281; font: 700 20px "Cascadia Code", monospace; }
+.free-allowance span { display: grid; color: #b9c9d0; font-size: 10px; line-height: 1.1; }
+.free-allowance small { margin-top: 3px; color: #617580; font-size: 8px; }
+
+.buy-samplex-file .buy-samplex-preview { width: 100%; max-width: none; justify-self: stretch; padding: 8px; border-radius: 9px; }
+.buy-samplex-file .buy-samplex-preview img { width: 100%; max-width: none; height: 124px; object-fit: contain; }
+
+.buy-product-options { display: grid; grid-template-columns: 1.14fr .9fr .78fr; gap: 10px; min-height: 0; }
+.buy-product-options .license-offer { grid-template-rows: auto auto 1fr auto auto; gap: 5px; padding: 10px 12px 8px; border-radius: 8px; }
+.buy-product-options .license-offer-heading { gap: 9px; }
+.buy-product-options .license-offer-heading strong { font-size: 14px; }
+.buy-product-options .license-offer-heading span { font-size: 9px; }
+.buy-product-options .license-offer ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 8px; }
+.buy-product-options .license-offer li { gap: 5px; font-size: 9px; white-space: nowrap; }
+.buy-product-options .license-offer li svg { flex: 0 0 auto; }
+.license-price { color: #58c8fb; font: 500 23px/1 "Cascadia Code", monospace; }
+.license-price small { margin-right: 2px; color: inherit; font-size: 13px; }
+.buy-product-options .license-offer > a { min-height: 30px; font-size: 10px; }
+.buy-product-options .lifetime-offer { border-color: #d9681a; background: linear-gradient(155deg, rgba(37, 28, 22, .98), rgba(10, 15, 22, .98)); box-shadow: inset 0 1px 0 rgba(255, 147, 67, .08), 0 0 24px rgba(218, 99, 20, .05); }
+.buy-product-options .lifetime-offer .license-offer-heading,
+.buy-product-options .lifetime-offer .license-price { color: #ff7a1a; }
+.buy-product-options .lifetime-offer > a { border-color: #ff7a1a; background: linear-gradient(180deg, #ff861e, #f46608); color: #fff; box-shadow: 0 8px 20px rgba(242, 95, 5, .18); }
+.buy-product-options .lifetime-offer > a:hover { background: linear-gradient(180deg, #ff9639, #ff7313); border-color: #ff9b4c; }
+.buy-product-options .plan-badge { top: -8px; right: 12px; padding: 3px 8px; background: #e96d13; font-size: 7px; }
+.offer-footnote { display: flex; gap: 5px; align-items: center; justify-content: center; color: #667b87 !important; font-size: 7px !important; }
+
+.buy-trust-column { display: grid; grid-template-rows: 1fr 1fr; gap: 7px; min-height: 0; }
+.buy-trust-card,
+.buy-faq { padding: 8px 10px; border: 1px solid #283c48; border-radius: 7px; background: rgba(11, 23, 31, .86); }
+.buy-trust-column h4 { display: flex; gap: 5px; align-items: center; margin: 0 0 7px; color: #dbe9ee; font-size: 10px; }
+.buy-trust-card ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.buy-trust-card li { display: flex; gap: 6px; align-items: center; color: #8ea1ab; font-size: 8px; }
+.buy-trust-card li svg { color: #4cd67f; }
+.buy-faq details { border-top: 1px solid rgba(82, 110, 125, .23); }
+.buy-faq summary { padding: 4px 0; color: #aebdc4; font-size: 8px; cursor: pointer; }
+.buy-faq details p { margin: 0 0 5px; color: #738792; font-size: 7px; line-height: 1.4; }
+
+.buy-checkout-footer { display: flex; align-items: center; justify-content: space-between; color: #607581; font-size: 8px; }
+.buy-checkout-footer span { display: flex; gap: 5px; align-items: center; }
+.buy-checkout-footer a { color: #73bcd8; text-decoration: none; }
+
+@media (max-width: 980px) {
+  .buy-benefit-strip > span { min-width: 0; }
+  .buy-product-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .buy-trust-column { grid-column: 1 / -1; grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+}
+
+@media (max-width: 720px) {
+  .buy-product-header { align-items: flex-start; }
+  .buy-benefit-strip { grid-template-columns: 1fr; }
+  .buy-benefit-strip > span:nth-child(n+2) { display: none; }
+  .buy-product-stage { grid-template-columns: 1fr; gap: 10px; }
+  .buy-product-pitch { display: none; }
+  .buy-product-options { grid-template-columns: 1fr; }
+  .buy-trust-column { display: none; }
+  .buy-checkout-footer { justify-content: center; }
+  .buy-checkout-footer > span:first-child { display: none; }
+}
+
 .checkout-result {
   width: min(760px, calc(100% - 32px));
   margin: auto;

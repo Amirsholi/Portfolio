@@ -5,7 +5,9 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Check,
   CheckCircle2,
+  CircleHelp,
   Code2,
   Copy,
   CreditCard,
@@ -21,11 +23,13 @@ import {
   Link,
   Mail,
   KeyRound,
+  LockKeyhole,
   ShieldCheck,
   X,
   ServerCog,
   Terminal,
   Workflow,
+  Zap,
 } from "lucide-react";
 
 const underfitAssets = [
@@ -940,49 +944,48 @@ function BuySampleXPanel() {
 
   return (
     <div className="file-document buy-samplex-file">
-      <div className="file-copy buy-samplex-copy">
-        <span className="file-breadcrumb">portfolio &gt; Buy SampleX</span>
-        <p className="eyebrow">SampleX license</p>
-        <h3>Keep exporting with SampleX.</h3>
-        <p>Choose a 500-export recharge or unlock the extension permanently with one payment.</p>
-      </div>
-
-      <div className="buy-samplex-layout">
-        <figure className="buy-samplex-preview">
-          <img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform selection and audio analysis interface" />
-        </figure>
-        <div className="license-plans">
-          <section className="license-offer">
-            <div className="license-offer-heading">
-              <FileDown size={24} />
-            <div><strong>500 Export Pack</strong><span>US$5 · Recharge when you need it</span></div>
-            </div>
-            <ul>
-              <li><FileDown size={16} /> 500 additional WAV exports</li>
-              <li><KeyRound size={16} /> One signed recharge code</li>
-            </ul>
-            <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=0540eafa-44ed-4df8-9a16-c3d19067c69d">
-              <CreditCard size={17} /> Choose export pack
-            </a>
-          </section>
-
-          <section className="license-offer featured">
-            <span className="plan-badge">Best value</span>
-            <div className="license-offer-heading">
-              <AudioWaveform size={24} />
-              <div><strong>SampleX Lifetime</strong><span>US$15 · Permanent unlock</span></div>
-            </div>
-            <ul>
-              <li><FileDown size={16} /> Unlimited WAV exports</li>
-              <li><ShieldCheck size={16} /> License recovery support</li>
-            </ul>
-            <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5">
-              <CreditCard size={17} /> Choose lifetime
-            </a>
-          </section>
-          <small id="checkout-status">Secure checkout and payment processing by Polar. <a href="/samplex/privacy">Privacy</a> · <a href="/samplex/terms">Terms</a> · <a href="/samplex/refunds">Refunds</a></small>
+      <span className="file-breadcrumb buy-breadcrumb">portfolio &gt; Buy SampleX</span>
+      <header className="buy-product-header">
+        <div className="buy-product-identity"><span className="buy-product-mark"><AudioWaveform size={31} /></span><div><h3>SampleX</h3><p>Chrome Audio Recorder</p></div></div>
+        <div className="buy-benefit-strip">
+          <span><Zap size={16} /><b>Instant export</b><small>One click</small></span>
+          <span><AudioWaveform size={16} /><b>WAV quality</b><small>44.1 kHz / 24-bit</small></span>
+          <span><LockKeyhole size={16} /><b>Offline &amp; secure</b><small>Audio stays local</small></span>
         </div>
+      </header>
+
+      <div className="buy-product-stage">
+        <section className="buy-product-pitch">
+          <p className="eyebrow">Export without limits</p>
+          <h3>Record. Trim.<br />Export. Repeat.</h3>
+          <p>Capture, edit and export high-quality audio from the active tab without uploading your recordings.</p>
+          <div className="free-allowance"><strong>75</strong><span>free exports<small>included with SampleX</small></span></div>
+        </section>
+        <figure className="buy-samplex-preview"><img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform selection and audio analysis interface" /></figure>
       </div>
+
+      <div className="buy-product-options">
+        <section className="license-offer featured lifetime-offer">
+          <span className="plan-badge">Best value</span>
+          <div className="license-offer-heading"><AudioWaveform size={24} /><div><strong>SampleX Lifetime</strong><span>One payment. Forever.</span></div></div>
+          <strong className="license-price"><small>US$</small>15</strong>
+          <ul><li><Check size={15} /> Unlimited WAV exports</li><li><Check size={15} /> License recovery support</li><li><Check size={15} /> No recurring payment</li></ul>
+          <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5"><LockKeyhole size={17} /> Unlock forever</a>
+        </section>
+
+        <section className="license-offer export-offer">
+          <div className="license-offer-heading"><FileDown size={24} /><div><strong>500 Export Pack</strong><span>Recharge when you need it</span></div></div>
+          <strong className="license-price"><small>US$</small>5</strong>
+          <ul><li><Check size={15} /> 500 additional exports</li><li><Check size={15} /> Recharge anytime</li><li><Check size={15} /> One signed code</li></ul>
+          <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=0540eafa-44ed-4df8-9a16-c3d19067c69d"><CreditCard size={17} /> Buy 500 exports</a>
+        </section>
+
+        <aside className="buy-trust-column">
+          <section className="buy-trust-card"><h4>Why choose SampleX?</h4><ul><li><Check size={13} /> No subscriptions</li><li><Check size={13} /> Audio processed locally</li><li><Check size={13} /> One-time payments</li><li><Check size={13} /> No watermark on exports</li></ul></section>
+          <section className="buy-faq"><h4><CircleHelp size={13} /> FAQ</h4><details><summary>Does the license expire?</summary><p>Lifetime does not expire. Export packs remain valid until redeemed.</p></details><details><summary>Can I reinstall SampleX?</summary><p>Lifetime licenses can be restored through Chrome Sync when available.</p></details></section>
+        </aside>
+      </div>
+      <footer className="buy-checkout-footer"><span><LockKeyhole size={12} /> Payments are processed securely by Polar.</span><span><a href="/samplex/privacy">Privacy</a> · <a href="/samplex/terms">Terms</a> · <a href="/samplex/refunds">Refunds</a> · <a href="/samplex/support">Support</a></span></footer>
     </div>
   );
 }
