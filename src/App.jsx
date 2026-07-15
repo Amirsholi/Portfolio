@@ -601,36 +601,26 @@ function HeroProjectPanel({ selectedProject, onSelectProject, onOpenProject }) {
           transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
           aria-label={`${project.name} summary`}
         >
-          {selectedProject === "samplex" ? (
-            <div className="hero-samplex-window">
-              <section className="hero-samplex-editor">
-                <div className="hero-samplex-tab"><FileText size={13} /> overview.md <X size={12} /></div>
-                <div className="hero-samplex-content">
-                  <span className="hero-samplex-mark"><AudioWaveform size={30} /></span>
-                  <div><p>Chrome audio recorder</p><h3>SampleX</h3><span>Record, trim and export high-quality WAV samples without leaving the active tab.</span></div>
-                  <button type="button" onClick={() => onOpenProject("samplex")}>Open SampleX project <ChevronRight size={15} /></button>
-                </div>
-              </section>
+          <article className="hero-feature-card">
+            <div className="hero-feature-copy">
+              <span className="hero-feature-path"><Code2 size={14} /> {project.path}</span>
+              <span className="hero-feature-mark">{selectedProject === "samplex" ? <AudioWaveform size={34} /> : <Database size={32} />}</span>
+              <div className="hero-feature-title">
+                <code>{project.command}</code>
+                <h3>Project: {project.name}</h3>
+              </div>
+              <div className="hero-feature-lines">{project.lines.map((line) => <span key={line}>{line}</span>)}</div>
+              <button type="button" onClick={() => onOpenProject(selectedProject)}>{project.button} <ChevronRight size={15} /></button>
             </div>
-          ) : (
-            <>
-              <div className="floating-path">
-                <Code2 size={15} />
-                <span>{project.path}</span>
-              </div>
-              <div className="code-body hero-code-body hero-underfit-code">
-                <div className="hero-console-line">
-                  <span>PS C:\Users\Amir\Portfolio&gt;</span>
-                  <strong> {project.command}</strong>
-                </div>
-                <div className="hero-console-output">
-                  <span>Project: {project.name}</span>
-                  {project.lines.map((line) => <span key={line}>{line}</span>)}
-                </div>
-                <button className="underfit-jump" type="button" onClick={() => onOpenProject("underfit")}>{project.button}</button>
-              </div>
-            </>
-          )}
+            <figure className="hero-feature-media">
+              <img
+                src={selectedProject === "samplex" ? assetPaths.samplexPanel : "/assets/underfit/dashboard.png"}
+                alt={project.name}
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
+          </article>
         </motion.div>
       </AnimatePresence>
     </motion.div>
