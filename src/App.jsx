@@ -201,6 +201,62 @@ const samplexProjectFiles = [
     icon: AudioWaveform,
     kind: "samplex-overview",
   },
+  {
+    id: "samplex-recording",
+    label: "recording.demo",
+    path: "projects > samplex > recording.demo",
+    icon: AudioWaveform,
+    kind: "samplex-feature",
+    title: "Record from the active tab",
+    src: assetPaths.samplexPanel,
+    type: "image",
+    meta: "Capture browser audio directly while keeping the workflow focused and visible.",
+    bullets: ["Start and stop from one control.", "Follow recording status in real time.", "Keep the captured audio ready for trimming."],
+    notes: "Chrome tabCapture / MediaRecorder / Live recording state",
+    mediaLabel: "Recording workflow · GIF slot",
+  },
+  {
+    id: "samplex-trimming",
+    label: "trimming.demo",
+    path: "projects > samplex > trimming.demo",
+    icon: AudioWaveform,
+    kind: "samplex-feature",
+    title: "Trim the exact moment",
+    src: assetPaths.samplexPanel,
+    type: "image",
+    meta: "Refine the captured audio visually before analysis or export.",
+    bullets: ["Set precise start and end points.", "Preview only the current selection.", "Keep duration feedback visible while editing."],
+    notes: "Interactive waveform / Selection boundaries / Audio preview",
+    mediaLabel: "Trimming workflow · GIF slot",
+  },
+  {
+    id: "samplex-processing",
+    label: "processing.view",
+    path: "projects > samplex > processing.view",
+    icon: Workflow,
+    kind: "samplex-feature",
+    title: "Process useful musical data",
+    src: assetPaths.samplexPanel,
+    type: "image",
+    meta: "Turn the selected audio into clear information without leaving the extension.",
+    bullets: ["Analyze BPM and musical key.", "Inspect frequency and duration.", "Refresh results when the selection changes."],
+    notes: "Web Audio API / Signal analysis / Selection-aware results",
+    mediaLabel: "Processing results",
+  },
+  {
+    id: "samplex-download",
+    label: "download.flow",
+    path: "projects > samplex > download.flow",
+    icon: FileDown,
+    kind: "samplex-feature",
+    title: "Export a clean WAV",
+    src: assetPaths.samplexPanel,
+    type: "image",
+    meta: "Download the final selection with a useful filename and no extra desktop step.",
+    bullets: ["Export only the trimmed selection.", "Generate a descriptive filename.", "Track the remaining export allowance."],
+    notes: "WAV encoding / Chrome downloads / Signed license allowance",
+    mediaLabel: "Download workflow",
+  },
 ];
 
 const projectFiles = [...underfitProjectFiles, ...samplexProjectFiles];
@@ -212,6 +268,10 @@ const navigationFileIds = [
   "overview",
   ...underfitAssets.map((asset) => asset.id),
   "samplex-overview",
+  "samplex-recording",
+  "samplex-trimming",
+  "samplex-processing",
+  "samplex-download",
   "education",
   "experience",
   "stack",
@@ -686,6 +746,53 @@ function SampleXOverviewPanel({ onOpenMedia }) {
           <article><strong>Export</strong><p>Save the selected audio as WAV with a clean, descriptive filename.</p></article>
         </div>
       </div>
+    </div>
+  );
+}
+
+function SampleXFeaturePanel({ file, onOpenMedia }) {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <div className="file-document underfit-feature-file samplex-feature-file">
+      <div className="file-copy compact">
+        <span className="file-breadcrumb">{file.path}</span>
+        <p className="eyebrow">SampleX workflow</p>
+        <h3>{file.title}</h3>
+        <p>{file.meta}</p>
+      </div>
+
+      <motion.div
+        key={file.id}
+        className="preview-pane image-preview samplex-workflow-preview"
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
+        animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <button
+          className="preview-media-button"
+          type="button"
+          onClick={() => onOpenMedia({ type: file.type, src: file.src, title: file.title, caption: file.meta })}
+          aria-label={`Open ${file.title} preview`}
+        >
+          <img src={file.src} alt={file.title} loading="lazy" decoding="async" />
+        </button>
+        <div className="preview-caption">
+          <strong>{file.mediaLabel}</strong>
+          <span>{file.meta}</span>
+        </div>
+      </motion.div>
+
+      <aside className="feature-detail-grid">
+        <div className="feature-notes">
+          <p className="eyebrow">Flow</p>
+          <ul>{file.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+        </div>
+        <div className="technical-notes">
+          <span>Technical notes</span>
+          <p>{file.notes}</p>
+        </div>
+      </aside>
     </div>
   );
 }
@@ -1635,6 +1742,9 @@ export function App() {
             ) : null}
             {active.kind === "samplex-overview" ? (
               <SampleXOverviewPanel onOpenMedia={setSelectedMedia} />
+            ) : null}
+            {active.kind === "samplex-feature" ? (
+              <SampleXFeaturePanel file={active} onOpenMedia={setSelectedMedia} />
             ) : null}
             {active.kind === "contact" ? (
               <ContactPanel

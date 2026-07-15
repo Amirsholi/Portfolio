@@ -1032,6 +1032,22 @@ a {
   box-shadow: 0 0 10px rgba(82, 210, 115, 0.72);
 }
 
+.samplex-feature-file .file-copy.compact {
+  max-width: 900px;
+}
+
+.samplex-workflow-preview {
+  border-color: #2b4050;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(66, 184, 255, 0.1), transparent 18rem),
+    #080d13;
+}
+
+.samplex-workflow-preview img {
+  object-fit: contain;
+  background: #080d13;
+}
+
 .overview-brand-preview {
   display: block;
   width: 100%;
