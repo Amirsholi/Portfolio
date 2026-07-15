@@ -601,23 +601,36 @@ function HeroProjectPanel({ selectedProject, onSelectProject, onOpenProject }) {
           transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
           aria-label={`${project.name} summary`}
         >
-          <div className="floating-path">
-            <Code2 size={15} />
-            <span>{project.path}</span>
-          </div>
-          <div className="code-body hero-code-body hero-underfit-code">
-            <div className="hero-console-line">
-              <span>PS C:\Users\Amir\Portfolio&gt;</span>
-              <strong> {project.command}</strong>
+          {selectedProject === "samplex" ? (
+            <div className="hero-samplex-window">
+              <section className="hero-samplex-editor">
+                <div className="hero-samplex-tab"><FileText size={13} /> overview.md <X size={12} /></div>
+                <div className="hero-samplex-content">
+                  <span className="hero-samplex-mark"><AudioWaveform size={30} /></span>
+                  <div><p>Chrome audio recorder</p><h3>SampleX</h3><span>Record, trim and export high-quality WAV samples without leaving the active tab.</span></div>
+                  <button type="button" onClick={() => onOpenProject("samplex")}>Open SampleX project <ChevronRight size={15} /></button>
+                </div>
+              </section>
             </div>
-            <div className="hero-console-output">
-              <span>Project: {project.name}</span>
-              {project.lines.map((line) => <span key={line}>{line}</span>)}
-            </div>
-            <button className="underfit-jump" type="button" onClick={() => onOpenProject(selectedProject)}>
-              {project.button}
-            </button>
-          </div>
+          ) : (
+            <>
+              <div className="floating-path">
+                <Code2 size={15} />
+                <span>{project.path}</span>
+              </div>
+              <div className="code-body hero-code-body hero-underfit-code">
+                <div className="hero-console-line">
+                  <span>PS C:\Users\Amir\Portfolio&gt;</span>
+                  <strong> {project.command}</strong>
+                </div>
+                <div className="hero-console-output">
+                  <span>Project: {project.name}</span>
+                  {project.lines.map((line) => <span key={line}>{line}</span>)}
+                </div>
+                <button className="underfit-jump" type="button" onClick={() => onOpenProject("underfit")}>{project.button}</button>
+              </div>
+            </>
+          )}
         </motion.div>
       </AnimatePresence>
     </motion.div>
@@ -872,7 +885,7 @@ function SampleXFeaturePanel({ file, onOpenMedia }) {
   );
 }
 
-function BuySampleXPanel() {
+function BuySampleXPanel({ onOpenOverview }) {
   const [fulfillment, setFulfillment] = useState(() => {
     const checkoutId = new URLSearchParams(window.location.search).get("checkout_id");
     return checkoutId ? { checkoutId, status: "processing" } : null;
@@ -949,14 +962,14 @@ function BuySampleXPanel() {
       <a className="buy-open-project" href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">Open SampleX project <ExternalLink size={15} /></a>
       <div className="buy-product-stage">
         <section className="buy-product-overview">
-          <div className="buy-product-identity">
+          <button className="buy-product-identity buy-product-link" type="button" onClick={onOpenOverview} aria-label="Open SampleX overview">
             <span className="buy-product-mark"><AudioWaveform size={56} /></span>
             <div className="buy-product-name">
               <div><h3>SampleX</h3><span className="buy-version">v1.2.0</span></div>
               <p>Chrome Audio Recorder</p>
               <span className="buy-rating" aria-label="4.9 out of 5 stars"><span className="buy-stars" aria-hidden="true">{Array.from({ length: 5 }, (_, index) => <Star key={index} size={18} fill="currentColor" />)}</span>4.9 (18K users)</span>
             </div>
-          </div>
+          </button>
           <p className="buy-description">Capture, edit and export high-quality audio from any website. Fast, private and 100% offline.</p>
           <div className="buy-benefit-strip">
             <span><Zap size={19} /><b>One-click export</b></span>
@@ -1993,7 +2006,7 @@ export function App() {
             {active.kind === "samplex-feature" ? (
               <SampleXFeaturePanel file={active} onOpenMedia={setSelectedMedia} />
             ) : null}
-            {active.kind === "buy-samplex" ? <BuySampleXPanel /> : null}
+            {active.kind === "buy-samplex" ? <BuySampleXPanel onOpenOverview={() => openFile("samplex-overview")} /> : null}
             {active.kind === "contact" ? (
               <ContactPanel
                 subject={subject}

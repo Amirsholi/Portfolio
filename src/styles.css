@@ -776,6 +776,19 @@ a {
   box-shadow: 0 10px 26px rgba(34, 166, 226, 0.12);
 }
 
+.hero-project-samplex .hero-underfit-panel { overflow: hidden; border-color: #30485a; background: #111820; }
+.hero-samplex-window { min-height: 244px; }
+.hero-samplex-editor { min-width: 0; display: grid; grid-template-rows: 34px 1fr; background: radial-gradient(circle at 72% 30%, rgba(0,122,204,.1), transparent 44%), #0e151c; }
+.hero-samplex-tab { width: 152px; display: flex; gap: 7px; align-items: center; padding: 0 10px; border-top: 1px solid #168fff; border-right: 1px solid #293847; background: #111820; color: #d9e1e7; font-size: 11px; }
+.hero-samplex-tab svg:last-child { margin-left: auto; color: #647585; }
+.hero-samplex-content { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 15px; align-content: center; padding: 22px 24px 20px; }
+.hero-samplex-mark { width: 58px; height: 58px; display: grid; place-items: center; border: 1px solid #28536d; border-radius: 13px; background: linear-gradient(145deg, #102b3f, #09151f); color: #168fff; }
+.hero-samplex-content p { margin: 0 0 3px; color: #168fff; font: 600 9px "Cascadia Code", monospace; text-transform: uppercase; letter-spacing: .08em; }
+.hero-samplex-content h3 { margin: 0; color: #fff; font-size: 24px; letter-spacing: -.03em; }
+.hero-samplex-content div > span { display: block; margin-top: 6px; color: #9eacb8; font-size: 12px; line-height: 1.45; }
+.hero-samplex-content button { grid-column: 1 / -1; min-height: 38px; display: inline-flex; gap: 8px; align-items: center; justify-content: center; margin-top: 13px; border: 1px solid #168fff; border-radius: 6px; background: #087ac7; color: #fff; cursor: pointer; font-weight: 750; transition: background 160ms ease, transform 160ms ease; }
+.hero-samplex-content button:hover { background: #118fe5; transform: translateY(-1px); }
+
 .hero-underfit-code {
   display: grid;
   gap: 10px;
@@ -1453,6 +1466,10 @@ a {
 
 .buy-product-overview { display: grid; gap: 15px; align-content: center; }
 .buy-samplex-file .buy-product-identity { min-width: 0; gap: 30px; }
+.buy-product-link { padding: 0; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.buy-product-link:focus-visible { outline: 2px solid #168fff; outline-offset: 6px; border-radius: 18px; }
+.buy-product-link:hover .buy-product-mark { border-color: #168fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 0 24px rgba(0,122,204,.18); }
+.buy-product-link:hover h3 { color: #58b8ff; }
 .buy-samplex-file .buy-product-mark {
   width: 108px;
   height: 108px;
