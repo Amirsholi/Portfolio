@@ -25,6 +25,7 @@ import {
   KeyRound,
   LockKeyhole,
   ShieldCheck,
+  Star,
   X,
   ServerCog,
   Terminal,
@@ -945,21 +946,23 @@ function BuySampleXPanel() {
   return (
     <div className="file-document buy-samplex-file">
       <span className="file-breadcrumb buy-breadcrumb">portfolio &gt; Buy SampleX</span>
-      <header className="buy-product-header">
-        <div className="buy-product-identity"><span className="buy-product-mark"><AudioWaveform size={31} /></span><div><h3>SampleX</h3><p>Chrome Audio Recorder</p></div></div>
-        <div className="buy-benefit-strip">
-          <span><Zap size={16} /><b>Instant export</b><small>One click</small></span>
-          <span><AudioWaveform size={16} /><b>WAV quality</b><small>44.1 kHz / 24-bit</small></span>
-          <span><LockKeyhole size={16} /><b>Offline &amp; secure</b><small>Audio stays local</small></span>
-        </div>
-      </header>
-
+      <a className="buy-open-project" href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">Open SampleX project <ExternalLink size={15} /></a>
       <div className="buy-product-stage">
-        <section className="buy-product-pitch">
-          <p className="eyebrow">Export without limits</p>
-          <h3>Record. Trim.<br />Export. Repeat.</h3>
-          <p>Capture, edit and export high-quality audio from the active tab without uploading your recordings.</p>
-          <div className="free-allowance"><strong>75</strong><span>free exports<small>included with SampleX</small></span></div>
+        <section className="buy-product-overview">
+          <div className="buy-product-identity">
+            <span className="buy-product-mark"><AudioWaveform size={56} /></span>
+            <div className="buy-product-name">
+              <div><h3>SampleX</h3><span className="buy-version">v1.2.0</span></div>
+              <p>Chrome Audio Recorder</p>
+              <span className="buy-rating" aria-label="4.9 out of 5 stars"><span className="buy-stars" aria-hidden="true">{Array.from({ length: 5 }, (_, index) => <Star key={index} size={18} fill="currentColor" />)}</span>4.9 (18K users)</span>
+            </div>
+          </div>
+          <p className="buy-description">Capture, edit and export high-quality audio from any website. Fast, private and 100% offline.</p>
+          <div className="buy-benefit-strip">
+            <span><Zap size={19} /><b>One-click export</b></span>
+            <span><AudioWaveform size={18} /><b>WAV 44.1kHz / 24-bit</b></span>
+            <span><CheckCircle2 size={18} /><b>Offline processing</b></span>
+          </div>
         </section>
         <figure className="buy-samplex-preview"><img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform selection and audio analysis interface" /></figure>
       </div>
@@ -969,21 +972,17 @@ function BuySampleXPanel() {
           <span className="plan-badge">Best value</span>
           <div className="license-offer-heading"><AudioWaveform size={24} /><div><strong>SampleX Lifetime</strong><span>One payment. Forever.</span></div></div>
           <strong className="license-price"><small>US$</small>15</strong>
-          <ul><li><Check size={15} /> Unlimited WAV exports</li><li><Check size={15} /> License recovery support</li><li><Check size={15} /> No recurring payment</li></ul>
-          <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5"><LockKeyhole size={17} /> Unlock forever</a>
+          <ul><li><Check size={15} /> Unlimited WAV exports</li><li><Check size={15} /> License recovery support</li><li><Check size={15} /> Future updates included</li><li><Check size={15} /> Use on all your devices</li></ul>
+          <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5"><CreditCard size={20} /> Unlock forever</a>
         </section>
 
         <section className="license-offer export-offer">
           <div className="license-offer-heading"><FileDown size={24} /><div><strong>500 Export Pack</strong><span>Recharge when you need it</span></div></div>
           <strong className="license-price"><small>US$</small>5</strong>
-          <ul><li><Check size={15} /> 500 additional exports</li><li><Check size={15} /> Recharge anytime</li><li><Check size={15} /> One signed code</li></ul>
+          <ul><li><Check size={15} /> 500 additional exports</li><li><Check size={15} /> One signed recharge code</li><li><Check size={15} /> Use anytime</li></ul>
           <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=0540eafa-44ed-4df8-9a16-c3d19067c69d"><CreditCard size={17} /> Buy 500 exports</a>
         </section>
 
-        <aside className="buy-trust-column">
-          <section className="buy-trust-card"><h4>Why choose SampleX?</h4><ul><li><Check size={13} /> No subscriptions</li><li><Check size={13} /> Audio processed locally</li><li><Check size={13} /> One-time payments</li><li><Check size={13} /> No watermark on exports</li></ul></section>
-          <section className="buy-faq"><h4><CircleHelp size={13} /> FAQ</h4><details><summary>Does the license expire?</summary><p>Lifetime does not expire. Export packs remain valid until redeemed.</p></details><details><summary>Can I reinstall SampleX?</summary><p>Lifetime licenses can be restored through Chrome Sync when available.</p></details></section>
-        </aside>
       </div>
       <footer className="buy-checkout-footer"><span><LockKeyhole size={12} /> Payments are processed securely by Polar.</span><span><a href="/samplex/privacy">Privacy</a> · <a href="/samplex/terms">Terms</a> · <a href="/samplex/refunds">Refunds</a> · <a href="/samplex/support">Support</a></span></footer>
     </div>
@@ -1972,13 +1971,15 @@ export function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.24 }}
           >
-            <header className="panel-header">
-              <active.icon size={18} />
-              <div>
-                <strong>{active.label}</strong>
-                <span>{active.path}</span>
-              </div>
-            </header>
+            {active.kind !== "buy-samplex" ? (
+              <header className="panel-header">
+                <active.icon size={18} />
+                <div>
+                  <strong>{active.label}</strong>
+                  <span>{active.path}</span>
+                </div>
+              </header>
+            ) : <span aria-hidden="true" />}
 
             {active.kind === "underfit-overview" ? (
               <UnderfitOverviewPanel onOpenMedia={setSelectedMedia} />

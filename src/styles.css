@@ -1429,6 +1429,113 @@ a {
   margin-top: 13px;
 }
 
+/* Buy SampleX — spacious product checkout */
+.buy-samplex-file {
+  width: min(100%, 1120px);
+  height: 100%;
+  grid-template-rows: 38px minmax(190px, .82fr) minmax(270px, 1.18fr) auto;
+  gap: 10px;
+  align-content: stretch;
+}
+
+.buy-samplex-file .buy-breadcrumb { margin: 0; align-self: center; }
+.buy-open-project { position: absolute; top: -4px; right: 0; display: inline-flex; gap: 8px; align-items: center; min-height: 38px; padding: 0 16px; border-radius: 7px; background: rgba(21, 31, 40, .74); color: #168fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: background 160ms ease, color 160ms ease; }
+.buy-open-project:hover { background: #172b3b; color: #5bb8ff; }
+
+.buy-samplex-file .buy-product-stage {
+  display: grid;
+  grid-template-columns: minmax(360px, .82fr) minmax(470px, 1.18fr);
+  gap: 50px;
+  height: auto;
+  min-height: 0;
+  align-items: center;
+}
+
+.buy-product-overview { display: grid; gap: 15px; align-content: center; }
+.buy-samplex-file .buy-product-identity { min-width: 0; gap: 30px; }
+.buy-samplex-file .buy-product-mark {
+  width: 108px;
+  height: 108px;
+  flex: 0 0 auto;
+  border-color: rgba(45, 122, 173, .48);
+  border-radius: 23px;
+  background: linear-gradient(145deg, #10283b, #08131e);
+  color: #168fff;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04), 0 18px 38px rgba(0,0,0,.28);
+}
+.buy-product-name { display: grid; gap: 7px; min-width: 0; }
+.buy-product-name > div { display: flex; gap: 15px; align-items: center; }
+.buy-samplex-file .buy-product-name h3 { margin: 0; color: #f4f6f9; font-size: clamp(30px, 3vw, 40px); letter-spacing: -.035em; }
+.buy-product-name p { margin: 0; color: #bdc4cc; font-size: 17px; }
+.buy-version { padding: 5px 10px; border: 1px solid rgba(0, 122, 204, .42); border-radius: 999px; background: rgba(0, 98, 164, .16); color: #1798ff; font: 600 13px "Cascadia Code", monospace; }
+.buy-rating { display: flex; gap: 10px; align-items: center; color: #c6cbd2; font-size: 15px; }
+.buy-stars { display: flex; gap: 3px; color: #ffb900; }
+.buy-description { max-width: 510px; margin: 0; color: #d2d6db; font-size: 15px; line-height: 1.48; }
+
+.buy-samplex-file .buy-benefit-strip { display: flex; grid-template-columns: none; gap: 14px; flex-wrap: nowrap; }
+.buy-samplex-file .buy-benefit-strip > span { min-height: 0; display: flex; gap: 8px; align-items: center; padding: 0; border: 0; background: transparent; }
+.buy-samplex-file .buy-benefit-strip svg,
+.buy-samplex-file .buy-benefit-strip > span:nth-child(2) svg { color: #168fff; }
+.buy-samplex-file .buy-benefit-strip b { color: #d9dde2; font-size: 11px; font-weight: 500; white-space: nowrap; }
+
+.buy-samplex-file .buy-samplex-preview { width: 100%; margin: 0; justify-self: stretch; padding: 10px; border: 1px solid #294456; border-radius: 12px; background: rgba(8, 18, 27, .72); box-shadow: 0 22px 52px rgba(0,0,0,.32); }
+.buy-samplex-file .buy-samplex-preview img { display: block; width: 100%; height: auto; max-height: 205px; object-fit: contain; }
+
+.buy-samplex-file .buy-product-options { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; height: auto; min-height: 0; }
+.buy-samplex-file .buy-product-options .license-offer { grid-template-rows: auto auto 1fr auto; gap: 13px; padding: 25px 28px 22px; border: 1px solid #293d4b; border-radius: 12px; background: rgba(12, 25, 35, .58); box-shadow: none; }
+.buy-samplex-file .buy-product-options .lifetime-offer { border-color: #087cc7; background: radial-gradient(circle at 70% 105%, rgba(0,122,204,.12), transparent 48%), rgba(10, 25, 36, .68); box-shadow: 0 0 0 1px rgba(0,122,204,.15), 0 18px 45px rgba(0,0,0,.18); }
+.buy-samplex-file .buy-product-options .license-offer-heading { gap: 18px; }
+.buy-samplex-file .buy-product-options .license-offer-heading svg,
+.buy-samplex-file .buy-product-options .lifetime-offer .license-offer-heading { color: #168fff; }
+.buy-samplex-file .buy-product-options .license-offer-heading strong { font-size: 21px; }
+.buy-samplex-file .buy-product-options .license-offer-heading span { margin-top: 4px; color: #c7ccd2; font-size: 14px; }
+.buy-samplex-file .license-price,
+.buy-samplex-file .buy-product-options .lifetime-offer .license-price { color: #168fff; font-size: 30px; }
+.buy-samplex-file .buy-product-options .license-offer ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px 26px; }
+.buy-samplex-file .buy-product-options .export-offer ul { grid-template-columns: 1fr; }
+.buy-samplex-file .buy-product-options .license-offer li { color: #c9cfd5; font-size: 13px; white-space: normal; }
+.buy-samplex-file .buy-product-options .license-offer li svg { color: #168fff; }
+.buy-samplex-file .buy-product-options .license-offer > a { min-height: 52px; border-color: #087cc7; border-radius: 8px; background: transparent; color: #168fff; font-size: 15px; }
+.buy-samplex-file .buy-product-options .lifetime-offer > a { border-color: #168fff; background: linear-gradient(180deg, #168ff2, #0877db); color: #fff; box-shadow: 0 10px 24px rgba(0,113,220,.2); }
+.buy-samplex-file .buy-product-options .plan-badge { top: 18px; right: 23px; padding: 5px 9px; background: #147fd2; border-radius: 5px; font-size: 8px; }
+
+.buy-samplex-file .buy-checkout-footer { justify-content: center; font-size: 11px; }
+.buy-samplex-file .buy-checkout-footer > span:first-child { display: none; }
+
+@media (max-width: 980px) {
+  .buy-samplex-file { grid-template-rows: auto minmax(170px, .8fr) minmax(220px, 1fr) 78px auto; gap: 13px; }
+  .buy-samplex-file .buy-product-stage { grid-template-columns: minmax(300px, .85fr) minmax(360px, 1.15fr); gap: 24px; }
+  .buy-samplex-file .buy-product-mark { width: 94px; height: 94px; }
+  .buy-product-overview { gap: 13px; }
+  .buy-description { font-size: 14px; }
+  .buy-samplex-file .buy-product-options .license-offer { padding: 18px 20px; gap: 9px; }
+  .buy-samplex-file .buy-product-options .license-offer-heading strong { font-size: 18px; }
+}
+
+@media (max-width: 720px) {
+  .buy-samplex-file { grid-template-rows: auto auto 1fr auto; gap: 10px; }
+  .buy-samplex-file .buy-product-stage { grid-template-columns: 1fr; }
+  .buy-product-overview { display: none; }
+  .buy-open-project { display: none; }
+  .buy-samplex-file .buy-samplex-preview img { max-height: 145px; }
+  .buy-samplex-file .buy-product-options { grid-template-columns: 1fr; gap: 9px; }
+  .buy-samplex-file .buy-product-options .license-offer { padding: 12px 14px; gap: 6px; }
+  .buy-samplex-file .buy-product-options .license-offer-heading strong { font-size: 15px; }
+  .buy-samplex-file .buy-product-options .license-offer-heading span { font-size: 10px; }
+  .buy-samplex-file .buy-product-options .license-offer ul { gap: 5px 12px; }
+  .buy-samplex-file .buy-product-options .license-offer li { font-size: 10px; }
+  .buy-samplex-file .buy-product-options .license-offer > a { min-height: 34px; font-size: 12px; }
+}
+
+@media (max-height: 850px) and (min-width: 721px) {
+  .buy-samplex-file { grid-template-rows: 38px minmax(185px, .85fr) minmax(223px, 1.15fr) auto; gap: 10px; }
+  .buy-product-overview { gap: 10px; }
+  .buy-samplex-file .buy-product-mark { width: 94px; height: 94px; }
+  .buy-samplex-file .buy-samplex-preview img { max-height: 160px; }
+  .buy-samplex-file .buy-product-options .license-offer { gap: 9px; padding: 18px 24px 16px; }
+  .buy-samplex-file .buy-product-options .license-offer > a { min-height: 44px; }
+}
+
 .license-flow li {
   display: grid;
   grid-template-columns: 30px 1fr;
