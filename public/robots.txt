@@ -1,4 +1,4 @@
 ﻿User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-i9t5r1e36-amirs-projects-ceb3ce3f.vercel.app/sitemap.xml
+Sitemap: https://portfolio-plum-delta-48.vercel.app/sitemap.xml
