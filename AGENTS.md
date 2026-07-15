@@ -27,3 +27,6 @@ When implementing from a selected generated mock, treat that image as the source
 - UnderFit file views must fit inside the fixed workspace frame; avoid content continuing under the status bar.
 - The hero UnderFit CTA should first bring the workspace into view on `contact.md`, then transition the active file to `overview.md`.
 - The hero project teaser can use a compact code-like panel with an ASCII dumbbell visual.
+- Portfolio SEO metadata, social preview imagery and browser icons should stay in English and use the supplied AmirSholi() blue/green console-style banner as the link preview image, served as an optimized JPG for WhatsApp/Meta compatibility.
+- SampleX license administration lives at `/admin/samplex`, is excluded from public navigation, and must remain accessible remotely through email-based administrator authentication.
+- SampleX signing keys and Supabase service credentials must remain server-only; the public portfolio and extension may contain only public verification/configuration values.

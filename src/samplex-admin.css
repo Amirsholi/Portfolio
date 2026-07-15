@@ -1,0 +1,58 @@
+:root { --sx-bg:#071017; --sx-panel:#0d1821; --sx-line:#213847; --sx-cyan:#75d9ed; --sx-text:#e5f0f4; --sx-muted:#718895; }
+.sx-login-shell,.sx-admin-shell { min-height:100vh; color:var(--sx-text); background:radial-gradient(circle at 50% 0,rgba(38,126,148,.14),transparent 34%),linear-gradient(145deg,#071017,#04090d 72%); font-family:"Segoe UI Variable","Inter",sans-serif; }
+.sx-login-shell { display:grid; place-items:center; padding:24px; }
+.sx-login-card { width:min(430px,100%); display:grid; justify-items:center; gap:10px; padding:42px 38px 34px; border:1px solid var(--sx-line); border-radius:14px; background:rgba(11,23,31,.94); box-shadow:inset 0 1px 0 rgba(218,244,250,.07),0 30px 90px rgba(0,0,0,.48); text-align:center; }
+.sx-login-icon { width:48px;height:48px;display:grid;place-items:center;margin-bottom:7px;color:var(--sx-cyan);border:1px solid rgba(117,217,237,.24);border-radius:50%;background:#0d2029;box-shadow:0 0 24px rgba(56,190,218,.15); }
+.sx-login-card>small,.sx-section-heading small,.sx-admin-summary small { color:#5f7987;font-size:10px;font-weight:700;letter-spacing:.18em; }
+.sx-login-card h1 { margin:0;font:500 28px/1.1 "Segoe UI Variable",sans-serif; }
+.sx-login-card p { max-width:320px;margin:1px 0 13px;color:#8ca0aa;font-size:13px;line-height:1.55; }
+.sx-login-card form { width:100%;display:grid;gap:9px; }
+.sx-login-card input,.sx-license-creator input,.sx-license-creator select,.sx-license-creator textarea { width:100%;border:1px solid #29414f;border-radius:6px;outline:0;background:#081219;color:#dceaf0; }
+.sx-login-card input { height:42px;padding:0 13px;text-align:center; }
+.sx-login-card input:focus,.sx-license-creator input:focus,.sx-license-creator select:focus,.sx-license-creator textarea:focus { border-color:rgba(117,217,237,.65);box-shadow:0 0 0 3px rgba(69,186,211,.08); }
+.sx-login-card form button,.sx-license-creator form>button { height:42px;border:1px solid rgba(117,217,237,.3);border-radius:6px;background:#12313c;color:#c9f5fc;cursor:pointer;font-size:11px;font-weight:750;letter-spacing:.12em; }
+.sx-login-card form button:disabled,.sx-license-creator button:disabled { opacity:.45;cursor:default; }
+.sx-login-message { color:#d9bd87;font-size:12px; }
+.sx-login-card>a { margin-top:8px;color:#678491;font-size:11px;text-decoration:none; }
+.sx-admin-shell { padding:0 0 60px; }
+.sx-admin-header { height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1180px)/2));border-bottom:1px solid rgba(75,113,132,.23);background:rgba(5,12,17,.8);backdrop-filter:blur(12px); }
+.sx-admin-header>div { display:flex;align-items:center;gap:11px; }
+.sx-admin-header>div>div { display:grid;gap:2px; }
+.sx-admin-header small { color:#657f8c;font-size:9px;font-weight:700;letter-spacing:.18em; }
+.sx-admin-header strong { font-size:14px;font-weight:600; }
+.sx-admin-mark { width:34px;height:34px;display:grid;place-items:center;color:var(--sx-cyan);border:1px solid rgba(117,217,237,.2);border-radius:8px;background:#0c2029; }
+.sx-admin-header>button { display:flex;align-items:center;gap:7px;padding:8px 10px;color:#7f96a1;border:1px solid transparent;background:transparent;cursor:pointer;font-size:11px; }
+.sx-admin-header>button:hover { color:#dcecf1;border-color:#253a46;border-radius:5px; }
+.sx-admin-summary { width:min(1180px,calc(100% - 48px));display:grid;grid-template-columns:repeat(3,1fr);margin:34px auto 18px;border:1px solid var(--sx-line);border-radius:10px;background:rgba(12,24,32,.78);overflow:hidden; }
+.sx-admin-summary>div { min-height:84px;display:grid;align-content:center;gap:6px;padding:0 22px;border-right:1px solid var(--sx-line); }
+.sx-admin-summary>div:last-child { border-right:0; }
+.sx-admin-summary strong { color:#d9f7fc;font:400 24px/1 "Bahnschrift Light","Segoe UI",sans-serif;text-shadow:0 0 12px rgba(85,206,232,.18); }
+.sx-admin-grid { width:min(1180px,calc(100% - 48px));display:grid;grid-template-columns:380px minmax(0,1fr);gap:18px;margin:0 auto; }
+.sx-license-creator,.sx-admin-records { border:1px solid var(--sx-line);border-radius:10px;background:rgba(12,24,32,.88);box-shadow:inset 0 1px 0 rgba(220,242,250,.035); }
+.sx-license-creator { align-self:start;padding:22px; }
+.sx-admin-records { min-height:480px;padding:22px; }
+.sx-section-heading { display:flex;align-items:center;justify-content:space-between;margin-bottom:20px; }
+.sx-section-heading h2 { margin:4px 0 0;font-size:18px;font-weight:600; }
+.sx-section-heading>svg { color:#638895; }
+.sx-section-heading>button { width:30px;height:30px;display:grid;place-items:center;padding:0;color:#68818e;border:1px solid #223743;border-radius:6px;background:#0a151c;cursor:pointer; }
+.sx-license-creator form { display:grid;gap:13px; }
+.sx-license-creator label { display:grid;gap:6px;color:#718b98;font-size:9px;font-weight:700;letter-spacing:.12em; }
+.sx-license-creator label span { margin-left:4px;color:#455c67;font-size:8px; }
+.sx-license-creator input,.sx-license-creator select { height:38px;padding:0 10px; }
+.sx-license-creator textarea { min-height:78px;padding:10px;resize:vertical; }
+.sx-license-creator form>button { display:flex;align-items:center;justify-content:center;gap:8px;margin-top:3px; }
+.sx-created-license { position:relative;margin-top:14px;padding:12px 38px 12px 12px;border:1px solid rgba(117,217,237,.2);border-radius:6px;background:#071218; }
+.sx-created-license code { display:block;overflow:hidden;color:#9edeea;font:9px/1.5 "Cascadia Mono",monospace;text-overflow:ellipsis;white-space:nowrap; }
+.sx-created-license button,.sx-license-row>button { border:0;background:transparent;color:#66838e;cursor:pointer; }
+.sx-created-license button { position:absolute;right:8px;top:8px;width:27px;height:27px;display:grid;place-items:center;padding:0; }
+.sx-generator-message,.sx-admin-error { color:#d7ba84;font-size:11px; }
+.sx-empty { min-height:330px;display:grid;place-items:center;align-content:center;gap:10px;color:#526c78;font-size:12px; }
+.sx-license-list { display:grid;gap:7px; }
+.sx-license-row { min-height:58px;display:grid;grid-template-columns:minmax(0,1fr) 110px 45px;align-items:center;gap:10px;padding:8px 11px;border:1px solid rgba(54,83,98,.55);border-radius:7px;background:rgba(7,15,20,.62); }
+.sx-license-row>div { min-width:0;display:grid;gap:4px; }
+.sx-license-row strong { color:#bceaf2;font-size:10px;letter-spacing:.1em; }
+.sx-license-row span { overflow:hidden;color:#637b87;font-size:10px;text-overflow:ellipsis;white-space:nowrap; }
+.sx-license-row code { color:#8da7b2;font:10px "Cascadia Mono",monospace; }
+.sx-license-row>button { position:relative;width:38px;height:32px;display:grid;place-items:center;justify-self:end; }
+.sx-license-row>button span { position:absolute;right:0;bottom:-9px;color:#82cfdd;font-size:7px; }
+@media (max-width:760px) { .sx-admin-header{padding:0 18px}.sx-admin-summary{width:calc(100% - 28px);margin-top:18px}.sx-admin-summary>div{padding:0 13px}.sx-admin-grid{width:calc(100% - 28px);grid-template-columns:1fr}.sx-license-row{grid-template-columns:minmax(0,1fr) 80px 38px}.sx-login-card{padding:34px 22px}.sx-admin-records{min-height:380px} }
