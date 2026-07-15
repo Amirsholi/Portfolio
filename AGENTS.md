@@ -34,6 +34,6 @@ When implementing from a selected generated mock, treat that image as the source
 - SampleX project files follow the product flow: overview, recording, trimming, processing and download; recording and trimming use replaceable GIF-ready media slots.
 - The hero project access alternates between UnderFit and SampleX in one animated panel; each CTA transitions to its own overview without showing both summaries simultaneously.
 - `Buy SampleX` is a standalone top-level workspace file outside `PROJECTS`, with a checkout-ready lifetime-license view and the public deep link `#buy-samplex`.
-- UnderFit and SampleX folders are mutually exclusive in the explorer. The featured-project panel auto-rotates between them, includes a product preview and uses a deliberately slower scroll-to-overview transition.
-- SampleX checkout presents two future options: a 500-export recharge and a recommended permanent lifetime unlock; prices remain undecided until payment economics are finalized.
-- Previous/next navigation uses directional chevrons plus explicit labels and destination filenames instead of bare angle-bracket links.
+- UnderFit and SampleX folders are mutually exclusive in the explorer. The featured-project panel switches manually and should not contain product preview images or auto-rotation.
+- SampleX checkout presents a US$5 pack of 500 exports and a recommended US$15 permanent lifetime unlock.
+- Previous/next navigation sits outside the VS Code frame at its lateral edges, previewing the destination filename on wide screens; do not place these controls inside the editor content.

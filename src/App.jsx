@@ -544,7 +544,6 @@ const heroProjects = {
       "Status: built for practical daily use",
     ],
     button: "Open UnderFit project",
-    preview: assetPaths.underfitGym,
   },
   samplex: {
     path: "projects/samplex.md",
@@ -557,7 +556,6 @@ const heroProjects = {
       "Status: private beta with signed licensing",
     ],
     button: "Open SampleX project",
-    preview: assetPaths.samplexPanel,
   },
 };
 
@@ -609,7 +607,6 @@ function HeroProjectPanel({ selectedProject, onSelectProject, onOpenProject }) {
               <span>Project: {project.name}</span>
               {project.lines.map((line) => <span key={line}>{line}</span>)}
             </div>
-            <img className="hero-project-preview" src={project.preview} alt={`${project.name} interface`} />
             <button className="underfit-jump" type="button" onClick={() => onOpenProject(selectedProject)}>
               {project.button}
             </button>
@@ -624,17 +621,15 @@ function ModuleNavigation({ previousFile, nextFile, onOpenFile }) {
   if (!previousFile && !nextFile) return null;
 
   return (
-    <nav className="module-nav" aria-label="Project file navigation">
+    <nav className="workspace-side-nav" aria-label="Workspace file navigation">
       {previousFile ? (
-        <button className="previous" type="button" onClick={() => onOpenFile(previousFile.id)}>
+        <button className="workspace-side-link previous" type="button" onClick={() => onOpenFile(previousFile.id)} title={`Previous: ${previousFile.label}`}>
           <ChevronLeft size={17} />
           <span><small>Previous</small><strong>{previousFile.label}</strong></span>
         </button>
-      ) : (
-        <span />
-      )}
+      ) : null}
       {nextFile ? (
-        <button className="next" type="button" onClick={() => onOpenFile(nextFile.id)}>
+        <button className="workspace-side-link next" type="button" onClick={() => onOpenFile(nextFile.id)} title={`Next: ${nextFile.label}`}>
           <span><small>Next</small><strong>{nextFile.label}</strong></span>
           <ChevronRight size={17} />
         </button>
@@ -884,7 +879,7 @@ function BuySampleXPanel() {
           <section className="license-offer">
             <div className="license-offer-heading">
               <FileDown size={24} />
-              <div><strong>500 Export Pack</strong><span>Recharge when you need it</span></div>
+            <div><strong>500 Export Pack</strong><span>US$5 · Recharge when you need it</span></div>
             </div>
             <ul>
               <li><FileDown size={16} /> 500 additional WAV exports</li>
@@ -897,7 +892,7 @@ function BuySampleXPanel() {
             <span className="plan-badge">Best value</span>
             <div className="license-offer-heading">
               <AudioWaveform size={24} />
-              <div><strong>SampleX Lifetime</strong><span>One payment · Permanent unlock</span></div>
+              <div><strong>SampleX Lifetime</strong><span>US$15 · Permanent unlock</span></div>
             </div>
             <ul>
               <li><FileDown size={16} /> Unlimited WAV exports</li>
@@ -1653,19 +1648,8 @@ export function App() {
       resolve();
       return;
     }
-    const start = window.scrollY;
-    const distance = target - start;
-    const startedAt = performance.now();
-    const tick = (now) => {
-      const progress = Math.min(1, (now - startedAt) / duration);
-      const eased = progress < 0.5
-        ? 4 * progress * progress * progress
-        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-      window.scrollTo({ top: start + distance * eased });
-      if (progress < 1) window.requestAnimationFrame(tick);
-      else resolve();
-    };
-    window.requestAnimationFrame(tick);
+    window.scrollTo({ top: target, behavior: "smooth" });
+    window.setTimeout(resolve, duration);
   });
 
   const getWorkbenchTarget = () => {
@@ -1692,7 +1676,7 @@ export function App() {
     setIsProgrammaticFocus(true);
     setActiveFile("contact");
     window.setTimeout(async () => {
-      await scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 1850);
+      await scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 1350);
       window.setTimeout(() => {
         setActiveFile(targetFile);
         setFolders((current) => ({
@@ -1703,7 +1687,7 @@ export function App() {
         }));
         window.history.replaceState(null, "", project === "samplex" ? "#samplex" : window.location.pathname);
         window.setTimeout(() => setIsProgrammaticFocus(false), 520);
-      }, shouldReduceMotion ? 0 : 420);
+      }, shouldReduceMotion ? 0 : 520);
     }, shouldReduceMotion ? 0 : 80);
   };
 
@@ -1726,14 +1710,6 @@ export function App() {
     window.addEventListener("hashchange", openDeepLink);
     return () => window.removeEventListener("hashchange", openDeepLink);
   }, [shouldReduceMotion]);
-
-  useEffect(() => {
-    if (shouldReduceMotion || isProgrammaticFocus) return undefined;
-    const timer = window.setTimeout(() => {
-      setHeroProject((current) => current === "underfit" ? "samplex" : "underfit");
-    }, 7200);
-    return () => window.clearTimeout(timer);
-  }, [heroProject, isProgrammaticFocus, shouldReduceMotion]);
 
   const toggleFolder = (folder) => {
     setFolders((current) => {
@@ -1870,12 +1846,18 @@ export function App() {
           />
         </motion.section>
 
-        <motion.section
-          ref={workbenchRef}
-          className="workbench"
-          aria-label="Amir Sholi workspace"
-          style={workspaceScrollStyle}
-        >
+        <div className="workbench-frame">
+          <ModuleNavigation
+            previousFile={previousActiveFile}
+            nextFile={nextActiveFile}
+            onOpenFile={openFile}
+          />
+          <motion.section
+            ref={workbenchRef}
+            className="workbench"
+            aria-label="Amir Sholi workspace"
+            style={workspaceScrollStyle}
+          >
         <aside className="activity-bar" aria-label="Workspace sections">
           {[
             workspaceFiles.find((file) => file.id === "overview"),
@@ -1949,11 +1931,6 @@ export function App() {
             {active.kind === "education" ? <EducationPanel onOpenDetail={setSelectedDetail} /> : null}
             {active.kind === "experience" ? <ExperiencePanel onOpenDetail={setSelectedDetail} /> : null}
             {active.kind === "stack" ? <StackPanel onOpenDetail={setSelectedDetail} /> : null}
-            <ModuleNavigation
-              previousFile={previousActiveFile}
-              nextFile={nextActiveFile}
-              onOpenFile={openFile}
-            />
           </motion.div>
         </section>
         <footer className="status-bar" aria-label="Workspace status">
@@ -1963,7 +1940,8 @@ export function App() {
           <span>React</span>
           <span>Vite</span>
         </footer>
-        </motion.section>
+          </motion.section>
+        </div>
       </section>
     </main>
     <DetailModal
