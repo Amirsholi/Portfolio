@@ -938,38 +938,74 @@ export function SampleXProductPage() {
   }
 
   return (
-    <div className="file-document buy-samplex-file">
-      <span className="file-breadcrumb buy-breadcrumb">amirsholi.dev &gt; samplex</span>
-      <a className="buy-open-project" href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">Open SampleX project <ExternalLink size={15} /></a>
-      <div className="buy-product-stage">
-        <section className="buy-product-overview">
-          <div className="buy-product-identity">
-            <span className="buy-product-mark"><AudioWaveform size={56} /></span>
-            <div className="buy-product-name">
-              <div><h3>SampleX</h3><span className="buy-version">Private beta</span></div>
-              <p>Tab Audio Sampler for Chrome</p>
-            </div>
-          </div>
-          <p className="buy-description">Record permitted audio from the active tab, trim the useful moment, analyze it locally and export a clean WAV.</p>
-          <div className="buy-benefit-strip">
-            <span><Zap size={19} /><b>75 free WAV exports</b></span>
-            <span><AudioWaveform size={18} /><b>BPM, key and tone</b></span>
-            <span><CheckCircle2 size={18} /><b>Local processing</b></span>
-          </div>
-        </section>
-        <figure className="buy-samplex-preview"><img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform selection and audio analysis interface" /></figure>
-      </div>
+    <main className="samplex-landing">
+      <nav className="samplex-nav" aria-label="SampleX navigation">
+        <a className="samplex-nav-brand" href="/"><AudioWaveform size={22} /><span>SampleX</span></a>
+        <div>
+          <span className="samplex-beta">Private beta</span>
+          <a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">GitHub <ExternalLink size={14} /></a>
+        </div>
+      </nav>
 
-      <div className="buy-product-options single-license-option">
-        <section className="license-offer featured lifetime-offer">
-          <div className="license-offer-heading"><AudioWaveform size={24} /><div><strong>SampleX Lifetime</strong><span>One payment. Forever.</span></div></div>
-          <strong className="license-price"><small>US$</small>15</strong>
-          <ul><li><Check size={15} /> Unlimited WAV exports</li><li><Check size={15} /> Signed offline activation</li><li><Check size={15} /> Manual license recovery</li><li><Check size={15} /> Future SampleX updates</li></ul>
-          <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5"><CreditCard size={20} /> Unlock forever</a>
+      <section className="samplex-hero">
+        <div className="samplex-hero-copy">
+          <p className="samplex-kicker">A faster path from browser audio to your DAW</p>
+          <h1>Find the moment.<br /><span>Keep the sample.</span></h1>
+          <p className="samplex-lead">Capture permitted audio from the active Chrome tab, isolate the useful section and leave with a clean WAV plus the musical context you need.</p>
+          <div className="samplex-hero-actions">
+            <a className="samplex-primary-action" href="#lifetime"><Zap size={18} /> Start with 75 free exports</a>
+            <a className="samplex-secondary-action" href="#workflow">See the workflow <ChevronDown size={17} /></a>
+          </div>
+          <div className="samplex-trust-line">
+            <span><ShieldCheck size={16} /> Processed locally</span>
+            <span><CheckCircle2 size={16} /> No account required</span>
+            <span><AudioWaveform size={16} /> BPM, key and tone</span>
+          </div>
+        </div>
+
+        <figure className="samplex-hero-product">
+          <div className="samplex-window-bar"><span /><span /><span /><small>sample selected</small></div>
+          <img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform editor with a selected audio region and musical analysis" />
+          <figcaption><span>Everything happens in the extension.</span><strong>Audio stays on your machine.</strong></figcaption>
+        </figure>
+      </section>
+
+      <section className="samplex-workflow" id="workflow">
+        <header><p className="samplex-kicker">One focused workflow</p><h2>From tab to WAV without breaking your flow.</h2></header>
+        <div className="samplex-workflow-steps">
+          <article><span>01</span><div><AudioWaveform size={22} /><h3>Capture</h3><p>Record permitted audio directly from the active tab.</p></div></article>
+          <article><span>02</span><div><Workflow size={22} /><h3>Shape</h3><p>Trim the exact region and inspect BPM, key and tone.</p></div></article>
+          <article><span>03</span><div><FileDown size={22} /><h3>Export</h3><p>Download a clean WAV ready to drag into your project.</p></div></article>
+        </div>
+      </section>
+
+      <section className="samplex-license-section" id="lifetime">
+        <div className="samplex-license-copy">
+          <p className="samplex-kicker">Simple by design</p>
+          <h2>Try the complete workflow first.</h2>
+          <p>Your first 75 WAV exports are included. When they run out, recording, trimming and analysis keep working; only export asks for a license.</p>
+          <div className="samplex-license-note"><LockKeyhole size={18} /><span><strong>Offline activation.</strong> Your signed key is stored locally and does not require a subscription or recurring connection.</span></div>
+        </div>
+
+        <section className="samplex-price-card" aria-label="SampleX Lifetime license">
+          <div className="samplex-price-heading"><span>Lifetime license</span><small>One payment</small></div>
+          <div className="samplex-price"><small>US$</small><strong>15</strong></div>
+          <ul>
+            <li><Check size={16} /> Unlimited WAV exports</li>
+            <li><Check size={16} /> Signed offline activation</li>
+            <li><Check size={16} /> Future SampleX updates</li>
+            <li><Check size={16} /> Manual license recovery</li>
+          </ul>
+          <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5"><CreditCard size={19} /> Unlock SampleX forever</a>
+          <small className="samplex-payment-note"><LockKeyhole size={12} /> Secure checkout by Polar</small>
         </section>
-      </div>
-      <footer className="buy-checkout-footer"><span><LockKeyhole size={12} /> Payments are processed securely by Polar.</span><span><a href="/samplex/privacy">Privacy</a> · <a href="/samplex/terms">Terms</a> · <a href="/samplex/refunds">Refunds</a> · <a href="/samplex/support">Support</a></span></footer>
-    </div>
+      </section>
+
+      <footer className="samplex-footer">
+        <span>SampleX by Amir Sholi</span>
+        <div><a href="/samplex/privacy">Privacy</a><a href="/samplex/terms">Terms</a><a href="/samplex/refunds">Refunds</a><a href="/samplex/support">Support</a></div>
+      </footer>
+    </main>
   );
 }
 

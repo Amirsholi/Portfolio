@@ -3431,6 +3431,114 @@ a {
   .samplex-legal-title > svg { display: none; }
 }
 
+/* SampleX standalone product page */
+.samplex-landing {
+  --samplex-blue: #168fff;
+  --samplex-cyan: #57c7ff;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 0 clamp(22px, 5vw, 76px);
+  background: radial-gradient(circle at 78% 12%, rgba(22,143,255,.14), transparent 29rem), radial-gradient(circle at 12% 62%, rgba(38,201,169,.06), transparent 28rem), #080d13;
+  color: #edf4f8;
+}
+.samplex-landing a { color: inherit; }
+.samplex-nav { display:flex; width:min(1180px,100%); min-height:76px; margin:0 auto; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(119,159,181,.15); }
+.samplex-nav-brand,.samplex-nav>div,.samplex-nav>div a { display:flex; gap:9px; align-items:center; }
+.samplex-nav-brand { color:#f8fbfd; font-size:16px; font-weight:780; text-decoration:none; }
+.samplex-nav-brand svg { color:var(--samplex-blue); }
+.samplex-nav>div { gap:18px; }
+.samplex-nav>div a { color:#8ca5b3; font:600 12px "Cascadia Code",monospace; text-decoration:none; }
+.samplex-nav>div a:hover { color:#d8f3ff; }
+.samplex-beta { padding:5px 9px; border:1px solid rgba(22,143,255,.34); border-radius:999px; background:rgba(22,143,255,.09); color:#68baff; font:650 10px "Cascadia Code",monospace; text-transform:uppercase; letter-spacing:.08em; }
+.samplex-hero { display:grid; width:min(1180px,100%); min-height:610px; margin:0 auto; grid-template-columns:minmax(0,.88fr) minmax(480px,1.12fr); gap:clamp(48px,7vw,94px); align-items:center; }
+.samplex-hero-copy { display:grid; gap:25px; align-content:center; }
+.samplex-kicker { margin:0; color:var(--samplex-cyan); font:700 11px "Cascadia Code",monospace; letter-spacing:.12em; text-transform:uppercase; }
+.samplex-hero h1 { margin:0; color:#f7fafc; font-size:clamp(48px,6.2vw,78px); line-height:.98; letter-spacing:-.055em; }
+.samplex-hero h1 span { color:var(--samplex-blue); }
+.samplex-lead { max-width:590px; margin:0; color:#aebdc6; font-size:clamp(16px,1.55vw,19px); line-height:1.66; }
+.samplex-hero-actions { display:flex; gap:13px; align-items:center; flex-wrap:wrap; }
+.samplex-primary-action,.samplex-secondary-action { display:inline-flex; min-height:48px; padding:0 20px; gap:9px; align-items:center; justify-content:center; border-radius:8px; font-size:13px; font-weight:760; text-decoration:none; transition:transform 160ms ease,border-color 160ms ease,background 160ms ease; }
+.samplex-primary-action { background:linear-gradient(180deg,#219aff,#0877db); color:#fff!important; box-shadow:0 13px 30px rgba(0,113,220,.24); }
+.samplex-secondary-action { border:1px solid rgba(115,154,177,.28); color:#b6c7d0!important; }
+.samplex-primary-action:hover,.samplex-secondary-action:hover { transform:translateY(-2px); }
+.samplex-secondary-action:hover { border-color:rgba(87,199,255,.55); background:rgba(33,76,103,.2); }
+.samplex-trust-line { display:flex; gap:18px; flex-wrap:wrap; color:#708895; }
+.samplex-trust-line span { display:flex; gap:6px; align-items:center; font-size:11px; }
+.samplex-trust-line svg { color:#48b889; }
+.samplex-hero-product { position:relative; margin:0; padding:12px; border:1px solid rgba(74,132,166,.36); border-radius:16px; background:linear-gradient(155deg,rgba(16,31,43,.92),rgba(7,14,20,.96)); box-shadow:0 35px 90px rgba(0,0,0,.48),0 0 70px rgba(22,143,255,.07); transform:perspective(1100px) rotateY(-2deg) rotateX(1deg); }
+.samplex-hero-product::before { position:absolute; z-index:-1; inset:12% -9% -12% 18%; border-radius:50%; background:rgba(17,126,211,.14); filter:blur(54px); content:""; }
+.samplex-window-bar { display:flex; height:31px; gap:6px; align-items:center; padding:0 3px 10px; }
+.samplex-window-bar>span { width:7px; height:7px; border-radius:50%; background:#31414d; }
+.samplex-window-bar small { margin-left:auto; color:#607784; font:600 9px "Cascadia Code",monospace; }
+.samplex-hero-product img { display:block; width:100%; border-radius:9px; }
+.samplex-hero-product figcaption { display:flex; padding:13px 5px 3px; align-items:center; justify-content:space-between; color:#708591; font-size:11px; }
+.samplex-hero-product figcaption strong { color:#a9c3cf; font-weight:650; }
+.samplex-workflow { width:min(1180px,100%); margin:0 auto; padding:96px 0 104px; border-top:1px solid rgba(119,159,181,.14); }
+.samplex-workflow>header { display:grid; max-width:720px; gap:12px; }
+.samplex-workflow h2,.samplex-license-copy h2 { margin:0; color:#eef5f8; font-size:clamp(31px,4vw,48px); line-height:1.08; letter-spacing:-.04em; }
+.samplex-workflow-steps { display:grid; margin-top:54px; grid-template-columns:repeat(3,1fr); }
+.samplex-workflow-steps article { display:grid; min-height:176px; grid-template-columns:42px 1fr; gap:16px; padding:0 34px; border-left:1px solid rgba(119,159,181,.18); }
+.samplex-workflow-steps article:first-child { padding-left:0; border-left:0; }
+.samplex-workflow-steps article>span { color:#4d6674; font:700 11px "Cascadia Code",monospace; }
+.samplex-workflow-steps article div { display:grid; align-content:start; gap:11px; }
+.samplex-workflow-steps svg { color:var(--samplex-blue); }
+.samplex-workflow-steps h3 { margin:0; color:#eaf2f6; font-size:20px; }
+.samplex-workflow-steps p { max-width:240px; margin:0; color:#8197a3; font-size:14px; line-height:1.65; }
+.samplex-license-section { display:grid; width:min(1180px,100%); margin:0 auto 88px; padding:clamp(34px,6vw,72px); grid-template-columns:minmax(0,1fr) minmax(340px,.72fr); gap:clamp(44px,8vw,110px); align-items:center; border:1px solid rgba(66,121,151,.27); border-radius:20px; background:linear-gradient(135deg,rgba(15,29,40,.9),rgba(7,14,20,.92)); box-shadow:inset 0 1px 0 rgba(255,255,255,.025); }
+.samplex-license-copy { display:grid; gap:18px; }
+.samplex-license-copy>p:not(.samplex-kicker) { max-width:590px; margin:0; color:#91a5b0; font-size:15px; line-height:1.72; }
+.samplex-license-note { display:flex; max-width:570px; margin-top:6px; padding-top:21px; gap:12px; align-items:flex-start; border-top:1px solid rgba(119,159,181,.15); color:#8196a1; font-size:12px; line-height:1.55; }
+.samplex-license-note svg { flex:0 0 auto; color:#48b889; }
+.samplex-license-note strong { color:#c9d8df; }
+.samplex-price-card { display:grid; gap:22px; padding:28px; border:1px solid rgba(22,143,255,.48); border-radius:14px; background:radial-gradient(circle at 80% 110%,rgba(22,143,255,.14),transparent 50%),#0b151e; box-shadow:0 24px 54px rgba(0,0,0,.3); }
+.samplex-price-heading { display:flex; align-items:center; justify-content:space-between; }
+.samplex-price-heading span { color:#dce8ed; font-size:15px; font-weight:760; }
+.samplex-price-heading small { color:#66808e; font:650 9px "Cascadia Code",monospace; text-transform:uppercase; letter-spacing:.09em; }
+.samplex-price { display:flex; gap:8px; align-items:flex-start; color:var(--samplex-blue); }
+.samplex-price small { padding-top:9px; font:700 11px "Cascadia Code",monospace; }
+.samplex-price strong { font-size:58px; line-height:.9; letter-spacing:-.055em; }
+.samplex-price-card ul { display:grid; margin:0; padding:20px 0; gap:12px; border-top:1px solid rgba(119,159,181,.14); border-bottom:1px solid rgba(119,159,181,.14); list-style:none; }
+.samplex-price-card li { display:flex; gap:9px; align-items:center; color:#aebec6; font-size:12px; }
+.samplex-price-card li svg { color:#48b889; }
+.samplex-price-card>a { display:flex; min-height:52px; padding:0 18px; gap:9px; align-items:center; justify-content:center; border-radius:8px; background:linear-gradient(180deg,#219aff,#0877db); color:#fff; font-size:14px; font-weight:780; text-decoration:none; box-shadow:0 13px 28px rgba(0,113,220,.22); transition:transform 160ms ease; }
+.samplex-price-card>a:hover { transform:translateY(-2px); }
+.samplex-payment-note { display:flex; gap:6px; align-items:center; justify-content:center; color:#5e7581; font-size:9px; }
+.samplex-footer { display:flex; width:min(1180px,100%); min-height:90px; margin:0 auto; align-items:center; justify-content:space-between; border-top:1px solid rgba(119,159,181,.13); color:#536b78; font:600 10px "Cascadia Code",monospace; }
+.samplex-footer div { display:flex; gap:20px; }
+.samplex-footer a { color:#6d8490; text-decoration:none; }
+.samplex-footer a:hover { color:#b6d3df; }
+.samplex-result-page { display:grid; place-items:center; }
+.samplex-result-page .buy-samplex-file { min-height:min(680px,calc(100vh - 80px)); }
+@media (max-width:900px) {
+  .samplex-hero { min-height:auto; padding:80px 0 90px; grid-template-columns:1fr; }
+  .samplex-hero-copy { max-width:680px; }
+  .samplex-hero-product { max-width:680px; transform:none; }
+  .samplex-workflow-steps { gap:24px; }
+  .samplex-workflow-steps article { grid-template-columns:1fr; padding:0 20px; }
+  .samplex-license-section { grid-template-columns:1fr; }
+  .samplex-price-card { max-width:500px; }
+}
+@media (max-width:620px) {
+  .samplex-landing { padding:0 18px; }
+  .samplex-nav { min-height:66px; }
+  .samplex-nav>div { gap:10px; }
+  .samplex-nav>div a { font-size:0; }
+  .samplex-nav>div a svg { width:17px; height:17px; }
+  .samplex-hero { padding:60px 0 74px; gap:52px; }
+  .samplex-hero h1 { font-size:clamp(45px,14vw,62px); }
+  .samplex-hero-actions { align-items:stretch; flex-direction:column; }
+  .samplex-trust-line { display:grid; grid-template-columns:1fr 1fr; }
+  .samplex-hero-product { padding:8px; }
+  .samplex-hero-product figcaption { align-items:flex-start; flex-direction:column; gap:4px; }
+  .samplex-workflow { padding:74px 0; }
+  .samplex-workflow-steps { margin-top:42px; grid-template-columns:1fr; gap:34px; }
+  .samplex-workflow-steps article { min-height:0; padding:0 0 30px; grid-template-columns:32px 1fr; border:0; border-bottom:1px solid rgba(119,159,181,.16); }
+  .samplex-license-section { margin-bottom:46px; padding:28px 20px; gap:36px; border-radius:14px; }
+  .samplex-price-card { padding:22px 18px; }
+  .samplex-footer { min-height:118px; align-items:flex-start; justify-content:center; flex-direction:column; gap:18px; }
+  .samplex-footer div { gap:13px; flex-wrap:wrap; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
