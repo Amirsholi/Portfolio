@@ -843,6 +843,7 @@ function SampleXFeaturePanel({ file, onOpenMedia }) {
 }
 
 export function SampleXProductPage() {
+  const demoTrialActive = true;
   const [fulfillment, setFulfillment] = useState(() => {
     const checkoutId = new URLSearchParams(window.location.search).get("checkout_id");
     return checkoutId ? { checkoutId, status: "processing" } : null;
@@ -946,6 +947,7 @@ export function SampleXProductPage() {
           <p className="samplex-kicker">A faster path from browser audio to your DAW</p>
           <h1>Find the moment.<br /><span>Keep the sample.</span></h1>
           <p className="samplex-lead">Capture permitted audio from the active Chrome tab, isolate the useful section and leave with a clean WAV plus the musical context you need.</p>
+          <p className="samplex-demo-version"><span /> Demo Trial Version · 75 WAV exports included</p>
           <div className="samplex-hero-actions">
             <a className="samplex-primary-action" href="#demo-trial" onClick={registerDemoInterest}><FileDown size={18} /> Demo Trial</a>
           </div>
@@ -1018,7 +1020,7 @@ export function SampleXProductPage() {
         <div className="samplex-local-facts"><span><strong>Active tab</strong><small>User-initiated capture</small></span><span><strong>On device</strong><small>Local processing</small></span><span><strong>Signed key</strong><small>Offline activation</small></span></div>
       </section>
 
-      <section className="samplex-license-section" id="lifetime">
+      {!demoTrialActive && <section className="samplex-license-section" id="lifetime">
         <div className="samplex-license-copy">
           <p className="samplex-kicker">Simple by design</p>
           <h2>Try the complete workflow first.</h2>
@@ -1038,7 +1040,7 @@ export function SampleXProductPage() {
           <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5" onClick={() => void trackSampleXEvent("checkout_interest")}><CreditCard size={19} /> Unlock SampleX forever</a>
           <small className="samplex-payment-note"><LockKeyhole size={12} /> Secure checkout by Polar</small>
         </section>
-      </section>
+      </section>}
 
       <footer className="terminal-footer samplex-terminal-footer" aria-label="SampleX footer navigation">
         <div className="terminal-tabs" aria-label="Terminal panel tabs"><span className="active">TERMINAL</span><span>OUTPUT</span><span>SAMPLEX</span></div>

@@ -3654,6 +3654,8 @@ a {
 .samplex-hero h1 { margin:0; color:#f7fafc; font-size:clamp(48px,6.2vw,78px); line-height:.98; letter-spacing:-.055em; }
 .samplex-hero h1 span { color:var(--samplex-blue); }
 .samplex-lead { max-width:590px; margin:0; color:#aebdc6; font-size:clamp(16px,1.55vw,19px); line-height:1.66; }
+.samplex-demo-version { display:flex; width:fit-content; margin:-8px 0 -10px; padding:7px 10px; gap:8px; align-items:center; border:1px solid rgba(87,199,255,.22); border-radius:6px; background:rgba(20,80,106,.15); color:#92cde6; font:700 10px "Cascadia Code",monospace; letter-spacing:.07em; text-transform:uppercase; }
+.samplex-demo-version span { width:7px; height:7px; border-radius:50%; background:#45c390; box-shadow:0 0 10px rgba(69,195,144,.48); }
 .samplex-hero-actions { display:flex; gap:13px; align-items:center; flex-wrap:wrap; }
 .samplex-primary-action { display:inline-flex; min-height:48px; padding:0 20px; gap:9px; align-items:center; justify-content:center; border-radius:8px; font-size:13px; font-weight:760; text-decoration:none; transition:transform 160ms ease,border-color 160ms ease,background 160ms ease; }
 .samplex-primary-action { background:linear-gradient(180deg,#219aff,#0877db); color:#fff!important; box-shadow:0 13px 30px rgba(0,113,220,.24); }
