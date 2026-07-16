@@ -142,13 +142,13 @@ const underfitAssets = [
 
 const introText = [
   "Amir Sholi",
-  "Software Developer | React, Electron & AI-assisted Workflows",
-  "I build practical software for real workflows.",
-  "Desktop systems, product interfaces, data validation and automation.",
-  "Featured build: UnderFit Desktop App.",
+  "Software Developer | React, Electron & Browser Products",
+  "I build practical products for real workflows.",
+  "Desktop operations, browser tools and reliable local-first interfaces.",
+  "Featured products: UnderFit and SampleX.",
 ];
 
-const heroBadges = ["React / Next.js", "Electron + SQLite", "QA & Data validation"];
+const heroBadges = ["React + TypeScript", "Electron + SQLite", "Chrome MV3 + Web Audio"];
 
 const assetPaths = {
   profile: "/assets/profile.jpg",
@@ -389,22 +389,20 @@ const experience = [
 
 const terminalColumns = [
   {
-    title: "Summary",
+    title: "Products",
     lines: [
-      "Real client: UnderFit Gym",
-      "Frontend: React",
-      "Desktop: Electron",
-      "Database: SQLite",
-      "AI workflows: In progress",
+      "UnderFit: gym operations desktop app",
+      "SampleX: local-first Chrome audio sampler",
+      "Built around real user workflows",
     ],
   },
   {
-    title: "Git status",
-    lines: ["Branch: main", "Status: up to date", "Working tree: clean"],
+    title: "Toolkit",
+    lines: ["React + TypeScript", "Electron + SQLite", "Chrome MV3 + Web Audio"],
   },
   {
-    title: "Last commit",
-    lines: ["commit 6fd8a14", "Author: Amir Sholi", "feat:", "solving real-world problems"],
+    title: "Profile",
+    lines: ["Amir Sholi", "Montevideo, Uruguay", "Product interfaces and workflow software"],
   },
 ];
 
@@ -536,10 +534,10 @@ const heroProjects = {
     command: "open underfit --summary",
     name: "UnderFit Desktop App",
     lines: [
-      "Context: real gym workflow system",
-      "Core: memberships, renewals, access validation",
-      "Ops: stock, sales and cash control",
-      "Status: built for practical daily use",
+      "Product: desktop operations for a real gym",
+      "Workflows: memberships, access and renewals",
+      "Operations: cash, sales and stock control",
+      "Stack: Electron, React and SQLite",
     ],
     button: "Open UnderFit project",
   },
@@ -548,10 +546,10 @@ const heroProjects = {
     command: "open samplex --summary",
     name: "SampleX Chrome Extension",
     lines: [
-      "Context: capture audio from the active tab",
-      "Core: record, trim and analyze samples",
-      "Output: clean WAV export",
-      "Status: private beta with signed licensing",
+      "Product: local-first Chrome audio sampler",
+      "Workflow: capture, trim and analyze",
+      "Output: selection-aware WAV export",
+      "Stack: React, TypeScript and Chrome MV3",
     ],
     button: "Open SampleX project",
   },
@@ -874,6 +872,18 @@ export function SampleXProductPage() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    const previousTitle = document.title;
+    const description = document.querySelector('meta[name="description"]');
+    const previousDescription = description?.getAttribute("content");
+    document.title = "SampleX — Turn browser audio into clean WAV samples";
+    description?.setAttribute("content", "Capture permitted audio from the active Chrome tab, trim it, analyze BPM, key and tone, and export a clean WAV locally with SampleX.");
+    return () => {
+      document.title = previousTitle;
+      if (description && previousDescription) description.setAttribute("content", previousDescription);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!fulfillment?.checkoutId || fulfillment.status !== "processing") return undefined;
     let cancelled = false;
     let attempts = 0;
@@ -977,6 +987,38 @@ export function SampleXProductPage() {
           <article><span>02</span><div><Workflow size={22} /><h3>Shape</h3><p>Trim the exact region and inspect BPM, key and tone.</p></div></article>
           <article><span>03</span><div><FileDown size={22} /><h3>Export</h3><p>Download a clean WAV ready to drag into your project.</p></div></article>
         </div>
+      </section>
+
+      <section className="samplex-product-tour" aria-labelledby="samplex-tour-title">
+        <header className="samplex-tour-header">
+          <div><p className="samplex-kicker">The real workflow</p><h2 id="samplex-tour-title">A compact sampler that stays out of the way.</h2></div>
+          <p>Open SampleX over the tab you are already using. Record, shape and understand the useful moment without sending the audio to another service.</p>
+        </header>
+
+        <div className="samplex-tour-grid">
+          <article className="samplex-tour-card samplex-tour-card-wide">
+            <div className="samplex-tour-copy"><span>01 / Capture</span><h3>Record the active tab on purpose.</h3><p>Capture starts only after you open SampleX and press REC. The live waveform keeps the recording readable while you listen.</p></div>
+            <div className="samplex-tour-media"><img src="/assets/samplex/recording.gif" alt="SampleX recording audio from the active Chrome tab" loading="lazy" decoding="async" /></div>
+          </article>
+          <article className="samplex-tour-card">
+            <div className="samplex-tour-copy"><span>02 / Shape</span><h3>Keep only the moment.</h3><p>Move the selection handles, preview the loop and refine the exact region before export.</p></div>
+            <div className="samplex-tour-media"><img src="/assets/samplex/trimming.gif" alt="Trimming a selected audio region in SampleX" loading="lazy" decoding="async" /></div>
+          </article>
+          <article className="samplex-tour-card">
+            <div className="samplex-tour-copy"><span>03 / Understand</span><h3>See useful musical context.</h3><p>BPM, key and dominant tone are calculated for the selected region, right where you edit it.</p></div>
+            <div className="samplex-tour-media"><img src="/assets/samplex/processing.gif" alt="SampleX analyzing BPM, musical key and dominant frequency" loading="lazy" decoding="async" /></div>
+          </article>
+          <article className="samplex-tour-card samplex-tour-card-wide samplex-tour-card-export">
+            <div className="samplex-tour-copy"><span>04 / Export</span><h3>Leave with a clean WAV.</h3><p>Export the selected region and drag it into your DAW. No project setup, account or cloud upload required.</p></div>
+            <div className="samplex-tour-media"><img src="/assets/samplex/download.gif" alt="Exporting a trimmed WAV sample from SampleX" loading="lazy" decoding="async" /></div>
+          </article>
+        </div>
+      </section>
+
+      <section className="samplex-local-section" aria-label="SampleX privacy and architecture">
+        <div className="samplex-local-mark"><ShieldCheck size={34} /><span>LOCAL<br />AUDIO</span></div>
+        <div className="samplex-local-copy"><p className="samplex-kicker">Private by architecture</p><h2>Your recording does not become our data.</h2><p>Waveform editing and musical analysis happen inside the browser. SampleX does not upload recordings, waveform data or analysis results to Amir Sholi's servers.</p></div>
+        <div className="samplex-local-facts"><span><strong>Active tab</strong><small>User-initiated capture</small></span><span><strong>On device</strong><small>Local processing</small></span><span><strong>Signed key</strong><small>Offline activation</small></span></div>
       </section>
 
       <section className="samplex-license-section" id="lifetime">
@@ -1538,7 +1580,7 @@ function CollapsibleFileExplorer({ activeFile, onOpenFile, folders, onToggleFold
           ))}
         </div>
 
-        <div className="file-tree-folder">
+        <div className="file-tree-folder profile-tree-group">
           <FolderToggle
             label="PROFILE"
             open={folders.profile}
@@ -1873,7 +1915,7 @@ export function App() {
           </span>
           <div>
             <strong>Amir Sholi</strong>
-            <small>React, Electron & AI workflows</small>
+            <small>React, Electron & browser products</small>
           </div>
         </div>
         <div className="command-palette">
@@ -1909,10 +1951,10 @@ export function App() {
           >
             <p className="eyebrow">profile.txt</p>
             <h1 className="code-name">AmirSholi()</h1>
-            <h2>Software Developer | React, Electron & AI-assisted Workflows</h2>
+            <h2>Software Developer | React, Electron & Browser Products</h2>
             <p>
-              I build practical software for real workflows: desktop systems,
-              product interfaces, data validation and automation.
+              I build practical products for real workflows: desktop operations,
+              browser tools and clear interfaces backed by reliable local data.
             </p>
             <div className="hero-badges" aria-label="Core skills">
               {heroBadges.map((badge) => (
