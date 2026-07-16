@@ -43,3 +43,4 @@ When implementing from a selected generated mock, treat that image as the source
 - Purchase-page workspace navigation uses circular lateral arrow controls with destination tooltips, and the SampleX preview is presented alone in a compact elevated frame without explanatory caption text.
 - Workspace navigation continues from `Buy SampleX` to `contact.md`; clicking the UnderFit or SampleX project folder opens that project and selects its overview immediately.
 - SampleX purchase buttons use the public Polar Checkout Link with product preselection for the US$5 export pack and US$15 lifetime license; Polar product IDs are public routing identifiers, never secrets.
+- On short mobile screens, the VS Code window must expand with its content and rely on natural page scrolling; never clip information or introduce an internal editor scrollbar.
