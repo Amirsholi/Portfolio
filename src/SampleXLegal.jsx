@@ -8,7 +8,7 @@ const pages = {
     title: "Privacy Policy",
     intro: "SampleX is designed to process recorded tab audio locally. The extension does not upload recordings, waveform data or audio analysis to Amir Sholi's servers.",
     sections: [
-      ["Information handled by the extension", "When you press REC, SampleX captures audio from the active browser tab for the user-requested recording, trimming, BPM/key analysis and WAV export. Recordings, editing state, export credits and license activation state are stored locally in the browser. Permanent license tokens and redeemed credit-code identifiers may use Chrome Sync so they can be restored on the same Google profile."],
+      ["Information handled by the extension", "When you press REC, SampleX captures audio from the active browser tab for the user-requested recording, trimming, BPM/key analysis and WAV export. Recordings, editing state, remaining free exports and license activation state are stored locally in the browser. Permanent license tokens may use Chrome Sync so they can be restored on the same Google profile."],
       ["Information handled during purchase", "Payments are processed by Polar as merchant of record. SampleX does not receive or store card numbers. After a completed purchase, Polar sends the order identifier, checkout identifier, purchased product, amount, currency and customer email to the SampleX server so a signed license can be generated, delivered and recovered."],
       ["How information is used", "Purchase information is used only to fulfill orders, recover licenses, provide support, prevent duplicate fulfillment, handle refunds and meet legal or accounting obligations. Audio and browsing content are not used for advertising, analytics, profiling or model training."],
       ["Sharing and retention", "Payment information is handled by Polar under its own policies. Order and license records are stored with Supabase. If transactional email is enabled, the customer email and license code are sent through the configured email provider solely to deliver the purchase. Records are retained as needed for license recovery, fraud prevention, accounting and legal obligations."],
@@ -19,10 +19,10 @@ const pages = {
   terms: {
     eyebrow: "SampleX legal",
     title: "Terms of Use and Purchase",
-    intro: "These terms apply to the SampleX Chrome extension, free export allowance, paid export packs and lifetime licenses.",
+    intro: "These terms apply to the SampleX Chrome extension, its free export allowance and the one-time lifetime license.",
     sections: [
       ["Permitted use", "SampleX is intended for audio you own, created, licensed, or otherwise have permission to record and export. You are responsible for complying with copyright, platform terms and applicable recording laws."],
-      ["Licenses and credits", "A new installation includes the stated free export allowance. A 500 Export Pack adds 500 exports when its signed code is redeemed. A Lifetime license permanently unlocks exports for the Chrome profile where it is activated and may be restored through Chrome Sync when available. Codes may not be resold, shared publicly or used to bypass the licensing system."],
+      ["Licenses and free exports", "A new installation includes the stated free export allowance. A Lifetime license permanently unlocks exports for the Chrome profile where it is activated and may be restored through Chrome Sync when available. Codes may not be resold, shared publicly or used to bypass the licensing system."],
       ["Payments", "Checkout, taxes, invoices and payment processing are provided by Polar as merchant of record. Prices and currencies shown at checkout control if they differ from promotional text."],
       ["Availability", "SampleX is provided on an as-available basis. Reasonable support will be provided for valid purchases, but uninterrupted compatibility with every website, media format, Chrome version or third-party service cannot be guaranteed."],
       ["Changes", "Features, compatibility and these terms may be updated as SampleX evolves. Material changes affecting data practices will be disclosed as required."],
@@ -56,8 +56,8 @@ export function SampleXLegal({ page }) {
   return (
     <main className="samplex-legal-page">
       <header className="samplex-legal-header">
-        <a href="/#buy-samplex" className="samplex-legal-brand"><span>SAMPLEX</span><small>by Amir Sholi</small></a>
-        <a href="/#buy-samplex"><ArrowLeft size={15} /> Back to SampleX</a>
+        <a href="/samplex" className="samplex-legal-brand"><span>SAMPLEX</span><small>by Amir Sholi</small></a>
+        <a href="/samplex"><ArrowLeft size={15} /> Back to SampleX</a>
       </header>
       <article className="samplex-legal-document">
         <div className="samplex-legal-title"><ShieldCheck size={28} /><div><p>{content.eyebrow}</p><h1>{content.title}</h1><span>Last updated {updated}</span></div></div>

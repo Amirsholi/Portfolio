@@ -142,12 +142,10 @@ function AdminLogin({ email, password, message, busy, onEmail, onPassword, onSub
 function LicenseCreator({ token, onCreated }) {
   const [kind, setKind] = useState("promo");
   const [recipientEmail, setRecipientEmail] = useState("");
-  const [credits, setCredits] = useState(500);
   const [note, setNote] = useState("");
   const [created, setCreated] = useState(null);
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
-  const isCredits = kind === "credits";
 
   async function createLicense(event) {
     event.preventDefault();
@@ -158,7 +156,7 @@ function LicenseCreator({ token, onCreated }) {
       const response = await fetch("/api/admin/licenses", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ kind, email: recipientEmail.trim() || null, note: note.trim() || null, credits: isCredits ? Number(credits) : null }),
+        body: JSON.stringify({ kind, email: recipientEmail.trim() || null, note: note.trim() || null }),
       });
       const body = await response.json();
       if (!response.ok) throw new Error(body.error || "License generation failed.");
@@ -176,8 +174,7 @@ function LicenseCreator({ token, onCreated }) {
     <section className="sx-license-creator">
       <div className="sx-section-heading"><div><small>GENERATOR</small><h2>Issue a license</h2></div><Gift size={18} /></div>
       <form onSubmit={createLicense}>
-        <label>TYPE<select value={kind} onChange={(event) => setKind(event.target.value)}><option value="promo">Complimentary permanent</option><option value="permanent">Paid permanent</option><option value="credits">Credit package</option></select></label>
-        {isCredits ? <label>CREDITS<input type="number" min="1" max="100000" value={credits} onChange={(event) => setCredits(event.target.value)} /></label> : null}
+        <label>TYPE<select value={kind} onChange={(event) => setKind(event.target.value)}><option value="promo">Complimentary permanent</option><option value="permanent">Paid permanent</option></select></label>
         <label>RECIPIENT EMAIL <span>OPTIONAL</span><input type="email" value={recipientEmail} onChange={(event) => setRecipientEmail(event.target.value)} placeholder="client@example.com" /></label>
         <label>NOTE <span>OPTIONAL</span><textarea value={note} onChange={(event) => setNote(event.target.value)} maxLength={240} placeholder="Tester, replacement, payment reference…" /></label>
         <button type="submit" disabled={busy}><Plus size={14} /> {busy ? "GENERATING" : "GENERATE LICENSE"}</button>

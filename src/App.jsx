@@ -25,7 +25,6 @@ import {
   KeyRound,
   LockKeyhole,
   ShieldCheck,
-  Star,
   X,
   ServerCog,
   Terminal,
@@ -271,15 +270,7 @@ const samplexProjectFiles = [
   },
 ];
 
-const commerceFiles = [
-  {
-    id: "buy-samplex",
-    label: "Buy SampleX",
-    path: "portfolio > Buy SampleX",
-    icon: CreditCard,
-    kind: "buy-samplex",
-  },
-];
+const commerceFiles = [];
 
 const projectFiles = [...underfitProjectFiles, ...samplexProjectFiles];
 
@@ -293,7 +284,6 @@ const navigationFileIds = [
   "samplex-trimming",
   "samplex-processing",
   "samplex-download",
-  "buy-samplex",
   "contact",
   "education",
   "experience",
@@ -876,7 +866,7 @@ function SampleXFeaturePanel({ file, onOpenMedia }) {
   );
 }
 
-function BuySampleXPanel({ onOpenOverview }) {
+export function SampleXProductPage() {
   const [fulfillment, setFulfillment] = useState(() => {
     const checkoutId = new URLSearchParams(window.location.search).get("checkout_id");
     return checkoutId ? { checkoutId, status: "processing" } : null;
@@ -949,44 +939,34 @@ function BuySampleXPanel({ onOpenOverview }) {
 
   return (
     <div className="file-document buy-samplex-file">
-      <span className="file-breadcrumb buy-breadcrumb">portfolio &gt; Buy SampleX</span>
+      <span className="file-breadcrumb buy-breadcrumb">amirsholi.dev &gt; samplex</span>
       <a className="buy-open-project" href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">Open SampleX project <ExternalLink size={15} /></a>
       <div className="buy-product-stage">
         <section className="buy-product-overview">
-          <button className="buy-product-identity buy-product-link" type="button" onClick={onOpenOverview} aria-label="Open SampleX overview">
+          <div className="buy-product-identity">
             <span className="buy-product-mark"><AudioWaveform size={56} /></span>
             <div className="buy-product-name">
-              <div><h3>SampleX</h3><span className="buy-version">v1.2.0</span></div>
-              <p>Chrome Audio Recorder</p>
-              <span className="buy-rating" aria-label="4.9 out of 5 stars"><span className="buy-stars" aria-hidden="true">{Array.from({ length: 5 }, (_, index) => <Star key={index} size={18} fill="currentColor" />)}</span>4.9 (18K users)</span>
+              <div><h3>SampleX</h3><span className="buy-version">Private beta</span></div>
+              <p>Tab Audio Sampler for Chrome</p>
             </div>
-          </button>
-          <p className="buy-description">Capture, edit and export high-quality audio from any website. Fast, private and 100% offline.</p>
+          </div>
+          <p className="buy-description">Record permitted audio from the active tab, trim the useful moment, analyze it locally and export a clean WAV.</p>
           <div className="buy-benefit-strip">
-            <span><Zap size={19} /><b>One-click export</b></span>
-            <span><AudioWaveform size={18} /><b>WAV 44.1kHz / 24-bit</b></span>
-            <span><CheckCircle2 size={18} /><b>Offline processing</b></span>
+            <span><Zap size={19} /><b>75 free WAV exports</b></span>
+            <span><AudioWaveform size={18} /><b>BPM, key and tone</b></span>
+            <span><CheckCircle2 size={18} /><b>Local processing</b></span>
           </div>
         </section>
         <figure className="buy-samplex-preview"><img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform selection and audio analysis interface" /></figure>
       </div>
 
-      <div className="buy-product-options">
+      <div className="buy-product-options single-license-option">
         <section className="license-offer featured lifetime-offer">
-          <span className="plan-badge">Best value</span>
           <div className="license-offer-heading"><AudioWaveform size={24} /><div><strong>SampleX Lifetime</strong><span>One payment. Forever.</span></div></div>
           <strong className="license-price"><small>US$</small>15</strong>
-          <ul><li><Check size={15} /> Unlimited WAV exports</li><li><Check size={15} /> License recovery support</li><li><Check size={15} /> Future updates included</li><li><Check size={15} /> Use on all your devices</li></ul>
+          <ul><li><Check size={15} /> Unlimited WAV exports</li><li><Check size={15} /> Signed offline activation</li><li><Check size={15} /> Manual license recovery</li><li><Check size={15} /> Future SampleX updates</li></ul>
           <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5"><CreditCard size={20} /> Unlock forever</a>
         </section>
-
-        <section className="license-offer export-offer">
-          <div className="license-offer-heading"><FileDown size={24} /><div><strong>500 Export Pack</strong><span>Recharge when you need it</span></div></div>
-          <strong className="license-price"><small>US$</small>5</strong>
-          <ul><li><Check size={15} /> 500 additional exports</li><li><Check size={15} /> One signed recharge code</li><li><Check size={15} /> Use anytime</li></ul>
-          <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=0540eafa-44ed-4df8-9a16-c3d19067c69d"><CreditCard size={17} /> Buy 500 exports</a>
-        </section>
-
       </div>
       <footer className="buy-checkout-footer"><span><LockKeyhole size={12} /> Payments are processed securely by Polar.</span><span><a href="/samplex/privacy">Privacy</a> · <a href="/samplex/terms">Terms</a> · <a href="/samplex/refunds">Refunds</a> · <a href="/samplex/support">Support</a></span></footer>
     </div>
@@ -1684,7 +1664,6 @@ export function App() {
   const clock = useClock();
   const [activeFile, setActiveFile] = useState(() => {
     if (window.location.hash === "#samplex") return "samplex-overview";
-    if (window.location.hash === "#buy-samplex") return "buy-samplex";
     return "contact";
   });
   const [heroProject, setHeroProject] = useState("underfit");
@@ -1749,6 +1728,10 @@ export function App() {
   };
 
   const openProjectFromHero = (project) => {
+    if (project === "samplex") {
+      window.location.assign("/samplex");
+      return;
+    }
     const targetFile = project === "samplex" ? "samplex-overview" : "overview";
     setIsProgrammaticFocus(true);
     setActiveFile("contact");
@@ -1762,7 +1745,7 @@ export function App() {
           underfit: project === "underfit",
           samplex: project === "samplex",
         }));
-        window.history.replaceState(null, "", project === "samplex" ? "#samplex" : window.location.pathname);
+        window.history.replaceState(null, "", window.location.pathname);
         window.setTimeout(() => setIsProgrammaticFocus(false), 520);
       }, shouldReduceMotion ? 0 : 520);
     }, shouldReduceMotion ? 0 : 80);
@@ -1772,9 +1755,7 @@ export function App() {
     const openDeepLink = () => {
       const target = window.location.hash === "#samplex"
         ? "samplex-overview"
-        : window.location.hash === "#buy-samplex"
-          ? "buy-samplex"
-          : null;
+        : null;
       if (!target) return;
       if (target === "samplex-overview") {
         setHeroProject("samplex");
@@ -1975,15 +1956,13 @@ export function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.24 }}
           >
-            {active.kind !== "buy-samplex" ? (
-              <header className="panel-header">
-                <active.icon size={18} />
-                <div>
-                  <strong>{active.label}</strong>
-                  <span>{active.path}</span>
-                </div>
-              </header>
-            ) : <span aria-hidden="true" />}
+            <header className="panel-header">
+              <active.icon size={18} />
+              <div>
+                <strong>{active.label}</strong>
+                <span>{active.path}</span>
+              </div>
+            </header>
 
             {active.kind === "underfit-overview" ? (
               <UnderfitOverviewPanel onOpenMedia={setSelectedMedia} />
@@ -1997,7 +1976,6 @@ export function App() {
             {active.kind === "samplex-feature" ? (
               <SampleXFeaturePanel file={active} onOpenMedia={setSelectedMedia} />
             ) : null}
-            {active.kind === "buy-samplex" ? <BuySampleXPanel onOpenOverview={() => openFile("samplex-overview")} /> : null}
             {active.kind === "contact" ? (
               <ContactPanel
                 subject={subject}

@@ -9,7 +9,7 @@ export default async function handler(request, response) {
     if (!/^[0-9a-f-]{36}$/i.test(checkoutId)) return response.status(400).json({ error: "Invalid checkout." });
 
     const query = new URLSearchParams({
-      select: "kind,credits,token,issued_at,payment_status",
+      select: "kind,token,issued_at,payment_status,status",
       checkout_id: `eq.${checkoutId}`,
       limit: "1",
     });
@@ -17,7 +17,7 @@ export default async function handler(request, response) {
     if (!result.ok) throw new Error("License registry query failed.");
     const license = (await result.json())[0];
     if (!license) return response.status(202).json({ status: "processing" });
-    if (license.payment_status === "refunded") return response.status(410).json({ status: "refunded", error: "This order was refunded." });
+    if (license.payment_status === "refunded" || license.status !== "active") return response.status(410).json({ status: "refunded", error: "This license is no longer active." });
     return response.status(200).json({ status: "ready", license });
   } catch (error) {
     console.error("Polar license lookup failed", error);

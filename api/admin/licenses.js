@@ -1,6 +1,6 @@
 import { createSampleXLicense, requireEnvironment, serviceHeaders } from "../_lib/samplex-license.js";
 
-const VALID_KINDS = new Set(["permanent", "promo", "credits"]);
+const VALID_KINDS = new Set(["permanent", "promo"]);
 
 export default async function handler(request, response) {
   try {
@@ -38,10 +38,8 @@ async function createLicense(request, response, issuedBy) {
   const body = typeof request.body === "string" ? JSON.parse(request.body) : request.body || {};
   const kind = String(body.kind || "promo");
   if (!VALID_KINDS.has(kind)) throw httpError(400, "Invalid license type.");
-  const credits = kind === "credits" ? Number(body.credits) : null;
-  if (kind === "credits" && (!Number.isInteger(credits) || credits <= 0 || credits > 100000)) throw httpError(400, "Credits must be a positive integer.");
-  const { id, issuedAt, token } = createSampleXLicense({ kind, credits });
-  const record = { id, kind, credits, email: cleanOptional(body.email, 180), note: cleanOptional(body.note, 240), token, status: "active", issued_at: issuedAt, issued_by: issuedBy };
+  const { id, issuedAt, token } = createSampleXLicense({ kind });
+  const record = { id, kind, credits: null, email: cleanOptional(body.email, 180), note: cleanOptional(body.note, 240), token, status: "active", issued_at: issuedAt, issued_by: issuedBy };
   const result = await fetch(`${process.env.SUPABASE_URL}/rest/v1/samplex_licenses`, { method: "POST", headers: { ...serviceHeaders(), Prefer: "return=representation" }, body: JSON.stringify(record) });
   if (!result.ok) throw new Error("License registry write failed.");
   const [license] = await result.json();

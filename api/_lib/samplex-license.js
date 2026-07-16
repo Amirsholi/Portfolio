@@ -1,9 +1,9 @@
 import { createPrivateKey, randomUUID, sign } from "node:crypto";
 
-export function createSampleXLicense({ kind, credits = null }) {
+export function createSampleXLicense({ kind }) {
   const id = randomUUID().replaceAll("-", "");
   const issuedAt = new Date().toISOString();
-  const payload = { version: 1, id, product: "samplex", kind, issuedAt, ...(credits ? { credits } : {}) };
+  const payload = { version: 1, id, product: "samplex", kind, issuedAt };
   const encodedPayload = Buffer.from(JSON.stringify(payload)).toString("base64url");
   const privateKeyPem = process.env.SAMPLEX_PRIVATE_KEY.replace(/\\n/g, "\n");
   const signature = sign("sha256", Buffer.from(encodedPayload, "base64url"), {

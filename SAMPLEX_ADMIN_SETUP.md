@@ -40,9 +40,9 @@ The server independently checks the authenticated email. Changing the visible em
 2. In Polar, create a webhook endpoint named `SampleX production` with URL `https://amirsholi.vercel.app/api/polar/webhook`.
 3. Select the raw format and subscribe to `order.paid` and `order.refunded`.
 4. Copy the generated signing secret to the Vercel variable `POLAR_WEBHOOK_SECRET` for Production and Preview, then redeploy.
-5. Keep the checkout success URL as `https://amirsholi.vercel.app/?checkout_id={CHECKOUT_ID}#buy-samplex`.
+5. Set the checkout success URL to `https://amirsholi.vercel.app/samplex/success?checkout_id={CHECKOUT_ID}`.
 
-The webhook verifies Polar's signature before writing anything. Each Polar order ID and checkout ID is unique in Supabase, so webhook retries return the already-issued license instead of creating extra codes. The checkout return page polls the registry briefly and shows the signed code as soon as fulfillment finishes.
+The webhook verifies Polar's signature before writing anything. Each Polar order ID and checkout ID is unique in Supabase, so webhook retries return the already-issued permanent license instead of creating extra codes. The checkout return page polls the registry briefly and shows the signed code as soon as fulfillment finishes.
 
 ## 6. Optional email delivery
 
@@ -52,3 +52,7 @@ Automatic delivery on the checkout success page works without an email provider.
 - `SAMPLEX_FROM_EMAIL` (for example, `SampleX <licenses@samplex.example>`)
 
 Redeploy after adding them. If email delivery fails, Polar retries the webhook; the existing order is reused and no duplicate license is created.
+
+## 7. Manual recovery
+
+Customers recover a lost license by contacting support with the email used at Polar checkout and, when available, the order or checkout reference. Verify the paid, non-refunded order in `/admin/samplex`. Prefer returning the existing key. Generate a replacement only when necessary, mark the previous record as replaced and document the reason in the registry. No public recovery form or additional customer-data collection is used.

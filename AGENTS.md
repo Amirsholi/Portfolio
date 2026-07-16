@@ -33,14 +33,17 @@ When implementing from a selected generated mock, treat that image as the source
 - SampleX appears as its own project folder in the VS Code explorer; the public `#samplex` link opens its compact product overview directly inside the fixed workspace.
 - SampleX project files follow the product flow: overview, recording, trimming, processing and download; recording and trimming use replaceable GIF-ready media slots.
 - The hero project access alternates between UnderFit and SampleX in one animated panel; each CTA transitions to its own overview without showing both summaries simultaneously.
-- `Buy SampleX` is a standalone top-level workspace file outside `PROJECTS`, with a checkout-ready lifetime-license view and the public deep link `#buy-samplex`.
+- SampleX acquisition lives on the dedicated public route `/samplex`; do not create a separate `Buy SampleX` workspace file or hash-based purchase route.
 - UnderFit and SampleX folders are mutually exclusive in the explorer. The featured-project panel switches manually and should not contain product preview images or auto-rotation.
-- SampleX checkout presents a US$5 pack of 500 exports and a recommended US$15 permanent lifetime unlock.
+- SampleX includes 75 free WAV exports and sells only one public product: a one-time permanent lifetime unlock. Promo licenses are internal-only for private testers and support.
 - Previous/next navigation sits outside the VS Code frame at its lateral edges, previewing the destination filename on wide screens; do not place these controls inside the editor content.
 - SampleX deep links and its hero CTA must use the same staged `contact.md` to overview transition as UnderFit.
 - Workspace navigation controls attach to the lateral edges of the VS Code frame as compact directional tabs; hovering or focusing reveals the destination filename inside a terminal-style tooltip.
 - The SampleX purchase view uses the supplied waveform selection image as a tightly sized horizontal preview above two aligned plan cards; never place it inside a tall empty media column.
 - Purchase-page workspace navigation uses circular lateral arrow controls with destination tooltips, and the SampleX preview is presented alone in a compact elevated frame without explanatory caption text.
 - Workspace navigation continues from `Buy SampleX` to `contact.md`; clicking the UnderFit or SampleX project folder opens that project and selects its overview immediately.
-- SampleX purchase buttons use the public Polar Checkout Link with product preselection for the US$5 export pack and US$15 lifetime license; Polar product IDs are public routing identifiers, never secrets.
+- The SampleX purchase button uses the public Polar Checkout Link for the lifetime license; Polar product IDs are public routing identifiers, never secrets.
+- SampleX does not request feedback, analytics, surveys or extra customer data. Keep acquisition limited to product information, Polar checkout, signed-key delivery, activation and support.
+- When free exports reach zero, recording, trimming, playback and analysis remain available. Only WAV export opens the restrained license form, and successful activation resumes the pending export without extra notifications.
+- License recovery is manual: the customer contacts support and the administrator verifies the Polar order in `/admin/samplex`, then recovers or replaces the signed key.
 - On short mobile screens, the VS Code window must expand with its content and rely on natural page scrolling; never clip information or introduce an internal editor scrollbar.
