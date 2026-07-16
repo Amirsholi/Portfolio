@@ -47,3 +47,4 @@ When implementing from a selected generated mock, treat that image as the source
 - When free exports reach zero, recording, trimming, playback and analysis remain available. Only WAV export opens the restrained license form, and successful activation resumes the pending export without extra notifications.
 - License recovery is manual: the customer contacts support and the administrator verifies the Polar order in `/admin/samplex`, then recovers or replaces the signed key.
 - On short mobile screens, the VS Code window must expand with its content and rely on natural page scrolling; never clip information or introduce an internal editor scrollbar.
+- The standalone `/samplex` route should read as a complete product landing page rather than a compact checkout card: lead with the producer workflow and real interface, explain local processing and the 75-export trial, then present the single Lifetime license.
