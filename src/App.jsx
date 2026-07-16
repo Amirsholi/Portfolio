@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
   AudioWaveform,
   ChevronDown,
@@ -29,7 +29,6 @@ import {
   ServerCog,
   Terminal,
   Workflow,
-  Zap,
 } from "lucide-react";
 
 const underfitAssets = [
@@ -270,11 +269,9 @@ const samplexProjectFiles = [
   },
 ];
 
-const commerceFiles = [];
-
 const projectFiles = [...underfitProjectFiles, ...samplexProjectFiles];
 
-const workspaceFiles = [...projectFiles, ...commerceFiles, ...profileFiles];
+const workspaceFiles = [...projectFiles, ...profileFiles];
 const projectFileIds = projectFiles.map((file) => file.id);
 const navigationFileIds = [
   "overview",
@@ -555,63 +552,31 @@ const heroProjects = {
   },
 };
 
-function HeroProjectPanel({ selectedProject, onSelectProject, onOpenProject }) {
-  const project = heroProjects[selectedProject];
+const samplexZipUrl = "";
 
+function HeroProjectPanel({ onOpenProject }) {
   return (
     <motion.div
-      className={`hero-project-shell hero-project-${selectedProject}`}
+      className="hero-project-shell"
       initial={{ opacity: 0, y: 22, scale: 0.98 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.72, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
       aria-label="Featured project selector"
     >
-      <div className="hero-project-switch" role="tablist" aria-label="Featured projects">
-        {Object.keys(heroProjects).map((id) => (
-          <button
-            key={id}
-            type="button"
-            role="tab"
-            aria-selected={selectedProject === id}
-            className={selectedProject === id ? "active" : ""}
-            onClick={() => onSelectProject(id)}
-          >
-            {id === "underfit" ? "UnderFit" : "SampleX"}
-          </button>
+      <div className="hero-project-heading"><span>featured_projects/</span><small>02 selected builds</small></div>
+      <div className="hero-project-list">
+        {Object.entries(heroProjects).map(([id, project], index) => (
+          <article className={`hero-project-card hero-project-card-${id}`} key={id}>
+            <button type="button" onClick={() => onOpenProject(id)}>
+              <span className="hero-project-index">0{index + 1}</span>
+              <span className="hero-project-icon">{id === "samplex" ? <AudioWaveform size={22} /> : <img src={assetPaths.underfitGym} alt="" />}</span>
+              <span className="hero-project-copy"><small>{project.path}</small><strong>{project.name}</strong><span>{project.lines[1]}</span></span>
+              <ChevronRight className="hero-project-arrow" size={18} />
+            </button>
+          </article>
         ))}
       </div>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={selectedProject}
-          className="hero-code hero-underfit-panel"
-          initial={{ opacity: 0, x: 18, filter: "blur(5px)" }}
-          animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-          exit={{ opacity: 0, x: -18, filter: "blur(5px)" }}
-          transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-          aria-label={`${project.name} summary`}
-        >
-          <article className="hero-feature-card">
-            <div className="hero-feature-copy">
-              <span className="hero-feature-path"><Code2 size={14} /> {project.path}</span>
-              <span className="hero-feature-mark">{selectedProject === "samplex" ? <AudioWaveform size={34} /> : <img src={assetPaths.underfitGym} alt="" />}</span>
-              <div className="hero-feature-title">
-                <code>{project.command}</code>
-                <h3>Project: {project.name}</h3>
-              </div>
-              <div className="hero-feature-lines">{project.lines.map((line) => <span key={line}>{line}</span>)}</div>
-              <button type="button" onClick={() => onOpenProject(selectedProject)}>{project.button} <ChevronRight size={15} /></button>
-            </div>
-            <figure className="hero-feature-media">
-              <img
-                src={selectedProject === "samplex" ? assetPaths.samplexHero : "/assets/underfit/dashboard.png"}
-                alt={project.name}
-                loading="eager"
-                decoding="async"
-              />
-            </figure>
-          </article>
-        </motion.div>
-      </AnimatePresence>
+      <p className="hero-project-footnote"><span className="live-dot" /> Select a project to open its complete case study.</p>
     </motion.div>
   );
 }
@@ -963,9 +928,13 @@ export function SampleXProductPage() {
           <h1>Find the moment.<br /><span>Keep the sample.</span></h1>
           <p className="samplex-lead">Capture permitted audio from the active Chrome tab, isolate the useful section and leave with a clean WAV plus the musical context you need.</p>
           <div className="samplex-hero-actions">
-            <a className="samplex-primary-action" href="#lifetime"><Zap size={18} /> Start with 75 free exports</a>
-            <a className="samplex-secondary-action" href="#workflow">See the workflow <ChevronDown size={17} /></a>
+            {samplexZipUrl ? (
+              <a className="samplex-primary-action" href={samplexZipUrl} download><FileDown size={18} /> Download SampleX ZIP</a>
+            ) : (
+              <span className="samplex-primary-action is-pending" aria-disabled="true"><FileDown size={18} /> ZIP download coming soon</span>
+            )}
           </div>
+          <p className="samplex-download-note">Unzip the release, open <strong>chrome://extensions</strong>, enable Developer mode and choose <strong>Load unpacked</strong>.</p>
           <div className="samplex-trust-line">
             <span><ShieldCheck size={16} /> Processed locally</span>
             <span><CheckCircle2 size={16} /> No account required</span>
@@ -1043,9 +1012,17 @@ export function SampleXProductPage() {
         </section>
       </section>
 
-      <footer className="samplex-footer">
-        <span>SampleX by Amir Sholi</span>
-        <div><a href="/samplex/privacy">Privacy</a><a href="/samplex/terms">Terms</a><a href="/samplex/refunds">Refunds</a><a href="/samplex/support">Support</a></div>
+      <footer className="terminal-footer samplex-terminal-footer" aria-label="SampleX footer navigation">
+        <div className="terminal-tabs" aria-label="Terminal panel tabs"><span className="active">TERMINAL</span><span>OUTPUT</span><span>SAMPLEX</span></div>
+        <div className="terminal-content samplex-terminal-content">
+          <span className="terminal-command">PS C:\Users\Amir\Portfolio\SampleX&gt; product --links</span>
+          <div className="samplex-terminal-grid">
+            <section><strong>[PROFILE]</strong><a href="/">&gt; Back to AmirSholi()</a><a href="/#contact">&gt; Contact</a></section>
+            <section><strong>[PROJECT]</strong><a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">&gt; GitHub repository</a><span>&gt; Chrome MV3 · React · Web Audio</span></section>
+            <section><strong>[SUPPORT]</strong><a href="/samplex/privacy">&gt; Privacy</a><a href="/samplex/terms">&gt; Terms</a><a href="/samplex/refunds">&gt; Refunds</a><a href="/samplex/support">&gt; Support</a></section>
+          </div>
+          <span className="terminal-prompt">&gt; <span className="terminal-cursor" /></span>
+        </div>
       </footer>
     </main>
   );
@@ -1488,12 +1465,6 @@ function FileExplorer({ activeFile, onOpenFile }) {
           </div>
         </div>
 
-        <div className="file-tree-folder commerce-file">
-          {commerceFiles.map((file) => (
-            <FileTreeButton key={file.id} file={file} activeFile={activeFile} onOpenFile={onOpenFile} />
-          ))}
-        </div>
-
         <div className="file-tree-folder">
           <span>â–¾ profile</span>
           <div className="file-tree-files">
@@ -1572,12 +1543,6 @@ function CollapsibleFileExplorer({ activeFile, onOpenFile, folders, onToggleFold
               ) : null}
             </div>
           ) : null}
-        </div>
-
-        <div className="file-tree-folder commerce-file">
-          {commerceFiles.map((file) => (
-            <FileTreeButton key={file.id} file={file} activeFile={activeFile} onOpenFile={onOpenFile} />
-          ))}
         </div>
 
         <div className="file-tree-folder profile-tree-group">
@@ -1744,7 +1709,6 @@ export function App() {
     if (window.location.hash === "#samplex") return "samplex-overview";
     return "contact";
   });
-  const [heroProject, setHeroProject] = useState("underfit");
   const [folders, setFolders] = useState({
     projects: true,
     underfit: true,
@@ -1756,7 +1720,6 @@ export function App() {
   const [sent, setSent] = useState(false);
   const [selectedDetail, setSelectedDetail] = useState(null);
   const [selectedMedia, setSelectedMedia] = useState(null);
-  const [isProgrammaticFocus, setIsProgrammaticFocus] = useState(false);
   const active = workspaceFiles.find((file) => file.id === activeFile) ?? workspaceFiles[0];
   const previousActiveFile = getAdjacentWorkspaceFile(activeFile, "previous");
   const nextActiveFile = getAdjacentWorkspaceFile(activeFile, "next");
@@ -1776,16 +1739,6 @@ export function App() {
     }
   };
 
-  const animateWindowScroll = (target, duration = 780) => new Promise((resolve) => {
-    if (duration === 0 || Math.abs(target - window.scrollY) < 2) {
-      window.scrollTo({ top: target });
-      resolve();
-      return;
-    }
-    window.scrollTo({ top: target, behavior: "smooth" });
-    window.setTimeout(resolve, duration);
-  });
-
   const getWorkbenchTarget = () => {
     const workbench = workbenchRef.current;
     if (!workbench) return window.scrollY;
@@ -1801,8 +1754,11 @@ export function App() {
     );
   };
 
-  const scrollWorkbenchIntoView = async (duration = 780) => {
-    await animateWindowScroll(getWorkbenchTarget(), duration);
+  const scrollWorkbenchIntoView = () => {
+    window.scrollTo({
+      top: getWorkbenchTarget(),
+      behavior: shouldReduceMotion ? "auto" : "smooth",
+    });
   };
 
   const openProjectFromHero = (project) => {
@@ -1810,23 +1766,10 @@ export function App() {
       window.location.assign("/samplex");
       return;
     }
-    const targetFile = project === "samplex" ? "samplex-overview" : "overview";
-    setIsProgrammaticFocus(true);
-    setActiveFile("contact");
-    window.setTimeout(async () => {
-      await scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 1350);
-      window.setTimeout(() => {
-        setActiveFile(targetFile);
-        setFolders((current) => ({
-          ...current,
-          projects: true,
-          underfit: project === "underfit",
-          samplex: project === "samplex",
-        }));
-        window.history.replaceState(null, "", window.location.pathname);
-        window.setTimeout(() => setIsProgrammaticFocus(false), 520);
-      }, shouldReduceMotion ? 0 : 520);
-    }, shouldReduceMotion ? 0 : 80);
+    setActiveFile("overview");
+    setFolders((current) => ({ ...current, projects: true, underfit: true, samplex: false }));
+    window.history.replaceState(null, "", window.location.pathname);
+    window.requestAnimationFrame(scrollWorkbenchIntoView);
   };
 
   useEffect(() => {
@@ -1836,7 +1779,6 @@ export function App() {
         : null;
       if (!target) return;
       if (target === "samplex-overview") {
-        setHeroProject("samplex");
         openProjectFromHero("samplex");
         return;
       }
@@ -1886,7 +1828,7 @@ export function App() {
     return () => document.removeEventListener("keydown", closeOnEscape);
   }, [selectedDetail, selectedMedia]);
 
-  const useSimpleMotion = shouldReduceMotion || isCompactViewport || isProgrammaticFocus;
+  const useSimpleMotion = shouldReduceMotion || isCompactViewport;
   const heroScrollStyle = useSimpleMotion
     ? undefined
     : {
@@ -1977,8 +1919,6 @@ export function App() {
           </motion.div>
 
           <HeroProjectPanel
-            selectedProject={heroProject}
-            onSelectProject={setHeroProject}
             onOpenProject={openProjectFromHero}
           />
         </motion.section>

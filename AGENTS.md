@@ -50,3 +50,7 @@ When implementing from a selected generated mock, treat that image as the source
 - The standalone `/samplex` route should read as a complete product landing page rather than a compact checkout card: lead with the producer workflow and real interface, explain local processing and the 75-export trial, then present the single Lifetime license.
 - The standalone SampleX landing should use real, lazy-loaded product captures as proof of the capture, trimming, analysis and export workflow; keep the visual system restrained, dark and product-led, with local processing explained as a dedicated trust section before pricing.
 - Featured project cards must keep matching internal geometry across UnderFit and SampleX, the explorer must visibly separate PROJECTS from PROFILE, and the portfolio terminal summary must use current product information with its outer columns aligned to opposite edges.
+- Featured projects on the hero are presented as two static editorial rows, avoiding carousel-style lateral transitions.
+- The standalone SampleX page leads with ZIP access and installation, and keeps lifetime pricing as the final product section before the footer.
+- SampleX uses one primary acquisition CTA in the product hero; installation guidance stays compact beneath it instead of occupying a separate banner.
+- The SampleX footer reuses the portfolio terminal language and always includes a clear route back to `AmirSholi()`.
