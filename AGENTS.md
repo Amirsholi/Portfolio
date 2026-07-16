@@ -30,7 +30,7 @@ When implementing from a selected generated mock, treat that image as the source
 - Portfolio SEO metadata, social preview imagery and browser icons should stay in English and use the supplied AmirSholi() blue/green console-style banner as the link preview image, served as an optimized JPG for WhatsApp/Meta compatibility.
 - SampleX license administration lives at `/admin/samplex`, is excluded from public navigation, and must remain accessible remotely through email-based administrator authentication.
 - SampleX signing keys and Supabase service credentials must remain server-only; the public portfolio and extension may contain only public verification/configuration values.
-- SampleX appears as its own project folder in the VS Code explorer; the public `#samplex` link opens its compact product overview directly inside the fixed workspace.
+- SampleX appears as its own project folder in the VS Code explorer; its public product CTA opens the dedicated `/samplex` route, while `/?file=samplex-overview` opens the compact workspace case study.
 - SampleX project files follow the product flow: overview, recording, trimming, processing and download; recording and trimming use replaceable GIF-ready media slots.
 - The hero project access alternates between UnderFit and SampleX in one animated panel; each CTA transitions to its own overview without showing both summaries simultaneously.
 - SampleX acquisition lives on the dedicated public route `/samplex`; do not create a separate `Buy SampleX` workspace file or hash-based purchase route.
@@ -55,3 +55,4 @@ When implementing from a selected generated mock, treat that image as the source
 - SampleX uses one primary acquisition CTA in the product hero; installation guidance stays compact beneath it instead of occupying a separate banner.
 - The SampleX footer reuses the portfolio terminal language and always includes a clear route back to `AmirSholi()`.
 - On notebook-sized viewports, recover space by compacting navigation and VS Code chrome before reducing readable content typography; short screens must never let editor content disappear beneath the status bar.
+- Every VS Code workspace file has a stable `/?file={id}` deep link. File changes participate in browser history, reloads preserve selection, and `ROUTES.md` is the canonical route map.

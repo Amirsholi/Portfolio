@@ -272,6 +272,7 @@ const samplexProjectFiles = [
 const projectFiles = [...underfitProjectFiles, ...samplexProjectFiles];
 
 const workspaceFiles = [...projectFiles, ...profileFiles];
+const workspaceFileIds = new Set(workspaceFiles.map((file) => file.id));
 const projectFileIds = projectFiles.map((file) => file.id);
 const navigationFileIds = [
   "overview",
@@ -302,6 +303,20 @@ function getAdjacentWorkspaceFile(id, direction) {
   const nextIndex = direction === "next" ? index + 1 : index - 1;
   const nextId = navigationFileIds[nextIndex];
   return nextId ? workspaceFiles.find((file) => file.id === nextId) : null;
+}
+
+function fileIdFromLocation() {
+  const id = new URLSearchParams(window.location.search).get("file");
+  return id && workspaceFileIds.has(id) ? id : null;
+}
+
+function fileLocation(id) {
+  const url = new URL(window.location.href);
+  url.pathname = "/";
+  url.search = "";
+  url.searchParams.set("file", id);
+  url.hash = "";
+  return `${url.pathname}${url.search}`;
 }
 
 const skillGroups = [
@@ -1017,7 +1032,7 @@ export function SampleXProductPage() {
         <div className="terminal-content samplex-terminal-content">
           <span className="terminal-command">PS C:\Users\Amir\Portfolio\SampleX&gt; product --links</span>
           <div className="samplex-terminal-grid">
-            <section><strong>[PROFILE]</strong><a href="/">&gt; Back to AmirSholi()</a><a href="/#contact">&gt; Contact</a></section>
+            <section><strong>[PROFILE]</strong><a href="/">&gt; Back to AmirSholi()</a><a href="/?file=contact">&gt; Contact</a></section>
             <section><strong>[PROJECT]</strong><a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">&gt; GitHub repository</a><span>&gt; Chrome MV3 · React · Web Audio</span></section>
             <section><strong>[SUPPORT]</strong><a href="/samplex/privacy">&gt; Privacy</a><a href="/samplex/terms">&gt; Terms</a><a href="/samplex/refunds">&gt; Refunds</a><a href="/samplex/support">&gt; Support</a></section>
           </div>
@@ -1706,8 +1721,7 @@ export function App() {
   const workspaceY = useTransform(scrollYProgress, [0.04, 0.22], [132, 0]);
   const clock = useClock();
   const [activeFile, setActiveFile] = useState(() => {
-    if (window.location.hash === "#samplex") return "samplex-overview";
-    return "contact";
+    return fileIdFromLocation() ?? "contact";
   });
   const [folders, setFolders] = useState({
     projects: true,
@@ -1724,7 +1738,8 @@ export function App() {
   const previousActiveFile = getAdjacentWorkspaceFile(activeFile, "previous");
   const nextActiveFile = getAdjacentWorkspaceFile(activeFile, "next");
 
-  const openFile = (id, shouldScroll = false) => {
+  const openFile = (id, shouldScroll = false, historyMode = "push") => {
+    if (!workspaceFileIds.has(id)) return;
     setActiveFile(id);
     if (underfitProjectFiles.some((file) => file.id === id)) {
       setFolders((current) => ({ ...current, projects: true, underfit: true, samplex: false }));
@@ -1732,9 +1747,17 @@ export function App() {
       setFolders((current) => ({ ...current, projects: true, underfit: false, samplex: true }));
     }
 
+    if (historyMode !== "none") {
+      const nextLocation = fileLocation(id);
+      const currentLocation = `${window.location.pathname}${window.location.search}`;
+      if (nextLocation !== currentLocation) {
+        window.history[historyMode === "replace" ? "replaceState" : "pushState"]({ file: id }, "", nextLocation);
+      }
+    }
+
     if (shouldScroll) {
       window.requestAnimationFrame(() => {
-        scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 1050);
+        scrollWorkbenchIntoView();
       });
     }
   };
@@ -1766,28 +1789,18 @@ export function App() {
       window.location.assign("/samplex");
       return;
     }
-    setActiveFile("overview");
-    setFolders((current) => ({ ...current, projects: true, underfit: true, samplex: false }));
-    window.history.replaceState(null, "", window.location.pathname);
-    window.requestAnimationFrame(scrollWorkbenchIntoView);
+    openFile("overview", true);
   };
 
   useEffect(() => {
-    const openDeepLink = () => {
-      const target = window.location.hash === "#samplex"
-        ? "samplex-overview"
-        : null;
-      if (!target) return;
-      if (target === "samplex-overview") {
-        openProjectFromHero("samplex");
-        return;
-      }
-      setActiveFile(target);
-      window.requestAnimationFrame(() => void scrollWorkbenchIntoView(shouldReduceMotion ? 0 : 780));
+    const syncRoute = () => {
+      const target = fileIdFromLocation() ?? "contact";
+      openFile(target, Boolean(fileIdFromLocation()), "none");
     };
-    openDeepLink();
-    window.addEventListener("hashchange", openDeepLink);
-    return () => window.removeEventListener("hashchange", openDeepLink);
+
+    syncRoute();
+    window.addEventListener("popstate", syncRoute);
+    return () => window.removeEventListener("popstate", syncRoute);
   }, [shouldReduceMotion]);
 
   const toggleFolder = (folder) => {
