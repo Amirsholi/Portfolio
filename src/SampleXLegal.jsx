@@ -1,6 +1,6 @@
 import { ArrowLeft, ExternalLink, Mail, ShieldCheck } from "lucide-react";
 
-const updated = "July 15, 2026";
+const updated = "July 16, 2026";
 
 const pages = {
   privacy: {
@@ -10,6 +10,7 @@ const pages = {
     sections: [
       ["Information handled by the extension", "When you press REC, SampleX captures audio from the active browser tab for the user-requested recording, trimming, BPM/key analysis and WAV export. Recordings, editing state, remaining free exports and license activation state are stored locally in the browser. Permanent license tokens may use Chrome Sync so they can be restored on the same Google profile."],
       ["Information handled during purchase", "Payments are processed by Polar as merchant of record. SampleX does not receive or store card numbers. After a completed purchase, Polar sends the order identifier, checkout identifier, purchased product, amount, currency and customer email to the SampleX server so a signed license can be generated, delivered and recovered."],
+      ["Anonymous product-page metrics", "The SampleX product page counts Demo Trial interest and checkout-link clicks as daily totals. These counters do not store IP addresses, cookies, device identifiers, account information, browsing history or audio data, and they are used only to understand product interest and improve the acquisition flow."],
       ["How information is used", "Purchase information is used only to fulfill orders, recover licenses, provide support, prevent duplicate fulfillment, handle refunds and meet legal or accounting obligations. Audio and browsing content are not used for advertising, analytics, profiling or model training."],
       ["Sharing and retention", "Payment information is handled by Polar under its own policies. Order and license records are stored with Supabase. If transactional email is enabled, the customer email and license code are sent through the configured email provider solely to deliver the purchase. Records are retained as needed for license recovery, fraud prevention, accounting and legal obligations."],
       ["Security and choices", "Server credentials and the private signing key are not included in the extension. License codes are cryptographically signed and server communication uses HTTPS. You can remove local extension data by uninstalling SampleX or clearing its storage. Chrome Sync data is controlled through your Google account. Contact support to request access, correction or deletion where applicable."],

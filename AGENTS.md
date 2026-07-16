@@ -43,7 +43,7 @@ When implementing from a selected generated mock, treat that image as the source
 - Purchase-page workspace navigation uses circular lateral arrow controls with destination tooltips, and the SampleX preview is presented alone in a compact elevated frame without explanatory caption text.
 - Workspace navigation continues from `Buy SampleX` to `contact.md`; clicking the UnderFit or SampleX project folder opens that project and selects its overview immediately.
 - The SampleX purchase button uses the public Polar Checkout Link for the lifetime license; Polar product IDs are public routing identifiers, never secrets.
-- SampleX does not request feedback, analytics, surveys or extra customer data. Keep acquisition limited to product information, Polar checkout, signed-key delivery, activation and support.
+- SampleX does not request feedback, surveys or extra customer data. Acquisition may use anonymous daily counters for allowlisted CTA events, but never cookies, IP storage, device identifiers, browsing history or audio data.
 - When free exports reach zero, recording, trimming, playback and analysis remain available. Only WAV export opens the restrained license form, and successful activation resumes the pending export without extra notifications.
 - License recovery is manual: the customer contacts support and the administrator verifies the Polar order in `/admin/samplex`, then recovers or replaces the signed key.
 - On short mobile screens, the VS Code window must expand with its content and rely on natural page scrolling; never clip information or introduce an internal editor scrollbar.
@@ -56,3 +56,4 @@ When implementing from a selected generated mock, treat that image as the source
 - The SampleX footer reuses the portfolio terminal language and always includes a clear route back to `AmirSholi()`.
 - On notebook-sized viewports, recover space by compacting navigation and VS Code chrome before reducing readable content typography; short screens must never let editor content disappear beneath the status bar.
 - Every VS Code workspace file has a stable `/?file={id}` deep link. File changes participate in browser history, reloads preserve selection, and `ROUTES.md` is the canonical route map.
+- SampleX acquisition calls the pre-release package a `Demo Trial`; its instructions live in a dedicated coming-soon section. Measure only anonymous daily Demo Trial and checkout-interest counters, and surface them in the private administration overview.

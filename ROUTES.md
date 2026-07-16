@@ -13,6 +13,8 @@
 | `/samplex/refunds` | Legal | SampleX refund policy. |
 | `/samplex/support` | Support | SampleX support and license recovery information. |
 | `/admin/samplex` | Private operations | Authenticated SampleX license administration. Not linked publicly. |
+| `/api/samplex/events` | Public API | Accepts allowlisted anonymous Demo Trial and checkout-interest counters. |
+| `/api/admin/licenses` | Private API | Returns licenses and 30-day product metrics; also issues manual licenses. |
 
 ## Workspace deep links
 

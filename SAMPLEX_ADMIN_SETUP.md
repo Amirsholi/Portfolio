@@ -12,6 +12,8 @@ The private interface is available at `/admin/samplex`. It uses Supabase email-a
 
 The table has Row Level Security enabled and grants no browser role direct access. Administrative reads and writes go through the server function.
 
+Running the schema also creates `samplex_metrics` and the server-only `increment_samplex_metric` function. Metrics are anonymous daily counters for Demo Trial and checkout interest; no IP address, cookie, device identifier or audio information is stored.
+
 ## 2. Local configuration
 
 Copy the variable names from `.env.example` into `.env.local`. Do not commit `.env.local`.
@@ -56,3 +58,7 @@ Redeploy after adding them. If email delivery fails, Polar retries the webhook; 
 ## 7. Manual recovery
 
 Customers recover a lost license by contacting support with the email used at Polar checkout and, when available, the order or checkout reference. Verify the paid, non-refunded order in `/admin/samplex`. Prefer returning the existing key. Generate a replacement only when necessary, mark the previous record as replaced and document the reason in the registry. No public recovery form or additional customer-data collection is used.
+
+## 8. Demo and checkout metrics
+
+Run `supabase/schema.sql` again before deploying the metrics dashboard. The public product page sends only the event name to `/api/samplex/events`; the server converts it into a daily aggregate in Supabase. The authenticated administration view reads the last 30 days through `/api/admin/licenses` and displays Demo Trial interest, checkout clicks and the resulting intent ratio.

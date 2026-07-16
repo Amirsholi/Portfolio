@@ -35,3 +35,34 @@ alter table public.samplex_licenses add column if not exists delivered_at timest
 alter table public.samplex_licenses enable row level security;
 
 revoke all on table public.samplex_licenses from anon, authenticated;
+
+create table if not exists public.samplex_metrics (
+  day date not null default current_date,
+  event text not null check (event in ('demo_interest', 'checkout_interest')),
+  count bigint not null default 0 check (count >= 0),
+  primary key (day, event)
+);
+
+alter table public.samplex_metrics enable row level security;
+revoke all on table public.samplex_metrics from anon, authenticated;
+
+create or replace function public.increment_samplex_metric(metric_event text)
+returns void
+language plpgsql
+security definer
+set search_path = public
+as $$
+begin
+  if metric_event not in ('demo_interest', 'checkout_interest') then
+    raise exception 'Unknown SampleX metric';
+  end if;
+
+  insert into public.samplex_metrics (day, event, count)
+  values (current_date, metric_event, 1)
+  on conflict (day, event)
+  do update set count = samplex_metrics.count + 1;
+end;
+$$;
+
+revoke all on function public.increment_samplex_metric(text) from public, anon, authenticated;
+grant execute on function public.increment_samplex_metric(text) to service_role;

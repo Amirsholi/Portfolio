@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Copy, Gift, KeyRound, LogOut, Plus, RefreshCw, ShieldCheck } from "lucide-react";
+import { BarChart3, Copy, ExternalLink, Gift, KeyRound, LogOut, MousePointerClick, PackageOpen, Plus, RefreshCw, ShieldCheck } from "lucide-react";
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
@@ -13,6 +13,7 @@ export function SampleXAdmin() {
   const [loginMessage, setLoginMessage] = useState("");
   const [busy, setBusy] = useState(false);
   const [licenses, setLicenses] = useState([]);
+  const [metrics, setMetrics] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -44,6 +45,7 @@ export function SampleXAdmin() {
       const body = await response.json();
       if (!response.ok) throw new Error(body.error || "Could not load licenses.");
       setLicenses(body.licenses || []);
+      setMetrics(body.metrics || []);
     } catch (requestError) {
       setError(requestError.message);
       if (/session|token|unauthorized/i.test(requestError.message)) signOut();
@@ -89,25 +91,37 @@ export function SampleXAdmin() {
     sessionStorage.removeItem(SESSION_KEY);
     setSession(null);
     setLicenses([]);
+    setMetrics([]);
   }
 
   if (!token) return <AdminLogin email={email} password={password} message={loginMessage} busy={busy} onEmail={setEmail} onPassword={setPassword} onSubmit={requestLogin} />;
 
+  const demoClicks = metricTotal(metrics, "demo_interest");
+  const checkoutClicks = metricTotal(metrics, "checkout_interest");
+  const intentRate = demoClicks ? Math.round((checkoutClicks / demoClicks) * 100) : 0;
+
   return (
     <main className="sx-admin-shell">
       <header className="sx-admin-header">
-        <div><span className="sx-admin-mark"><ShieldCheck size={17} /></span><div><small>SAMPLEX</small><strong>License control</strong></div></div>
-        <button type="button" onClick={signOut}><LogOut size={14} /> Sign out</button>
+        <div><span className="sx-admin-mark"><ShieldCheck size={17} /></span><div><small>SAMPLEX ADMIN</small><strong>Product operations</strong></div></div>
+        <nav className="sx-admin-actions" aria-label="Administration shortcuts">
+          <a href="/samplex" target="_blank" rel="noreferrer"><ExternalLink size={13} /> Product page</a>
+          <a href="/"><ExternalLink size={13} /> Portfolio</a>
+          <button type="button" onClick={signOut}><LogOut size={14} /> Sign out</button>
+        </nav>
       </header>
+      <section className="sx-admin-intro"><div><small>CONTROL CENTER</small><h1>SampleX operations</h1><p>Monitor product interest, manage permanent access and keep license actions in one focused workspace.</p></div><button type="button" onClick={() => void loadLicenses()} disabled={busy}><RefreshCw size={14} /> {busy ? "Refreshing" : "Refresh data"}</button></section>
       <section className="sx-admin-summary">
-        <div><small>ACTIVE RECORDS</small><strong>{licenses.filter((license) => license.status === "active").length}</strong></div>
-        <div><small>COMPLIMENTARY</small><strong>{licenses.filter((license) => license.kind === "promo").length}</strong></div>
-        <div><small>PERMANENT</small><strong>{licenses.filter((license) => license.kind === "permanent").length}</strong></div>
+        <div><small>ACTIVE LICENSES</small><strong>{licenses.filter((license) => license.status === "active").length}</strong><span>Current registry</span></div>
+        <div><small>DEMO INTEREST</small><strong>{demoClicks}</strong><span>Last 30 days</span></div>
+        <div><small>CHECKOUT CLICKS</small><strong>{checkoutClicks}</strong><span>Last 30 days</span></div>
+        <div><small>INTENT RATE</small><strong>{intentRate}%</strong><span>Checkout / demo</span></div>
       </section>
+      <MetricsPanel metrics={metrics} />
       <section className="sx-admin-grid">
         <LicenseCreator token={token} onCreated={loadLicenses} />
         <div className="sx-admin-records">
-          <div className="sx-section-heading"><div><small>REGISTRY</small><h2>Issued licenses</h2></div><button type="button" onClick={() => void loadLicenses()} disabled={busy} aria-label="Refresh licenses"><RefreshCw size={14} /></button></div>
+          <div className="sx-section-heading"><div><small>LICENSE REGISTRY</small><h2>Issued access</h2></div><KeyRound size={18} /></div>
           {error && <p className="sx-admin-error">{error}</p>}
           {!error && licenses.length === 0 ? <div className="sx-empty"><KeyRound size={20} /><span>No licenses issued yet.</span></div> : null}
           <div className="sx-license-list">
@@ -116,6 +130,27 @@ export function SampleXAdmin() {
         </div>
       </section>
     </main>
+  );
+}
+
+function MetricsPanel({ metrics }) {
+  const days = useMemo(() => {
+    const grouped = new Map();
+    metrics.forEach((metric) => {
+      const row = grouped.get(metric.day) || { day: metric.day, demo: 0, checkout: 0 };
+      if (metric.event === "demo_interest") row.demo = Number(metric.count || 0);
+      if (metric.event === "checkout_interest") row.checkout = Number(metric.count || 0);
+      grouped.set(metric.day, row);
+    });
+    return [...grouped.values()].sort((a, b) => b.day.localeCompare(a.day)).slice(0, 7);
+  }, [metrics]);
+
+  return (
+    <section className="sx-metrics-panel">
+      <div className="sx-section-heading"><div><small>DEMO & CONVERSION</small><h2>Recent interest</h2></div><BarChart3 size={18} /></div>
+      {days.length ? <div className="sx-metrics-table"><div className="sx-metrics-head"><span>DAY</span><span><PackageOpen size={12} /> DEMO</span><span><MousePointerClick size={12} /> CHECKOUT</span></div>{days.map((day) => <div className="sx-metrics-row" key={day.day}><strong>{formatMetricDay(day.day)}</strong><span>{day.demo}</span><span>{day.checkout}</span></div>)}</div> : <div className="sx-metrics-empty"><BarChart3 size={19} /><span>Metrics will appear after the first Demo Trial or checkout click.</span></div>}
+      <p>Anonymous daily counters only. No cookies, IP addresses, device identifiers or audio data are stored.</p>
+    </section>
   );
 }
 
@@ -194,6 +229,14 @@ function CopyButton({ value }) {
   const [copied, setCopied] = useState(false);
   async function copy() { await navigator.clipboard.writeText(value); setCopied(true); window.setTimeout(() => setCopied(false), 1200); }
   return <button type="button" onClick={() => void copy()} aria-label="Copy license code" title="Copy license code"><Copy size={13} />{copied ? <span>COPIED</span> : null}</button>;
+}
+
+function metricTotal(metrics, event) {
+  return metrics.filter((metric) => metric.event === event).reduce((total, metric) => total + Number(metric.count || 0), 0);
+}
+
+function formatMetricDay(value) {
+  return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(`${value}T00:00:00Z`));
 }
 
 function readSession() {

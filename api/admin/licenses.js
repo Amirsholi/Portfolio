@@ -28,9 +28,13 @@ async function requireAdmin(request) {
 
 async function listLicenses(response) {
   requireEnvironment("SUPABASE_URL", "SUPABASE_SECRET_KEY");
-  const result = await fetch(`${process.env.SUPABASE_URL}/rest/v1/samplex_licenses?select=*&order=issued_at.desc&limit=200`, { headers: serviceHeaders() });
-  if (!result.ok) throw new Error("License registry query failed.");
-  return response.status(200).json({ licenses: await result.json() });
+  const since = new Date(Date.now() - 30 * 86_400_000).toISOString().slice(0, 10);
+  const [licenseResult, metricResult] = await Promise.all([
+    fetch(`${process.env.SUPABASE_URL}/rest/v1/samplex_licenses?select=*&order=issued_at.desc&limit=200`, { headers: serviceHeaders() }),
+    fetch(`${process.env.SUPABASE_URL}/rest/v1/samplex_metrics?select=day,event,count&day=gte.${since}&order=day.desc`, { headers: serviceHeaders() }),
+  ]);
+  if (!licenseResult.ok || !metricResult.ok) throw new Error("Administration query failed.");
+  return response.status(200).json({ licenses: await licenseResult.json(), metrics: await metricResult.json() });
 }
 
 async function createLicense(request, response, issuedBy) {

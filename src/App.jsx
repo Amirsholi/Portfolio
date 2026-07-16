@@ -567,8 +567,6 @@ const heroProjects = {
   },
 };
 
-const samplexZipUrl = "";
-
 function HeroProjectPanel({ onOpenProject }) {
   return (
     <motion.div
@@ -850,6 +848,7 @@ export function SampleXProductPage() {
     return checkoutId ? { checkoutId, status: "processing" } : null;
   });
   const [copied, setCopied] = useState(false);
+  const [demoInterest, setDemoInterest] = useState(false);
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -902,6 +901,11 @@ export function SampleXProductPage() {
     window.setTimeout(() => setCopied(false), 1600);
   };
 
+  const registerDemoInterest = () => {
+    setDemoInterest(true);
+    void trackSampleXEvent("demo_interest");
+  };
+
   if (fulfillment) {
     const ready = fulfillment.status === "ready";
     const refunded = fulfillment.status === "refunded";
@@ -943,13 +947,8 @@ export function SampleXProductPage() {
           <h1>Find the moment.<br /><span>Keep the sample.</span></h1>
           <p className="samplex-lead">Capture permitted audio from the active Chrome tab, isolate the useful section and leave with a clean WAV plus the musical context you need.</p>
           <div className="samplex-hero-actions">
-            {samplexZipUrl ? (
-              <a className="samplex-primary-action" href={samplexZipUrl} download><FileDown size={18} /> Download SampleX ZIP</a>
-            ) : (
-              <span className="samplex-primary-action is-pending" aria-disabled="true"><FileDown size={18} /> ZIP download coming soon</span>
-            )}
+            <a className="samplex-primary-action" href="#demo-trial" onClick={registerDemoInterest}><FileDown size={18} /> Demo Trial</a>
           </div>
-          <p className="samplex-download-note">Unzip the release, open <strong>chrome://extensions</strong>, enable Developer mode and choose <strong>Load unpacked</strong>.</p>
           <div className="samplex-trust-line">
             <span><ShieldCheck size={16} /> Processed locally</span>
             <span><CheckCircle2 size={16} /> No account required</span>
@@ -962,6 +961,20 @@ export function SampleXProductPage() {
           <img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform editor with a selected audio region and musical analysis" />
           <figcaption><span>Everything happens in the extension.</span><strong>Audio stays on your machine.</strong></figcaption>
         </figure>
+      </section>
+
+      <section className="samplex-demo-section" id="demo-trial" aria-labelledby="samplex-demo-title">
+        <div className="samplex-demo-copy">
+          <p className="samplex-kicker">Demo Trial · Coming soon</p>
+          <h2 id="samplex-demo-title">Try the complete workflow before buying.</h2>
+          <p>The Demo Trial will include the full capture, trim, analysis and WAV export experience with 75 exports. No account, installer or payment details required.</p>
+          <span className="samplex-demo-status" role="status"><span /> {demoInterest ? "Interest registered — demo release in preparation" : "Release package in preparation"}</span>
+        </div>
+        <ol className="samplex-demo-steps">
+          <li><span>01</span><div><strong>Download and unzip</strong><small>Save the Demo Trial package and extract it to a permanent folder.</small></div></li>
+          <li><span>02</span><div><strong>Load in Chrome</strong><small>Open chrome://extensions, enable Developer mode and choose Load unpacked.</small></div></li>
+          <li><span>03</span><div><strong>Pin and sample</strong><small>Pin SampleX, open an audio tab and start your first permitted capture.</small></div></li>
+        </ol>
       </section>
 
       <section className="samplex-workflow" id="workflow">
@@ -1022,7 +1035,7 @@ export function SampleXProductPage() {
             <li><Check size={16} /> Future SampleX updates</li>
             <li><Check size={16} /> Manual license recovery</li>
           </ul>
-          <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5"><CreditCard size={19} /> Unlock SampleX forever</a>
+          <a href="https://buy.polar.sh/polar_cl_8NHuxDGAJXfYwIOZsALhT2urRtTj23xdB2x3F37cLg6?product_id=82f19b8f-9f50-4e81-a94d-26fa83fccef5" onClick={() => void trackSampleXEvent("checkout_interest")}><CreditCard size={19} /> Unlock SampleX forever</a>
           <small className="samplex-payment-note"><LockKeyhole size={12} /> Secure checkout by Polar</small>
         </section>
       </section>
@@ -1041,6 +1054,19 @@ export function SampleXProductPage() {
       </footer>
     </main>
   );
+}
+
+async function trackSampleXEvent(event) {
+  try {
+    await fetch("/api/samplex/events", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ event }),
+      keepalive: true,
+    });
+  } catch {
+    // Metrics must never interrupt the product flow.
+  }
 }
 
 function ContactPanel({
