@@ -2957,9 +2957,39 @@ a {
   }
 
   .top-bar {
-    grid-template-columns: 1fr;
-    position: static;
-    margin-bottom: 22px;
+    grid-template-columns: minmax(180px, auto) minmax(0, 1fr);
+    gap: 10px;
+    min-height: 48px;
+    padding: 6px 9px;
+  }
+
+  .command-palette {
+    display: none;
+  }
+
+  .global-nav {
+    justify-content: flex-end;
+    gap: 5px;
+  }
+
+  .global-nav a,
+  .global-nav button,
+  .cv-menu > button {
+    min-height: 32px;
+    padding-inline: 9px;
+  }
+
+  .avatar {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-chip {
+    gap: 8px;
+  }
+
+  .brand-chip small {
+    font-size: 10px;
   }
 
   .boot-hero,
@@ -2968,15 +2998,166 @@ a {
   }
 
   .workbench {
-    grid-template-columns: 52px 260px minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) 26px;
-    height: clamp(600px, calc(100vh - 42px), 760px);
+    grid-template-columns: 48px 230px minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) 22px;
+    height: clamp(540px, calc(100svh - 92px), 700px);
+  }
+
+  .activity-bar {
+    gap: 5px;
+    padding: 8px 4px;
+  }
+
+  .activity-bar button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .explorer-title {
+    padding: 10px 12px 6px;
+  }
+
+  .explorer-group {
+    padding: 6px 12px;
+  }
+
+  .file-tree {
+    gap: 1px;
+    padding: 6px 0 10px;
+  }
+
+  .explorer button {
+    min-height: 31px;
+    padding-inline: 11px;
+  }
+
+  .file-tree-folder-toggle {
+    min-height: 25px;
+  }
+
+  .profile-tree-group {
+    margin-top: 4px;
+    padding-top: 4px;
+  }
+
+  .editor-area {
+    grid-template-rows: 36px minmax(0, 1fr);
+  }
+
+  .editor-tabs {
+    min-height: 36px;
+  }
+
+  .editor-content {
+    padding: 12px 16px;
+  }
+
+  .panel-header {
+    min-height: 36px;
+    margin-bottom: 8px;
+    padding-bottom: 7px;
+  }
+
+  .panel-header span {
+    margin-top: 1px;
+    font-size: 11px;
+  }
+
+  .file-document {
+    gap: 7px;
+    padding-inline: 24px;
+  }
+
+  .file-breadcrumb {
+    margin-bottom: 5px;
+  }
+
+  .file-copy p {
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  .overview-content-grid,
+  .samplex-content-grid {
+    gap: 12px;
+    padding: 9px;
+  }
+
+  .status-bar {
+    min-height: 22px;
+    gap: 13px;
+    font-size: 10px;
   }
 
   .underfit-feature-file {
     grid-template-columns: 1fr;
   }
 
+}
+
+@media (min-width: 821px) and (max-height: 720px) {
+  .desktop-shell {
+    padding-top: 8px;
+  }
+
+  .top-bar {
+    top: 8px;
+    min-height: 44px;
+  }
+
+  .brand-chip small,
+  .live-dot {
+    display: none;
+  }
+
+  .boot-hero {
+    top: 66px;
+    min-height: calc(100svh - 82px);
+    padding-block: 16px 44px;
+  }
+
+  .workbench {
+    height: max(520px, calc(100svh - 72px));
+  }
+
+  .file-copy h3 {
+    font-size: clamp(23px, 2.1vw, 30px);
+  }
+
+  .project-actions {
+    margin-top: 8px;
+  }
+
+  .overview-brand-preview img,
+  .samplex-product-preview img {
+    height: clamp(145px, 25vh, 205px);
+  }
+}
+
+@media (min-width: 821px) and (max-height: 650px) {
+  .workbench {
+    height: auto;
+    min-height: calc(100svh - 56px);
+    grid-template-rows: auto 22px;
+    overflow: visible;
+  }
+
+  .activity-bar,
+  .explorer,
+  .editor-area {
+    min-height: 570px;
+  }
+
+  .editor-area {
+    grid-template-rows: 36px auto;
+    overflow: visible;
+  }
+
+  .editor-content,
+  .file-document {
+    max-height: none;
+    overflow: visible;
+  }
 }
 
 @media (max-width: 820px) {

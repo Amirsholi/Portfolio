@@ -54,3 +54,4 @@ When implementing from a selected generated mock, treat that image as the source
 - The standalone SampleX page leads with ZIP access and installation, and keeps lifetime pricing as the final product section before the footer.
 - SampleX uses one primary acquisition CTA in the product hero; installation guidance stays compact beneath it instead of occupying a separate banner.
 - The SampleX footer reuses the portfolio terminal language and always includes a clear route back to `AmirSholi()`.
+- On notebook-sized viewports, recover space by compacting navigation and VS Code chrome before reducing readable content typography; short screens must never let editor content disappear beneath the status bar.
