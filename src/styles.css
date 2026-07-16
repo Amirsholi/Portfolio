@@ -3648,15 +3648,11 @@ a {
 .samplex-nav>div a { color:#8ca5b3; font:600 12px "Cascadia Code",monospace; text-decoration:none; }
 .samplex-nav>div a:hover { color:#d8f3ff; }
 .samplex-beta { padding:5px 9px; border:1px solid rgba(22,143,255,.34); border-radius:999px; background:rgba(22,143,255,.09); color:#68baff; font:650 10px "Cascadia Code",monospace; text-transform:uppercase; letter-spacing:.08em; }
-.samplex-hero { display:grid; width:min(1180px,100%); min-height:610px; margin:0 auto; grid-template-columns:minmax(0,.88fr) minmax(480px,1.12fr); gap:clamp(48px,7vw,94px); align-items:center; }
-.samplex-hero-copy { display:grid; gap:25px; align-content:center; }
+.samplex-hero { display:grid; width:min(1180px,100%); min-height:560px; margin:0 auto; padding:70px 0 84px; grid-template-columns:minmax(0,.82fr) minmax(480px,1.18fr); gap:clamp(52px,8vw,110px); align-items:center; }
+.samplex-hero-copy { display:grid; gap:22px; align-content:center; }
 .samplex-kicker { margin:0; color:var(--samplex-cyan); font:700 11px "Cascadia Code",monospace; letter-spacing:.12em; text-transform:uppercase; }
-.samplex-hero h1 { margin:0; color:#f7fafc; font-size:clamp(48px,6.2vw,78px); line-height:.98; letter-spacing:-.055em; }
-.samplex-hero h1 span { color:var(--samplex-blue); }
+.samplex-hero h1 { max-width:570px; margin:0; color:#f2f7fa; font-size:clamp(45px,5.2vw,66px); font-weight:720; line-height:1.02; letter-spacing:-.048em; text-wrap:balance; }
 .samplex-lead { max-width:590px; margin:0; color:#aebdc6; font-size:clamp(16px,1.55vw,19px); line-height:1.66; }
-.samplex-demo-version { display:flex; width:fit-content; margin:-8px 0 -10px; padding:7px 10px; gap:8px; align-items:center; border:1px solid rgba(87,199,255,.22); border-radius:6px; background:rgba(20,80,106,.15); color:#92cde6; font:700 10px "Cascadia Code",monospace; letter-spacing:.07em; text-transform:uppercase; }
-.samplex-demo-version span { width:7px; height:7px; border-radius:50%; background:#45c390; box-shadow:0 0 10px rgba(69,195,144,.48); }
-.samplex-hero-actions { display:flex; gap:13px; align-items:center; flex-wrap:wrap; }
 .samplex-primary-action { display:inline-flex; min-height:48px; padding:0 20px; gap:9px; align-items:center; justify-content:center; border-radius:8px; font-size:13px; font-weight:760; text-decoration:none; transition:transform 160ms ease,border-color 160ms ease,background 160ms ease; }
 .samplex-primary-action { background:linear-gradient(180deg,#219aff,#0877db); color:#fff!important; box-shadow:0 13px 30px rgba(0,113,220,.24); }
 .samplex-primary-action.is-pending { border:1px solid rgba(87,199,255,.25); background:rgba(21,50,68,.62); color:#9ac8dc!important; box-shadow:none; cursor:not-allowed; }
@@ -3666,10 +3662,11 @@ a {
 .samplex-trust-line { display:flex; gap:18px; flex-wrap:wrap; color:#708895; }
 .samplex-trust-line span { display:flex; gap:6px; align-items:center; font-size:11px; }
 .samplex-trust-line svg { color:#48b889; }
-.samplex-demo-section { display:grid; width:min(1180px,100%); margin:0 auto 96px; padding:clamp(30px,5vw,56px); grid-template-columns:minmax(0,1fr) minmax(360px,.78fr); gap:clamp(38px,7vw,88px); align-items:center; border:1px solid rgba(67,131,166,.3); border-radius:18px; background:linear-gradient(135deg,rgba(13,29,40,.94),rgba(7,14,20,.98)); box-shadow:0 26px 68px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.025); scroll-margin-top:28px; }
+.samplex-demo-section { display:grid; width:min(1180px,100%); margin:0 auto 96px; padding:clamp(30px,5vw,56px); grid-template-columns:minmax(0,1fr) minmax(360px,.7fr); gap:clamp(38px,7vw,88px); align-items:center; border:1px solid rgba(67,131,166,.38); border-radius:18px; background:radial-gradient(circle at 0 0,rgba(22,143,255,.12),transparent 44%),linear-gradient(135deg,rgba(13,29,40,.96),rgba(7,14,20,.98)); box-shadow:0 26px 68px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.035); scroll-margin-top:28px; }
 .samplex-demo-copy { display:grid; gap:14px; }
 .samplex-demo-copy h2 { max-width:670px; margin:0; color:#eef6f9; font-size:clamp(30px,4vw,47px); line-height:1.08; letter-spacing:-.04em; }
 .samplex-demo-copy>p:not(.samplex-kicker) { max-width:640px; margin:0; color:#91a5af; font-size:14px; line-height:1.7; }
+.samplex-demo-download { width:fit-content; margin-top:8px; padding-inline:24px; }
 .samplex-demo-status { display:flex; width:fit-content; gap:8px; align-items:center; margin-top:4px; color:#75909d; font:650 9px "Cascadia Code",monospace; text-transform:uppercase; letter-spacing:.06em; }
 .samplex-demo-status>span { width:7px; height:7px; border-radius:50%; background:#e4af58; box-shadow:0 0 9px rgba(228,175,88,.35); }
 .samplex-demo-steps { display:grid; margin:0; padding:0; list-style:none; border-block:1px solid rgba(119,159,181,.15); }

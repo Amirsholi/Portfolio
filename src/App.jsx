@@ -944,13 +944,9 @@ export function SampleXProductPage() {
 
       <section className="samplex-hero">
         <div className="samplex-hero-copy">
-          <p className="samplex-kicker">A faster path from browser audio to your DAW</p>
-          <h1>Find the moment.<br /><span>Keep the sample.</span></h1>
-          <p className="samplex-lead">Capture permitted audio from the active Chrome tab, isolate the useful section and leave with a clean WAV plus the musical context you need.</p>
-          <p className="samplex-demo-version"><span /> Demo Trial Version · 75 WAV exports included</p>
-          <div className="samplex-hero-actions">
-            <a className="samplex-primary-action" href="#demo-trial" onClick={registerDemoInterest}><FileDown size={18} /> Demo Trial</a>
-          </div>
+          <p className="samplex-kicker">A focused audio sampler for Chrome</p>
+          <h1>Browser audio, ready for your next track.</h1>
+          <p className="samplex-lead">Record permitted audio from the active tab, trim the exact region and export a clean WAV with BPM, key and tonal context already in view.</p>
           <div className="samplex-trust-line">
             <span><ShieldCheck size={16} /> Processed locally</span>
             <span><CheckCircle2 size={16} /> No account required</span>
@@ -967,10 +963,11 @@ export function SampleXProductPage() {
 
       <section className="samplex-demo-section" id="demo-trial" aria-labelledby="samplex-demo-title">
         <div className="samplex-demo-copy">
-          <p className="samplex-kicker">Demo Trial · Coming soon</p>
-          <h2 id="samplex-demo-title">Try the complete workflow before buying.</h2>
-          <p>The Demo Trial will include the full capture, trim, analysis and WAV export experience with 75 exports. No account, installer or payment details required.</p>
-          <span className="samplex-demo-status" role="status"><span /> {demoInterest ? "Interest registered — demo release in preparation" : "Release package in preparation"}</span>
+          <p className="samplex-kicker">Demo Trial · Available now</p>
+          <h2 id="samplex-demo-title">The complete workflow, with 75 WAV exports included.</h2>
+          <p>Capture, trim, analyze and export without creating an account or entering payment details. Download the ZIP, load the SampleX folder in Chrome and start sampling.</p>
+          <a className="samplex-primary-action samplex-demo-download" href="https://github.com/Amirsholi/SampleX-studio/raw/refs/heads/master/releases/SampleX-demo-trial-0.3.0.zip" onClick={registerDemoInterest}><FileDown size={18} /> Download Demo Trial</a>
+          <span className="samplex-demo-status" role="status"><span /> {demoInterest ? "Download started · Version 0.3.0" : "Version 0.3.0 · ZIP package"}</span>
         </div>
         <ol className="samplex-demo-steps">
           <li><span>01</span><div><strong>Download and unzip</strong><small>Save the Demo Trial package and extract it to a permanent folder.</small></div></li>
