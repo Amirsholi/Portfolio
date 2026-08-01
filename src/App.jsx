@@ -147,7 +147,7 @@ const introText = [
   "Featured products: UnderFit and SampleX.",
 ];
 
-const heroBadges = ["React + TypeScript", "Electron + SQLite", "Chrome MV3 + Web Audio"];
+const heroBadges = ["React + TypeScript", "Electron + SQLite", "Browser Extensions + Web Audio"];
 
 const assetPaths = {
   profile: "/assets/profile.jpg",
@@ -404,7 +404,7 @@ const terminalColumns = [
     title: "Products",
     lines: [
       "UnderFit: gym operations desktop app",
-      "SampleX: local-first Chrome audio sampler",
+      "SampleX: local-first browser audio sampler",
       "Built around real user workflows",
     ],
   },
@@ -556,9 +556,9 @@ const heroProjects = {
   samplex: {
     path: "projects/samplex.md",
     command: "open samplex --summary",
-    name: "SampleX Chrome Extension",
+    name: "SampleX Browser Extension",
     lines: [
-      "Product: local-first Chrome audio sampler",
+      "Product: local-first browser audio sampler",
       "Workflow: capture, trim and analyze",
       "Output: selection-aware WAV export",
       "Stack: React, TypeScript and Chrome MV3",
@@ -751,7 +751,7 @@ function SampleXOverviewPanel({ onOpenMedia }) {
     <div className="file-document samplex-overview-file">
       <div className="file-copy samplex-copy">
         <span className="file-breadcrumb">projects &gt; samplex &gt; overview.md</span>
-        <p className="eyebrow">Chrome extension / Product build</p>
+        <p className="eyebrow">Browser extension / Product build</p>
         <h3>SampleX</h3>
         <p>
           A focused tab-audio sampler for capturing moments in the browser,
@@ -764,7 +764,7 @@ function SampleXOverviewPanel({ onOpenMedia }) {
             <ExternalLink size={14} />
           </a>
           <a className="repo-link" href="/samplex/privacy"><ShieldCheck size={15} /> Privacy</a>
-          <span className="samplex-status"><span /> Private beta</span>
+          <span className="samplex-status"><span /> Demo available</span>
         </div>
       </div>
 
@@ -856,7 +856,7 @@ export function SampleXProductPage() {
     const description = document.querySelector('meta[name="description"]');
     const previousDescription = description?.getAttribute("content");
     document.title = "SampleX — Turn browser audio into clean WAV samples";
-    description?.setAttribute("content", "Capture permitted audio from the active Chrome tab, trim it, analyze BPM, key and tone, and export a clean WAV locally with SampleX.");
+    description?.setAttribute("content", "Capture permitted audio from the active browser tab, trim it, analyze BPM, key and tone, and export a clean WAV locally with SampleX.");
     return () => {
       document.title = previousTitle;
       if (description && previousDescription) description.setAttribute("content", previousDescription);
@@ -937,14 +937,14 @@ export function SampleXProductPage() {
       <nav className="samplex-nav" aria-label="SampleX navigation">
         <a className="samplex-nav-brand" href="/"><AudioWaveform size={22} /><span>SampleX</span></a>
         <div>
-          <span className="samplex-beta">Private beta</span>
+          <span className="samplex-beta">First demo</span>
           <a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">GitHub <ExternalLink size={14} /></a>
         </div>
       </nav>
 
       <section className="samplex-hero">
         <div className="samplex-hero-copy">
-          <p className="samplex-kicker">A focused audio sampler for Chrome</p>
+          <p className="samplex-kicker">A focused audio sampler for your browser</p>
           <h1>Browser audio, ready for your next track.</h1>
           <p className="samplex-lead">Record permitted audio from the active tab, trim the exact region and export a clean WAV with BPM, key and tonal context already in view.</p>
           <div className="samplex-trust-line">
@@ -965,13 +965,13 @@ export function SampleXProductPage() {
         <div className="samplex-demo-copy">
           <p className="samplex-kicker">Demo Trial · Available now</p>
           <h2 id="samplex-demo-title">The complete workflow, with 75 WAV exports included.</h2>
-          <p>Capture, trim, analyze and export without creating an account or entering payment details. Download the ZIP, load the SampleX folder in Chrome and start sampling.</p>
-          <a className="samplex-primary-action samplex-demo-download" href="https://github.com/Amirsholi/SampleX-studio/raw/refs/heads/master/releases/SampleX-demo-trial-0.3.0.zip" onClick={registerDemoInterest}><FileDown size={18} /> Download Demo Trial</a>
+          <p>Capture, trim, analyze and export without creating an account or entering payment details. Download the ZIP, load the SampleX folder in a compatible browser and start sampling.</p>
+          <a className="samplex-primary-action samplex-demo-download" href="https://github.com/Amirsholi/SampleX-studio/releases/download/v0.3.0-demo/SampleX-demo-trial-0.3.0.zip" onClick={registerDemoInterest}><FileDown size={18} /> Download Demo Trial</a>
           <span className="samplex-demo-status" role="status"><span /> {demoInterest ? "Download started · Version 0.3.0" : "Version 0.3.0 · ZIP package"}</span>
         </div>
         <ol className="samplex-demo-steps">
           <li><span>01</span><div><strong>Download and unzip</strong><small>Save the Demo Trial package and extract it to a permanent folder.</small></div></li>
-          <li><span>02</span><div><strong>Load in Chrome</strong><small>Open chrome://extensions, enable Developer mode and choose Load unpacked.</small></div></li>
+          <li><span>02</span><div><strong>Load in your browser</strong><small>Open the browser's extensions page, enable Developer mode and choose Load unpacked.</small></div></li>
           <li><span>03</span><div><strong>Pin and sample</strong><small>Pin SampleX, open an audio tab and start your first permitted capture.</small></div></li>
         </ol>
       </section>
@@ -994,7 +994,7 @@ export function SampleXProductPage() {
         <div className="samplex-tour-grid">
           <article className="samplex-tour-card samplex-tour-card-wide">
             <div className="samplex-tour-copy"><span>01 / Capture</span><h3>Record the active tab on purpose.</h3><p>Capture starts only after you open SampleX and press REC. The live waveform keeps the recording readable while you listen.</p></div>
-            <div className="samplex-tour-media"><img src="/assets/samplex/recording.gif" alt="SampleX recording audio from the active Chrome tab" loading="lazy" decoding="async" /></div>
+            <div className="samplex-tour-media"><img src="/assets/samplex/recording.gif" alt="SampleX recording audio from the active browser tab" loading="lazy" decoding="async" /></div>
           </article>
           <article className="samplex-tour-card">
             <div className="samplex-tour-copy"><span>02 / Shape</span><h3>Keep only the moment.</h3><p>Move the selection handles, preview the loop and refine the exact region before export.</p></div>
@@ -1045,7 +1045,7 @@ export function SampleXProductPage() {
           <span className="terminal-command">PS C:\Users\Amir\Portfolio\SampleX&gt; product --links</span>
           <div className="samplex-terminal-grid">
             <section><strong>[PROFILE]</strong><a href="/">&gt; Back to AmirSholi()</a><a href="/?file=contact">&gt; Contact</a></section>
-            <section><strong>[PROJECT]</strong><a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">&gt; GitHub repository</a><span>&gt; Chrome MV3 · React · Web Audio</span></section>
+            <section><strong>[PROJECT]</strong><a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">&gt; GitHub repository</a><span>&gt; Browser extension · React · Web Audio</span></section>
             <section><strong>[SUPPORT]</strong><a href="/samplex/privacy">&gt; Privacy</a><a href="/samplex/terms">&gt; Terms</a><a href="/samplex/refunds">&gt; Refunds</a><a href="/samplex/support">&gt; Support</a></section>
           </div>
           <span className="terminal-prompt">&gt; <span className="terminal-cursor" /></span>
