@@ -1,6 +1,8 @@
 import { createSampleXLicense, requireEnvironment, serviceHeaders } from "../_lib/samplex-license.js";
 
 const VALID_KINDS = new Set(["permanent", "promo"]);
+const RELEASE_API = "https://api.github.com/repos/Amirsholi/SampleX-studio/releases/tags/v0.3.0-demo";
+const RELEASE_ASSET = "SampleX-demo-trial-0.3.0.zip";
 
 export default async function handler(request, response) {
   try {
@@ -29,12 +31,31 @@ async function requireAdmin(request) {
 async function listLicenses(response) {
   requireEnvironment("SUPABASE_URL", "SUPABASE_SECRET_KEY");
   const since = new Date(Date.now() - 30 * 86_400_000).toISOString().slice(0, 10);
-  const [licenseResult, metricResult] = await Promise.all([
+  const [licenseResult, metricResult, releaseStats] = await Promise.all([
     fetch(`${process.env.SUPABASE_URL}/rest/v1/samplex_licenses?select=*&order=issued_at.desc&limit=200`, { headers: serviceHeaders() }),
     fetch(`${process.env.SUPABASE_URL}/rest/v1/samplex_metrics?select=day,event,count&day=gte.${since}&order=day.desc`, { headers: serviceHeaders() }),
+    fetchReleaseStats(),
   ]);
   if (!licenseResult.ok || !metricResult.ok) throw new Error("Administration query failed.");
-  return response.status(200).json({ licenses: await licenseResult.json(), metrics: await metricResult.json() });
+  return response.status(200).json({ licenses: await licenseResult.json(), metrics: await metricResult.json(), releaseStats });
+}
+
+async function fetchReleaseStats() {
+  try {
+    const result = await fetch(RELEASE_API, {
+      headers: {
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28",
+        "User-Agent": "SampleX-portfolio-admin",
+      },
+    });
+    if (!result.ok) return { downloadCount: null, asset: RELEASE_ASSET };
+    const release = await result.json();
+    const asset = release.assets?.find((item) => item.name === RELEASE_ASSET);
+    return { downloadCount: asset ? Number(asset.download_count || 0) : null, asset: RELEASE_ASSET };
+  } catch {
+    return { downloadCount: null, asset: RELEASE_ASSET };
+  }
 }
 
 async function createLicense(request, response, issuedBy) {

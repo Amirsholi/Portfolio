@@ -14,6 +14,7 @@ export function SampleXAdmin() {
   const [busy, setBusy] = useState(false);
   const [licenses, setLicenses] = useState([]);
   const [metrics, setMetrics] = useState([]);
+  const [releaseStats, setReleaseStats] = useState({ downloadCount: null });
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -46,6 +47,7 @@ export function SampleXAdmin() {
       if (!response.ok) throw new Error(body.error || "Could not load licenses.");
       setLicenses(body.licenses || []);
       setMetrics(body.metrics || []);
+      setReleaseStats(body.releaseStats || { downloadCount: null });
     } catch (requestError) {
       setError(requestError.message);
       if (/session|token|unauthorized/i.test(requestError.message)) signOut();
@@ -92,13 +94,13 @@ export function SampleXAdmin() {
     setSession(null);
     setLicenses([]);
     setMetrics([]);
+    setReleaseStats({ downloadCount: null });
   }
 
   if (!token) return <AdminLogin email={email} password={password} message={loginMessage} busy={busy} onEmail={setEmail} onPassword={setPassword} onSubmit={requestLogin} />;
 
   const demoClicks = metricTotal(metrics, "demo_interest");
   const checkoutClicks = metricTotal(metrics, "checkout_interest");
-  const intentRate = demoClicks ? Math.round((checkoutClicks / demoClicks) * 100) : 0;
 
   return (
     <main className="sx-admin-shell">
@@ -113,9 +115,9 @@ export function SampleXAdmin() {
       <section className="sx-admin-intro"><div><small>CONTROL CENTER</small><h1>SampleX operations</h1><p>Monitor product interest, manage permanent access and keep license actions in one focused workspace.</p></div><button type="button" onClick={() => void loadLicenses()} disabled={busy}><RefreshCw size={14} /> {busy ? "Refreshing" : "Refresh data"}</button></section>
       <section className="sx-admin-summary">
         <div><small>ACTIVE LICENSES</small><strong>{licenses.filter((license) => license.status === "active").length}</strong><span>Current registry</span></div>
-        <div><small>DEMO INTEREST</small><strong>{demoClicks}</strong><span>Last 30 days</span></div>
+        <div><small>RELEASE DOWNLOADS</small><strong>{releaseStats.downloadCount ?? "—"}</strong><span>GitHub total</span></div>
+        <div><small>LANDING CLICKS</small><strong>{demoClicks}</strong><span>Last 30 days</span></div>
         <div><small>CHECKOUT CLICKS</small><strong>{checkoutClicks}</strong><span>Last 30 days</span></div>
-        <div><small>INTENT RATE</small><strong>{intentRate}%</strong><span>Checkout / demo</span></div>
       </section>
       <MetricsPanel metrics={metrics} />
       <section className="sx-admin-grid">
@@ -148,8 +150,8 @@ function MetricsPanel({ metrics }) {
   return (
     <section className="sx-metrics-panel">
       <div className="sx-section-heading"><div><small>DEMO & CONVERSION</small><h2>Recent interest</h2></div><BarChart3 size={18} /></div>
-      {days.length ? <div className="sx-metrics-table"><div className="sx-metrics-head"><span>DAY</span><span><PackageOpen size={12} /> DEMO</span><span><MousePointerClick size={12} /> CHECKOUT</span></div>{days.map((day) => <div className="sx-metrics-row" key={day.day}><strong>{formatMetricDay(day.day)}</strong><span>{day.demo}</span><span>{day.checkout}</span></div>)}</div> : <div className="sx-metrics-empty"><BarChart3 size={19} /><span>Metrics will appear after the first Demo Trial or checkout click.</span></div>}
-      <p>Anonymous daily counters only. No cookies, IP addresses, device identifiers or audio data are stored.</p>
+      {days.length ? <div className="sx-metrics-table"><div className="sx-metrics-head"><span>DAY</span><span><PackageOpen size={12} /> LANDING</span><span><MousePointerClick size={12} /> CHECKOUT</span></div>{days.map((day) => <div className="sx-metrics-row" key={day.day}><strong>{formatMetricDay(day.day)}</strong><span>{day.demo}</span><span>{day.checkout}</span></div>)}</div> : <div className="sx-metrics-empty"><BarChart3 size={19} /><span>Metrics will appear after the first Demo Trial or checkout click.</span></div>}
+      <p>Landing and checkout values are anonymous button-click totals. Actual release downloads are reported separately by GitHub.</p>
     </section>
   );
 }

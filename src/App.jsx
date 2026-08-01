@@ -902,9 +902,15 @@ export function SampleXProductPage() {
     window.setTimeout(() => setCopied(false), 1600);
   };
 
-  const registerDemoInterest = () => {
+  const startDemoDownload = async (event) => {
+    const downloadUrl = event.currentTarget.href;
+    event.preventDefault();
     setDemoInterest(true);
-    void trackSampleXEvent("demo_interest");
+    await Promise.race([
+      trackSampleXEvent("demo_interest"),
+      new Promise((resolve) => window.setTimeout(resolve, 3000)),
+    ]);
+    window.location.assign(downloadUrl);
   };
 
   if (fulfillment) {
@@ -948,10 +954,10 @@ export function SampleXProductPage() {
           <h1>Graba, recorta y descarga samples en WAV.</h1>
           <p className="samplex-lead">SampleX captura el audio permitido de la pestaña activa, te deja elegir el fragmento exacto y muestra BPM, tonalidad y frecuencia antes de exportar.</p>
           <div className="samplex-hero-actions">
-            <a className="samplex-primary-action samplex-hero-download" href="https://github.com/Amirsholi/SampleX-studio/releases/download/v0.3.0-demo/SampleX-demo-trial-0.3.0.zip" onClick={registerDemoInterest}><FileDown size={19} /> Descargar demo (.zip)</a>
+            <a className="samplex-primary-action samplex-hero-download" href="https://github.com/Amirsholi/SampleX-studio/releases/download/v0.3.0-demo/SampleX-demo-trial-0.3.0.zip" onClick={(event) => void startDemoDownload(event)}><FileDown size={19} /> Descargar demo (.zip)</a>
             <a className="samplex-release-link" href="https://github.com/Amirsholi/SampleX-studio/releases/tag/v0.3.0-demo" target="_blank" rel="noreferrer">Ver release <ExternalLink size={14} /></a>
           </div>
-          <span className="samplex-demo-status samplex-hero-status" role="status"><span /> {demoInterest ? "Descarga iniciada · Versión 0.3.0" : "Gratis · 402 KB · Sin cuenta"}</span>
+          <span className="samplex-demo-status samplex-hero-status" role="status"><span /> {demoInterest ? "Preparando descarga · Versión 0.3.0" : "Gratis · 402 KB · Sin cuenta"}</span>
           <div className="samplex-trust-line">
             <span><ShieldCheck size={16} /> Procesamiento local</span>
             <span><CheckCircle2 size={16} /> Audio privado</span>
@@ -1044,14 +1050,16 @@ export function SampleXProductPage() {
 
 async function trackSampleXEvent(event) {
   try {
-    await fetch("/api/samplex/events", {
+    const response = await fetch("/api/samplex/events", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ event }),
       keepalive: true,
     });
+    return response.ok;
   } catch {
     // Metrics must never interrupt the product flow.
+    return false;
   }
 }
 

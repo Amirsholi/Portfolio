@@ -61,4 +61,4 @@ Customers recover a lost license by contacting support with the email used at Po
 
 ## 8. Demo and checkout metrics
 
-Run `supabase/schema.sql` again before deploying the metrics dashboard. The public product page sends only the event name to `/api/samplex/events`; the server converts it into a daily aggregate in Supabase. The authenticated administration view reads the last 30 days through `/api/admin/licenses` and displays Demo Trial interest, checkout clicks and the resulting intent ratio.
+Run `supabase/schema.sql` again before deploying the metrics dashboard. The public product page sends only the event name to `/api/samplex/events`; the server converts it into a daily aggregate in Supabase. The authenticated administration view reads the last 30 days through `/api/admin/licenses` and displays landing-page clicks and checkout clicks separately from the official GitHub release-asset download total.
