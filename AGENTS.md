@@ -8,6 +8,10 @@ When implementing from a selected generated mock, treat that image as the source
 
 ## Durable Portfolio Design Decisions
 
+- Initial replacement version must look and feel like the Sawad reference, matching its composition, proportions, hierarchy and scrolling behavior closely. Personal visual refinements come afterward; do not reinterpret the first version as a different design direction.
+
+- Portfolio reformulation (2026-10-28): use https://sawad.framer.website/ as the structural reference for information placement and hierarchy. The user wants a new portfolio format; colors, photographs and copy remain independent choices. Earlier VS Code-specific layout decisions describe the previous design and should not constrain exploration of the replacement.
+
 - Prioritize load speed, smoothness and usability over decorative technical language or heavy visual effects.
 - The hero-to-workspace transition should feel like the hero recedes backward while the VS Code window rises from below/behind and takes the foreground quickly.
 - The workspace and footer should be static page elements after the transition, not fixed overlays.
