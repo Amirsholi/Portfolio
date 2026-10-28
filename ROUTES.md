@@ -4,8 +4,8 @@
 
 | Route | Surface | Purpose |
 | --- | --- | --- |
-| `/` | Portfolio | Hero and VS Code-style workspace. Defaults to `contact.md`. |
-| `/?file={id}` | Portfolio workspace | Opens a specific workspace file and brings the editor into view. |
+| `/` | Portfolio | Short personal introduction and links to independently navigable portfolio pages. |
+| `/?file={id}` | Portfolio workspace | Legacy case-study workspace: opens the selected file and brings the editor into view. |
 | `/samplex` | SampleX | Product landing, ZIP access, workflow, privacy and lifetime license. |
 | `/samplex/success?checkout_id={id}` | SampleX fulfillment | Retrieves and displays the signed license after checkout. |
 | `/samplex/privacy` | Legal | SampleX privacy policy. |
@@ -58,3 +58,33 @@
 - Unknown `file` values safely fall back to `contact.md`.
 - Legacy `/#samplex` and `/#buy-samplex` links redirect to `/samplex`.
 - Vercel rewrites all routes to `index.html`; React selects the correct surface client-side.
+
+## Redesign preview (2026-10-28)
+
+- `/` now renders the continuous Sawad-style portfolio: profile, projects, experience, tools, education and contact.
+- Section links: `/#home`, `/#projects`, `/#experience`, `/#tools`, `/#education`, `/#contact`.
+- Existing `/?file={id}` links retain the previous workspace case-study surface during the transition.
+- `/samplex`, fulfillment, legal pages and `/admin/samplex` retain their existing routing.
+- Contact creates a mailto draft for the visitor to send; it does not submit to a server.
+
+## Short-page portfolio navigation
+
+| URL | Content |
+| --- | --- |
+| `/` | Personal introduction, working focus and CV |
+| `/projects` | UnderFit and SampleX summaries, workflow details and case-study/product links |
+| `/experience` | Roles, dates, responsibilities and operational experience |
+| `/tools` | Technologies and concrete application areas |
+| `/education` | Individual programs, dates, durations and certificate previews |
+| `/contact` | Direct email, LinkedIn and contact email draft |
+
+Navigation uses native links with client-side history updates. Back/Forward and refresh restore the page. Old section fragments resolve to the corresponding short page. Legacy `?file=` case studies remain available.
+
+
+## Shared contact and nested projects (current)
+
+- `/projects/underfit`: independent UnderFit case study with architecture evolution, operational workflows and enlargable captures.
+- `/projects/samplex`: independent SampleX case study with capture, trimming, analysis and WAV export details.
+- Both are nested under Projects in the main navigation. `/samplex` remains the acquisition landing.
+- Contact is a persistent form below all portfolio pages, outside the animated page content; no Contact navigation entry.
+- `/contact` is a legacy entry resolving to the homepage with the shared contact form available below.

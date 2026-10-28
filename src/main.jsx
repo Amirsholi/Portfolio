@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { App, SampleXProductPage } from "./App.jsx";
 import { SampleXAdmin } from "./SampleXAdmin.jsx";
 import { SampleXLegal } from "./SampleXLegal.jsx";
+import { Portfolio } from "./Portfolio.jsx";
 import "./styles.css";
 import "./samplex-admin.css";
 
@@ -16,6 +17,6 @@ const isSampleXProduct = /^\/samplex(?:\/success)?\/?$/.test(window.location.pat
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    {isSampleXAdmin ? <SampleXAdmin /> : legalMatch ? <SampleXLegal page={legalMatch[1]} /> : isSampleXProduct ? <SampleXProductPage /> : <App />}
+    {isSampleXAdmin ? <SampleXAdmin /> : legalMatch ? <SampleXLegal page={legalMatch[1]} /> : isSampleXProduct ? <SampleXProductPage /> : new URLSearchParams(window.location.search).has("file") ? <App /> : <Portfolio />}
   </React.StrictMode>,
 );
