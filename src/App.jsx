@@ -147,7 +147,7 @@ const introText = [
   "Featured products: UnderFit and SampleX.",
 ];
 
-const heroBadges = ["React + TypeScript", "Electron + SQLite", "Chrome MV3 + Web Audio"];
+const heroBadges = ["React + TypeScript", "Electron + SQLite", "Browser Extensions + Web Audio"];
 
 const assetPaths = {
   profile: "/assets/profile.jpg",
@@ -404,7 +404,7 @@ const terminalColumns = [
     title: "Products",
     lines: [
       "UnderFit: gym operations desktop app",
-      "SampleX: local-first Chrome audio sampler",
+      "SampleX: local-first browser audio sampler",
       "Built around real user workflows",
     ],
   },
@@ -556,9 +556,9 @@ const heroProjects = {
   samplex: {
     path: "projects/samplex.md",
     command: "open samplex --summary",
-    name: "SampleX Chrome Extension",
+    name: "SampleX Browser Extension",
     lines: [
-      "Product: local-first Chrome audio sampler",
+      "Product: local-first browser audio sampler",
       "Workflow: capture, trim and analyze",
       "Output: selection-aware WAV export",
       "Stack: React, TypeScript and Chrome MV3",
@@ -751,7 +751,7 @@ function SampleXOverviewPanel({ onOpenMedia }) {
     <div className="file-document samplex-overview-file">
       <div className="file-copy samplex-copy">
         <span className="file-breadcrumb">projects &gt; samplex &gt; overview.md</span>
-        <p className="eyebrow">Chrome extension / Product build</p>
+        <p className="eyebrow">Browser extension / Product build</p>
         <h3>SampleX</h3>
         <p>
           A focused tab-audio sampler for capturing moments in the browser,
@@ -764,7 +764,7 @@ function SampleXOverviewPanel({ onOpenMedia }) {
             <ExternalLink size={14} />
           </a>
           <a className="repo-link" href="/samplex/privacy"><ShieldCheck size={15} /> Privacy</a>
-          <span className="samplex-status"><span /> Private beta</span>
+          <span className="samplex-status"><span /> Demo available</span>
         </div>
       </div>
 
@@ -855,8 +855,8 @@ export function SampleXProductPage() {
     const previousTitle = document.title;
     const description = document.querySelector('meta[name="description"]');
     const previousDescription = description?.getAttribute("content");
-    document.title = "SampleX — Turn browser audio into clean WAV samples";
-    description?.setAttribute("content", "Capture permitted audio from the active Chrome tab, trim it, analyze BPM, key and tone, and export a clean WAV locally with SampleX.");
+    document.title = "SampleX — Graba, recorta y descarga samples WAV";
+    description?.setAttribute("content", "Descarga la primera demo de SampleX para grabar audio permitido del navegador, recortarlo, analizarlo y exportarlo en WAV localmente.");
     return () => {
       document.title = previousTitle;
       if (description && previousDescription) description.setAttribute("content", previousDescription);
@@ -902,9 +902,15 @@ export function SampleXProductPage() {
     window.setTimeout(() => setCopied(false), 1600);
   };
 
-  const registerDemoInterest = () => {
+  const startDemoDownload = async (event) => {
+    const downloadUrl = event.currentTarget.href;
+    event.preventDefault();
     setDemoInterest(true);
-    void trackSampleXEvent("demo_interest");
+    await Promise.race([
+      trackSampleXEvent("demo_interest"),
+      new Promise((resolve) => window.setTimeout(resolve, 3000)),
+    ]);
+    window.location.assign(downloadUrl);
   };
 
   if (fulfillment) {
@@ -937,75 +943,62 @@ export function SampleXProductPage() {
       <nav className="samplex-nav" aria-label="SampleX navigation">
         <a className="samplex-nav-brand" href="/"><AudioWaveform size={22} /><span>SampleX</span></a>
         <div>
-          <span className="samplex-beta">Private beta</span>
+          <span className="samplex-beta">Primera demo</span>
           <a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">GitHub <ExternalLink size={14} /></a>
         </div>
       </nav>
 
-      <section className="samplex-hero">
+      <section className="samplex-hero" id="demo-trial">
         <div className="samplex-hero-copy">
-          <p className="samplex-kicker">A focused audio sampler for Chrome</p>
-          <h1>Browser audio, ready for your next track.</h1>
-          <p className="samplex-lead">Record permitted audio from the active tab, trim the exact region and export a clean WAV with BPM, key and tonal context already in view.</p>
+          <p className="samplex-kicker">Primera demo pública · v0.3.0</p>
+          <h1>Graba, recorta y descarga samples en WAV.</h1>
+          <p className="samplex-lead">SampleX captura el audio permitido de la pestaña activa, te deja elegir el fragmento exacto y muestra BPM, tonalidad y frecuencia antes de exportar.</p>
+          <div className="samplex-hero-actions">
+            <a className="samplex-primary-action samplex-hero-download" href="https://github.com/Amirsholi/SampleX-studio/releases/download/v0.3.0-demo/SampleX-demo-trial-0.3.0.zip" onClick={(event) => void startDemoDownload(event)}><FileDown size={19} /> Descargar demo (.zip)</a>
+            <a className="samplex-release-link" href="https://github.com/Amirsholi/SampleX-studio/releases/tag/v0.3.0-demo" target="_blank" rel="noreferrer">Ver release <ExternalLink size={14} /></a>
+          </div>
+          <span className="samplex-demo-status samplex-hero-status" role="status"><span /> {demoInterest ? "Preparando descarga · Versión 0.3.0" : "Gratis · 402 KB · Sin cuenta"}</span>
           <div className="samplex-trust-line">
-            <span><ShieldCheck size={16} /> Processed locally</span>
-            <span><CheckCircle2 size={16} /> No account required</span>
-            <span><AudioWaveform size={16} /> BPM, key and tone</span>
+            <span><ShieldCheck size={16} /> Procesamiento local</span>
+            <span><CheckCircle2 size={16} /> Audio privado</span>
+            <span><AudioWaveform size={16} /> BPM, tonalidad y frecuencia</span>
           </div>
         </div>
 
         <figure className="samplex-hero-product">
           <div className="samplex-window-bar"><span /><span /><span /><small>sample selected</small></div>
           <img src="/assets/samplex/samplex-photo2.png" alt="SampleX waveform editor with a selected audio region and musical analysis" />
-          <figcaption><span>Everything happens in the extension.</span><strong>Audio stays on your machine.</strong></figcaption>
+          <figcaption><span>Graba · Recorta · Analiza</span><strong>Tu audio permanece en tu equipo.</strong></figcaption>
         </figure>
-      </section>
 
-      <section className="samplex-demo-section" id="demo-trial" aria-labelledby="samplex-demo-title">
-        <div className="samplex-demo-copy">
-          <p className="samplex-kicker">Demo Trial · Available now</p>
-          <h2 id="samplex-demo-title">The complete workflow, with 75 WAV exports included.</h2>
-          <p>Capture, trim, analyze and export without creating an account or entering payment details. Download the ZIP, load the SampleX folder in Chrome and start sampling.</p>
-          <a className="samplex-primary-action samplex-demo-download" href="https://github.com/Amirsholi/SampleX-studio/raw/refs/heads/master/releases/SampleX-demo-trial-0.3.0.zip" onClick={registerDemoInterest}><FileDown size={18} /> Download Demo Trial</a>
-          <span className="samplex-demo-status" role="status"><span /> {demoInterest ? "Download started · Version 0.3.0" : "Version 0.3.0 · ZIP package"}</span>
-        </div>
-        <ol className="samplex-demo-steps">
-          <li><span>01</span><div><strong>Download and unzip</strong><small>Save the Demo Trial package and extract it to a permanent folder.</small></div></li>
-          <li><span>02</span><div><strong>Load in Chrome</strong><small>Open chrome://extensions, enable Developer mode and choose Load unpacked.</small></div></li>
-          <li><span>03</span><div><strong>Pin and sample</strong><small>Pin SampleX, open an audio tab and start your first permitted capture.</small></div></li>
+        <ol className="samplex-quickstart" aria-label="Instalación rápida de SampleX">
+          <li><span>01</span><div><strong>Descarga y descomprime</strong><small>Guarda el ZIP y extrae la carpeta SampleX.</small></div></li>
+          <li><span>02</span><div><strong>Carga la extensión</strong><small>Activa el modo desarrollador y elige “Cargar descomprimida”.</small></div></li>
+          <li><span>03</span><div><strong>Fija y empieza</strong><small>Abre una pestaña con audio permitido y pulsa REC.</small></div></li>
         </ol>
-      </section>
-
-      <section className="samplex-workflow" id="workflow">
-        <header><p className="samplex-kicker">One focused workflow</p><h2>From tab to WAV without breaking your flow.</h2></header>
-        <div className="samplex-workflow-steps">
-          <article><span>01</span><div><AudioWaveform size={22} /><h3>Capture</h3><p>Record permitted audio directly from the active tab.</p></div></article>
-          <article><span>02</span><div><Workflow size={22} /><h3>Shape</h3><p>Trim the exact region and inspect BPM, key and tone.</p></div></article>
-          <article><span>03</span><div><FileDown size={22} /><h3>Export</h3><p>Download a clean WAV ready to drag into your project.</p></div></article>
-        </div>
       </section>
 
       <section className="samplex-product-tour" aria-labelledby="samplex-tour-title">
         <header className="samplex-tour-header">
-          <div><p className="samplex-kicker">The real workflow</p><h2 id="samplex-tour-title">A compact sampler that stays out of the way.</h2></div>
-          <p>Open SampleX over the tab you are already using. Record, shape and understand the useful moment without sending the audio to another service.</p>
+          <div><p className="samplex-kicker">La interfaz real</p><h2 id="samplex-tour-title">De la pestaña a tu DAW en cuatro pasos.</h2></div>
+          <p>Abre SampleX sobre la pestaña que ya estás usando. Graba, recorta y analiza el momento útil sin enviar el audio a otro servicio.</p>
         </header>
 
         <div className="samplex-tour-grid">
           <article className="samplex-tour-card samplex-tour-card-wide">
-            <div className="samplex-tour-copy"><span>01 / Capture</span><h3>Record the active tab on purpose.</h3><p>Capture starts only after you open SampleX and press REC. The live waveform keeps the recording readable while you listen.</p></div>
-            <div className="samplex-tour-media"><img src="/assets/samplex/recording.gif" alt="SampleX recording audio from the active Chrome tab" loading="lazy" decoding="async" /></div>
+            <div className="samplex-tour-copy"><span>01 / Graba</span><h3>Captura la pestaña activa cuando tú decides.</h3><p>La grabación comienza únicamente cuando abres SampleX y pulsas REC. La forma de onda aparece en tiempo real mientras escuchas.</p></div>
+            <div className="samplex-tour-media"><img src="/assets/samplex/recording.gif" alt="SampleX recording audio from the active browser tab" loading="lazy" decoding="async" /></div>
           </article>
           <article className="samplex-tour-card">
-            <div className="samplex-tour-copy"><span>02 / Shape</span><h3>Keep only the moment.</h3><p>Move the selection handles, preview the loop and refine the exact region before export.</p></div>
+            <div className="samplex-tour-copy"><span>02 / Recorta</span><h3>Conserva solamente el momento útil.</h3><p>Mueve los límites de selección, escucha el fragmento y ajusta la región exacta antes de exportar.</p></div>
             <div className="samplex-tour-media"><img src="/assets/samplex/trimming.gif" alt="Trimming a selected audio region in SampleX" loading="lazy" decoding="async" /></div>
           </article>
           <article className="samplex-tour-card">
-            <div className="samplex-tour-copy"><span>03 / Understand</span><h3>See useful musical context.</h3><p>BPM, key and dominant tone are calculated for the selected region, right where you edit it.</p></div>
+            <div className="samplex-tour-copy"><span>03 / Analiza</span><h3>Entiende el contexto musical.</h3><p>SampleX calcula BPM, tonalidad y frecuencia dominante para la región seleccionada, justo donde la editas.</p></div>
             <div className="samplex-tour-media"><img src="/assets/samplex/processing.gif" alt="SampleX analyzing BPM, musical key and dominant frequency" loading="lazy" decoding="async" /></div>
           </article>
           <article className="samplex-tour-card samplex-tour-card-wide samplex-tour-card-export">
-            <div className="samplex-tour-copy"><span>04 / Export</span><h3>Leave with a clean WAV.</h3><p>Export the selected region and drag it into your DAW. No project setup, account or cloud upload required.</p></div>
+            <div className="samplex-tour-copy"><span>04 / Descarga</span><h3>Obtén un WAV limpio.</h3><p>Exporta la región seleccionada y arrástrala a tu DAW. Sin crear un proyecto, una cuenta ni subir el audio a la nube.</p></div>
             <div className="samplex-tour-media"><img src="/assets/samplex/download.gif" alt="Exporting a trimmed WAV sample from SampleX" loading="lazy" decoding="async" /></div>
           </article>
         </div>
@@ -1013,8 +1006,8 @@ export function SampleXProductPage() {
 
       <section className="samplex-local-section" aria-label="SampleX privacy and architecture">
         <div className="samplex-local-mark"><ShieldCheck size={34} /><span>LOCAL<br />AUDIO</span></div>
-        <div className="samplex-local-copy"><p className="samplex-kicker">Private by architecture</p><h2>Your recording does not become our data.</h2><p>Waveform editing and musical analysis happen inside the browser. SampleX does not upload recordings, waveform data or analysis results to Amir Sholi's servers.</p></div>
-        <div className="samplex-local-facts"><span><strong>Active tab</strong><small>User-initiated capture</small></span><span><strong>On device</strong><small>Local processing</small></span><span><strong>Signed key</strong><small>Offline activation</small></span></div>
+        <div className="samplex-local-copy"><p className="samplex-kicker">Privado por diseño</p><h2>Tu audio no sale de tu computadora.</h2><p>La edición de la forma de onda y el análisis musical ocurren dentro del navegador. SampleX no sube grabaciones, formas de onda ni resultados a los servidores de Amir Sholi.</p></div>
+        <div className="samplex-local-facts"><span><strong>Pestaña activa</strong><small>Captura iniciada por ti</small></span><span><strong>En tu equipo</strong><small>Procesamiento local</small></span><span><strong>Sin cuenta</strong><small>Primera demo</small></span></div>
       </section>
 
       {!demoTrialActive && <section className="samplex-license-section" id="lifetime">
@@ -1045,7 +1038,7 @@ export function SampleXProductPage() {
           <span className="terminal-command">PS C:\Users\Amir\Portfolio\SampleX&gt; product --links</span>
           <div className="samplex-terminal-grid">
             <section><strong>[PROFILE]</strong><a href="/">&gt; Back to AmirSholi()</a><a href="/?file=contact">&gt; Contact</a></section>
-            <section><strong>[PROJECT]</strong><a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">&gt; GitHub repository</a><span>&gt; Chrome MV3 · React · Web Audio</span></section>
+            <section><strong>[PROJECT]</strong><a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">&gt; GitHub repository</a><span>&gt; Browser extension · React · Web Audio</span></section>
             <section><strong>[SUPPORT]</strong><a href="/samplex/privacy">&gt; Privacy</a><a href="/samplex/terms">&gt; Terms</a><a href="/samplex/refunds">&gt; Refunds</a><a href="/samplex/support">&gt; Support</a></section>
           </div>
           <span className="terminal-prompt">&gt; <span className="terminal-cursor" /></span>
@@ -1057,14 +1050,16 @@ export function SampleXProductPage() {
 
 async function trackSampleXEvent(event) {
   try {
-    await fetch("/api/samplex/events", {
+    const response = await fetch("/api/samplex/events", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ event }),
       keepalive: true,
     });
+    return response.ok;
   } catch {
     // Metrics must never interrupt the product flow.
+    return false;
   }
 }
 
