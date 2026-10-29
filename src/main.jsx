@@ -6,6 +6,7 @@ import { SampleXLegal } from "./SampleXLegal.jsx";
 import { Portfolio } from "./Portfolio.jsx";
 import "./styles.css";
 import "./samplex-admin.css";
+import "./palette.css";
 
 if (window.location.pathname === "/" && ["#samplex", "#buy-samplex"].includes(window.location.hash)) {
   window.history.replaceState(null, "", "/samplex");

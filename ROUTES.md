@@ -88,3 +88,10 @@ Navigation uses native links with client-side history updates. Back/Forward and 
 - Both are nested under Projects in the main navigation. `/samplex` remains the acquisition landing.
 - Contact is a persistent form below all portfolio pages, outside the animated page content; no Contact navigation entry.
 - `/contact` is a legacy entry resolving to the homepage with the shared contact form available below.
+
+## Project discovery and persistent navigation
+
+- Projects in the persistent header opens a menu with All projects, UnderFit and SampleX. Home provides direct project cards as well.
+- `/projects/samplex` includes the direct public v0.3.0-demo ZIP download, installation summary and product landing link.
+- Portfolio header and profile remain sticky in natural page flow; the compact mobile profile also remains visible.
+- Current UI palette applies across portfolio, legacy file routes, SampleX acquisition/legal and private admin. Original product captures and social preview imagery retain their original colors.

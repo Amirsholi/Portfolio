@@ -246,7 +246,7 @@ const samplexProjectFiles = [
     icon: Workflow,
     kind: "samplex-feature",
     title: "Process useful musical data",
-    src: "/assets/samplex/processing.gif",
+    src: "/assets/samplex/samplex-photo2.png",
     type: "image",
     meta: "Turn the selected audio into clear information without leaving the extension.",
     bullets: ["Analyze BPM and musical key.", "Inspect frequency and duration.", "Refresh results when the selection changes."],
@@ -995,7 +995,7 @@ export function SampleXProductPage() {
           </article>
           <article className="samplex-tour-card">
             <div className="samplex-tour-copy"><span>03 / Analiza</span><h3>Entiende el contexto musical.</h3><p>SampleX calcula BPM, tonalidad y frecuencia dominante para la región seleccionada, justo donde la editas.</p></div>
-            <div className="samplex-tour-media"><img src="/assets/samplex/processing.gif" alt="SampleX analyzing BPM, musical key and dominant frequency" loading="lazy" decoding="async" /></div>
+            <div className="samplex-tour-media"><img src="/assets/samplex/samplex-photo2.png" alt="SampleX analyzing BPM, musical key and dominant frequency" loading="lazy" decoding="async" /></div>
           </article>
           <article className="samplex-tour-card samplex-tour-card-wide samplex-tour-card-export">
             <div className="samplex-tour-copy"><span>04 / Descarga</span><h3>Obtén un WAV limpio.</h3><p>Exporta la región seleccionada y arrástrala a tu DAW. Sin crear un proyecto, una cuenta ni subir el audio a la nube.</p></div>

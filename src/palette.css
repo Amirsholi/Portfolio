@@ -1,0 +1,55 @@
+/* Shared palette across portfolio, product, legal and administration surfaces. */
+:root{--sx-bg:#000;--sx-panel:#000;--sx-line:#464545;--sx-cyan:#00acac;--sx-text:#dfdedc;--sx-muted:#a6a7a2;background:#000;color:#dfdedc}
+html,body{background:#000}
+.samplex-landing{--samplex-blue:#00acac;--samplex-cyan:#00acac;background:#000;color:#dfdedc}
+.samplex-hero-product{transform:none;background:#000;border-color:#464545;box-shadow:none}
+.samplex-hero-product::before{display:none}
+.samplex-hero-product img,.samplex-tour-media img{width:100%;height:auto;max-height:none;object-fit:contain;aspect-ratio:auto}
+.samplex-tour-media{display:flex;align-items:center;justify-content:center;min-width:0}
+.samplex-primary-action{background:#00acac;color:#000!important;border-color:#00acac}
+.samplex-kicker,.samplex-trust-line,.samplex-release-link{color:#00acac}
+.samplex-nav{position:sticky;top:0;z-index:30;background:#000}
+.sx-login-shell,.sx-admin-shell{background:#000;color:#dfdedc}
+.sx-login-card,.sx-admin-summary,.sx-license-creator,.sx-admin-records,.sx-admin-header{background:#000;border-color:#464545;box-shadow:none;backdrop-filter:none}
+.desktop-shell{background:#000}.ambient-grid{display:none}
+.samplex-primary-action,.sx-login-icon{box-shadow:none}
+/* Tonal depth: separate the canvas, chrome, content and media surfaces. */
+:root{--ui-canvas:#0d1113;--ui-surface:#171d20;--ui-raised:#20292d;--ui-border:#344044;--ui-text:#e5e4df;--ui-muted:#a7b0b2;--ui-accent:#40b9b2;--pf-accent:var(--ui-accent);--pf-muted:var(--ui-muted);--sx-bg:var(--ui-canvas);--sx-panel:var(--ui-surface);--sx-line:var(--ui-border);--sx-cyan:var(--ui-accent);--sx-text:var(--ui-text);--sx-muted:var(--ui-muted);background:var(--ui-canvas);color:var(--ui-text)}
+html,body,html:has(body.portfolio-page),body.portfolio-page,body.portfolio-page #root,.pf-shell{background:var(--ui-canvas);color:var(--ui-text)}
+.pf-header{background:var(--ui-canvas);border-color:#293236}
+.pf-header>nav{background:var(--ui-surface);border-color:#3a474b;box-shadow:inset 0 1px 0 #ffffff0a,0 4px 12px #0004}
+.pf-header a[aria-current=page],.pf-project-menu>summary.is-active,.pf-project-menu[open]>summary{background:#213638;border-radius:5px}
+.pf-project-dropdown{background:var(--ui-raised);border-color:#46585c;box-shadow:0 4px 16px #0007}
+.pf-project-dropdown a:hover{background:#2c3e42}
+.pf-profile{background:#e3e1dc;border:1px solid #f2f0ea;box-shadow:0 6px 18px #0005,inset 0 1px 0 #fff8}
+.pf-portrait{background:#c4c6c1;box-shadow:0 1px 4px #0002}
+.pf-intro h1 span{color:#a6b8bb}
+.pf-heading span{color:#94a4a8}
+.pf-project-cards>article{background:var(--ui-surface);border-color:#3b494e;box-shadow:inset 0 1px 0 #ffffff08,0 4px 12px #0003}
+.pf-project-cover{background:#090d0f;border-color:#3b494e}
+.pf-project-card-copy h3 a{color:var(--ui-text)}
+.pf-project-type{color:#99b4b8}
+.pf-project-cover:hover{background:#111c20}
+.pf-primary-action,.pf-form>button{background:var(--ui-accent);border-color:#6bccc5;box-shadow:inset 0 1px 0 #ffffff30,0 2px 6px #0003;color:#081413!important}
+.pf-primary-action:hover,.pf-form>button:hover{background:#6ccdc6;border-color:#91dcd6}
+.pf-case-facts{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:8px;padding:20px}
+.pf-case-section figure button{background:#090d0f;border-color:#465459;box-shadow:0 4px 12px #0003}
+.pf-release-status,.pf-download-panel{background:var(--ui-surface);border-color:#40565b;box-shadow:inset 0 1px 0 #ffffff08,0 4px 12px #0003}
+.pf-release-status dt{color:#77c9c3}
+.pf-case-note{border-color:#558e8e}
+.pf-home-fit,.pf-home-work,.pf-page-next,.pf-entries article,.pf-capabilities{border-color:var(--ui-border)}
+.pf-paged>#contact{background:var(--ui-surface);border:1px solid var(--ui-border);border-radius:10px;padding:28px;margin-top:34px;box-shadow:inset 0 1px 0 #ffffff08}
+.pf-form input,.pf-form select,.pf-form textarea{background:#101618;border-color:#455256;color:var(--ui-text);box-shadow:inset 0 1px 3px #0003}
+.pf-form :is(input,select,textarea):focus{border-color:var(--ui-accent)}
+.pf-dialog{background:var(--ui-surface);border-color:#596a70;box-shadow:0 8px 24px #0008}
+.pf-dialog-head button{background:#293337;border-color:#526166;color:var(--ui-text)}
+.pf-dialog::backdrop{background:#05090de6}
+.pf-footer{color:#8d9b9f}
+.samplex-landing,.samplex-legal-page,.sx-login-shell,.sx-admin-shell,.desktop-shell{background:var(--ui-canvas);color:var(--ui-text)}
+.samplex-landing{--samplex-blue:var(--ui-accent);--samplex-cyan:var(--ui-accent)}
+.samplex-nav,.samplex-legal-header,.sx-admin-header{background:var(--ui-canvas);border-color:var(--ui-border)}
+.samplex-hero-product,.samplex-tour-card,.samplex-quickstart,.samplex-privacy-proof,.samplex-legal-document,.sx-login-card,.sx-admin-summary,.sx-license-creator,.sx-admin-records{background:var(--ui-surface);border-color:var(--ui-border);box-shadow:inset 0 1px 0 #ffffff08,0 4px 12px #0003}
+.samplex-hero-product::before{display:none}.samplex-primary-action{background:var(--ui-accent);border-color:#6bccc5;box-shadow:inset 0 1px 0 #ffffff30,0 2px 6px #0003;color:#081413!important}
+.samplex-tour-media{background:#090d0f}.samplex-tour-media img{border-color:var(--ui-border)}
+.samplex-legal-document{border-color:var(--ui-border)}
+@media(max-width:600px){.pf-paged>#contact{padding:20px 16px}.pf-case-facts{padding:16px}}
