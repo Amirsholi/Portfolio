@@ -53,3 +53,7 @@ Flag assets: flagcdn.com/uy.svg and flagcdn.com/br.svg, stored locally.
 - SampleX practical TypeScript: SelectionRange, AnalysisWorkerRequest and AnalysisWorkerResponse. Vitest evidence: src/audio/exportWav.test.ts (PCM16 header, DC removal, fades, quiet cut boundaries) and analyzeSelection.test.ts (synthetic 120 BPM click, 440 Hz signal, C major chord). Tests were inspected, not rerun as part of this copy update.
 - Certificate images visually read: React 2023-11-07, 30 hours / 8 weeks; Next.js 2023-12-11, 14 hours / 7 weeks; IBEC Artificial Intelligence 2024-03-13, no duration printed. Removed unsupported six-month duration. Alianza displayed month/year per owner request; original PDF still preserves issue date.
 - CTC institutional name and 2021–present period: directly supplied by owner. Expected December 2026 completion is separate from enrollment period.
+
+## Editorial refactor — 2026-10-29
+
+No factual revision was needed. Verified content was moved to portfolioContent.js and purpose-specific page components. Original Under-Fit/SampleX imagery, source evidence, certificates, CV, product and license routes remain in place. Manrope variable font is from Google Fonts (ofl/manrope/Manrope[wght].ttf); converted to WOFF2 for local hosting, with OFL license retained. Design direction and rationale are recorded in DESIGN_SYSTEM.md.

@@ -1156,5 +1156,125 @@
   "Shared desktop and tablet operations require the central API/PostgreSQL server and connectivity. Remote access also needs Internet. SQLite remains in local mode for compatibility and migration; it is not evidence of an automatic offline fallback for the shared system.": {
     "es": "Las operaciones compartidas entre escritorio y tablets requieren el servidor central con API/PostgreSQL y conectividad. El acceso remoto necesita además Internet. SQLite se conserva en el modo local por compatibilidad y migración; no respalda una recuperación automática sin conexión para el sistema compartido.",
     "pt": "As operações compartilhadas entre desktop e tablets exigem o servidor central com API/PostgreSQL e conectividade. O acesso remoto também precisa de Internet. SQLite permanece no modo local por compatibilidade e migração; isso não comprova uma alternativa automática sem conexão para o sistema compartilhado."
+  },
+  "Selected projects": {
+    "es": "Proyectos seleccionados",
+    "pt": "Projetos selecionados"
+  },
+  "Selected work": {
+    "es": "Trabajo seleccionado",
+    "pt": "Trabalhos selecionados"
+  },
+  "I build software for real operations. From a shared gym management system to an audio product for the browser.": {
+    "es": "Desarrollo software para operaciones reales. Desde un sistema compartido de gestión de gimnasios hasta un producto de audio para el navegador.",
+    "pt": "Desenvolvo software para operações reais. De um sistema compartilhado de gestão de academias a um produto de áudio para o navegador."
+  },
+  "Get in touch": {
+    "es": "Contactame",
+    "pt": "Entre em contato"
+  },
+  "Behind the work": {
+    "es": "Detrás del trabajo",
+    "pt": "Por trás do trabalho"
+  },
+  "Building systems, understanding operations.": {
+    "es": "Construir sistemas, entender la operación.",
+    "pt": "Construir sistemas, entender a operação."
+  },
+  "Independent · Hybrid": {
+    "es": "Independiente · Híbrido",
+    "pt": "Independente · Híbrido"
+  },
+  "Montevideo · On-site": {
+    "es": "Montevideo · Presencial",
+    "pt": "Montevidéu · Presencial"
+  },
+  "Content Moderator · Portuguese": {
+    "es": "Moderador de contenido · Portugués",
+    "pt": "Moderador de conteúdo · Português"
+  },
+  "Capabilities": {
+    "es": "Capacidades técnicas",
+    "pt": "Capacidades técnicas"
+  },
+  "Data & persistence": {
+    "es": "Datos y persistencia",
+    "pt": "Dados e persistência"
+  },
+  "Development & verification": {
+    "es": "Desarrollo y verificación",
+    "pt": "Desenvolvimento e verificação"
+  },
+  "Complementary coursework": {
+    "es": "Formación complementaria",
+    "pt": "Formação complementar"
+  },
+  "Education & certificates": {
+    "es": "Formación y certificados",
+    "pt": "Formação e certificados"
+  },
+  "Academic foundation and continued learning.": {
+    "es": "Formación académica y aprendizaje continuo.",
+    "pt": "Formação acadêmica e aprendizado contínuo."
+  },
+  "Main qualification": {
+    "es": "Formación principal",
+    "pt": "Formação principal"
+  },
+  "Thesis pending": {
+    "es": "Tesis pendiente",
+    "pt": "Tese pendente"
+  },
+  "Courses & certifications": {
+    "es": "Cursos y certificaciones",
+    "pt": "Cursos e certificações"
+  },
+  "View certificate": {
+    "es": "Ver certificado",
+    "pt": "Ver certificado"
+  },
+  "Design, development & audio workflow": {
+    "es": "Diseño, desarrollo y flujo de audio",
+    "pt": "Design, desenvolvimento e fluxo de áudio"
+  },
+  "Let’s talk.": {
+    "es": "Conversemos.",
+    "pt": "Vamos conversar."
+  },
+  "Write a message": {
+    "es": "Escribir un mensaje",
+    "pt": "Escrever uma mensagem"
+  },
+  "Menu": {
+    "es": "Menú",
+    "pt": "Menu"
+  },
+  "Close menu": {
+    "es": "Cerrar menú",
+    "pt": "Fechar menu"
+  },
+  "Amir Sholi · Home": {
+    "es": "Amir Sholi · Inicio",
+    "pt": "Amir Sholi · Início"
+  },
+  "Footer navigation": {
+    "es": "Navegación del pie de página",
+    "pt": "Navegação do rodapé"
+  },
+  "Breadcrumb": {
+    "es": "Ruta de navegación",
+    "pt": "Caminho de navegação"
+  },
+  "Installation guide": {
+    "es": "Guía de instalación",
+    "pt": "Guia de instalação"
+  },
+  "Compatibility & analysis": {
+    "es": "Compatibilidad y análisis",
+    "pt": "Compatibilidade e análise"
+  },
+  "Next.js · React.js · Artificial Intelligence": {
+    "es": "Next.js · React.js · Inteligencia Artificial",
+    "pt": "Next.js · React.js · Inteligência Artificial"
   }
 }
