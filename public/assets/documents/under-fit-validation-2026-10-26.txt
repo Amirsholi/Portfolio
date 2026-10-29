@@ -1,0 +1,21 @@
+Under-Fit — Evidencia histórica de validación local
+
+Fuente: docs/DEPENDENCY_SECURITY.md, revisión 913669d (2026-10-26).
+Documento original: Mantenimiento de dependencias — 25 de octubre de 2026.
+La validación final se completó el 26 de octubre de 2026.
+Contexto: candidata local 2.6.0; no acredita despliegue ni métricas de producción.
+Este extracto conserva los resultados documentados; no representa una nueva ejecución.
+
+## Evidencia
+
+La carpeta [security/2026-10-25](security/2026-10-25) conserva la auditoría inicial, la etapa intermedia y [el resultado final de npm](security/2026-10-25/npm-completed.json). La evidencia intermedia con 7 alertas es histórica, no el resultado final de esta rama. La instalación limpia y la validación final se completaron el 26 de octubre de 2026.
+
+- JavaScript: 141 pruebas aprobadas, sin omisiones, después de la migración de dependencias.
+- .NET: 29 pruebas unitarias y 27 de integración y seguridad aprobadas.
+- Python: prueba de copia SQLite aprobada.
+- NuGet: sin paquetes vulnerables reportados al consultar los proyectos de la solución con dependencias transitivas.
+- Runtime empaquetado: Electron 45, preload, cliente HTTP, migración e integridad SQLite sobre perfil temporal.
+- Actualizador: descarga sintética, validación SHA-512 y respaldo anterior a instalación; ejecución del instalador interceptada.
+- PostgreSQL 18: respaldo completo y restauración en otra base temporal; 62 sentencias de datos y secuencias coincidentes al comparar los dumps.
+
+Estado posterior revisado: docs/MOBILE_ACCESS.md, release-notes/2.6.0.md y revisión local 8c84909 (2026-10-27). Instalación, configuración y validación real en el gimnasio siguen pendientes.

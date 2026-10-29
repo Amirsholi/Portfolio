@@ -87,13 +87,9 @@
     "es": "Soy Amir. Desarrollo y mantengo software para operaciones reales con C#/.NET, JavaScript y SQL: desde la interfaz hasta las reglas de negocio, los datos compartidos y la puesta en producción.",
     "pt": "Sou Amir. Desenvolvo e mantenho software para operações reais com C#/.NET, JavaScript e SQL: da interface às regras de negócio, aos dados compartilhados e à implantação."
   },
-  "UnderFit, my client project, connects reception and instructor tablets across two gym locations. SampleX is my personal browser audio sampler, built with React, TypeScript and Web Audio.": {
-    "es": "UnderFit, mi proyecto para un cliente, conecta la recepción y las tablets de los instructores en dos sedes de un gimnasio. SampleX es mi sampler de audio para el navegador, desarrollado con React, TypeScript y Web Audio.",
-    "pt": "UnderFit, meu projeto para um cliente, conecta a recepção e os tablets dos instrutores em duas unidades de uma academia. SampleX é meu sampler de áudio para o navegador, desenvolvido com React, TypeScript e Web Audio."
-  },
-  "I completed all coursework and exams for Analista Programador at CTC / Universidad CLAEH; my thesis is pending, with completion expected in December 2026. Before software, I worked in Portuguese-language content moderation at Alorica, applying policies and quality criteria at scale.": {
-    "es": "Completé todas las materias y exámenes de Analista Programador en CTC / Universidad CLAEH; me queda la tesis, con finalización prevista para diciembre de 2026. Antes trabajé en moderación de contenido en portugués en Alorica, aplicando políticas y criterios de calidad.",
-    "pt": "Concluí todas as disciplinas e provas de Analista Programador no CTC / Universidad CLAEH; falta a tese, com conclusão prevista para dezembro de 2026. Antes trabalhei com moderação de conteúdo em português na Alorica, aplicando políticas e critérios de qualidade."
+  "Under-Fit, my client project, connects reception and instructor tablets across two gym locations. SampleX is my personal browser audio sampler, built with React, TypeScript and Web Audio.": {
+    "es": "Under-Fit, mi proyecto para un cliente, conecta la recepción y las tablets de los instructores en dos sedes de un gimnasio. SampleX es mi sampler de audio para el navegador, desarrollado con React, TypeScript y Web Audio.",
+    "pt": "Under-Fit, meu projeto para um cliente, conecta a recepção e os tablets dos instrutores em duas unidades de uma academia. SampleX é meu sampler de áudio para o navegador, desenvolvido com React, TypeScript e Web Audio."
   },
   "Read my CV": {
     "es": "Ver mi CV",
@@ -135,9 +131,9 @@
     "es": "PROYECTOS",
     "pt": "PROJETOS"
   },
-  "Explore the problem, the product and the work behind each project. UnderFit is client software in daily use; SampleX is a browser product with a downloadable demo.": {
-    "es": "Conocé el problema, el producto y el trabajo detrás de cada proyecto. UnderFit se utiliza a diario en un negocio; SampleX tiene una demo descargable para el navegador.",
-    "pt": "Conheça o problema, o produto e o trabalho por trás de cada projeto. UnderFit é usado diariamente em um negócio; SampleX tem uma demo para baixar e usar no navegador."
+  "Explore the problem, the product and the work behind each project. Under-Fit is client software in daily use; SampleX is a browser product with a downloadable demo.": {
+    "es": "Conocé el problema, el producto y el trabajo detrás de cada proyecto. Under-Fit se utiliza a diario en un negocio; SampleX tiene una demo descargable para el navegador.",
+    "pt": "Conheça o problema, o produto e o trabalho por trás de cada projeto. Under-Fit é usado diariamente em um negócio; SampleX tem uma demo para baixar e usar no navegador."
   },
   "Client software · Two gym locations": {
     "es": "Software para cliente · Dos sedes",
@@ -159,9 +155,9 @@
     "es": "Conocer el proyecto",
     "pt": "Conhecer o projeto"
   },
-  "Explore UnderFit": {
-    "es": "Explorar UnderFit",
-    "pt": "Explorar UnderFit"
+  "Explore Under-Fit": {
+    "es": "Explorar Under-Fit",
+    "pt": "Explorar Under-Fit"
   },
   "Explore SampleX": {
     "es": "Explorar SampleX",
@@ -195,29 +191,13 @@
     "es": "Moderador de contenido · Portugués · Presencial",
     "pt": "Moderador de conteúdo · Português · Presencial"
   },
-  "Software Developer (Independent) · UnderFit · Hybrid": {
-    "es": "Desarrollador independiente · UnderFit · Híbrido",
-    "pt": "Desenvolvedor independente · UnderFit · Híbrido"
+  "Software Developer (Independent) · Under-Fit · Hybrid": {
+    "es": "Desarrollador independiente · Under-Fit · Híbrido",
+    "pt": "Desenvolvedor independente · Under-Fit · Híbrido"
   },
   "Develop and maintain custom gym management software running at two locations in Uruguay. Connect Windows administration with instructor tablets across memberships, check-ins, cash, products, classes and routines.": {
     "es": "Desarrollo y mantengo un sistema de gestión a medida en dos sedes de Uruguay. Conecto la administración en Windows con las tablets de los instructores: membresías, asistencia, caja, productos, clases y rutinas.",
     "pt": "Desenvolvo e mantenho um sistema de gestão sob medida em duas unidades no Uruguai. Conecto a administração no Windows aos tablets dos instrutores: matrículas, presença, caixa, produtos, aulas e treinos."
-  },
-  "Worked on-site in Montevideo, moderating content in Portuguese. Reviewed information against policies, applied consistent criteria and met quality and productivity targets in a high-volume SLA/KPI environment.": {
-    "es": "Trabajé de forma presencial en Montevideo moderando contenido en portugués. Revisaba información según las políticas, aplicaba criterios consistentes y cumplía objetivos de calidad y productividad en un entorno con SLA/KPI.",
-    "pt": "Trabalhei presencialmente em Montevidéu moderando conteúdo em português. Revisava informações conforme as políticas, aplicava critérios consistentes e cumpria metas de qualidade e produtividade em um ambiente com SLA/KPI."
-  },
-  "Reviewed content and information against internal policies and operational guidelines.": {
-    "es": "Revisé contenido e información según políticas internas y pautas operativas.",
-    "pt": "Revisei conteúdo e informações conforme políticas internas e diretrizes operacionais."
-  },
-  "Met quality and productivity targets while maintaining accuracy and attention to detail.": {
-    "es": "Cumplí objetivos de calidad y productividad manteniendo precisión y atención al detalle.",
-    "pt": "Cumpri metas de qualidade e produtividade mantendo precisão e atenção aos detalhes."
-  },
-  "Documented cases, identified inconsistencies and applied operational policies.": {
-    "es": "Documenté casos, identifiqué inconsistencias y apliqué políticas operativas.",
-    "pt": "Documentei casos, identifiquei inconsistências e apliquei políticas operacionais."
   },
   "Owned the development cycle: requirements, solution design, implementation, deployment and maintenance.": {
     "es": "Me encargué del ciclo completo: requisitos, diseño de la solución, implementación, despliegue y mantenimiento.",
@@ -238,10 +218,6 @@
   "TOOLKIT": {
     "es": "TECNOLOGÍAS",
     "pt": "TECNOLOGIAS"
-  },
-  "The technologies I use, and where they fit into my work.": {
-    "es": "Las tecnologías que uso y cómo las aplico en mis proyectos.",
-    "pt": "As tecnologias que uso e como as aplico nos meus projetos."
   },
   "Backend & REST APIs": {
     "es": "Backend y APIs REST",
@@ -271,10 +247,6 @@
     "es": "Control de versiones",
     "pt": "Controle de versões"
   },
-  "React framework": {
-    "es": "Framework de React",
-    "pt": "Framework React"
-  },
   "Backend & systems integration": {
     "es": "Backend e integración de sistemas",
     "pt": "Backend e integração de sistemas"
@@ -287,25 +259,13 @@
     "es": "Interfaces de producto",
     "pt": "Interfaces de produto"
   },
-  "Reusable React components, stateful screens, responsive layouts and dashboard workflows.": {
-    "es": "Componentes reutilizables en React, pantallas con estado, diseño adaptable y flujos de paneles de gestión.",
-    "pt": "Componentes reutilizáveis em React, telas com estado, layouts responsivos e fluxos de painéis de gestão."
-  },
   "Local desktop systems": {
     "es": "Sistemas de escritorio locales",
     "pt": "Sistemas desktop locais"
   },
-  "Electron windows, SQLite persistence, validation and business rules for offline operations.": {
-    "es": "Ventanas en Electron, persistencia en SQLite, validaciones y reglas de negocio para operar sin conexión.",
-    "pt": "Janelas no Electron, persistência em SQLite, validações e regras de negócio para operar sem conexão."
-  },
   "Data & delivery": {
     "es": "Datos y entrega",
     "pt": "Dados e entrega"
-  },
-  "SQL, Python, REST APIs and data validation, supported by Git, manual testing and technical documentation.": {
-    "es": "SQL, Python, APIs REST y validación de datos, con Git, pruebas manuales y documentación técnica.",
-    "pt": "SQL, Python, APIs REST e validação de dados, com Git, testes manuais e documentação técnica."
   },
   "CONTINUOUS": {
     "es": "FORMACIÓN",
@@ -315,25 +275,9 @@
     "es": "CONTINUA",
     "pt": "CONTÍNUA"
   },
-  "English B1+ · MicroFleX Intermediate": {
-    "es": "Inglés B1+ · MicroFleX Intermediate",
-    "pt": "Inglês B1+ · MicroFleX Intermediate"
-  },
   "Intermediate Online Course completed at Alianza Cultural Uruguay–Estados Unidos. Certificate level: B1+ on the Common European Framework of Reference (CEFR).": {
     "es": "Curso intermedio en línea completado en Alianza Cultural Uruguay–Estados Unidos. Nivel certificado B1+ según el Marco Común Europeo de Referencia (MCER).",
     "pt": "Curso intermediário online concluído na Alianza Cultural Uruguay–Estados Unidos. Nível certificado B1+ segundo o Quadro Europeu Comum de Referência (QECR)."
-  },
-  "All coursework and exams completed in the Analista Programador program at CTC, in partnership with Universidad CLAEH. Thesis pending; expected completion: December 2026.": {
-    "es": "Todas las materias y exámenes de Analista Programador completados en CTC, en convenio con Universidad CLAEH. Tesis pendiente; finalización prevista: diciembre de 2026.",
-    "pt": "Todas as disciplinas e provas de Analista Programador concluídas no CTC, em parceria com Universidad CLAEH. Tese pendente; conclusão prevista: dezembro de 2026."
-  },
-  "Diploma in Artificial Intelligence": {
-    "es": "Diploma en Inteligencia Artificial",
-    "pt": "Diploma em Inteligência Artificial"
-  },
-  "AI fundamentals, prompting and practical tools for technical workflows.": {
-    "es": "Fundamentos de IA, prompting y herramientas prácticas para procesos técnicos.",
-    "pt": "Fundamentos de IA, prompting e ferramentas práticas para processos técnicos."
   },
   "Components, props, state, reusable UI patterns and frontend project structure.": {
     "es": "Componentes, props, estado, patrones de interfaz reutilizables y estructura de proyectos frontend.",
@@ -395,9 +339,9 @@
     "es": "Siguiente proyecto: SampleX",
     "pt": "Próximo projeto: SampleX"
   },
-  "Next project: UnderFit": {
-    "es": "Siguiente proyecto: UnderFit",
-    "pt": "Próximo projeto: UnderFit"
+  "Next project: Under-Fit": {
+    "es": "Siguiente proyecto: Under-Fit",
+    "pt": "Próximo projeto: Under-Fit"
   },
   "Back to top ↑": {
     "es": "Volver arriba ↑",
@@ -423,9 +367,9 @@
     "es": "Uruguay + Brasil · Doble nacionalidad",
     "pt": "Uruguai + Brasil · Dupla nacionalidade"
   },
-  "UnderFit — Gym management ↗": {
-    "es": "UnderFit — Gestión de gimnasios ↗",
-    "pt": "UnderFit — Gestão de academias ↗"
+  "Under-Fit — Gym management ↗": {
+    "es": "Under-Fit — Gestión de gimnasios ↗",
+    "pt": "Under-Fit — Gestão de academias ↗"
   },
   "SampleX — Browser audio sampler ↗": {
     "es": "SampleX — Sampler de audio ↗",
@@ -499,9 +443,9 @@
     "es": "Un sistema compartido entre dos sedes",
     "pt": "Um sistema compartilhado entre duas unidades"
   },
-  "UnderFit is a custom gym management system used in daily operations at two locations in Uruguay. Reception manages members, memberships, check-ins and cash in Windows, while instructors access classes and workout routines from tablets. My work covers requirements, design, implementation, deployment and maintenance.": {
-    "es": "UnderFit es un sistema de gestión a medida utilizado a diario en dos sedes de Uruguay. Recepción administra socios, membresías, asistencia y caja desde Windows; los instructores acceden a clases y rutinas desde tablets. Mi trabajo abarca requisitos, diseño, implementación, despliegue y mantenimiento.",
-    "pt": "UnderFit é um sistema de gestão sob medida utilizado diariamente em duas unidades no Uruguai. A recepção administra alunos, matrículas, presença e caixa no Windows; os instrutores acessam aulas e treinos pelos tablets. Meu trabalho abrange requisitos, projeto, implementação, implantação e manutenção."
+  "Under-Fit is a custom gym management system used in daily operations at two locations in Uruguay. Reception manages members, memberships, check-ins and cash in Windows, while instructors access classes and workout routines from tablets. My work covers requirements, design, implementation, deployment and maintenance.": {
+    "es": "Under-Fit es un sistema de gestión a medida utilizado a diario en dos sedes de Uruguay. Recepción administra socios, membresías, asistencia y caja desde Windows; los instructores acceden a clases y rutinas desde tablets. Mi trabajo abarca requisitos, diseño, implementación, despliegue y mantenimiento.",
+    "pt": "Under-Fit é um sistema de gestão sob medida utilizado diariamente em duas unidades no Uruguai. A recepção administra alunos, matrículas, presença e caixa no Windows; os instrutores acessam aulas e treinos pelos tablets. Meu trabalho abrange requisitos, projeto, implementação, implantação e manutenção."
   },
   "Administration panel with members, memberships, products and daily indicators. Demonstration data.": {
     "es": "Panel de administración con socios, membresías, productos e indicadores diarios. Datos de demostración.",
@@ -586,10 +530,6 @@
   "Verification as part of maintenance": {
     "es": "Verificación como parte del mantenimiento",
     "pt": "Verificação como parte da manutenção"
-  },
-  "The documentation records 141 JavaScript tests, 29 .NET unit tests and 27 integration tests for the local candidate, plus HTTP, backup/restore and packaged-app checks. These are validation results from that development stage, not live production metrics.": {
-    "es": "La documentación registra 141 pruebas JavaScript, 29 pruebas unitarias .NET y 27 de integración para el candidato local, además de controles HTTP, respaldo/restauración y aplicación empaquetada. Son resultados de validación de esa etapa de desarrollo, no métricas de producción.",
-    "pt": "A documentação registra 141 testes JavaScript, 29 testes unitários .NET e 27 de integração para o candidato local, além de verificações HTTP, backup/restauração e aplicativo empacotado. São resultados de validação dessa etapa de desenvolvimento, não métricas de produção."
   },
   "Record the active tab": {
     "es": "Grabar la pestaña activa",
@@ -1056,41 +996,21 @@
     "es": "May 2024 – Oct 2025",
     "pt": "Mai 2024 – Out 2025"
   },
-  "CTC / Universidad CLAEH · Mar 2021 – Dec 2026": {
-    "es": "CTC / Universidad CLAEH · Mar 2021 – Dic 2026",
-    "pt": "CTC / Universidad CLAEH · Mar 2021 – Dez 2026"
-  },
-  "Alianza · 29 Oct 2026": {
-    "es": "Alianza · 29 oct 2026",
-    "pt": "Alianza · 29 out 2026"
-  },
-  "IBEC · Mar 2024 · 6 months": {
-    "es": "IBEC · Mar 2024 · 6 meses",
-    "pt": "IBEC · Mar 2024 · 6 meses"
-  },
-  "CoderHouse · Nov 2023 · 30 hours / 8 weeks": {
-    "es": "CoderHouse · Nov 2023 · 30 horas / 8 semanas",
-    "pt": "CoderHouse · Nov 2023 · 30 horas / 8 semanas"
-  },
-  "CoderHouse · Dec 2023 · 14 hours / 7 weeks": {
-    "es": "CoderHouse · Dic 2023 · 14 horas / 7 semanas",
-    "pt": "CoderHouse · Dez 2023 · 14 horas / 7 semanas"
-  },
   "ARI Informática · 2015 & 2016": {
     "es": "ARI Informática · 2015 y 2016",
     "pt": "ARI Informática · 2015 e 2016"
   },
-  "UnderFit case study": {
-    "es": "Caso de estudio UnderFit",
-    "pt": "Estudo de caso UnderFit"
+  "Under-Fit case study": {
+    "es": "Caso de estudio Under-Fit",
+    "pt": "Estudo de caso Under-Fit"
   },
   "SampleX case study": {
     "es": "Caso de estudio SampleX",
     "pt": "Estudo de caso SampleX"
   },
-  "Current UnderFit administration interface": {
-    "es": "Interfaz actual de administración de UnderFit",
-    "pt": "Interface atual de administração do UnderFit"
+  "Current Under-Fit administration interface": {
+    "es": "Interfaz actual de administración de Under-Fit",
+    "pt": "Interface atual de administração do Under-Fit"
   },
   "Complete SampleX waveform editor and analysis controls": {
     "es": "Editor de onda y controles de análisis completos de SampleX",
@@ -1107,5 +1027,134 @@
   "Portfolio inquiry from": {
     "es": "Consulta desde el portfolio de",
     "pt": "Consulta pelo portfólio de"
+  },
+  "Under-Fit — Gym management system": {
+    "es": "Under-Fit — Sistema de gestión de gimnasios",
+    "pt": "Under-Fit — Sistema de gestão de academias"
+  },
+  "On-site content moderation in Portuguese at Alorica, Montevideo, from May 2024 to October 2025.": {
+    "es": "Moderación de contenido en portugués, presencial en Alorica, Montevideo, de mayo de 2024 a octubre de 2025.",
+    "pt": "Moderação de conteúdo em português, presencial na Alorica, Montevidéu, de maio de 2024 a outubro de 2025."
+  },
+  "Handled high-volume moderation with attention to detail and precise, consistent policy application.": {
+    "es": "Moderación de alto volumen con atención al detalle y aplicación precisa y consistente de políticas.",
+    "pt": "Moderação de alto volume com atenção aos detalhes e aplicação precisa e consistente de políticas."
+  },
+  "Identified inconsistencies and analyzed cases against operational guidelines.": {
+    "es": "Identificación de inconsistencias y análisis de casos según las pautas operativas.",
+    "pt": "Identificação de inconsistências e análise de casos conforme as diretrizes operacionais."
+  },
+  "Worked with SLA, AHT and UR indicators, balancing quality, productivity and handling time.": {
+    "es": "Trabajo con SLA e indicadores AHT y UR, equilibrando calidad, productividad y tiempos de atención.",
+    "pt": "Trabalho com SLA e indicadores AHT e UR, equilibrando qualidade, produtividade e tempo de atendimento."
+  },
+  "MicroFleX Intermediate Online Course — English B1+ (CEFR)": {
+    "es": "MicroFleX Intermediate Online Course — Inglés B1+ (MCER/CEFR)",
+    "pt": "MicroFleX Intermediate Online Course — Inglês B1+ (QECR/CEFR)"
+  },
+  "Alianza · October 2026": {
+    "es": "Alianza · octubre de 2026",
+    "pt": "Alianza · outubro de 2026"
+  },
+  "CTC Enseñanza Técnica Profesional, in partnership with Universidad CLAEH. Coursework and exams completed; thesis pending. Expected completion: December 2026.": {
+    "es": "CTC Enseñanza Técnica Profesional, en convenio con Universidad CLAEH. Cursado y exámenes finalizados; tesis pendiente. Finalización prevista: diciembre de 2026.",
+    "pt": "CTC Enseñanza Técnica Profesional, em convênio com Universidad CLAEH. Disciplinas e provas concluídas; tese pendente. Conclusão prevista: dezembro de 2026."
+  },
+  "2021–present": {
+    "es": "2021–actualidad",
+    "pt": "2021–atualidade"
+  },
+  "IBEC · 13 March 2024": {
+    "es": "IBEC · 13 de marzo de 2024",
+    "pt": "IBEC · 13 de março de 2024"
+  },
+  "Artificial Intelligence studies completed at IBEC. The certificate does not state the course duration.": {
+    "es": "Estudios de Inteligencia Artificial aprobados en IBEC. El certificado no indica la duración del curso.",
+    "pt": "Estudos de Inteligência Artificial concluídos no IBEC. O certificado não informa a duração do curso."
+  },
+  "CoderHouse · 7 November 2023 · 30 hours / 8 weeks": {
+    "es": "CoderHouse · 7 de noviembre de 2023 · 30 horas / 8 semanas",
+    "pt": "CoderHouse · 7 de novembro de 2023 · 30 horas / 8 semanas"
+  },
+  "CoderHouse · 11 December 2023 · 14 hours / 7 weeks": {
+    "es": "CoderHouse · 11 de diciembre de 2023 · 14 horas / 7 semanas",
+    "pt": "CoderHouse · 11 de dezembro de 2023 · 14 horas / 7 semanas"
+  },
+  "I completed coursework and exams for Analista Programador at CTC Enseñanza Técnica Profesional, in partnership with Universidad CLAEH; my thesis is pending, with completion expected in December 2026. My previous experience includes on-site Portuguese-language content moderation at Alorica.": {
+    "es": "Finalicé el cursado y los exámenes de Analista Programador en CTC Enseñanza Técnica Profesional, en convenio con Universidad CLAEH; la tesis está pendiente, con finalización prevista para diciembre de 2026. Mi experiencia previa incluye moderación de contenido en portugués, presencial en Alorica.",
+    "pt": "Concluí as disciplinas e provas de Analista Programador no CTC Enseñanza Técnica Profesional, em convênio com Universidad CLAEH; a tese está pendente, com conclusão prevista para dezembro de 2026. Minha experiência anterior inclui moderação de conteúdo em português, presencial na Alorica."
+  },
+  "The initial Electron/SQLite desktop version supported local operation. The current shared API/PostgreSQL architecture depends on the central server and connectivity; remote access also requires Internet.": {
+    "es": "La versión inicial de escritorio con Electron/SQLite permitía operar localmente. La arquitectura compartida actual con API/PostgreSQL depende del servidor central y la conectividad; el acceso remoto requiere además Internet.",
+    "pt": "A versão inicial desktop com Electron/SQLite permitia operar localmente. A arquitetura compartilhada atual com API/PostgreSQL depende do servidor central e da conectividade; o acesso remoto também requer Internet."
+  },
+  "Practical work with SQL, REST APIs, data validation and Git. Python has a specific support role in Under-Fit: creating a consistent SQLite rehearsal copy with integrity checks and a manifest, covered by a unittest check.": {
+    "es": "Experiencia práctica con SQL, APIs REST, validación de datos y Git. Python tiene un uso puntual de apoyo en Under-Fit: crear una copia consistente de SQLite para ensayos, con controles de integridad y un manifiesto, cubierta por una prueba con unittest.",
+    "pt": "Experiência prática com SQL, APIs REST, validação de dados e Git. Python tem um uso pontual de apoio no Under-Fit: criar uma cópia consistente de SQLite para ensaios, com verificações de integridade e manifesto, coberta por um teste com unittest."
+  },
+  "Practical React and TypeScript work in SampleX: typed audio selections and messages between the interface and analysis worker. Next.js is supported by coursework; it is not claimed as the stack of these two projects.": {
+    "es": "Uso práctico de React y TypeScript en SampleX: selecciones de audio y mensajes tipados entre la interfaz y el worker de análisis. Next.js corresponde a formación; no se presenta como parte del stack de estos dos proyectos.",
+    "pt": "Uso prático de React e TypeScript no SampleX: seleções de áudio e mensagens tipadas entre a interface e o worker de análise. Next.js corresponde à formação; não é apresentado como parte do stack destes dois projetos."
+  },
+  "Practical project experience and coursework, with a concrete scope for each technology.": {
+    "es": "Experiencia práctica en proyectos y formación, con un alcance concreto para cada tecnología.",
+    "pt": "Experiência prática em projetos e formação, com um escopo concreto para cada tecnologia."
+  },
+  "React framework · Coursework": {
+    "es": "Framework de React · Formación",
+    "pt": "Framework React · Formação"
+  },
+  "The dependency-maintenance report records 141 passing JavaScript tests, 29 .NET unit tests and 27 integration/security tests in the local validation completed on 26 October 2026, associated with candidate 2.6.0. These are historical development checks, not production metrics or a new test run.": {
+    "es": "El informe de mantenimiento registra 141 pruebas JavaScript aprobadas, 29 unitarias .NET y 27 de integración y seguridad en la validación local completada el 26 de octubre de 2026, asociada a la candidata 2.6.0. Son comprobaciones históricas de desarrollo, no métricas de producción ni una nueva ejecución de pruebas.",
+    "pt": "O relatório de manutenção registra 141 testes JavaScript aprovados, 29 testes unitários .NET e 27 de integração e segurança na validação local concluída em 26 de outubro de 2026, associada à candidata 2.6.0. São verificações históricas de desenvolvimento, não métricas de produção nem uma nova execução de testes."
+  },
+  "These skills transfer to development and QA through careful analysis, consistent criteria and attention to inconsistencies. This was content moderation, not software testing.": {
+    "es": "Estas habilidades son transferibles a desarrollo y QA por el análisis cuidadoso, los criterios consistentes y la atención a inconsistencias. La experiencia fue en moderación de contenido, no en testing de software.",
+    "pt": "Essas habilidades são transferíveis para desenvolvimento e QA pela análise cuidadosa, pelos critérios consistentes e pela atenção a inconsistências. A experiência foi em moderação de conteúdo, não em testes de software."
+  },
+  "TypeScript & Vitest · SampleX": {
+    "es": "TypeScript y Vitest · SampleX",
+    "pt": "TypeScript e Vitest · SampleX"
+  },
+  "Typed selection ranges and worker messages support the audio workflow. Vitest checks PCM16 WAV headers, DC offset removal, fades at cut boundaries and analysis of synthetic signals.": {
+    "es": "Los rangos de selección y los mensajes con el worker están tipados en TypeScript. Vitest comprueba cabeceras WAV PCM16, eliminación de DC, fades en los extremos del recorte y análisis de señales sintéticas.",
+    "pt": "Os intervalos de seleção e as mensagens com o worker são tipados em TypeScript. Vitest verifica cabeçalhos WAV PCM16, remoção de DC, fades nas bordas do recorte e análise de sinais sintéticos."
+  },
+  "Validation report · 26 October 2026 (excerpt)": {
+    "es": "Informe de validación · 26 de octubre de 2026 (extracto)",
+    "pt": "Relatório de validação · 26 de outubro de 2026 (trecho)"
+  },
+  "75 free WAV exports.": {
+    "es": "75 exportaciones WAV gratuitas.",
+    "pt": "75 exportações WAV gratuitas."
+  },
+  "After they are used, recording, trimming, playback and analysis remain available; WAV export requires a license.": {
+    "es": "Al consumirlas, siguen disponibles la grabación, el recorte, la reproducción y el análisis; la exportación WAV requiere una licencia.",
+    "pt": "Depois de usá-las, gravação, recorte, reprodução e análise continuam disponíveis; a exportação WAV requer uma licença."
+  },
+  "BPM and key are estimates, not guaranteed musical measurements.": {
+    "es": "El BPM y la tonalidad son estimaciones, no mediciones musicales garantizadas.",
+    "pt": "BPM e tonalidade são estimativas, não medições musicais garantidas."
+  },
+  "Chromium extension package (Manifest V3). The included installation guide uses Chrome; the manifest requires Chrome 116 or later. Compatibility with other Chromium browsers depends on their extension APIs; Edge, Brave, Firefox and Safari were not verified in this review.": {
+    "es": "Paquete de extensión Chromium (Manifest V3). La guía incluida usa Chrome y el manifiesto exige Chrome 116 o posterior. La compatibilidad con otros navegadores Chromium depende de sus APIs de extensiones; Edge, Brave, Firefox y Safari no se verificaron en esta revisión.",
+    "pt": "Pacote de extensão Chromium (Manifest V3). O guia incluído usa Chrome e o manifesto exige Chrome 116 ou posterior. A compatibilidade com outros navegadores Chromium depende de suas APIs de extensões; Edge, Brave, Firefox e Safari não foram verificados nesta revisão."
+  },
+  "SampleX estima BPM, tonalidad y frecuencia dominante para la región seleccionada, justo donde la editas.": {
+    "en": "SampleX estimates BPM, key and dominant frequency for the selected region, right where you edit.",
+    "es": "SampleX estima BPM, tonalidad y frecuencia dominante para la región seleccionada, justo donde la editas.",
+    "pt": "SampleX estima BPM, tonalidade e frequência dominante para a região selecionada, exatamente onde você edita."
+  },
+  "Artificial Intelligence · IBEC": {
+    "es": "Inteligencia Artificial · IBEC",
+    "pt": "Inteligência Artificial · IBEC"
+  },
+  "Connectivity and local mode": {
+    "es": "Conectividad y modo local",
+    "pt": "Conectividade e modo local"
+  },
+  "Shared desktop and tablet operations require the central API/PostgreSQL server and connectivity. Remote access also needs Internet. SQLite remains in local mode for compatibility and migration; it is not evidence of an automatic offline fallback for the shared system.": {
+    "es": "Las operaciones compartidas entre escritorio y tablets requieren el servidor central con API/PostgreSQL y conectividad. El acceso remoto necesita además Internet. SQLite se conserva en el modo local por compatibilidad y migración; no respalda una recuperación automática sin conexión para el sistema compartido.",
+    "pt": "As operações compartilhadas entre desktop e tablets exigem o servidor central com API/PostgreSQL e conectividade. O acesso remoto também precisa de Internet. SQLite permanece no modo local por compatibilidade e migração; isso não comprova uma alternativa automática sem conexão para o sistema compartilhado."
   }
 }

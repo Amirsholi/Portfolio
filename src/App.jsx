@@ -1,3 +1,4 @@
+import { SampleXConditions } from './SampleXConditions.jsx';
 import { useLanguage, localize, LanguageSwitch } from './i18n.jsx';
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
@@ -340,14 +341,14 @@ const skillGroups = [
     details: [
       "Used when a workflow needs to run locally as a desktop app instead of a browser page.",
       "Practical focus: app windows, local persistence, validation and business rules.",
-      "Example: UnderFit runs as an Electron desktop system with SQLite persistence.",
+      "Example: Under-Fit began with Electron/SQLite; current shared operations use a C#/.NET API and PostgreSQL, with server/connectivity dependency.",
     ],
   },
   {
     title: "Data & automation",
     icon: Database,
     summary: "Validation, reporting, process automation and structured operational data.",
-    items: ["SQL", "Python", "REST APIs", "Data validation"],
+    items: ["SQL", "REST APIs", "Data validation"],
     details: [
       "Used to keep operational information consistent, searchable and easier to audit.",
       "Practical focus: validation logic, structured records, API usage and reporting support.",
@@ -369,11 +370,11 @@ const skillGroups = [
 
 const experience = [
   {
-    company: "UnderFit Desktop App",
+    company: "Under-Fit — Gym management system",
     role: "Freelance / Real client project",
     time: "Jun 2025 - Present",
     detail:
-      "Built a local desktop system for gym operations including memberships, renewals, access logging, stock, product sales and daily cash control.",
+      "Develop and maintain shared gym operations across two locations, with Windows administration, instructor tablets, C#/.NET API and PostgreSQL. Mobile/admin candidate 2.6.0 is locally validated, pending gym rollout.",
     points: [
       "Development and maintenance of a desktop gym management system used in real operations.",
       "Implemented relational data structures, business rules and operational workflows.",
@@ -387,15 +388,15 @@ const experience = [
     company: "Alorica",
     role: "Content Moderator",
     time: "May 2024 - Oct 2025",
-    detail: "High-volume data validation, policy application, QA and SLA work.",
+    detail: "On-site Portuguese-language content moderation in Montevideo.",
     points: [
       "Reviewed and validated information according to internal guidelines and protocols.",
       "Applied operational policies with consistency and attention to detail.",
       "Identified inconsistencies and made structured decisions based on defined criteria.",
-      "Maintained quality standards under SLA/KPI performance metrics.",
-      "Documented cases and maintained process compliance standards.",
+      "Worked with SLA, AHT and UR, balancing quality, productivity and handling time.",
+      "Handled high-volume content review with attention to detail.",
     ],
-    tools: ["Internal QA tools", "Policy workflows", "Data validation", "SLA process"],
+    tools: ["Content moderation", "Policy workflows", "Case analysis", "SLA / AHT / UR"],
     learnings: "High-volume operational work strengthened attention to consistency, edge cases and clear process rules.",
   },
 ];
@@ -404,7 +405,7 @@ const terminalColumns = [
   {
     title: "Products",
     lines: [
-      "UnderFit: gym operations desktop app",
+      "Under-Fit: shared gym management system",
       "SampleX: local-first browser audio sampler",
       "Built around real user workflows",
     ],
@@ -438,11 +439,11 @@ const terminalHelpLines = [
 const education = [
   {
     program: "Analista Programador",
-    school: "CTC Ensenanza Tecnica Profesional",
-    year: "Coursework completed",
+    school: "CTC Enseñanza Técnica Profesional, en convenio con Universidad CLAEH",
+    year: "2021–present",
     description:
       "Core programming formation: object-oriented programming, databases, algorithms, software logic and application development.",
-    status: "Coursework completed",
+    status: "Coursework and exams completed; thesis pending. Expected completion: December 2026.",
     certificate: null,
     details: [
       "Technical software development program focused on programming foundations, databases and application logic.",
@@ -451,13 +452,13 @@ const education = [
     ],
   },
   {
-    program: "Diploma in Artificial Intelligence",
+    program: "Artificial Intelligence",
     school: "IBEC",
     year: "2024",
     description:
       "AI fundamentals, prompting, applied tools and practical ways to use AI inside workflows and technical processes.",
     status: "Completed",
-    duration: "6 months",
+    duration: "Duration not stated on certificate",
     certificate: "/assets/certificates/ibec-ai.jpg",
     details: [
       "AI fundamentals and practical use of applied tools in workflows.",
@@ -545,7 +546,7 @@ const heroProjects = {
   underfit: {
     path: "projects/underfit.md",
     command: "open underfit --summary",
-    name: "UnderFit Desktop App",
+    name: "Under-Fit — Gym management system",
     lines: [
       "Product: desktop operations for a real gym",
       "Workflows: memberships, access and renewals",
@@ -622,7 +623,7 @@ function UnderfitOverviewPanel({ onOpenMedia }) {
       <div className="file-copy overview-copy">
         <span className="file-breadcrumb">projects &gt; underfit &gt; overview.md</span>
         <p className="eyebrow">Featured real client project</p>
-        <h3>UnderFit Desktop App</h3>
+        <h3>Under-Fit — Gym management system</h3>
         <p>
           Desktop management system for a real gym operation. It centralizes
           memberships, renewals, access validation, cash flow, stock and sales
@@ -960,7 +961,7 @@ export function SampleXProductPage() {
             <a className="samplex-release-link" href="https://github.com/Amirsholi/SampleX-studio/releases/tag/v0.3.0-demo" target="_blank" rel="noreferrer">Ver release <ExternalLink size={14} /></a>
           </div>
           <span className="samplex-demo-status samplex-hero-status" role="status"><span /> {demoInterest ? "Preparando descarga · Versión 0.3.0" : "Gratis · 402 KB · Sin cuenta"}</span>
-          <div className="samplex-trust-line">
+          <SampleXConditions/><div className="samplex-trust-line">
             <span><ShieldCheck size={16} /> Procesamiento local</span>
             <span><CheckCircle2 size={16} /> Audio privado</span>
             <span><AudioWaveform size={16} /> BPM, tonalidad y frecuencia</span>
@@ -996,7 +997,7 @@ export function SampleXProductPage() {
             <div className="samplex-tour-media"><img src="/assets/samplex/trimming.gif" alt="Trimming a selected audio region in SampleX" loading="lazy" decoding="async" /></div>
           </article>
           <article className="samplex-tour-card">
-            <div className="samplex-tour-copy"><span>03 / Analiza</span><h3>Entiende el contexto musical.</h3><p>SampleX calcula BPM, tonalidad y frecuencia dominante para la región seleccionada, justo donde la editas.</p></div>
+            <div className="samplex-tour-copy"><span>03 / Analiza</span><h3>Entiende el contexto musical.</h3><p>SampleX estima BPM, tonalidad y frecuencia dominante para la región seleccionada, justo donde la editas.</p></div>
             <div className="samplex-tour-media"><img src="/assets/samplex/samplex-photo2.png" alt="SampleX analyzing BPM, musical key and dominant frequency" loading="lazy" decoding="async" /></div>
           </article>
           <article className="samplex-tour-card samplex-tour-card-wide samplex-tour-card-export">

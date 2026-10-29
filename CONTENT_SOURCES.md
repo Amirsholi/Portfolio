@@ -41,3 +41,15 @@ Sources: existing public product landing, LinkedIn Projects and the existing wor
 Owner supplied `Certificado-amir-sholi (1).pdf`. Rendered and visually checked: Alianza Cultural Uruguay–Estados Unidos, MicroFleX Intermediate Online Course, CEFR B1+, issued October 29, 2026. The original is preserved at `/assets/certificates/english-b1.pdf`, with a raster preview for the in-app modal.
 
 Flag assets: flagcdn.com/uy.svg and flagcdn.com/br.svg, stored locally.
+
+## Content verification — 2026-10-29
+
+- Alorica details (including SLA, AHT and UR): directly confirmed by the owner in this chat. UR is retained without expanding the acronym. No numerical performance, supervision or software-testing responsibilities are inferred.
+- Under-Fit: re-read local docs/ARCHITECTURE.md, OPERATIONS.md, MOBILE_ACCESS.md and release-notes/2.6.0.md. Latest managed-worktree revision reviewed: 8c84909 (2026-10-27). Mobile test environment is isolated and local; actual gym installation/HTTPS/device validation remain pending.
+- Historical results: docs/DEPENDENCY_SECURITY.md, revision 913669d, final validation completed 2026-10-26: 141 JavaScript, 29 .NET unit and 27 integration/security tests. Published a readable, attributed excerpt at public/assets/documents/under-fit-validation-2026-10-26.txt. This is a source record, not a new execution or production measurement.
+- SQLite: current documentation explicitly says API/PostgreSQL shared operations introduce server/connectivity dependency. SQLite local mode remains for compatibility/migration; no shared offline fallback is claimed.
+- Python: scripts/prepare-integration-copy.py uses SQLite backup, integrity/foreign-key checks, row counts and a SHA-256 manifest. test/test_integration_copy.py verifies a WAL-consistent copy and prevents overwriting original/target. Presented as a specific supporting use, not a main product language.
+- SampleX: public v0.3.0-demo release specifies source 95c22f3. Asset is 411989 bytes. Its LEEME.txt confirms 75 WAV exports; its manifest declares minimum_chrome_version 116, MV3, tabCapture and offscreen. Release source src/license/license.ts sets FREE_EXPORTS=75; src/App.tsx gates download, leaving recording/editing/analysis outside that gate. No fresh compatibility run was performed on Edge/Brave/Firefox/Safari. Installation instructions in ZIP are for Chrome.
+- SampleX practical TypeScript: SelectionRange, AnalysisWorkerRequest and AnalysisWorkerResponse. Vitest evidence: src/audio/exportWav.test.ts (PCM16 header, DC removal, fades, quiet cut boundaries) and analyzeSelection.test.ts (synthetic 120 BPM click, 440 Hz signal, C major chord). Tests were inspected, not rerun as part of this copy update.
+- Certificate images visually read: React 2023-11-07, 30 hours / 8 weeks; Next.js 2023-12-11, 14 hours / 7 weeks; IBEC Artificial Intelligence 2024-03-13, no duration printed. Removed unsupported six-month duration. Alianza displayed month/year per owner request; original PDF still preserves issue date.
+- CTC institutional name and 2021–present period: directly supplied by owner. Expected December 2026 completion is separate from enrollment period.
