@@ -1,3 +1,4 @@
+import { LanguageProvider } from './i18n.jsx';
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { App, SampleXProductPage } from "./App.jsx";
@@ -17,7 +18,7 @@ const legalMatch = window.location.pathname.match(/^\/samplex\/(privacy|terms|re
 const isSampleXProduct = /^\/samplex(?:\/success)?\/?$/.test(window.location.pathname);
 
 createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <React.StrictMode><LanguageProvider>
     {isSampleXAdmin ? <SampleXAdmin /> : legalMatch ? <SampleXLegal page={legalMatch[1]} /> : isSampleXProduct ? <SampleXProductPage /> : new URLSearchParams(window.location.search).has("file") ? <App /> : <Portfolio />}
-  </React.StrictMode>,
+  </LanguageProvider></React.StrictMode>,
 );

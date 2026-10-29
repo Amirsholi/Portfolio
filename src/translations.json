@@ -1,0 +1,1111 @@
+{
+  "Home": {
+    "es": "Inicio",
+    "pt": "Início"
+  },
+  "Projects": {
+    "es": "Proyectos",
+    "pt": "Projetos"
+  },
+  "Experience": {
+    "es": "Experiencia",
+    "pt": "Experiência"
+  },
+  "Tools": {
+    "es": "Tecnologías",
+    "pt": "Tecnologias"
+  },
+  "Education": {
+    "es": "Formación",
+    "pt": "Formação"
+  },
+  "All projects": {
+    "es": "Todos los proyectos",
+    "pt": "Todos os projetos"
+  },
+  "Main navigation": {
+    "es": "Navegación principal",
+    "pt": "Navegação principal"
+  },
+  "Website language": {
+    "es": "Idioma del sitio",
+    "pt": "Idioma do site"
+  },
+  "Skip to content": {
+    "es": "Ir al contenido",
+    "pt": "Ir para o conteúdo"
+  },
+  "About Amir Sholi": {
+    "es": "Sobre Amir Sholi",
+    "pt": "Sobre Amir Sholi"
+  },
+  "Email Amir": {
+    "es": "Escribir a Amir",
+    "pt": "Escrever para Amir"
+  },
+  "Uruguayan & Brazilian": {
+    "es": "Uruguayo y brasileño",
+    "pt": "Uruguaio e brasileiro"
+  },
+  "Junior Software Developer · C#/.NET, JavaScript & SQL.": {
+    "es": "Desarrollador de software junior · C#/.NET, JavaScript y SQL.",
+    "pt": "Desenvolvedor de software júnior · C#/.NET, JavaScript e SQL."
+  },
+  "Languages": {
+    "es": "Idiomas",
+    "pt": "Idiomas"
+  },
+  "Native": {
+    "es": "Nativo",
+    "pt": "Nativo"
+  },
+  "English": {
+    "es": "Inglés",
+    "pt": "Inglês"
+  },
+  "Intermediate · B1+": {
+    "es": "Intermedio · B1+",
+    "pt": "Intermediário · B1+"
+  },
+  "English certificate": {
+    "es": "Certificado de inglés",
+    "pt": "Certificado de inglês"
+  },
+  "Montevideo, Uruguay · Software development": {
+    "es": "Montevideo, Uruguay · Desarrollo de software",
+    "pt": "Montevidéu, Uruguai · Desenvolvimento de software"
+  },
+  "SOFTWARE": {
+    "es": "DESARROLLO",
+    "pt": "DESENVOLVIMENTO"
+  },
+  "DEVELOPER": {
+    "es": "DE SOFTWARE",
+    "pt": "DE SOFTWARE"
+  },
+  "I’m Amir. I build and maintain software around real operations, working with C#/.NET, JavaScript and SQL — from the interface to business rules, shared data and deployment.": {
+    "es": "Soy Amir. Desarrollo y mantengo software para operaciones reales con C#/.NET, JavaScript y SQL: desde la interfaz hasta las reglas de negocio, los datos compartidos y la puesta en producción.",
+    "pt": "Sou Amir. Desenvolvo e mantenho software para operações reais com C#/.NET, JavaScript e SQL: da interface às regras de negócio, aos dados compartilhados e à implantação."
+  },
+  "UnderFit, my client project, connects reception and instructor tablets across two gym locations. SampleX is my personal browser audio sampler, built with React, TypeScript and Web Audio.": {
+    "es": "UnderFit, mi proyecto para un cliente, conecta la recepción y las tablets de los instructores en dos sedes de un gimnasio. SampleX es mi sampler de audio para el navegador, desarrollado con React, TypeScript y Web Audio.",
+    "pt": "UnderFit, meu projeto para um cliente, conecta a recepção e os tablets dos instrutores em duas unidades de uma academia. SampleX é meu sampler de áudio para o navegador, desenvolvido com React, TypeScript e Web Audio."
+  },
+  "I completed all coursework and exams for Analista Programador at CTC / Universidad CLAEH; my thesis is pending, with completion expected in December 2026. Before software, I worked in Portuguese-language content moderation at Alorica, applying policies and quality criteria at scale.": {
+    "es": "Completé todas las materias y exámenes de Analista Programador en CTC / Universidad CLAEH; me queda la tesis, con finalización prevista para diciembre de 2026. Antes trabajé en moderación de contenido en portugués en Alorica, aplicando políticas y criterios de calidad.",
+    "pt": "Concluí todas as disciplinas e provas de Analista Programador no CTC / Universidad CLAEH; falta a tese, com conclusão prevista para dezembro de 2026. Antes trabalhei com moderação de conteúdo em português na Alorica, aplicando políticas e critérios de qualidade."
+  },
+  "Read my CV": {
+    "es": "Ver mi CV",
+    "pt": "Ver meu currículo"
+  },
+  "Experience & responsibilities": {
+    "es": "Experiencia y responsabilidades",
+    "pt": "Experiência e responsabilidades"
+  },
+  "Featured projects": {
+    "es": "Proyectos destacados",
+    "pt": "Projetos em destaque"
+  },
+  "Projects you can explore": {
+    "es": "Conocé mis proyectos",
+    "pt": "Conheça meus projetos"
+  },
+  "Where I can contribute": {
+    "es": "Dónde puedo aportar",
+    "pt": "Onde posso contribuir"
+  },
+  "I’m looking for junior opportunities in software development, application support and QA. My focus is practical problem solving, clear business rules, data consistency and reliable maintenance.": {
+    "es": "Busco oportunidades junior en desarrollo de software, soporte de aplicaciones y QA. Me enfoco en resolver problemas concretos, definir reglas de negocio claras y mantener datos consistentes y sistemas confiables.",
+    "pt": "Busco oportunidades júnior em desenvolvimento de software, suporte de aplicações e QA. Meu foco é resolver problemas concretos, definir regras de negócio claras e manter dados consistentes e sistemas confiáveis."
+  },
+  "Main stack": {
+    "es": "Tecnologías principales",
+    "pt": "Tecnologias principais"
+  },
+  "Spanish & Portuguese: native · English: intermediate, B1+ certificate": {
+    "es": "Español y portugués: nativos · Inglés: intermedio, certificado B1+",
+    "pt": "Espanhol e português: nativos · Inglês: intermediário, certificado B1+"
+  },
+  "SELECTED": {
+    "es": "MIS",
+    "pt": "MEUS"
+  },
+  "PROJECTS": {
+    "es": "PROYECTOS",
+    "pt": "PROJETOS"
+  },
+  "Explore the problem, the product and the work behind each project. UnderFit is client software in daily use; SampleX is a browser product with a downloadable demo.": {
+    "es": "Conocé el problema, el producto y el trabajo detrás de cada proyecto. UnderFit se utiliza a diario en un negocio; SampleX tiene una demo descargable para el navegador.",
+    "pt": "Conheça o problema, o produto e o trabalho por trás de cada projeto. UnderFit é usado diariamente em um negócio; SampleX tem uma demo para baixar e usar no navegador."
+  },
+  "Client software · Two gym locations": {
+    "es": "Software para cliente · Dos sedes",
+    "pt": "Software para cliente · Duas unidades"
+  },
+  "Personal product · Demo available": {
+    "es": "Producto propio · Demo disponible",
+    "pt": "Produto próprio · Demo disponível"
+  },
+  "One shared system for reception, classes, instructors and daily gym operations.": {
+    "es": "Un sistema compartido para recepción, clases, instructores y la operación diaria del gimnasio.",
+    "pt": "Um sistema compartilhado para recepção, aulas, instrutores e a operação diária da academia."
+  },
+  "Record browser audio, trim the useful moment and take a clean WAV into your next track.": {
+    "es": "Grabá audio del navegador, recortá el fragmento y llevá un WAV limpio a tu próxima producción.",
+    "pt": "Grave áudio do navegador, recorte o trecho e leve um WAV limpo para sua próxima produção."
+  },
+  "Read the case study": {
+    "es": "Conocer el proyecto",
+    "pt": "Conhecer o projeto"
+  },
+  "Explore UnderFit": {
+    "es": "Explorar UnderFit",
+    "pt": "Explorar UnderFit"
+  },
+  "Explore SampleX": {
+    "es": "Explorar SampleX",
+    "pt": "Explorar SampleX"
+  },
+  "Download Demo Trial": {
+    "es": "Descargar Demo Trial",
+    "pt": "Baixar Demo Trial"
+  },
+  "Preparing download…": {
+    "es": "Preparando descarga…",
+    "pt": "Preparando download…"
+  },
+  "Gym operations · .NET & PostgreSQL": {
+    "es": "Gestión de gimnasios · .NET y PostgreSQL",
+    "pt": "Gestão de academias · .NET e PostgreSQL"
+  },
+  "Browser audio sampler · Demo Trial": {
+    "es": "Sampler de audio · Demo Trial",
+    "pt": "Sampler de áudio · Demo Trial"
+  },
+  "MY WORK": {
+    "es": "EXPERIENCIA",
+    "pt": "EXPERIÊNCIA"
+  },
+  "EXPERIENCE": {
+    "es": "LABORAL",
+    "pt": "PROFISSIONAL"
+  },
+  "Content Moderator · Portuguese · On-site": {
+    "es": "Moderador de contenido · Portugués · Presencial",
+    "pt": "Moderador de conteúdo · Português · Presencial"
+  },
+  "Software Developer (Independent) · UnderFit · Hybrid": {
+    "es": "Desarrollador independiente · UnderFit · Híbrido",
+    "pt": "Desenvolvedor independente · UnderFit · Híbrido"
+  },
+  "Develop and maintain custom gym management software running at two locations in Uruguay. Connect Windows administration with instructor tablets across memberships, check-ins, cash, products, classes and routines.": {
+    "es": "Desarrollo y mantengo un sistema de gestión a medida en dos sedes de Uruguay. Conecto la administración en Windows con las tablets de los instructores: membresías, asistencia, caja, productos, clases y rutinas.",
+    "pt": "Desenvolvo e mantenho um sistema de gestão sob medida em duas unidades no Uruguai. Conecto a administração no Windows aos tablets dos instrutores: matrículas, presença, caixa, produtos, aulas e treinos."
+  },
+  "Worked on-site in Montevideo, moderating content in Portuguese. Reviewed information against policies, applied consistent criteria and met quality and productivity targets in a high-volume SLA/KPI environment.": {
+    "es": "Trabajé de forma presencial en Montevideo moderando contenido en portugués. Revisaba información según las políticas, aplicaba criterios consistentes y cumplía objetivos de calidad y productividad en un entorno con SLA/KPI.",
+    "pt": "Trabalhei presencialmente em Montevidéu moderando conteúdo em português. Revisava informações conforme as políticas, aplicava critérios consistentes e cumpria metas de qualidade e produtividade em um ambiente com SLA/KPI."
+  },
+  "Reviewed content and information against internal policies and operational guidelines.": {
+    "es": "Revisé contenido e información según políticas internas y pautas operativas.",
+    "pt": "Revisei conteúdo e informações conforme políticas internas e diretrizes operacionais."
+  },
+  "Met quality and productivity targets while maintaining accuracy and attention to detail.": {
+    "es": "Cumplí objetivos de calidad y productividad manteniendo precisión y atención al detalle.",
+    "pt": "Cumpri metas de qualidade e produtividade mantendo precisão e atenção aos detalhes."
+  },
+  "Documented cases, identified inconsistencies and applied operational policies.": {
+    "es": "Documenté casos, identifiqué inconsistencias y apliqué políticas operativas.",
+    "pt": "Documentei casos, identifiquei inconsistências e apliquei políticas operacionais."
+  },
+  "Owned the development cycle: requirements, solution design, implementation, deployment and maintenance.": {
+    "es": "Me encargué del ciclo completo: requisitos, diseño de la solución, implementación, despliegue y mantenimiento.",
+    "pt": "Assumi o ciclo completo: requisitos, desenho da solução, implementação, implantação e manutenção."
+  },
+  "Moved from a local JavaScript/Electron/SQLite app to shared C#/.NET and PostgreSQL infrastructure for reception and instructor tablets.": {
+    "es": "Evolucioné una app local en JavaScript/Electron/SQLite hacia una infraestructura compartida en C#/.NET y PostgreSQL para recepción y tablets.",
+    "pt": "Evoluí um aplicativo local em JavaScript/Electron/SQLite para uma infraestrutura compartilhada em C#/.NET e PostgreSQL para recepção e tablets."
+  },
+  "Implemented migration, backups, remote updates and cross-location access. The newer member/admin web candidate is locally validated, with gym rollout still pending.": {
+    "es": "Implementé migración, respaldos, actualizaciones remotas y acceso entre sedes. La nueva versión web para socios y administradores está validada localmente y pendiente de instalar en el gimnasio.",
+    "pt": "Implementei migração, backups, atualizações remotas e acesso entre unidades. A nova versão web para alunos e administradores está validada localmente e aguarda implantação na academia."
+  },
+  "TECHNICAL": {
+    "es": "MIS",
+    "pt": "MINHAS"
+  },
+  "TOOLKIT": {
+    "es": "TECNOLOGÍAS",
+    "pt": "TECNOLOGIAS"
+  },
+  "The technologies I use, and where they fit into my work.": {
+    "es": "Las tecnologías que uso y cómo las aplico en mis proyectos.",
+    "pt": "As tecnologias que uso e como as aplico nos meus projetos."
+  },
+  "Backend & REST APIs": {
+    "es": "Backend y APIs REST",
+    "pt": "Backend e APIs REST"
+  },
+  "Shared relational data": {
+    "es": "Datos relacionales compartidos",
+    "pt": "Dados relacionais compartilhados"
+  },
+  "Interface development": {
+    "es": "Desarrollo de interfaces",
+    "pt": "Desenvolvimento de interfaces"
+  },
+  "Web & application logic": {
+    "es": "Lógica web y de aplicaciones",
+    "pt": "Lógica web e de aplicações"
+  },
+  "Desktop applications": {
+    "es": "Aplicaciones de escritorio",
+    "pt": "Aplicativos desktop"
+  },
+  "Local databases": {
+    "es": "Bases de datos locales",
+    "pt": "Bancos de dados locais"
+  },
+  "Version control": {
+    "es": "Control de versiones",
+    "pt": "Controle de versões"
+  },
+  "React framework": {
+    "es": "Framework de React",
+    "pt": "Framework React"
+  },
+  "Backend & systems integration": {
+    "es": "Backend e integración de sistemas",
+    "pt": "Backend e integração de sistemas"
+  },
+  "C#/.NET, ASP.NET Core, Entity Framework Core and PostgreSQL for APIs, shared data and integration between desktop and tablets.": {
+    "es": "C#/.NET, ASP.NET Core, Entity Framework Core y PostgreSQL para APIs, datos compartidos e integración entre escritorio y tablets.",
+    "pt": "C#/.NET, ASP.NET Core, Entity Framework Core e PostgreSQL para APIs, dados compartilhados e integração entre desktop e tablets."
+  },
+  "Product interfaces": {
+    "es": "Interfaces de producto",
+    "pt": "Interfaces de produto"
+  },
+  "Reusable React components, stateful screens, responsive layouts and dashboard workflows.": {
+    "es": "Componentes reutilizables en React, pantallas con estado, diseño adaptable y flujos de paneles de gestión.",
+    "pt": "Componentes reutilizáveis em React, telas com estado, layouts responsivos e fluxos de painéis de gestão."
+  },
+  "Local desktop systems": {
+    "es": "Sistemas de escritorio locales",
+    "pt": "Sistemas desktop locais"
+  },
+  "Electron windows, SQLite persistence, validation and business rules for offline operations.": {
+    "es": "Ventanas en Electron, persistencia en SQLite, validaciones y reglas de negocio para operar sin conexión.",
+    "pt": "Janelas no Electron, persistência em SQLite, validações e regras de negócio para operar sem conexão."
+  },
+  "Data & delivery": {
+    "es": "Datos y entrega",
+    "pt": "Dados e entrega"
+  },
+  "SQL, Python, REST APIs and data validation, supported by Git, manual testing and technical documentation.": {
+    "es": "SQL, Python, APIs REST y validación de datos, con Git, pruebas manuales y documentación técnica.",
+    "pt": "SQL, Python, APIs REST e validação de dados, com Git, testes manuais e documentação técnica."
+  },
+  "CONTINUOUS": {
+    "es": "FORMACIÓN",
+    "pt": "FORMAÇÃO"
+  },
+  "LEARNING": {
+    "es": "CONTINUA",
+    "pt": "CONTÍNUA"
+  },
+  "English B1+ · MicroFleX Intermediate": {
+    "es": "Inglés B1+ · MicroFleX Intermediate",
+    "pt": "Inglês B1+ · MicroFleX Intermediate"
+  },
+  "Intermediate Online Course completed at Alianza Cultural Uruguay–Estados Unidos. Certificate level: B1+ on the Common European Framework of Reference (CEFR).": {
+    "es": "Curso intermedio en línea completado en Alianza Cultural Uruguay–Estados Unidos. Nivel certificado B1+ según el Marco Común Europeo de Referencia (MCER).",
+    "pt": "Curso intermediário online concluído na Alianza Cultural Uruguay–Estados Unidos. Nível certificado B1+ segundo o Quadro Europeu Comum de Referência (QECR)."
+  },
+  "All coursework and exams completed in the Analista Programador program at CTC, in partnership with Universidad CLAEH. Thesis pending; expected completion: December 2026.": {
+    "es": "Todas las materias y exámenes de Analista Programador completados en CTC, en convenio con Universidad CLAEH. Tesis pendiente; finalización prevista: diciembre de 2026.",
+    "pt": "Todas as disciplinas e provas de Analista Programador concluídas no CTC, em parceria com Universidad CLAEH. Tese pendente; conclusão prevista: dezembro de 2026."
+  },
+  "Diploma in Artificial Intelligence": {
+    "es": "Diploma en Inteligencia Artificial",
+    "pt": "Diploma em Inteligência Artificial"
+  },
+  "AI fundamentals, prompting and practical tools for technical workflows.": {
+    "es": "Fundamentos de IA, prompting y herramientas prácticas para procesos técnicos.",
+    "pt": "Fundamentos de IA, prompting e ferramentas práticas para processos técnicos."
+  },
+  "Components, props, state, reusable UI patterns and frontend project structure.": {
+    "es": "Componentes, props, estado, patrones de interfaz reutilizables y estructura de proyectos frontend.",
+    "pt": "Componentes, props, estado, padrões de interface reutilizáveis e estrutura de projetos frontend."
+  },
+  "Foundational computer operation courses at ARI Informática, followed by software development studies.": {
+    "es": "Cursos de operación de computadoras en ARI Informática, seguidos de estudios de desarrollo de software.",
+    "pt": "Cursos de operação de computadores na ARI Informática, seguidos de estudos de desenvolvimento de software."
+  },
+  "React framework fundamentals, routing, rendering patterns and production-oriented applications.": {
+    "es": "Fundamentos del framework React, rutas, patrones de renderizado y aplicaciones orientadas a producción.",
+    "pt": "Fundamentos do framework React, rotas, padrões de renderização e aplicações voltadas à produção."
+  },
+  "LET'S WORK": {
+    "es": "TRABAJEMOS",
+    "pt": "VAMOS TRABALHAR"
+  },
+  "TOGETHER": {
+    "es": "JUNTOS",
+    "pt": "JUNTOS"
+  },
+  "Based in Montevideo, Uruguay. Get in touch about software development opportunities or a product you’re building.": {
+    "es": "Estoy en Montevideo, Uruguay. Escribime por oportunidades de desarrollo de software o por un producto que estés creando.",
+    "pt": "Estou em Montevidéu, Uruguai. Fale comigo sobre oportunidades em desenvolvimento de software ou um produto que você está criando."
+  },
+  "Name": {
+    "es": "Nombre",
+    "pt": "Nome"
+  },
+  "Your Name": {
+    "es": "Tu nombre",
+    "pt": "Seu nome"
+  },
+  "Email": {
+    "es": "Correo",
+    "pt": "E-mail"
+  },
+  "Message": {
+    "es": "Mensaje",
+    "pt": "Mensagem"
+  },
+  "Create email": {
+    "es": "Preparar correo",
+    "pt": "Preparar e-mail"
+  },
+  "Your email draft is ready in your email app. You can also write to": {
+    "es": "El borrador está listo en tu aplicación de correo. También podés escribir a",
+    "pt": "O rascunho está pronto no seu aplicativo de e-mail. Você também pode escrever para"
+  },
+  "Close preview": {
+    "es": "Cerrar vista previa",
+    "pt": "Fechar prévia"
+  },
+  "Open original PDF": {
+    "es": "Abrir PDF original",
+    "pt": "Abrir PDF original"
+  },
+  "Next project: SampleX": {
+    "es": "Siguiente proyecto: SampleX",
+    "pt": "Próximo projeto: SampleX"
+  },
+  "Next project: UnderFit": {
+    "es": "Siguiente proyecto: UnderFit",
+    "pt": "Próximo projeto: UnderFit"
+  },
+  "Back to top ↑": {
+    "es": "Volver arriba ↑",
+    "pt": "Voltar ao início ↑"
+  },
+  "[PROFILE]": {
+    "es": "[PERFIL]",
+    "pt": "[PERFIL]"
+  },
+  "[PROJECTS]": {
+    "es": "[PROYECTOS]",
+    "pt": "[PROJETOS]"
+  },
+  "[CONNECT]": {
+    "es": "[CONTACTO]",
+    "pt": "[CONTATO]"
+  },
+  "Software Developer": {
+    "es": "Desarrollador de software",
+    "pt": "Desenvolvedor de software"
+  },
+  "Uruguay + Brazil · Dual nationality": {
+    "es": "Uruguay + Brasil · Doble nacionalidad",
+    "pt": "Uruguai + Brasil · Dupla nacionalidade"
+  },
+  "UnderFit — Gym management ↗": {
+    "es": "UnderFit — Gestión de gimnasios ↗",
+    "pt": "UnderFit — Gestão de academias ↗"
+  },
+  "SampleX — Browser audio sampler ↗": {
+    "es": "SampleX — Sampler de audio ↗",
+    "pt": "SampleX — Sampler de áudio ↗"
+  },
+  "Open to junior opportunities": {
+    "es": "Disponible para oportunidades junior",
+    "pt": "Disponível para oportunidades júnior"
+  },
+  "Designed & built by AmirSholi() · 2026": {
+    "es": "Diseñado y desarrollado por AmirSholi() · 2026",
+    "pt": "Projetado e desenvolvido por AmirSholi() · 2026"
+  },
+  "GYM SYSTEM": {
+    "es": "GESTIÓN DE GIMNASIOS",
+    "pt": "GESTÃO DE ACADEMIAS"
+  },
+  "STUDIO": {
+    "es": "STUDIO",
+    "pt": "STUDIO"
+  },
+  "From a local gym application to a system shared across locations and devices.": {
+    "es": "De una aplicación local a un sistema compartido entre sedes y dispositivos.",
+    "pt": "De um aplicativo local a um sistema compartilhado entre unidades e dispositivos."
+  },
+  "Capture, trim, understand and export browser audio — locally.": {
+    "es": "Grabá, recortá, analizá y exportá audio del navegador, de forma local.",
+    "pt": "Grave, recorte, analise e exporte áudio do navegador, de forma local."
+  },
+  "My role": {
+    "es": "Mi rol",
+    "pt": "Meu papel"
+  },
+  "Independent developer · End-to-end delivery": {
+    "es": "Desarrollador independiente · De principio a fin",
+    "pt": "Desenvolvedor independente · Do início ao fim"
+  },
+  "Current operational scope": {
+    "es": "Uso actual",
+    "pt": "Uso atual"
+  },
+  "Main technologies": {
+    "es": "Tecnologías principales",
+    "pt": "Tecnologias principais"
+  },
+  "Two locations · Desktop + instructor tablets": {
+    "es": "Dos sedes · Escritorio y tablets de instructores",
+    "pt": "Duas unidades · Desktop e tablets de instrutores"
+  },
+  "Installation & product details": {
+    "es": "Instalación y detalles del producto",
+    "pt": "Instalação e detalhes do produto"
+  },
+  "v0.3.0 · ZIP · 402 KB · 75 free WAV exports · No account": {
+    "es": "v0.3.0 · ZIP · 402 KB · 75 exportaciones WAV gratis · Sin cuenta",
+    "pt": "v0.3.0 · ZIP · 402 KB · 75 exportações WAV grátis · Sem conta"
+  },
+  "Download and unzip the package.": {
+    "es": "Descargá y descomprimí el paquete.",
+    "pt": "Baixe e descompacte o pacote."
+  },
+  "In Chrome extensions, enable Developer mode and choose “Load unpacked”.": {
+    "es": "En las extensiones de Chrome, activá el modo desarrollador y elegí «Cargar descomprimida».",
+    "pt": "Nas extensões do Chrome, ative o modo do desenvolvedor e escolha «Carregar sem compactação»."
+  },
+  "Select the SampleX folder, pin the extension and record permitted audio.": {
+    "es": "Seleccioná la carpeta SampleX, fijá la extensión y grabá audio permitido.",
+    "pt": "Selecione a pasta SampleX, fixe a extensão e grave áudio permitido."
+  },
+  "A shared workspace for two locations": {
+    "es": "Un sistema compartido entre dos sedes",
+    "pt": "Um sistema compartilhado entre duas unidades"
+  },
+  "UnderFit is a custom gym management system used in daily operations at two locations in Uruguay. Reception manages members, memberships, check-ins and cash in Windows, while instructors access classes and workout routines from tablets. My work covers requirements, design, implementation, deployment and maintenance.": {
+    "es": "UnderFit es un sistema de gestión a medida utilizado a diario en dos sedes de Uruguay. Recepción administra socios, membresías, asistencia y caja desde Windows; los instructores acceden a clases y rutinas desde tablets. Mi trabajo abarca requisitos, diseño, implementación, despliegue y mantenimiento.",
+    "pt": "UnderFit é um sistema de gestão sob medida utilizado diariamente em duas unidades no Uruguai. A recepção administra alunos, matrículas, presença e caixa no Windows; os instrutores acessam aulas e treinos pelos tablets. Meu trabalho abrange requisitos, projeto, implementação, implantação e manutenção."
+  },
+  "Administration panel with members, memberships, products and daily indicators. Demonstration data.": {
+    "es": "Panel de administración con socios, membresías, productos e indicadores diarios. Datos de demostración.",
+    "pt": "Painel de administração com alunos, matrículas, produtos e indicadores diários. Dados de demonstração."
+  },
+  "Classes, instructors and available places": {
+    "es": "Clases, instructores y cupos",
+    "pt": "Aulas, instrutores e vagas"
+  },
+  "The weekly schedule brings together instructors, times, capacity and enrollments. Classes and attendance are part of the same operational information used by administration and the instructor workflow, rather than separate records on each device.": {
+    "es": "El calendario semanal reúne instructores, horarios, capacidad e inscripciones. Las clases y la asistencia comparten la misma información operativa que la administración y los instructores, sin registros separados en cada dispositivo.",
+    "pt": "A agenda semanal reúne instrutores, horários, capacidade e inscrições. As aulas e a presença compartilham as mesmas informações operacionais da administração e dos instrutores, sem registros separados em cada dispositivo."
+  },
+  "Weekly class schedule with instructors, capacity and enrollments.": {
+    "es": "Calendario semanal de clases con instructores, cupos e inscripciones.",
+    "pt": "Agenda semanal de aulas com instrutores, vagas e inscrições."
+  },
+  "Products and sales by location": {
+    "es": "Productos y ventas por sede",
+    "pt": "Produtos e vendas por unidade"
+  },
+  "Staff can consult prices and availability, record sales and manage the catalogue from the same application. Stock is organized by location, while the system keeps the operational relationship between sales, memberships and the cash desk.": {
+    "es": "El personal puede consultar precios y disponibilidad, registrar ventas y gestionar el catálogo desde la misma aplicación. El stock se organiza por sede y el sistema mantiene la relación operativa entre ventas, membresías y caja.",
+    "pt": "A equipe pode consultar preços e disponibilidade, registrar vendas e gerenciar o catálogo no mesmo aplicativo. O estoque é organizado por unidade e o sistema mantém a relação operacional entre vendas, matrículas e caixa."
+  },
+  "Product catalogue and stock organized by gym location.": {
+    "es": "Catálogo de productos y stock organizado por sede.",
+    "pt": "Catálogo de produtos e estoque organizado por unidade."
+  },
+  "From a local app to shared infrastructure": {
+    "es": "De una app local a una infraestructura compartida",
+    "pt": "De um app local a uma infraestrutura compartilhada"
+  },
+  "The first version used JavaScript, Electron and SQLite. More devices and two locations required shared data: the architecture evolved to a C# / ASP.NET Core API, Entity Framework Core and PostgreSQL. Desktop and instructor web interfaces use the same backend, with remote access through Cloudflare Tunnel.": {
+    "es": "La primera versión usaba JavaScript, Electron y SQLite. Más dispositivos y dos sedes exigieron datos compartidos: la arquitectura evolucionó a una API en C# / ASP.NET Core, Entity Framework Core y PostgreSQL. Escritorio y web de instructores usan el mismo backend, con acceso remoto mediante Cloudflare Tunnel.",
+    "pt": "A primeira versão usava JavaScript, Electron e SQLite. Mais dispositivos e duas unidades exigiram dados compartilhados: a arquitetura evoluiu para uma API em C# / ASP.NET Core, Entity Framework Core e PostgreSQL. Desktop e web dos instrutores usam o mesmo backend, com acesso remoto via Cloudflare Tunnel."
+  },
+  "Architecture diagram published on LinkedIn. Its member-access block was still planned when this image was made; the newer locally validated candidate is described below.": {
+    "es": "Diagrama de arquitectura publicado en LinkedIn. El acceso de socios todavía estaba planificado cuando se creó esta imagen; la versión más reciente, validada localmente, se describe abajo.",
+    "pt": "Diagrama de arquitetura publicado no LinkedIn. O acesso de alunos ainda estava planejado quando esta imagem foi criada; a versão mais recente, validada localmente, está descrita abaixo."
+  },
+  "Keeping the business running": {
+    "es": "Mantener la operación en marcha",
+    "pt": "Manter a operação funcionando"
+  },
+  "The migration preserves operational history, with validation of record counts and amounts. Backups and restore rehearsals, versioned installers, remote updates and integrity checks are part of the delivery process. The host makes a backup before updating.": {
+    "es": "La migración conserva el historial operativo, validando cantidades de registros e importes. Los respaldos y ensayos de restauración, instaladores versionados, actualizaciones remotas y controles de integridad forman parte de la entrega. El equipo anfitrión realiza un respaldo antes de actualizar.",
+    "pt": "A migração preserva o histórico operacional, validando quantidades de registros e valores. Backups e ensaios de restauração, instaladores versionados, atualizações remotas e verificações de integridade fazem parte da entrega. O computador anfitrião faz um backup antes de atualizar."
+  },
+  "I use AI tools alongside programming, testing and validation against the real operating environment. AI is part of my development process; it is not a feature claimed for the gym product.": {
+    "es": "Uso herramientas de IA junto con programación, pruebas y validación en el entorno real de operación. La IA forma parte de mi proceso de desarrollo; no es una funcionalidad del producto del gimnasio.",
+    "pt": "Uso ferramentas de IA junto com programação, testes e validação no ambiente real de operação. A IA faz parte do meu processo de desenvolvimento; não é uma funcionalidade do produto da academia."
+  },
+  "What is running, and what is next": {
+    "es": "Qué está en uso y qué viene después",
+    "pt": "O que está em uso e o que vem a seguir"
+  },
+  "In daily use": {
+    "es": "En uso diario",
+    "pt": "Em uso diário"
+  },
+  "Windows administration, instructor tablets, shared API and PostgreSQL data across the gym’s two locations.": {
+    "es": "Administración en Windows, tablets de instructores, API compartida y datos en PostgreSQL entre las dos sedes.",
+    "pt": "Administração no Windows, tablets dos instrutores, API compartilhada e dados em PostgreSQL entre as duas unidades."
+  },
+  "Locally validated · 2.6.0 candidate": {
+    "es": "Validado localmente · Candidato 2.6.0",
+    "pt": "Validado localmente · Candidato 2.6.0"
+  },
+  "Separate web access for administrators and members. Administrators can view cash and attendance, manage members and enable access; members can view routines and videos, book or cancel classes and manage their password.": {
+    "es": "Acceso web separado para administradores y socios. Los administradores pueden consultar caja y asistencia, gestionar socios y habilitar accesos; los socios pueden ver rutinas y videos, reservar o cancelar clases y gestionar su contraseña.",
+    "pt": "Acesso web separado para administradores e alunos. Os administradores podem consultar caixa e presença, gerenciar alunos e habilitar acessos; os alunos podem ver treinos e vídeos, reservar ou cancelar aulas e gerenciar sua senha."
+  },
+  "Before gym rollout": {
+    "es": "Pendiente para el despliegue",
+    "pt": "Pendente para a implantação"
+  },
+  "Installation, credentials, HTTPS and testing on real phones remain pending. A local passing build does not mean the gym has installed the candidate.": {
+    "es": "Quedan pendientes la instalación, las credenciales, HTTPS y las pruebas en teléfonos reales. Una compilación local exitosa no significa que el gimnasio ya haya instalado esta versión.",
+    "pt": "Faltam a instalação, as credenciais, HTTPS e os testes em celulares reais. Uma compilação local bem-sucedida não significa que a academia já tenha instalado esta versão."
+  },
+  "Verification as part of maintenance": {
+    "es": "Verificación como parte del mantenimiento",
+    "pt": "Verificação como parte da manutenção"
+  },
+  "The documentation records 141 JavaScript tests, 29 .NET unit tests and 27 integration tests for the local candidate, plus HTTP, backup/restore and packaged-app checks. These are validation results from that development stage, not live production metrics.": {
+    "es": "La documentación registra 141 pruebas JavaScript, 29 pruebas unitarias .NET y 27 de integración para el candidato local, además de controles HTTP, respaldo/restauración y aplicación empaquetada. Son resultados de validación de esa etapa de desarrollo, no métricas de producción.",
+    "pt": "A documentação registra 141 testes JavaScript, 29 testes unitários .NET e 27 de integração para o candidato local, além de verificações HTTP, backup/restauração e aplicativo empacotado. São resultados de validação dessa etapa de desenvolvimento, não métricas de produção."
+  },
+  "Record the active tab": {
+    "es": "Grabar la pestaña activa",
+    "pt": "Gravar a aba ativa"
+  },
+  "Start a recording deliberately from the extension. Chrome Manifest V3 coordinates a service worker and offscreen document, with Web Audio / AudioWorklet capture and a MediaRecorder fallback.": {
+    "es": "La grabación se inicia desde la extensión. Chrome Manifest V3 coordina un service worker y un documento offscreen, con captura mediante Web Audio / AudioWorklet y MediaRecorder como alternativa.",
+    "pt": "A gravação é iniciada pela extensão. Chrome Manifest V3 coordena um service worker e um documento offscreen, com captura via Web Audio / AudioWorklet e MediaRecorder como alternativa."
+  },
+  "Recording the active tab with waveform feedback.": {
+    "es": "Grabación de la pestaña activa con visualización de la onda.",
+    "pt": "Gravação da aba ativa com visualização da forma de onda."
+  },
+  "Trim and listen before exporting": {
+    "es": "Recortar y escuchar antes de exportar",
+    "pt": "Recortar e ouvir antes de exportar"
+  },
+  "WaveSurfer.js displays the waveform and the selected region. Preview the fragment and refine its boundaries; IndexedDB keeps the recording on the device.": {
+    "es": "WaveSurfer.js muestra la onda y la región seleccionada. Podés escuchar el fragmento y ajustar sus límites; IndexedDB conserva la grabación en el dispositivo.",
+    "pt": "WaveSurfer.js exibe a forma de onda e a região selecionada. Você pode ouvir o trecho e ajustar seus limites; IndexedDB mantém a gravação no dispositivo."
+  },
+  "Selecting the useful region and previewing playback.": {
+    "es": "Selección de la región y reproducción previa.",
+    "pt": "Seleção da região e reprodução prévia."
+  },
+  "See musical context": {
+    "es": "Ver el contexto musical",
+    "pt": "Ver o contexto musical"
+  },
+  "Analysis runs in Web Workers, separately from the interface. Estimated BPM, key and frequency appear alongside the selection.": {
+    "es": "El análisis se ejecuta en Web Workers, separado de la interfaz. Las estimaciones de BPM, tonalidad y frecuencia aparecen junto a la selección.",
+    "pt": "A análise é executada em Web Workers, separada da interface. As estimativas de BPM, tonalidade e frequência aparecem junto à seleção."
+  },
+  "Full interface with waveform selection, BPM, key, frequency and duration. Musical results are estimates.": {
+    "es": "Interfaz completa con selección de onda, BPM, tonalidad, frecuencia y duración. Los resultados musicales son estimaciones.",
+    "pt": "Interface completa com seleção da onda, BPM, tonalidade, frequência e duração. Os resultados musicais são estimativas."
+  },
+  "Leave with a WAV": {
+    "es": "Exportar a WAV",
+    "pt": "Exportar para WAV"
+  },
+  "Export the selected region as 16-bit PCM WAV, with fades, zero-crossing adjustment, DC removal and dithering. Vitest covers analysis and WAV encoding; Vite and TypeScript provide builds and type checks.": {
+    "es": "Exportá la región seleccionada como WAV PCM de 16 bits, con fades, ajuste de cruce por cero, eliminación de DC y dithering. Vitest cubre análisis y codificación WAV; Vite y TypeScript permiten compilar y comprobar tipos.",
+    "pt": "Exporte a região selecionada como WAV PCM de 16 bits, com fades, ajuste de cruzamento por zero, remoção de DC e dithering. Vitest cobre análise e codificação WAV; Vite e TypeScript permitem compilar e verificar tipos."
+  },
+  "Complete export workflow, including playback and download controls.": {
+    "es": "Flujo de exportación completo, con reproducción y descarga.",
+    "pt": "Fluxo de exportação completo, com reprodução e download."
+  },
+  "Your audio stays on your device": {
+    "es": "Tu audio queda en tu dispositivo",
+    "pt": "Seu áudio fica no seu dispositivo"
+  },
+  "Recording and analysis are local. The Demo Trial includes 75 WAV exports; recording, trimming, playback and analysis remain available after the export allowance is used.": {
+    "es": "La grabación y el análisis son locales. Demo Trial incluye 75 exportaciones WAV; grabar, recortar, reproducir y analizar sigue disponible después de consumirlas.",
+    "pt": "A gravação e a análise são locais. Demo Trial inclui 75 exportações WAV; gravar, recortar, reproduzir e analisar continua disponível após consumi-las."
+  },
+  "Code & documentation": {
+    "es": "Código y documentación",
+    "pt": "Código e documentação"
+  },
+  "Project on LinkedIn": {
+    "es": "Proyecto en LinkedIn",
+    "pt": "Projeto no LinkedIn"
+  },
+  "Primera demo": {
+    "en": "First demo",
+    "es": "Primera demo",
+    "pt": "Primeira demo"
+  },
+  "First demo": {
+    "es": "Primera demo",
+    "pt": "Primeira demo"
+  },
+  "Primera demo pública · v0.3.0": {
+    "en": "First public demo · v0.3.0",
+    "es": "Primera demo pública · v0.3.0",
+    "pt": "Primeira demo pública · v0.3.0"
+  },
+  "First public demo · v0.3.0": {
+    "es": "Primera demo pública · v0.3.0",
+    "pt": "Primeira demo pública · v0.3.0"
+  },
+  "Graba, recorta y descarga samples en WAV.": {
+    "en": "Record, trim and download WAV samples.",
+    "es": "Graba, recorta y descarga samples en WAV.",
+    "pt": "Grave, recorte e baixe samples em WAV."
+  },
+  "Record, trim and download WAV samples.": {
+    "es": "Graba, recorta y descarga samples en WAV.",
+    "pt": "Grave, recorte e baixe samples em WAV."
+  },
+  "SampleX captura el audio permitido de la pestaña activa, te deja elegir el fragmento exacto y muestra BPM, tonalidad y frecuencia antes de exportar.": {
+    "en": "SampleX captures permitted audio from the active tab, lets you select the exact fragment and shows BPM, key and frequency before exporting.",
+    "es": "SampleX captura el audio permitido de la pestaña activa, te deja elegir el fragmento exacto y muestra BPM, tonalidad y frecuencia antes de exportar.",
+    "pt": "SampleX captura o áudio permitido da aba ativa, permite escolher o trecho exato e mostra BPM, tonalidade e frequência antes de exportar."
+  },
+  "SampleX captures permitted audio from the active tab, lets you select the exact fragment and shows BPM, key and frequency before exporting.": {
+    "es": "SampleX captura el audio permitido de la pestaña activa, te deja elegir el fragmento exacto y muestra BPM, tonalidad y frecuencia antes de exportar.",
+    "pt": "SampleX captura o áudio permitido da aba ativa, permite escolher o trecho exato e mostra BPM, tonalidade e frequência antes de exportar."
+  },
+  "Descargar demo (.zip)": {
+    "en": "Download demo (.zip)",
+    "es": "Descargar demo (.zip)",
+    "pt": "Baixar demo (.zip)"
+  },
+  "Download demo (.zip)": {
+    "es": "Descargar demo (.zip)",
+    "pt": "Baixar demo (.zip)"
+  },
+  "Ver release": {
+    "en": "View release",
+    "es": "Ver release",
+    "pt": "Ver release"
+  },
+  "View release": {
+    "es": "Ver release",
+    "pt": "Ver release"
+  },
+  "Preparando descarga · Versión 0.3.0": {
+    "en": "Preparing download · Version 0.3.0",
+    "es": "Preparando descarga · Versión 0.3.0",
+    "pt": "Preparando download · Versão 0.3.0"
+  },
+  "Preparing download · Version 0.3.0": {
+    "es": "Preparando descarga · Versión 0.3.0",
+    "pt": "Preparando download · Versão 0.3.0"
+  },
+  "Gratis · 402 KB · Sin cuenta": {
+    "en": "Free · 402 KB · No account",
+    "es": "Gratis · 402 KB · Sin cuenta",
+    "pt": "Grátis · 402 KB · Sem conta"
+  },
+  "Free · 402 KB · No account": {
+    "es": "Gratis · 402 KB · Sin cuenta",
+    "pt": "Grátis · 402 KB · Sem conta"
+  },
+  "Procesamiento local": {
+    "en": "Local processing",
+    "es": "Procesamiento local",
+    "pt": "Processamento local"
+  },
+  "Local processing": {
+    "es": "Procesamiento local",
+    "pt": "Processamento local"
+  },
+  "Audio privado": {
+    "en": "Private audio",
+    "es": "Audio privado",
+    "pt": "Áudio privado"
+  },
+  "Private audio": {
+    "es": "Audio privado",
+    "pt": "Áudio privado"
+  },
+  "BPM, tonalidad y frecuencia": {
+    "en": "BPM, key and frequency",
+    "es": "BPM, tonalidad y frecuencia",
+    "pt": "BPM, tonalidade e frequência"
+  },
+  "BPM, key and frequency": {
+    "es": "BPM, tonalidad y frecuencia",
+    "pt": "BPM, tonalidade e frequência"
+  },
+  "Graba · Recorta · Analiza": {
+    "en": "Record · Trim · Analyze",
+    "es": "Graba · Recorta · Analiza",
+    "pt": "Grave · Recorte · Analise"
+  },
+  "Record · Trim · Analyze": {
+    "es": "Graba · Recorta · Analiza",
+    "pt": "Grave · Recorte · Analise"
+  },
+  "Tu audio permanece en tu equipo.": {
+    "en": "Your audio stays on your computer.",
+    "es": "Tu audio permanece en tu equipo.",
+    "pt": "Seu áudio permanece no seu computador."
+  },
+  "Your audio stays on your computer.": {
+    "es": "Tu audio permanece en tu equipo.",
+    "pt": "Seu áudio permanece no seu computador."
+  },
+  "Descarga y descomprime": {
+    "en": "Download and unzip",
+    "es": "Descarga y descomprime",
+    "pt": "Baixe e descompacte"
+  },
+  "Download and unzip": {
+    "es": "Descarga y descomprime",
+    "pt": "Baixe e descompacte"
+  },
+  "Guarda el ZIP y extrae la carpeta SampleX.": {
+    "en": "Save the ZIP and extract the SampleX folder.",
+    "es": "Guarda el ZIP y extrae la carpeta SampleX.",
+    "pt": "Salve o ZIP e extraia a pasta SampleX."
+  },
+  "Save the ZIP and extract the SampleX folder.": {
+    "es": "Guarda el ZIP y extrae la carpeta SampleX.",
+    "pt": "Salve o ZIP e extraia a pasta SampleX."
+  },
+  "Carga la extensión": {
+    "en": "Load the extension",
+    "es": "Carga la extensión",
+    "pt": "Carregue a extensão"
+  },
+  "Load the extension": {
+    "es": "Carga la extensión",
+    "pt": "Carregue a extensão"
+  },
+  "Activa el modo desarrollador y elige “Cargar descomprimida”.": {
+    "en": "Enable Developer mode and choose “Load unpacked”.",
+    "es": "Activa el modo desarrollador y elige “Cargar descomprimida”.",
+    "pt": "Ative o modo do desenvolvedor e escolha «Carregar sem compactação»."
+  },
+  "Enable Developer mode and choose “Load unpacked”.": {
+    "es": "Activa el modo desarrollador y elige “Cargar descomprimida”.",
+    "pt": "Ative o modo do desenvolvedor e escolha «Carregar sem compactação»."
+  },
+  "Fija y empieza": {
+    "en": "Pin and start",
+    "es": "Fija y empieza",
+    "pt": "Fixe e comece"
+  },
+  "Pin and start": {
+    "es": "Fija y empieza",
+    "pt": "Fixe e comece"
+  },
+  "Abre una pestaña con audio permitido y pulsa REC.": {
+    "en": "Open a tab with permitted audio and press REC.",
+    "es": "Abre una pestaña con audio permitido y pulsa REC.",
+    "pt": "Abra uma aba com áudio permitido e pressione REC."
+  },
+  "Open a tab with permitted audio and press REC.": {
+    "es": "Abre una pestaña con audio permitido y pulsa REC.",
+    "pt": "Abra uma aba com áudio permitido e pressione REC."
+  },
+  "La interfaz real": {
+    "en": "The real interface",
+    "es": "La interfaz real",
+    "pt": "A interface real"
+  },
+  "The real interface": {
+    "es": "La interfaz real",
+    "pt": "A interface real"
+  },
+  "De la pestaña a tu DAW en cuatro pasos.": {
+    "en": "From the tab to your DAW in four steps.",
+    "es": "De la pestaña a tu DAW en cuatro pasos.",
+    "pt": "Da aba à sua DAW em quatro passos."
+  },
+  "From the tab to your DAW in four steps.": {
+    "es": "De la pestaña a tu DAW en cuatro pasos.",
+    "pt": "Da aba à sua DAW em quatro passos."
+  },
+  "Abre SampleX sobre la pestaña que ya estás usando. Graba, recorta y analiza el momento útil sin enviar el audio a otro servicio.": {
+    "en": "Open SampleX over the tab you are already using. Record, trim and analyze the useful moment without sending audio to another service.",
+    "es": "Abre SampleX sobre la pestaña que ya estás usando. Graba, recorta y analiza el momento útil sin enviar el audio a otro servicio.",
+    "pt": "Abra SampleX sobre a aba que você já está usando. Grave, recorte e analise o momento útil sem enviar áudio a outro serviço."
+  },
+  "Open SampleX over the tab you are already using. Record, trim and analyze the useful moment without sending audio to another service.": {
+    "es": "Abre SampleX sobre la pestaña que ya estás usando. Graba, recorta y analiza el momento útil sin enviar el audio a otro servicio.",
+    "pt": "Abra SampleX sobre a aba que você já está usando. Grave, recorte e analise o momento útil sem enviar áudio a outro serviço."
+  },
+  "01 / Graba": {
+    "en": "01 / Record",
+    "es": "01 / Graba",
+    "pt": "01 / Grave"
+  },
+  "01 / Record": {
+    "es": "01 / Graba",
+    "pt": "01 / Grave"
+  },
+  "Captura la pestaña activa cuando tú decides.": {
+    "en": "Capture the active tab when you decide.",
+    "es": "Captura la pestaña activa cuando tú decides.",
+    "pt": "Capture a aba ativa quando você decidir."
+  },
+  "Capture the active tab when you decide.": {
+    "es": "Captura la pestaña activa cuando tú decides.",
+    "pt": "Capture a aba ativa quando você decidir."
+  },
+  "La grabación comienza únicamente cuando abres SampleX y pulsas REC. La forma de onda aparece en tiempo real mientras escuchas.": {
+    "en": "Recording starts only when you open SampleX and press REC. The waveform appears in real time while you listen.",
+    "es": "La grabación comienza únicamente cuando abres SampleX y pulsas REC. La forma de onda aparece en tiempo real mientras escuchas.",
+    "pt": "A gravação começa somente quando você abre SampleX e pressiona REC. A forma de onda aparece em tempo real enquanto você ouve."
+  },
+  "Recording starts only when you open SampleX and press REC. The waveform appears in real time while you listen.": {
+    "es": "La grabación comienza únicamente cuando abres SampleX y pulsas REC. La forma de onda aparece en tiempo real mientras escuchas.",
+    "pt": "A gravação começa somente quando você abre SampleX e pressiona REC. A forma de onda aparece em tempo real enquanto você ouve."
+  },
+  "02 / Recorta": {
+    "en": "02 / Trim",
+    "es": "02 / Recorta",
+    "pt": "02 / Recorte"
+  },
+  "02 / Trim": {
+    "es": "02 / Recorta",
+    "pt": "02 / Recorte"
+  },
+  "Conserva solamente el momento útil.": {
+    "en": "Keep only the useful moment.",
+    "es": "Conserva solamente el momento útil.",
+    "pt": "Mantenha apenas o momento útil."
+  },
+  "Keep only the useful moment.": {
+    "es": "Conserva solamente el momento útil.",
+    "pt": "Mantenha apenas o momento útil."
+  },
+  "Mueve los límites de selección, escucha el fragmento y ajusta la región exacta antes de exportar.": {
+    "en": "Move the selection boundaries, listen to the fragment and refine the exact region before exporting.",
+    "es": "Mueve los límites de selección, escucha el fragmento y ajusta la región exacta antes de exportar.",
+    "pt": "Mova os limites da seleção, ouça o trecho e ajuste a região exata antes de exportar."
+  },
+  "Move the selection boundaries, listen to the fragment and refine the exact region before exporting.": {
+    "es": "Mueve los límites de selección, escucha el fragmento y ajusta la región exacta antes de exportar.",
+    "pt": "Mova os limites da seleção, ouça o trecho e ajuste a região exata antes de exportar."
+  },
+  "03 / Analiza": {
+    "en": "03 / Analyze",
+    "es": "03 / Analiza",
+    "pt": "03 / Analise"
+  },
+  "03 / Analyze": {
+    "es": "03 / Analiza",
+    "pt": "03 / Analise"
+  },
+  "Entiende el contexto musical.": {
+    "en": "Understand the musical context.",
+    "es": "Entiende el contexto musical.",
+    "pt": "Entenda o contexto musical."
+  },
+  "Understand the musical context.": {
+    "es": "Entiende el contexto musical.",
+    "pt": "Entenda o contexto musical."
+  },
+  "SampleX calcula BPM, tonalidad y frecuencia dominante para la región seleccionada, justo donde la editas.": {
+    "en": "SampleX calculates BPM, key and dominant frequency for the selected region, right where you edit.",
+    "es": "SampleX calcula BPM, tonalidad y frecuencia dominante para la región seleccionada, justo donde la editas.",
+    "pt": "SampleX calcula BPM, tonalidade e frequência dominante para a região selecionada, exatamente onde você edita."
+  },
+  "SampleX calculates BPM, key and dominant frequency for the selected region, right where you edit.": {
+    "es": "SampleX calcula BPM, tonalidad y frecuencia dominante para la región seleccionada, justo donde la editas.",
+    "pt": "SampleX calcula BPM, tonalidade e frequência dominante para a região selecionada, exatamente onde você edita."
+  },
+  "04 / Descarga": {
+    "en": "04 / Download",
+    "es": "04 / Descarga",
+    "pt": "04 / Baixe"
+  },
+  "04 / Download": {
+    "es": "04 / Descarga",
+    "pt": "04 / Baixe"
+  },
+  "Obtén un WAV limpio.": {
+    "en": "Get a clean WAV.",
+    "es": "Obtén un WAV limpio.",
+    "pt": "Obtenha um WAV limpo."
+  },
+  "Get a clean WAV.": {
+    "es": "Obtén un WAV limpio.",
+    "pt": "Obtenha um WAV limpo."
+  },
+  "Exporta la región seleccionada y arrástrala a tu DAW. Sin crear un proyecto, una cuenta ni subir el audio a la nube.": {
+    "en": "Export the selected region and drag it into your DAW. No project, account or cloud audio upload required.",
+    "es": "Exporta la región seleccionada y arrástrala a tu DAW. Sin crear un proyecto, una cuenta ni subir el audio a la nube.",
+    "pt": "Exporte a região selecionada e arraste-a para sua DAW. Sem criar projeto, conta ou enviar áudio para a nuvem."
+  },
+  "Export the selected region and drag it into your DAW. No project, account or cloud audio upload required.": {
+    "es": "Exporta la región seleccionada y arrástrala a tu DAW. Sin crear un proyecto, una cuenta ni subir el audio a la nube.",
+    "pt": "Exporte a região selecionada e arraste-a para sua DAW. Sem criar projeto, conta ou enviar áudio para a nuvem."
+  },
+  "Privado por diseño": {
+    "en": "Private by design",
+    "es": "Privado por diseño",
+    "pt": "Privado por padrão"
+  },
+  "Private by design": {
+    "es": "Privado por diseño",
+    "pt": "Privado por padrão"
+  },
+  "Tu audio no sale de tu computadora.": {
+    "en": "Your audio never leaves your computer.",
+    "es": "Tu audio no sale de tu computadora.",
+    "pt": "Seu áudio não sai do seu computador."
+  },
+  "Your audio never leaves your computer.": {
+    "es": "Tu audio no sale de tu computadora.",
+    "pt": "Seu áudio não sai do seu computador."
+  },
+  "La edición de la forma de onda y el análisis musical ocurren dentro del navegador. SampleX no sube grabaciones, formas de onda ni resultados a los servidores de Amir Sholi.": {
+    "en": "Waveform editing and musical analysis happen inside the browser. SampleX does not upload recordings, waveforms or results to Amir Sholi’s servers.",
+    "es": "La edición de la forma de onda y el análisis musical ocurren dentro del navegador. SampleX no sube grabaciones, formas de onda ni resultados a los servidores de Amir Sholi.",
+    "pt": "A edição da forma de onda e a análise musical acontecem dentro do navegador. SampleX não envia gravações, formas de onda ou resultados aos servidores de Amir Sholi."
+  },
+  "Waveform editing and musical analysis happen inside the browser. SampleX does not upload recordings, waveforms or results to Amir Sholi’s servers.": {
+    "es": "La edición de la forma de onda y el análisis musical ocurren dentro del navegador. SampleX no sube grabaciones, formas de onda ni resultados a los servidores de Amir Sholi.",
+    "pt": "A edição da forma de onda e a análise musical acontecem dentro do navegador. SampleX não envia gravações, formas de onda ou resultados aos servidores de Amir Sholi."
+  },
+  "Pestaña activa": {
+    "en": "Active tab",
+    "es": "Pestaña activa",
+    "pt": "Aba ativa"
+  },
+  "Active tab": {
+    "es": "Pestaña activa",
+    "pt": "Aba ativa"
+  },
+  "Captura iniciada por ti": {
+    "en": "Capture started by you",
+    "es": "Captura iniciada por ti",
+    "pt": "Captura iniciada por você"
+  },
+  "Capture started by you": {
+    "es": "Captura iniciada por ti",
+    "pt": "Captura iniciada por você"
+  },
+  "En tu equipo": {
+    "en": "On your computer",
+    "es": "En tu equipo",
+    "pt": "No seu computador"
+  },
+  "On your computer": {
+    "es": "En tu equipo",
+    "pt": "No seu computador"
+  },
+  "Sin cuenta": {
+    "en": "No account",
+    "es": "Sin cuenta",
+    "pt": "Sem conta"
+  },
+  "No account": {
+    "es": "Sin cuenta",
+    "pt": "Sem conta"
+  },
+  "Continue exploring": {
+    "es": "Seguir explorando",
+    "pt": "Continuar explorando"
+  },
+  "Explore more projects": {
+    "es": "Explorar más proyectos",
+    "pt": "Explorar mais projetos"
+  },
+  "Portfolio summary": {
+    "es": "Resumen del portfolio",
+    "pt": "Resumo do portfólio"
+  },
+  "Email ↗": {
+    "es": "Correo ↗",
+    "pt": "E-mail ↗"
+  },
+  "Brazil": {
+    "es": "Brasil",
+    "pt": "Brasil"
+  },
+  "portfolio — summary": {
+    "es": "portfolio — resumen",
+    "pt": "portfólio — resumo"
+  },
+  "Jun 2025 – Present": {
+    "es": "Jun 2025 – Actualidad",
+    "pt": "Jun 2025 – Atual"
+  },
+  "May 2024 – Oct 2025": {
+    "es": "May 2024 – Oct 2025",
+    "pt": "Mai 2024 – Out 2025"
+  },
+  "CTC / Universidad CLAEH · Mar 2021 – Dec 2026": {
+    "es": "CTC / Universidad CLAEH · Mar 2021 – Dic 2026",
+    "pt": "CTC / Universidad CLAEH · Mar 2021 – Dez 2026"
+  },
+  "Alianza · 29 Oct 2026": {
+    "es": "Alianza · 29 oct 2026",
+    "pt": "Alianza · 29 out 2026"
+  },
+  "IBEC · Mar 2024 · 6 months": {
+    "es": "IBEC · Mar 2024 · 6 meses",
+    "pt": "IBEC · Mar 2024 · 6 meses"
+  },
+  "CoderHouse · Nov 2023 · 30 hours / 8 weeks": {
+    "es": "CoderHouse · Nov 2023 · 30 horas / 8 semanas",
+    "pt": "CoderHouse · Nov 2023 · 30 horas / 8 semanas"
+  },
+  "CoderHouse · Dec 2023 · 14 hours / 7 weeks": {
+    "es": "CoderHouse · Dic 2023 · 14 horas / 7 semanas",
+    "pt": "CoderHouse · Dez 2023 · 14 horas / 7 semanas"
+  },
+  "ARI Informática · 2015 & 2016": {
+    "es": "ARI Informática · 2015 y 2016",
+    "pt": "ARI Informática · 2015 e 2016"
+  },
+  "UnderFit case study": {
+    "es": "Caso de estudio UnderFit",
+    "pt": "Estudo de caso UnderFit"
+  },
+  "SampleX case study": {
+    "es": "Caso de estudio SampleX",
+    "pt": "Estudo de caso SampleX"
+  },
+  "Current UnderFit administration interface": {
+    "es": "Interfaz actual de administración de UnderFit",
+    "pt": "Interface atual de administração do UnderFit"
+  },
+  "Complete SampleX waveform editor and analysis controls": {
+    "es": "Editor de onda y controles de análisis completos de SampleX",
+    "pt": "Editor de onda e controles de análise completos do SampleX"
+  },
+  "Montevideo, Uruguay": {
+    "es": "Montevideo, Uruguay",
+    "pt": "Montevidéu, Uruguai"
+  },
+  "Enlarge:": {
+    "es": "Ampliar:",
+    "pt": "Ampliar:"
+  },
+  "Portfolio inquiry from": {
+    "es": "Consulta desde el portfolio de",
+    "pt": "Consulta pelo portfólio de"
+  }
+}

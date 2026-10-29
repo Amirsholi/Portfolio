@@ -35,3 +35,9 @@ Sources: existing public product landing, LinkedIn Projects and the existing wor
 - All product images preserve their actual dimensions and use contain sizing. Original imagery colors are preserved independently of the website palette.
 - Demo download uses the existing v0.3.0-demo GitHub release asset, verified HTTP 200, 411989 bytes.
 - Download interaction uses only the existing anonymous allowlisted `demo_interest` counter and remains independent of metrics success.
+
+## English certificate supplied October 29, 2026
+
+Owner supplied `Certificado-amir-sholi (1).pdf`. Rendered and visually checked: Alianza Cultural Uruguay–Estados Unidos, MicroFleX Intermediate Online Course, CEFR B1+, issued October 29, 2026. The original is preserved at `/assets/certificates/english-b1.pdf`, with a raster preview for the in-app modal.
+
+Flag assets: flagcdn.com/uy.svg and flagcdn.com/br.svg, stored locally.

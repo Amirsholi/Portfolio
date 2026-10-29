@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Home, Folder, BriefcaseBusiness, Wrench, GraduationCap, Mail, ArrowUpRight, ArrowRight, ChevronDown, X } from 'lucide-react';
 import './portfolio.css';
+import { useLanguage, localize, LanguageSwitch } from './i18n.jsx';
+import { PortfolioFooter, ProfileLanguages } from './PortfolioIdentity.jsx';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { ProjectCaseStudy } from './ProjectCaseStudy.jsx';
 import { ProjectCards } from './ProjectCards.jsx';
@@ -11,7 +13,7 @@ const jobs = [
   ['Alorica', 'Worked on-site in Montevideo, moderating content in Portuguese. Reviewed information against policies, applied consistent criteria and met quality and productivity targets in a high-volume SLA/KPI environment.', 'May 2024 – Oct 2025'],
 ];
 const studies = [
-  ['English B1+ · MicroFleX Intermediate', 'Intermediate Online Course completed at Alianza Cultural Uruguay–Estados Unidos. Certificate level: B1+ on the Common European Framework of Reference (CEFR).', 'Alianza · Oct 2026', null],
+  ['English B1+ · MicroFleX Intermediate', 'Intermediate Online Course completed at Alianza Cultural Uruguay–Estados Unidos. Certificate level: B1+ on the Common European Framework of Reference (CEFR).', 'Alianza · 29 Oct 2026', '/assets/certificates/english-b1.png'],
   ['Analista Programador', 'All coursework and exams completed in the Analista Programador program at CTC, in partnership with Universidad CLAEH. Thesis pending; expected completion: December 2026.', 'CTC / Universidad CLAEH · Mar 2021 – Dec 2026', null],
   ['Diploma in Artificial Intelligence', 'AI fundamentals, prompting and practical tools for technical workflows.', 'IBEC · Mar 2024 · 6 months', '/assets/certificates/ibec-ai.jpg'],
   ['React.js', 'Components, props, state, reusable UI patterns and frontend project structure.', 'CoderHouse · Nov 2023 · 30 hours / 8 weeks', '/assets/certificates/coderhouse-react.png'],
@@ -19,8 +21,9 @@ const studies = [
   ['Next.js', 'React framework fundamentals, routing, rendering patterns and production-oriented applications.', 'CoderHouse · Dec 2023 · 14 hours / 7 weeks', '/assets/certificates/coderhouse-next.png'],
 ];
 const tools = [['C# / .NET', 'Backend & REST APIs', '', 'https://dotnet.microsoft.com'], ['PostgreSQL', 'Shared relational data', '', 'https://www.postgresql.org'], ['React', 'Interface development', 'react/react-original.svg', 'https://react.dev'], ['JavaScript', 'Web & application logic', 'javascript/javascript-original.svg', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript'], ['Electron', 'Desktop applications', 'electron/electron-original.svg', 'https://electronjs.org'], ['SQLite', 'Local databases', 'sqlite/sqlite-original.svg', 'https://sqlite.org'], ['Git', 'Version control', 'git/git-original.svg', 'https://git-scm.com'], ['Next.js', 'React framework', 'nextjs/nextjs-original.svg', 'https://nextjs.org']];
-function Heading({ first, second }) { return <h1 className="pf-heading">{first}<span>{second}</span></h1>; }
+function Heading({ first, second }) { const { t } = useLanguage(); return <h1 className="pf-heading">{t(first)}<span>{t(second)}</span></h1>; }
 export function Portfolio() {
+  const { language, t } = useLanguage();
   const reduceMotion = useReducedMotion();
   const pageFromLocation = () => {
     const path = window.location.pathname.replace(/\/$/, '').slice(1);
@@ -43,7 +46,7 @@ export function Portfolio() {
     setActive(id);
     setMedia(null);
     if (projectMenu.current) projectMenu.current.open=false;
-    window.scrollTo({top:0, behavior:'instant'});
+    if(active===id)window.scrollTo({top:0, behavior:reduceMotion?'instant':'smooth'});
     requestAnimationFrame(() => heading.current?.focus({preventScroll:true}));
   }
   useEffect(() => {
@@ -53,34 +56,34 @@ export function Portfolio() {
     window.addEventListener('hashchange', restore);
     return () => { document.body.classList.remove('portfolio-page'); window.removeEventListener('popstate', restore); window.removeEventListener('hashchange', restore); };
   }, []);
-  useEffect(() => { document.title = `${(active === 'projects/underfit' ? 'UnderFit' : active === 'projects/samplex' ? 'SampleX' : nav.find(([id])=>id===active)?.[1]) || 'Home'} — Amir Sholi | Software Developer`; }, [active]);
+  useEffect(() => { document.title = `${(active === 'projects/underfit' ? 'UnderFit' : active === 'projects/samplex' ? 'SampleX' : t(nav.find(([id])=>id===active)?.[1] || 'Home')) || 'Home'} — Amir Sholi | Software Developer`; }, [active, language]);
   useEffect(() => { if (media) dialog.current?.showModal(); else dialog.current?.close(); }, [media]);
   function contact(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nBudget: ${data.get('budget')}\n\n${data.get('message')}`;
-    window.location.href = `mailto:amirsholi999@gmail.com?subject=${encodeURIComponent('Portfolio inquiry from ' + data.get('name'))}&body=${encodeURIComponent(body)}`;
+    const body = `${t('Name')}: ${data.get('name')}\n${t('Email')}: ${data.get('email')}\n\n${data.get('message')}`;
+    window.location.href = `mailto:amirsholi999@gmail.com?subject=${encodeURIComponent(t('Portfolio inquiry from') + ' ' + data.get('name'))}&body=${encodeURIComponent(body)}`;
     setDraft(true);
   }
-  return <div className="pf-shell" id="top">
+  return localize(<div className="pf-shell" id="top">
     <a className="pf-skip" href="#page-content">Skip to content</a>
-    <header className="pf-header"><nav aria-label="Main navigation">{nav.map(([id,label,Icon]) => id==='projects' ? <details key={id} ref={projectMenu} className="pf-project-menu" onKeyDown={event=>{if(event.key==="Escape"){event.currentTarget.open=false;event.currentTarget.querySelector("summary")?.focus();}}} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))event.currentTarget.open=false;}}><summary className={active.startsWith('projects')?'is-active':''}><Icon size={20}/><span>Projects</span><ChevronDown className="pf-menu-caret" aria-hidden="true"/></summary><div className="pf-project-dropdown"><a href="/projects" onClick={event=>navigate(event,'projects')}>All projects</a><a href="/projects/underfit" onClick={event=>navigate(event,'projects/underfit')}>UnderFit <small>Gym operations · .NET & PostgreSQL</small></a><a href="/projects/samplex" onClick={event=>navigate(event,'projects/samplex')}>SampleX <small>Browser audio sampler · Demo Trial</small></a></div></details> : <a key={id} href={pageUrl(id)} onClick={event=>navigate(event,id)} aria-label={label} aria-current={active===id?'page':undefined}><Icon size={20}/><span>{label}</span></a>)}</nav></header>
+    <header className="pf-header"><nav aria-label="Main navigation">{nav.map(([id,label,Icon]) => id==='projects' ? <details key={id} ref={projectMenu} className="pf-project-menu" onKeyDown={event=>{if(event.key==="Escape"){event.currentTarget.open=false;event.currentTarget.querySelector("summary")?.focus();}}} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))event.currentTarget.open=false;}}><summary className={active.startsWith('projects')?'is-active':''}><Icon size={20}/><span>Projects</span>{active.startsWith("projects")&&<motion.span className="pf-nav-indicator" layoutId="pf-nav-indicator" aria-hidden="true" transition={{duration:reduceMotion?0:.24,ease:[.22,1,.36,1]}}/>}<ChevronDown className="pf-menu-caret" aria-hidden="true"/></summary><div className="pf-project-dropdown"><a href="/projects" onClick={event=>navigate(event,'projects')}>All projects</a><a href="/projects/underfit" onClick={event=>navigate(event,'projects/underfit')}>UnderFit <small>Gym operations · .NET & PostgreSQL</small></a><a href="/projects/samplex" onClick={event=>navigate(event,'projects/samplex')}>SampleX <small>Browser audio sampler · Demo Trial</small></a></div></details> : <a key={id} href={pageUrl(id)} onClick={event=>navigate(event,id)} aria-label={label} aria-current={active===id?'page':undefined}><Icon size={20}/><span>{label}</span>{active===id&&<motion.span className="pf-nav-indicator" layoutId="pf-nav-indicator" aria-hidden="true" transition={{duration:reduceMotion?0:.24,ease:[.22,1,.36,1]}}/>}</a>)}</nav><LanguageSwitch/></header>
     <div className="pf-layout">
       <aside className="pf-profile" aria-label="About Amir Sholi">
         <img className="pf-portrait" src="/assets/profile.jpg" alt="Amir Sholi" width="240" height="284" fetchPriority="high"/>
         <h2>Amir Sholi</h2>
-        <div className="pf-profile-mark" aria-hidden="true"/>
+        <div className="pf-nationalities"><img src="/assets/flags/uy.svg" alt="Uruguay"/><img src="/assets/flags/br.svg" alt="Brazil"/><span>Uruguayan & Brazilian</span></div>
         <p>Junior Software Developer · C#/.NET, JavaScript & SQL.</p>
         <div className="pf-socials"><a href="https://github.com/Amirsholi" aria-label="GitHub" target="_blank" rel="noreferrer"><img src="/assets/tools/github.svg" alt="" width="23" height="23"/></a><a href="https://www.linkedin.com/in/amirsholi/" aria-label="LinkedIn" target="_blank" rel="noreferrer"><img src="/assets/tools/linkedin.svg" alt="" width="23" height="23"/></a><a href="mailto:amirsholi999@gmail.com" aria-label="Email Amir"><Mail/></a></div>
-      </aside>
+      <ProfileLanguages compact/></aside>
       <main className="pf-main pf-paged" id="page-content" ref={heading} tabIndex={-1}>
-        <AnimatePresence mode="wait" initial={false}><motion.div key={active} className="pf-page-view" initial={{opacity:0,y:reduceMotion?0:10}} animate={{opacity:1,y:0}} exit={{opacity:0,y:reduceMotion?0:-6}} transition={{duration:reduceMotion?0:0.18,ease:[0.22,1,0.36,1]}}>
+        <AnimatePresence mode="wait" initial={false} onExitComplete={()=>{window.scrollTo({top:0,behavior:"instant"});heading.current?.focus({preventScroll:true});}}><motion.div key={active} className="pf-page-view" initial={{opacity:0,y:reduceMotion?0:10}} animate={{opacity:1,y:0}} exit={{opacity:0,y:0}} transition={{duration:reduceMotion?0:0.22,ease:[0.22,1,0.36,1]}}>
         {active === 'home' && <section id="home" className="pf-intro">
           <p className="pf-home-location">Montevideo, Uruguay · Software development</p>
           <h1>SOFTWARE<span>DEVELOPER</span></h1>
           <p className="pf-lead">I’m Amir. I build and maintain software around real operations, working with C#/.NET, JavaScript and SQL — from the interface to business rules, shared data and deployment.</p>
           <div className="pf-home-background"><p>UnderFit, my client project, connects reception and instructor tablets across two gym locations. SampleX is my personal browser audio sampler, built with React, TypeScript and Web Audio.</p><p>I completed all coursework and exams for Analista Programador at CTC / Universidad CLAEH; my thesis is pending, with completion expected in December 2026. Before software, I worked in Portuguese-language content moderation at Alorica, applying policies and quality criteria at scale.</p></div>
-          <div className="pf-home-actions"><a className="pf-primary-action" href="/assets/CV_Amir_Shol.pdf" target="_blank" rel="noreferrer">Read my CV <ArrowUpRight size={17}/></a><a className="pf-text-link" href="/experience" onClick={event=>navigate(event,'experience')}>Experience & responsibilities <ArrowRight size={16}/></a></div>
+          <ProfileLanguages/><div className="pf-home-actions"><a className="pf-primary-action" href="/assets/CV_Amir_Shol.pdf" target="_blank" rel="noreferrer">Read my CV <ArrowUpRight size={17}/></a><a className="pf-text-link" href="/experience" onClick={event=>navigate(event,'experience')}>Experience & responsibilities <ArrowRight size={16}/></a></div>
           <section className="pf-home-work" aria-label="Featured projects"><div className="pf-section-title"><h2>Projects you can explore</h2><a className="pf-text-link" href="/projects" onClick={event=>navigate(event,'projects')}>All projects <ArrowRight size={16}/></a></div><ProjectCards navigate={navigate}/></section>
           <div className="pf-home-fit"><h2>Where I can contribute</h2><p>I’m looking for junior opportunities in software development, application support and QA. My focus is practical problem solving, clear business rules, data consistency and reliable maintenance.</p><dl><div><dt>Main stack</dt><dd>C#/.NET · ASP.NET Core · EF Core · PostgreSQL · JavaScript · Electron</dd></div><div><dt>Languages</dt><dd>Spanish & Portuguese: native · English: intermediate, B1+ certificate</dd></div></dl></div>
         </section>}
@@ -91,11 +94,10 @@ export function Portfolio() {
         {projectPages.includes(active) && <ProjectCaseStudy project={active.split('/')[1]} onOpenMedia={setMedia}/>}
         </motion.div></AnimatePresence>
         {projectPages.includes(active) ? <nav className="pf-page-next" aria-label="Explore more projects"><a href="/projects" onClick={event=>navigate(event,'projects')}>All projects</a><a href={active==='projects/underfit'?'/projects/samplex':'/projects/underfit'} onClick={event=>navigate(event,active==='projects/underfit'?'projects/samplex':'projects/underfit')}>{active==='projects/underfit'?'Next project: SampleX':'Next project: UnderFit'} <ArrowRight size={16}/></a></nav> : <nav className="pf-page-next" aria-label="Continue exploring">{active !== 'home' && <a href="/" onClick={event=>navigate(event,'home')}>Home</a>}<a href={pageUrl(nav[(nav.findIndex(([id])=>id===(projectPages.includes(active)?'projects':active))+1)%nav.length][0])} onClick={event=>navigate(event,nav[(nav.findIndex(([id])=>id===(projectPages.includes(active)?'projects':active))+1)%nav.length][0])}>{nav[(nav.findIndex(([id])=>id===(projectPages.includes(active)?'projects':active))+1)%nav.length][1]} <ArrowRight size={16}/></a></nav>}
-        <div className="pf-language-note"><span>Spanish & Portuguese · Native</span><span>English · Intermediate (B1+)</span></div>
-        <section id="contact"><h2 className="pf-heading">LET'S WORK<span>TOGETHER</span></h2><p className="pf-page-intro">Based in Montevideo, Uruguay. Get in touch about software development opportunities or a product you’re building.</p><div className="pf-contact-links"><a href="mailto:amirsholi999@gmail.com">amirsholi999@gmail.com</a><a href="https://www.linkedin.com/in/amirsholi/" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={16}/></a></div><form className="pf-form" onSubmit={contact}><div className="pf-form-row"><label>Name<input name="name" placeholder="Your Name" autoComplete="name" required/></label><label>Email<input type="email" name="email" placeholder="Your@email.com" autoComplete="email" required/></label></div><label>Budget<select name="budget" defaultValue=""><option value="" disabled>Select…</option><option>Let's discuss</option><option>Under $1k</option><option>$1k – $3k</option><option>$3k – $5k</option><option>$5k+</option></select></label><label>Message<textarea name="message" placeholder="Message" rows="5" required/></label><button type="submit">Create email</button>{draft && <p role="status">Your email draft is ready in your email app. You can also write to <a href="mailto:amirsholi999@gmail.com">amirsholi999@gmail.com</a>.</p>}</form></section>
+        <section id="contact"><h2 className="pf-heading">LET'S WORK<span>TOGETHER</span></h2><p className="pf-page-intro">Based in Montevideo, Uruguay. Get in touch about software development opportunities or a product you’re building.</p><div className="pf-contact-links"><a href="mailto:amirsholi999@gmail.com">amirsholi999@gmail.com</a><a href="https://www.linkedin.com/in/amirsholi/" target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight size={16}/></a></div><form className="pf-form" onSubmit={contact}><div className="pf-form-row"><label>Name<input name="name" placeholder="Your Name" autoComplete="name" required/></label><label>Email<input type="email" name="email" placeholder="Your@email.com" autoComplete="email" required/></label></div><label>Message<textarea name="message" placeholder="Message" rows="5" required/></label><button type="submit">Create email</button>{draft && <p role="status">Your email draft is ready in your email app. You can also write to <a href="mailto:amirsholi999@gmail.com">amirsholi999@gmail.com</a>.</p>}</form></section>
       </main>
     </div>
-    <footer className="pf-footer">Built by <a href="/" onClick={event=>navigate(event,'home')}>AmirSholi()</a> · Montevideo, Uruguay</footer>
-    <dialog ref={dialog} className="pf-dialog" onCancel={()=>setMedia(null)} onClick={e=>{if(e.target===e.currentTarget)setMedia(null)}} onClose={()=>setMedia(null)}>{media && <><div className="pf-dialog-head"><h2>{media.title}</h2><button autoFocus aria-label="Close preview" onClick={()=>setMedia(null)}><X/></button></div><img src={media.src} alt={media.title}/>{media.description && <p>{media.description}</p>}{media.link && <a href={media.link}>Explore UnderFit <ArrowUpRight size={18}/></a>}</>}</dialog>
-  </div>;
+    <PortfolioFooter navigate={navigate}/>
+    <dialog ref={dialog} className="pf-dialog" onCancel={()=>setMedia(null)} onClick={e=>{if(e.target===e.currentTarget)setMedia(null)}} onClose={()=>setMedia(null)}>{media && <><div className="pf-dialog-head"><h2>{media.title}</h2><button autoFocus aria-label="Close preview" onClick={()=>setMedia(null)}><X/></button></div><img src={media.src} alt={media.title}/>{media.src.includes("english-b1") && <a className="pf-text-link" href="/assets/certificates/english-b1.pdf" target="_blank" rel="noreferrer">Open original PDF <ArrowUpRight size={16}/></a>}{media.description && <p>{media.description}</p>}{media.link && <a href={media.link}>Explore UnderFit <ArrowUpRight size={18}/></a>}</>}</dialog>
+  </div>, language);
 }

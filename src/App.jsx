@@ -1,3 +1,4 @@
+import { useLanguage, localize, LanguageSwitch } from './i18n.jsx';
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
@@ -843,6 +844,7 @@ function SampleXFeaturePanel({ file, onOpenMedia }) {
 }
 
 export function SampleXProductPage() {
+  const { language } = useLanguage();
   const demoTrialActive = true;
   const [fulfillment, setFulfillment] = useState(() => {
     const checkoutId = new URLSearchParams(window.location.search).get("checkout_id");
@@ -916,7 +918,7 @@ export function SampleXProductPage() {
   if (fulfillment) {
     const ready = fulfillment.status === "ready";
     const refunded = fulfillment.status === "refunded";
-    return (
+    return localize(
       <div className="file-document buy-samplex-file">
         <div className="checkout-result">
           <div className={`checkout-result-icon ${ready ? "ready" : ""}`}>
@@ -935,15 +937,15 @@ export function SampleXProductPage() {
           <span className="checkout-reference">Checkout {fulfillment.checkoutId}</span>
         </div>
       </div>
-    );
+    , language);
   }
 
-  return (
+  return localize(
     <main className="samplex-landing">
       <nav className="samplex-nav" aria-label="SampleX navigation">
         <a className="samplex-nav-brand" href="/"><AudioWaveform size={22} /><span>SampleX</span></a>
         <div>
-          <span className="samplex-beta">Primera demo</span>
+          <LanguageSwitch/><span className="samplex-beta">Primera demo</span>
           <a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">GitHub <ExternalLink size={14} /></a>
         </div>
       </nav>
@@ -1045,7 +1047,7 @@ export function SampleXProductPage() {
         </div>
       </footer>
     </main>
-  );
+  , language);
 }
 
 async function trackSampleXEvent(event) {
