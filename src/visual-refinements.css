@@ -1,0 +1,37 @@
+/* Focused palette and type refinement of the restored portfolio. */
+:root{--ui-canvas:#081518;--ui-surface:#102a30;--ui-raised:#18363b;--ui-border:#304a4e;--ui-text:#f0ece4;--ui-muted:#b6c6c3;--ui-accent:#eea052;--pf-paper:var(--ui-text);--pf-accent:var(--ui-accent);--pf-muted:var(--ui-muted)}
+.pf-shell{line-height:1.72}
+.pf-header{background:var(--ui-canvas);border-color:#263d41}
+.pf-header a[aria-current=page],.pf-project-menu>summary.is-active,.pf-project-menu[open]>summary{background:#eea05212;color:var(--ui-accent)}
+.pf-nav-indicator{background:var(--ui-accent)}
+.pf-language-switch button[aria-pressed=true]{background:#24535a;color:#f0ece4}
+.pf-profile{background:#e9e4d9;border-color:#f2eee5;box-shadow:0 3px 8px #0003}
+.pf-profile h2{font-weight:600;letter-spacing:-1px}
+.pf-profile>p,.pf-nationalities span{color:#37494b}
+.pf-profile-languages div>span{color:#1f6265}
+.pf-intro h1{font-size:clamp(46px,5.5vw,76px);line-height:1.13;font-weight:600;letter-spacing:-2.8px}
+.pf-heading{font-weight:600;line-height:1.16;letter-spacing:-1.8px}
+.pf-intro h1 span,.pf-heading span{color:#79b9b4}
+.pf-lead{font-weight:400;line-height:1.65}
+.pf-home-background p,.pf-case-section>p{line-height:1.8;max-width:68ch}
+.pf-project-cards>article{background:var(--ui-surface);border-color:var(--ui-border);box-shadow:none}
+.pf-project-cards>article:hover{background:#143138;border-color:#568487}
+.pf-project-cards>article:first-child{border-top-color:#eea052}
+.pf-project-cards>article:last-child{border-top-color:#79b9b4}
+.pf-project-cover{background:#071216;border-color:var(--ui-border)}
+.pf-project-type{color:#b6ccc7}
+.pf-project-card-copy h3{font-weight:600;letter-spacing:-.65px}
+.pf-project-card-copy p{line-height:1.75}
+.pf-primary-action,.pf-form>button,.samplex-primary-action{background:#eea052;border-color:#f2b476;color:#18130c!important;box-shadow:none}
+.pf-primary-action:hover,.pf-form>button:hover,.samplex-primary-action:hover{background:#f1b577;border-color:#f1b577}
+.pf-case-facts,.pf-release-status,.pf-download-panel,.pf-paged>#contact{background:var(--ui-surface);border-color:var(--ui-border)}
+.pf-paged>#contact{border-top-color:#568487}
+.pf-form input,.pf-form textarea{background:#091d22;border-color:#3b595d}
+.pf-form input::placeholder,.pf-form textarea::placeholder{color:#b0bfbc}
+.pf-case-section h2,.pf-entries h3,.pf-capabilities h3{font-weight:600;line-height:1.4}
+.pf-terminal{background:#061114;border-color:#304a4e}
+.pf-terminal-content b,.pf-terminal a:hover{color:#eea052}
+.pf-terminal-command,.pf-terminal-columns h2{color:#8bb7b0}
+.pf-footer,.pf-terminal-bottom{color:#a4b8b4}
+@media(max-width:1199px){.pf-intro h1{font-size:clamp(46px,5.6vw,64px)}}
+@media(max-width:600px){.pf-intro h1{font-size:42px;letter-spacing:-1.8px}.pf-heading{letter-spacing:-1.2px}.pf-lead{line-height:1.7}.pf-project-card-copy p{font-size:14px}}
