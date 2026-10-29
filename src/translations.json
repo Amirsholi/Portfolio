@@ -1156,5 +1156,85 @@
   "Shared desktop and tablet operations require the central API/PostgreSQL server and connectivity. Remote access also needs Internet. SQLite remains in local mode for compatibility and migration; it is not evidence of an automatic offline fallback for the shared system.": {
     "es": "Las operaciones compartidas entre escritorio y tablets requieren el servidor central con API/PostgreSQL y conectividad. El acceso remoto necesita además Internet. SQLite se conserva en el modo local por compatibilidad y migración; no respalda una recuperación automática sin conexión para el sistema compartido.",
     "pt": "As operações compartilhadas entre desktop e tablets exigem o servidor central com API/PostgreSQL e conectividade. O acesso remoto também precisa de Internet. SQLite permanece no modo local por compatibilidade e migração; isso não comprova uma alternativa automática sem conexão para o sistema compartilhado."
+  },
+  "Junior Software Developer": {
+    "es": "Desarrollador de software junior",
+    "pt": "Desenvolvedor de software júnior"
+  },
+  "Portfolio terminal": {
+    "es": "Terminal del portfolio",
+    "pt": "Terminal do portfólio"
+  },
+  "Terminal output": {
+    "es": "Salida de la terminal",
+    "pt": "Saída do terminal"
+  },
+  "Terminal command": {
+    "es": "Comando de terminal",
+    "pt": "Comando do terminal"
+  },
+  "Run command": {
+    "es": "Ejecutar comando",
+    "pt": "Executar comando"
+  },
+  "Clear output": {
+    "es": "Limpiar salida",
+    "pt": "Limpar saída"
+  },
+  "Profile summary": {
+    "es": "Resumen del perfil",
+    "pt": "Resumo do perfil"
+  },
+  "Project links": {
+    "es": "Enlaces a proyectos",
+    "pt": "Links dos projetos"
+  },
+  "Contact links": {
+    "es": "Enlaces de contacto",
+    "pt": "Links de contato"
+  },
+  "Current directory": {
+    "es": "Directorio actual",
+    "pt": "Diretório atual"
+  },
+  "Type help to see available commands.": {
+    "es": "Escribí help para ver los comandos disponibles.",
+    "pt": "Digite help para ver os comandos disponíveis."
+  },
+  "Unknown command. Type help.": {
+    "es": "Comando no reconocido. Escribí help.",
+    "pt": "Comando não reconhecido. Digite help."
+  },
+  "— Gym management · Two locations": {
+    "es": "— Gestión de gimnasios · Dos locales",
+    "pt": "— Gestão de academias · Duas unidades"
+  },
+  "— Browser audio sampler": {
+    "es": "— Sampler de audio para el navegador",
+    "pt": "— Sampler de áudio para o navegador"
+  },
+  "Back to AmirSholi()": {
+    "es": "Volver a AmirSholi()",
+    "pt": "Voltar para AmirSholi()"
+  },
+  "SampleX support": {
+    "es": "Soporte de SampleX",
+    "pt": "Suporte do SampleX"
+  },
+  "Privacy": {
+    "es": "Privacidad",
+    "pt": "Privacidade"
+  },
+  "Terms": {
+    "es": "Términos",
+    "pt": "Termos"
+  },
+  "Refunds": {
+    "es": "Reembolsos",
+    "pt": "Reembolsos"
+  },
+  "Support": {
+    "es": "Soporte",
+    "pt": "Suporte"
   }
 }

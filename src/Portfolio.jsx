@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Home, Folder, BriefcaseBusiness, Wrench, GraduationCap, Mail, ArrowUpRight, ArrowRight, ChevronDown, X } from 'lucide-react';
+import { Home, Folder, BriefcaseBusiness, Wrench, GraduationCap, Mail, ArrowUpRight, ArrowRight, ChevronDown, MapPin, X } from 'lucide-react';
 import './portfolio.css';
 import { useLanguage, localize, LanguageSwitch } from './i18n.jsx';
 import { PortfolioFooter, ProfileLanguages } from './PortfolioIdentity.jsx';
@@ -70,12 +70,12 @@ export function Portfolio() {
     <header className="pf-header"><nav aria-label="Main navigation">{nav.map(([id,label,Icon]) => id==='projects' ? <details key={id} ref={projectMenu} className="pf-project-menu" onKeyDown={event=>{if(event.key==="Escape"){event.currentTarget.open=false;event.currentTarget.querySelector("summary")?.focus();}}} onBlur={event=>{if(!event.currentTarget.contains(event.relatedTarget))event.currentTarget.open=false;}}><summary className={active.startsWith('projects')?'is-active':''}><Icon size={20}/><span>Projects</span>{active.startsWith("projects")&&<motion.span className="pf-nav-indicator" layoutId="pf-nav-indicator" aria-hidden="true" transition={{duration:reduceMotion?0:.24,ease:[.22,1,.36,1]}}/>}<ChevronDown className="pf-menu-caret" aria-hidden="true"/></summary><div className="pf-project-dropdown"><a href="/projects" onClick={event=>navigate(event,'projects')}>All projects</a><a href="/projects/underfit" onClick={event=>navigate(event,'projects/underfit')}>Under-Fit <small>Gym operations · .NET & PostgreSQL</small></a><a href="/projects/samplex" onClick={event=>navigate(event,'projects/samplex')}>SampleX <small>Browser audio sampler · Demo Trial</small></a></div></details> : <a key={id} href={pageUrl(id)} onClick={event=>navigate(event,id)} aria-label={label} aria-current={active===id?'page':undefined}><Icon size={20}/><span>{label}</span>{active===id&&<motion.span className="pf-nav-indicator" layoutId="pf-nav-indicator" aria-hidden="true" transition={{duration:reduceMotion?0:.24,ease:[.22,1,.36,1]}}/>}</a>)}</nav><LanguageSwitch/></header>
     <div className="pf-layout">
       <aside className="pf-profile" aria-label="About Amir Sholi">
-        <img className="pf-portrait" src="/assets/profile.jpg" alt="Amir Sholi" width="240" height="284" fetchPriority="high"/>
-        <h2>Amir Sholi</h2>
-        <div className="pf-nationalities"><img src="/assets/flags/uy.svg" alt="Uruguay"/><img src="/assets/flags/br.svg" alt="Brazil"/><span>Uruguayan & Brazilian</span></div>
-        <p>Junior Software Developer · C#/.NET, JavaScript & SQL.</p>
+        <img className="pf-portrait" src="/assets/profile.jpg" alt="Amir Sholi" width="676" height="559" fetchPriority="high"/>
+        <div className="pf-profile-identity"><h2>Amir Sholi</h2><p className="pf-profile-role">Junior Software Developer</p><p className="pf-profile-stack">C#/.NET · JavaScript · SQL</p></div>
+        <div className="pf-profile-meta"><p><MapPin size={14} aria-hidden="true"/><span>Montevideo, Uruguay</span></p><div className="pf-nationalities"><img src="/assets/flags/uy.svg" alt="Uruguay" width="20" height="14"/><img src="/assets/flags/br.svg" alt="Brazil" width="20" height="14"/><span>Uruguayan & Brazilian</span></div></div>
+        <ProfileLanguages compact/>
         <div className="pf-socials"><a href="https://github.com/Amirsholi" aria-label="GitHub" target="_blank" rel="noreferrer"><img src="/assets/tools/github.svg" alt="" width="23" height="23"/></a><a href="https://www.linkedin.com/in/amirsholi/" aria-label="LinkedIn" target="_blank" rel="noreferrer"><img src="/assets/tools/linkedin.svg" alt="" width="23" height="23"/></a><a href="mailto:amirsholi999@gmail.com" aria-label="Email Amir"><Mail/></a></div>
-      <ProfileLanguages compact/></aside>
+      </aside>
       <main className="pf-main pf-paged" id="page-content" ref={heading} tabIndex={-1}>
         <AnimatePresence mode="wait" initial={false} onExitComplete={()=>{window.scrollTo({top:0,behavior:"instant"});heading.current?.focus({preventScroll:true});}}><motion.div key={active} className="pf-page-view" initial={{opacity:0,y:reduceMotion?0:10}} animate={{opacity:1,y:0}} exit={{opacity:0,y:0}} transition={{duration:reduceMotion?0:0.22,ease:[0.22,1,0.36,1]}}>
         {active === 'home' && <section id="home" className="pf-intro">

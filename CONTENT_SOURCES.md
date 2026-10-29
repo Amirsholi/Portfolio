@@ -53,3 +53,7 @@ Flag assets: flagcdn.com/uy.svg and flagcdn.com/br.svg, stored locally.
 - SampleX practical TypeScript: SelectionRange, AnalysisWorkerRequest and AnalysisWorkerResponse. Vitest evidence: src/audio/exportWav.test.ts (PCM16 header, DC removal, fades, quiet cut boundaries) and analyzeSelection.test.ts (synthetic 120 BPM click, 440 Hz signal, C major chord). Tests were inspected, not rerun as part of this copy update.
 - Certificate images visually read: React 2023-11-07, 30 hours / 8 weeks; Next.js 2023-12-11, 14 hours / 7 weeks; IBEC Artificial Intelligence 2024-03-13, no duration printed. Removed unsupported six-month duration. Alianza displayed month/year per owner request; original PDF still preserves issue date.
 - CTC institutional name and 2021–present period: directly supplied by owner. Expected December 2026 completion is separate from enrollment period.
+
+## Graphite & Amber — 2026-10-29
+
+Owner supplied palette image sampled as #101113 / #1C1D20 / #F0EDE6 / #99999B / #F59A23. Secondary text was lifted slightly for legibility. No factual profile/project changes. Reorganized identity within the existing sticky profile card and removed grayscale filtering from original local tool SVGs. Added Poppins Medium 500 from the official Google Fonts repository (ofl/poppins/Poppins-Medium.ttf), hosted as WOFF2 with its OFL license. Terminal helper commands display existing public portfolio information locally; no system commands, filesystem access or remote messages are executed.

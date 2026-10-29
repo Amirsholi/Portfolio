@@ -1,3 +1,4 @@
+import { PortfolioFooter } from './PortfolioIdentity.jsx';
 import { SampleXConditions } from './SampleXConditions.jsx';
 import { useLanguage, localize, LanguageSwitch } from './i18n.jsx';
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -1035,18 +1036,8 @@ export function SampleXProductPage() {
         </section>
       </section>}
 
-      <footer className="terminal-footer samplex-terminal-footer" aria-label="SampleX footer navigation">
-        <div className="terminal-tabs" aria-label="Terminal panel tabs"><span className="active">TERMINAL</span><span>OUTPUT</span><span>SAMPLEX</span></div>
-        <div className="terminal-content samplex-terminal-content">
-          <span className="terminal-command">PS C:\Users\Amir\Portfolio\SampleX&gt; product --links</span>
-          <div className="samplex-terminal-grid">
-            <section><strong>[PROFILE]</strong><a href="/">&gt; Back to AmirSholi()</a><a href="/?file=contact">&gt; Contact</a></section>
-            <section><strong>[PROJECT]</strong><a href="https://github.com/Amirsholi/SampleX-studio" target="_blank" rel="noreferrer">&gt; GitHub repository</a><span>&gt; Browser extension · React · Web Audio</span></section>
-            <section><strong>[SUPPORT]</strong><a href="/samplex/privacy">&gt; Privacy</a><a href="/samplex/terms">&gt; Terms</a><a href="/samplex/refunds">&gt; Refunds</a><a href="/samplex/support">&gt; Support</a></section>
-          </div>
-          <span className="terminal-prompt">&gt; <span className="terminal-cursor" /></span>
-        </div>
-      </footer>
+      <PortfolioFooter product/>
+
     </main>
   , language);
 }
